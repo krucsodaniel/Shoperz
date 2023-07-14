@@ -1,0 +1,16 @@
+@import 'src/styles';
+
+.header-main {
+  display: flex;
+  flex-direction: row;
+
+  background-color: $blue-600;
+  color: $blue-100;
+  padding: 0 180px;
+
+  .header-link {
+    margin: 10px 20px;
+    padding: 0 10px;
+    border-right: 1px solid $blue-800;
+  }
+}

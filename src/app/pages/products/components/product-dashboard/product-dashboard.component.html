@@ -1,0 +1,8 @@
+<div class="grid-container">
+  <app-filter-card class="filters"></app-filter-card>
+  <div *ngIf="productCards" class="list">
+    <div class="list-wrapper">
+      <app-product-card *ngFor="let card of productCards" [card]="card"></app-product-card>
+    </div>
+  </div>
+</div>
