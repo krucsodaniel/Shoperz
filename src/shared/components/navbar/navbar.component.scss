@@ -1,0 +1,50 @@
+@import 'src/styles';
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  background-color: $grey-100;
+  padding: 30px;
+
+  .middle-section {
+    width: 600px;
+
+    .searchbar {
+      position: absolute;
+      width: 500px;
+      height: 35px;
+
+      border-radius: 20px;
+      border: 2px solid $blue-600;
+      color: $blue-600;
+      appearance: none;
+      padding: 0 20px;
+
+      &:focus {
+        border: 2px solid $blue-500;
+        outline: none;
+      }
+    }
+
+    .search-icon-container {
+      position: relative;
+      left: 460px;
+
+      width: 50px;
+      height: 35px;
+
+      background-color: $blue-600;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+  }
+
+  .right-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 200px;
+  }
+}

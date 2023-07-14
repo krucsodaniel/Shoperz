@@ -1,0 +1,39 @@
+<div [ngClass]="{
+  'filter-card category-card': item === 'Categories',
+  'filter-card brand-card': item === 'Brands',
+  'filter-card price-card': item === 'Prices'
+}" *ngFor="let item of filters">
+  <h3 class="header-3">{{ item }}</h3>
+
+  <ul>
+    <ng-container *ngIf="item === 'Categories'">
+      <li class="list-element" *ngFor="let category of categories">{{ category }}</li>
+    </ng-container>
+
+    <ng-container *ngIf="item === 'Brands'">
+      <li *ngFor="let brand of brands">
+        <input class="checkbox" type="checkbox" [name]="brand" [id]="brand">
+        <label [for]="brand">{{ brand }}</label>
+      </li>
+    </ng-container>
+
+    <ng-container *ngIf="item === 'Prices'">
+      <li *ngFor="let price of prices">
+        <input class="checkbox" type="checkbox" [name]="price" [id]="price">
+        <label [for]="price">{{ price }}</label>
+      </li>
+
+      <hr>
+
+      <div class="interval-wrapper">
+        <input class="checkbox" type="checkbox" name="priceInterval" id="priceInterval">
+        <label for="priceInterval">Price interval</label>
+      </div>
+
+      <div class="slider-container">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <p>Price: $0 - $10.000</p>
+      </div>
+    </ng-container>
+  </ul>
+</div>
