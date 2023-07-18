@@ -1,11 +1,21 @@
 <div [class.expanded-card]="isExpanded" class="product-card">
-  <p class="product-category">{{ card.category }}</p>
-  <h3 class="product-name">{{ card.name }}</h3>
+  <div class="product-text-wrapper">
+    <p class="product-category">{{ card.category }}</p>
+
+    <h3 class="product-name">{{ card.name }}</h3>
+
+    <ul *ngIf="isExpanded" class="product-list">
+      <li *ngFor="let listElement of card.description" class="list-element">{{ listElement }}</li>
+    </ul>
+  </div>
+
   <div class="product-image-wrapper">
     <img [src]="card.imgUrl" class="product-image" alt="Product picture">
   </div>
+
   <div class="button-wrapper">
     <h4 class="product-price">$ {{ card.price }}</h4>
-    <button class="button-cart">+</button>
+
+    <button class="button-cart">{{ isExpanded ? 'Add to Cart' : '+' }}</button>
   </div>
 </div>
