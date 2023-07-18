@@ -1,4 +1,17 @@
-<div>
-  <input type="radio" name="option" value="view1" checked (click)="toggleView(false)">
-  <input type="radio" name="option" value="view2" (click)="toggleView(true)">
+<div class="view-container">
+  <div class="icon-holder" [ngClass]="{ 'active-icon': !isRowView }">
+    <label class="radio-label" (click)="toggleView(false)">
+      <svg-icon class="radio-icon" [src]="'card-view'"></svg-icon>
+
+      <input type="radio" name="option" value="view1" checked>
+    </label>
+  </div>
+
+  <div class="icon-holder" [ngClass]="{ 'active-icon': isRowView }">
+    <label class="radio-label" (click)="toggleView(true)">
+      <svg-icon class="radio-icon" [src]="'row-view'"></svg-icon>
+
+      <input type="radio" name="option" value="view2">
+    </label>
+  </div>
 </div>

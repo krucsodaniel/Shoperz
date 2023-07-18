@@ -1,4 +1,4 @@
-@import 'styles';
+@import 'src/styles';
 
 .product-card {
   display: flex;
@@ -42,9 +42,13 @@
   }
 
   .button-cart {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
     width: 36px;
     height: 36px;
-    padding: 7px 7px;
+    padding: 9px 7px;
 
     border: solid transparent;
     border-width: 0 0 4px;

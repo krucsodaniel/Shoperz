@@ -9,11 +9,13 @@ import {
   ViewSwitchComponent,
 } from './components';
 import { ProductService, ProductFacadeService, CardStateService, } from './services';
+import { SharedModule } from 'src/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    SharedModule,
   ],
   exports: [
     FilterCardComponent,

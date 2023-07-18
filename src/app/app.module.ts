@@ -14,9 +14,9 @@ const routes: Routes = [];
   ],
   imports: [
     BrowserModule,
-    SharedModule,
     ProductsModule,
     RouterModule.forRoot(routes),
+    SharedModule.forRoot(),
   ],
   bootstrap: [AppComponent]
 })
