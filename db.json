@@ -6,7 +6,12 @@
       "price": 703,
       "category": "Toys",
       "brand": "Huawei",
-      "imgUrl": "https://picsum.photos/id/21/200/300"
+      "imgUrl": "https://picsum.photos/id/21/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     },
     {
       "id": 2,
@@ -14,7 +19,12 @@
       "price": 278,
       "category": "Smartphones",
       "brand": "Samsung",
-      "imgUrl": "https://picsum.photos/id/21/200/300"
+      "imgUrl": "https://picsum.photos/id/21/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     },
     {
       "id": 3,
@@ -22,7 +32,12 @@
       "price": 385,
       "category": "Smartphones",
       "brand": "Apple",
-      "imgUrl": "https://picsum.photos/id/22/200/300"
+      "imgUrl": "https://picsum.photos/id/22/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     },
     {
       "id": 4,
@@ -30,7 +45,12 @@
       "price": 247,
       "category": "TV&Audio",
       "brand": "LG",
-      "imgUrl": "https://picsum.photos/id/23/200/300"
+      "imgUrl": "https://picsum.photos/id/23/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     },
     {
       "id": 5,
@@ -38,7 +58,12 @@
       "price": 192,
       "category": "Laptops & PC",
       "brand": "Lenovo",
-      "imgUrl": "https://picsum.photos/id/24/200/300"
+      "imgUrl": "https://picsum.photos/id/24/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     },
     {
       "id": 6,
@@ -46,7 +71,12 @@
       "price": 276,
       "category": "Laptops & PC",
       "brand": "Lenovo",
-      "imgUrl": "https://picsum.photos/id/25/200/300"
+      "imgUrl": "https://picsum.photos/id/25/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     },
     {
       "id": 7,
@@ -54,7 +84,12 @@
       "price": 820,
       "category": "Gadgets",
       "brand": "Nokia",
-      "imgUrl": "https://picsum.photos/id/26/200/300"
+      "imgUrl": "https://picsum.photos/id/26/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     },
     {
       "id": 8,
@@ -62,7 +97,12 @@
       "price": 256,
       "category": "Photo & Video",
       "brand": "Huawei",
-      "imgUrl": "https://picsum.photos/id/27/200/300"
+      "imgUrl": "https://picsum.photos/id/27/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     },
     {
       "id": 9,
@@ -70,7 +110,12 @@
       "price": 100,
       "category": "Gifts",
       "brand": "Nokia",
-      "imgUrl": "https://picsum.photos/id/28/200/300"
+      "imgUrl": "https://picsum.photos/id/28/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     },
     {
       "id": 10,
@@ -78,7 +123,12 @@
       "price": 50,
       "category": "Books",
       "brand": "Apple",
-      "imgUrl": "https://picsum.photos/id/29/200/300"
+      "imgUrl": "https://picsum.photos/id/29/200/300",
+      "description": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      ]
     }
   ]
 }

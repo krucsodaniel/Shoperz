@@ -1,24 +1,29 @@
 @import 'src/styles';
 
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 272px 272px 272px 272px 1fr;
-  grid-template-rows: 400px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  width: 100%;
+  gap: 20px;
+  padding: 20px;
 
   .filters {
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 2;
-    margin: 0 0;
-  }
-
-  .list {
-    grid-column: 3 / span 4;
-    grid-row: 1 / span 2;
+    width: 272px;
   }
 
   .list-wrapper {
+    gap: 20px;
+  }
+
+  .list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1148px;
+    width: 100%;
+    margin-top: 20px;
   }
 }

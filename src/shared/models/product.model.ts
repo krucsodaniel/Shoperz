@@ -5,4 +5,5 @@ export interface IProduct {
   category: string;
   brand: string;
   imgUrl: string;
+  description: string[];
 }

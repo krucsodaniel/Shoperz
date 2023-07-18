@@ -5,8 +5,10 @@ import {
   FilterCardComponent,
   ProductCardComponent,
   ProductDashboardComponent,
+  ViewPanelComponent,
+  ViewSwitchComponent,
 } from './components';
-import { ProductService, ProductFacadeService, } from './services';
+import { ProductService, ProductFacadeService, CardStateService, } from './services';
 
 @NgModule({
   imports: [
@@ -17,15 +19,20 @@ import { ProductService, ProductFacadeService, } from './services';
     FilterCardComponent,
     ProductCardComponent,
     ProductDashboardComponent,
+    ViewPanelComponent,
+    ViewSwitchComponent,
   ],
   declarations: [
     FilterCardComponent,
     ProductCardComponent,
     ProductDashboardComponent,
+    ViewPanelComponent,
+    ViewSwitchComponent,
   ],
   providers: [
     ProductService,
     ProductFacadeService,
+    CardStateService,
   ],
 })
 export class ProductsModule {}
