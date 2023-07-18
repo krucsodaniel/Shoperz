@@ -1,13 +1,27 @@
 <nav class="navigation">
+  <div class="left-section">
+    <svg-icon [src]="'shoperz-logo'"></svg-icon>
+  </div>
+
   <div class="middle-section">
     <div>
       <input class="searchbar" type="search" name="search" placeholder="Search for products">
     </div>
+
     <div class="search-icon-container">
+      <button class="search-button">
+        <svg-icon class="search-icon" [src]="'search'"></svg-icon>
+      </button>
     </div>
   </div>
+
   <div class="right-section">
-    <button>Profile</button>
-    <button>Cart</button>
+    <button class="menu-button">
+      <svg-icon class="profile" [src]="'profile'"></svg-icon>
+    </button>
+
+    <button class="menu-button">
+      <svg-icon [src]="'cart'"></svg-icon>
+    </button>
   </div>
 </nav>

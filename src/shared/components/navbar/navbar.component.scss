@@ -3,21 +3,23 @@
 .navigation {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   background-color: $grey-100;
-  padding: 30px;
+  padding: 24px 240px 24px 240px;
 
   .middle-section {
-    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .searchbar {
-      position: absolute;
-      width: 500px;
-      height: 35px;
+      width: 722px;
+      height: 40px;
 
       border-radius: 20px;
       border: 2px solid $blue-600;
+
       color: $blue-600;
       appearance: none;
       padding: 0 20px;
@@ -29,22 +31,37 @@
     }
 
     .search-icon-container {
-      position: relative;
-      left: 460px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      width: 50px;
-      height: 35px;
+      position: relative;
+      right: 27px;
+
+      width: 54px;
+      height: 40px;
+      padding-top: 5px;
 
       background-color: $blue-600;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
+
+      .search-button {
+          background-color: unset;
+          width: 54px;
+          height: 40px;
+      }
     }
   }
 
   .right-section {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 200px;
+
+    .menu-button {
+      width: 50px;
+    }
   }
 }

@@ -1,0 +1,40 @@
+@import 'src/styles';
+
+.view-container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.radio-label {
+  display: inline-block;
+  position: relative;
+
+  cursor: pointer;
+  padding: 5px;
+}
+
+.radio-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+
+.radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.icon-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+  padding-top: 10px;
+}
+
+.active-icon {
+  background-color: $grey-100;
+}
