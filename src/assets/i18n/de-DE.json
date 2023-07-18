@@ -1,0 +1,37 @@
+{
+  "sharedComponents": {
+    "navbar": {
+      "searchForProducts": "Suche nach Produkten..."
+    },
+    "header": {
+      "home": "Zuhause",
+      "products": "Produkte",
+      "faq": "HGF"
+    }
+  },
+  "products": {
+    "name": "Name",
+    "category": "Kategorie",
+    "description": "Beschreibung",
+    "addToCart": "In den Warenkorb"
+  },
+  "categories": {
+    "category": "Kategorie",
+    "categories": "Kategorien",
+    "all": "Alle",
+    "smartphones": "Smartphones",
+    "gadgets": "Gadgets",
+    "gifts": "Geschenke",
+    "books": "Bücher",
+    "toys": "Spielzeug"
+  },
+  "brands": {
+    "brands": "Marken"
+  },
+  "prices": {
+    "price": "Preis",
+    "prices": "Preise",
+    "priceInterval": "Preisintervall",
+    "priceCurrency": "€"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "sharedComponents": {
+    "navbar": {
+      "searchForProducts": "Search for products..."
+    },
+    "header": {
+      "home": "Home",
+      "products": "Products",
+      "faq": "FAQ"
+    }
+  },
+  "products": {
+    "name": "Test translation",
+    "category": "Today is day!",
+    "description": "Today is day!"
+  },
+  "categories": {
+    "categories": "Categories",
+    "all": "All",
+    "smartphones": "Smartphones",
+    "gadgets": "Gadgets",
+    "gifts": "Gifts",
+    "books": "Books",
+    "toys": "Toys"
+  },
+  "brands": {
+    "brands": "Brands"
+  },
+  "prices": {
+    "price": "Price",
+    "prices": "Prices",
+    "priceInterval": "Price interval",
+    "priceCurrency": "$"
+  }
+}

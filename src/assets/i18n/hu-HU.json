@@ -1,0 +1,35 @@
+{
+  "sharedComponents": {
+    "navbar": {
+      "searchForProducts": "Termékek keresése..."
+    },
+    "header": {
+      "home": "Főoldal",
+      "products": "Termékek",
+      "faq": "GYIK"
+    }
+  },
+  "products": {
+    "name": "Test translation",
+    "category": "Today is day!",
+    "description": "Today is day!"
+  },
+  "categories": {
+    "categories": "Kategóriák",
+    "all": "Összes",
+    "smartphones": "Telefonok",
+    "gadgets": "Kütyük",
+    "gifts": "Ajándékok",
+    "books": "Könyvek",
+    "toys": "Játékok"
+  },
+  "brands": {
+    "brands": "Márkák"
+  },
+  "prices": {
+    "price": "Ár",
+    "prices": "Árak",
+    "priceInterval": "Ár intervallum",
+    "priceCurrency": "Ft"
+  }
+}

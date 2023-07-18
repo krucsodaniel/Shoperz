@@ -10,12 +10,14 @@ import {
 } from './components';
 import { ProductService, ProductFacadeService, CardStateService, } from './services';
 import { SharedModule } from 'src/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     SharedModule,
+    TranslateModule,
   ],
   exports: [
     FilterCardComponent,
