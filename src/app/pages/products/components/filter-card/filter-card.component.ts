@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./filter-card.component.scss'],
 })
 export class FilterCardComponent {
-
   filters: string[] = ['Categories', 'Brands', 'Prices',];
   categories: string[] = ['All', 'TV&Audio', 'Smartphones', 'Laptops & PC', 'Gadgets', 'Photo & Video', 'Gifts', 'Books', 'Toys',];
   brands: string[] = ['Apple', 'Samsung', 'LG', 'Huawei', 'Lenovo', 'Nokia',];
@@ -19,4 +18,7 @@ export class FilterCardComponent {
     '>500',
   ];
 
+  buildTranslationKey(relativeKey: string): string {
+    return `prices.${ relativeKey }`;
+  }
 }
