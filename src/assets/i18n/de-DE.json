@@ -33,5 +33,14 @@
     "prices": "Preise",
     "priceInterval": "Preisintervall",
     "priceCurrency": "€"
+  },
+  "features": {
+    "sorting": {
+      "default": "Standard",
+      "name-ascending": "Sortieren nach Name A-Z",
+      "name-descending": "Sortieren nach Name Z-A",
+      "price-ascending": "Preis von unten nach oben",
+      "price-descending": "Preis am höchsten bis am niedrigsten"
+    }
   }
 }

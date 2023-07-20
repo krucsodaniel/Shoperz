@@ -1,0 +1,3 @@
+<select class="sort-list" [formControl]="sortFormControl">
+  <option *ngFor="let option of options" [value]="option.value">{{ option.label | translate }}</option>
+</select>

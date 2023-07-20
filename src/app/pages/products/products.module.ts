@@ -7,10 +7,12 @@ import {
   ProductDashboardComponent,
   ViewPanelComponent,
   ViewSwitchComponent,
+  ProductsSortingComponent,
 } from './components';
-import { ProductService, ProductFacadeService, CardStateService, } from './services';
+import { ProductService, ProductFacadeService, CardStateService, ProductSortingService } from './services';
 import { SharedModule } from 'src/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -18,6 +20,8 @@ import { TranslateModule } from '@ngx-translate/core';
     HttpClientModule,
     SharedModule,
     TranslateModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     FilterCardComponent,
@@ -25,6 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ProductDashboardComponent,
     ViewPanelComponent,
     ViewSwitchComponent,
+    ProductsSortingComponent,
   ],
   declarations: [
     FilterCardComponent,
@@ -32,11 +37,13 @@ import { TranslateModule } from '@ngx-translate/core';
     ProductDashboardComponent,
     ViewPanelComponent,
     ViewSwitchComponent,
+    ProductsSortingComponent,
   ],
   providers: [
     ProductService,
     ProductFacadeService,
     CardStateService,
+    ProductSortingService,
   ],
 })
 export class ProductsModule {}

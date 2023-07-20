@@ -31,5 +31,14 @@
     "prices": "Prices",
     "priceInterval": "Price interval",
     "priceCurrency": "$"
+  },
+  "features": {
+    "sorting": {
+      "default": "Default",
+      "name-ascending": "Sort by name A-Z",
+      "name-descending": "Sort by name Z-A",
+      "price-ascending": "Price lowest to highest",
+      "price-descending": "Price highest to lowest"
+    }
   }
 }
