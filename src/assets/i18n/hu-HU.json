@@ -31,5 +31,14 @@
     "prices": "Árak",
     "priceInterval": "Ár intervallum",
     "priceCurrency": "Ft"
+  },
+  "features": {
+    "sorting": {
+      "default": "Alapértelmezett",
+      "name-ascending": "ABC szerint növekvő",
+      "name-descending": "ABC szerint csökkenő",
+      "price-ascending": "Ár szerint növekvő",
+      "price-descending": "Ár szerint csökkenő"
+    }
   }
 }
