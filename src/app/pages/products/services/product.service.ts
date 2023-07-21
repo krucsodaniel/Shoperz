@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IProduct } from 'src/shared/models';
 
@@ -11,6 +11,6 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.apiUrl);
+    return this.http.get<IProduct[]>(this.apiUrl).pipe(delay(3000));
   }
 }
