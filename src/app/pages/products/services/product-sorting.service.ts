@@ -16,25 +16,29 @@ export class ProductSortingService {
   }
 
   sortProducts(productArray: IProduct[], sortingMethod: SortingOption): IProduct[] {
+    if (!productArray?.length) {
+      return [];
+    }
+
     const sortedArray = productArray.slice();
 
-      switch (sortingMethod) {
-        case SortingOption.default:
-          sortedArray.sort((a: IProduct, b: IProduct) => a.id - b.id);
-          break;
-        case SortingOption.nameAscending:
-          sortedArray.sort((a: IProduct, b: IProduct) => a.name.localeCompare(b.name));
-          break;
-        case SortingOption.nameDescending:
-          sortedArray.sort((a: IProduct, b: IProduct) => b.name.localeCompare(a.name));
-          break;
-        case SortingOption.priceAscending:
-          sortedArray.sort((a: IProduct, b: IProduct) => a.price - b.price);
-          break;
-        case SortingOption.priceDescending:
-          sortedArray.sort((a: IProduct, b: IProduct) => b.price - a.price);
-          break;
-      }
+    switch (sortingMethod) {
+      case SortingOption.default:
+        sortedArray.sort((a: IProduct, b: IProduct) => a.id - b.id);
+        break;
+      case SortingOption.nameAscending:
+        sortedArray.sort((a: IProduct, b: IProduct) => a.name.localeCompare(b.name));
+        break;
+      case SortingOption.nameDescending:
+        sortedArray.sort((a: IProduct, b: IProduct) => b.name.localeCompare(a.name));
+        break;
+      case SortingOption.priceAscending:
+        sortedArray.sort((a: IProduct, b: IProduct) => a.price - b.price);
+        break;
+      case SortingOption.priceDescending:
+        sortedArray.sort((a: IProduct, b: IProduct) => b.price - a.price);
+        break;
+    }
 
     return sortedArray;
   }

@@ -22,7 +22,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   deleteSearch(): void {
-    this.searchService.setDeleteValue();
+    this.searchService.setSearchValue('');
     this.searchValue.reset();
   }
 }

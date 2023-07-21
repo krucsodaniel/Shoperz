@@ -13,10 +13,12 @@ import { debounceTime, startWith, Subject, switchMap } from 'rxjs';
 })
 export class ProductDashboardComponent implements OnInit {
   isExpanded = false;
-  productCards: IProduct[];
+  products: IProduct[];
+  displayedData: IProduct[];
+  isLoading = true;
 
-  private readonly product$ = new Subject<void>();
-
+  private sortOption: SortingOption;
+  private readonly loadProducts$ = new Subject<void>();
   private readonly destroyRef = inject(DestroyRef);
 
   constructor(
@@ -27,13 +29,17 @@ export class ProductDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.product$
+    this.loadProducts$
       .pipe(
         startWith(null),
         switchMap(() => this.productFacadeService.getProducts()),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((products: IProduct[]) => this.productCards = products);
+      .subscribe((products: IProduct[]) => {
+        this.products = products;
+        this.displayedData = products;
+        this.isLoading = false;
+      });
 
     this.cardStateService.getData()
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -41,7 +47,10 @@ export class ProductDashboardComponent implements OnInit {
 
     this.productSortingService.getSortingMethod()
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((sortingOption: SortingOption) => this.sortProducts(sortingOption));
+      .subscribe((sortingOption: SortingOption) => {
+        this.sortProducts(sortingOption);
+        this.sortOption = sortingOption;
+      });
 
     this.searchService.getSearchValue()
       .pipe(
@@ -49,21 +58,20 @@ export class ProductDashboardComponent implements OnInit {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe((searchValue: string) => this.searchProducts(searchValue));
-
-    this.searchService.getDeleteValue()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => this.product$.next());
   };
 
   sortProducts(sortingOption: SortingOption): void {
-    this.productCards = this.productSortingService.sortProducts(this.productCards, sortingOption);
+    this.displayedData = this.productSortingService.sortProducts(this.displayedData, sortingOption);
   }
 
   searchProducts(searchValue: string): void {
-    if (!searchValue) {
-      this.product$.next();
-    }
+    if (searchValue) {
+      const searchResult = this.searchService.searchProductsByName(this.products, searchValue);
+      const sortResult = this.productSortingService.sortProducts(searchResult, this.sortOption);
 
-    this.productCards = this.searchService.searchProductsByName(this.productCards, searchValue);
+      this.displayedData = sortResult;
+    } else {
+      this.displayedData = this.productSortingService.sortProducts(this.products, this.sortOption);
+    }
   }
 }
