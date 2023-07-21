@@ -1,29 +1,39 @@
 @import 'src/styles';
 
-.grid-container {
+:host {
   display: flex;
-  justify-content: center;
+  gap: 20px;
+
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.filters {
+  display: block;
+  min-width: 272px;
+}
+
+.list-wrapper {
+  gap: 20px;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
 
   width: 100%;
-  gap: 20px;
-  padding: 20px;
+  margin-top: 20px;
+}
 
-  .filters {
-    width: 272px;
-  }
+.product-card {
+  width: 272px;
 
-  .list-wrapper {
-    gap: 20px;
-  }
-
-  .list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 1148px;
+  &.expanded {
     width: 100%;
-    margin-top: 20px;
   }
 }

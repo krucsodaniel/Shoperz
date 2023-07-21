@@ -1,13 +1,16 @@
 @import 'src/styles';
 
+:host {
+  display: block;
+  width: 100%;
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
-
-  width: 272px;
   gap: 20px;
-  padding: 20px;
 
+  padding: 20px;
   border: 1px solid $grey-200;
   border-radius: 6px;
 
@@ -72,9 +75,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  gap: 20px;
 
   width: 100%;
-  gap: 20px;
   padding: 20px 0 20px 0;
 
   .product-text-wrapper {

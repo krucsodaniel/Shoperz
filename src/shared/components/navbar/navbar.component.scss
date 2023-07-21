@@ -3,55 +3,13 @@
 .navigation {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   background-color: $grey-100;
   padding: 24px 240px 24px 240px;
 
-  .middle-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .searchbar {
-      width: 722px;
-      height: 40px;
-
-      border-radius: 20px;
-      border: 2px solid $blue-600;
-
-      color: $blue-600;
-      appearance: none;
-      padding: 0 20px;
-
-      &:focus {
-        border: 2px solid $blue-500;
-        outline: none;
-      }
-    }
-
-    .search-icon-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      position: relative;
-      right: 27px;
-
-      width: 54px;
-      height: 40px;
-      padding-top: 5px;
-
-      background-color: $blue-600;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
-
-      .search-button {
-          background-color: unset;
-          width: 54px;
-          height: 40px;
-      }
-    }
+  .searchbar {
+    max-width: 720px;
   }
 
   .right-section {

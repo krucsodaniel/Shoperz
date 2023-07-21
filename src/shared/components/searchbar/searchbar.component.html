@@ -1,0 +1,7 @@
+    <input
+      class="searchbar"
+      type="text"
+      [formControl]="searchValue"
+      [placeholder]="'sharedComponents.navbar.searchForProducts' | translate">
+
+    <button *ngIf="searchValue.value" class="clear-button" (click)="deleteSearch()">X</button>

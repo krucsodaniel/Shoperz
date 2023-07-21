@@ -1,11 +1,17 @@
-<div class="grid-container">
-  <app-filter-card class="filters"></app-filter-card>
+<app-filter-card class="filters"></app-filter-card>
 
-  <div class="list-wrapper">
-    <app-view-panel></app-view-panel>
+<div class="list-wrapper">
+  <app-view-panel></app-view-panel>
 
-    <div *ngIf="productCards" class="list">
-      <app-product-card *ngFor="let card of productCards" [card]="card" [isExpanded]="isExpanded"></app-product-card>
-    </div>
+  <div class="list">
+    <ng-container *ngIf="productCards">
+      <app-product-card
+        *ngFor="let card of productCards"
+        class="product-card"
+        [class.expanded]="isExpanded"
+        [card]="card"
+        [isExpanded]="isExpanded">
+      </app-product-card>
+    </ng-container>
   </div>
 </div>

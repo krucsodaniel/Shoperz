@@ -1,10 +1,11 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NavbarComponent, FooterComponent, HeaderComponent, SvgIconComponent } from './components';
-import { SpriteLoaderService, SvgService, TranslationLoaderService } from './services';
+import { NavbarComponent, FooterComponent, HeaderComponent, SvgIconComponent, SearchbarComponent } from './components';
+import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchService } from './services';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -21,18 +22,21 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
+    ReactiveFormsModule
   ],
   exports: [
     NavbarComponent,
     FooterComponent,
     HeaderComponent,
     SvgIconComponent,
+    SearchbarComponent,
   ],
   declarations: [
     NavbarComponent,
     FooterComponent,
     HeaderComponent,
     SvgIconComponent,
+    SearchbarComponent,
   ],
   providers: [
     SpriteLoaderService,
@@ -47,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       deps: [TranslationLoaderService],
       multi: true,
     },
+    SearchService,
   ],
 })
 export class SharedModule {
