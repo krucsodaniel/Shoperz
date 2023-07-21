@@ -1,17 +1,19 @@
 <app-filter-card class="filters"></app-filter-card>
 
 <div class="list-wrapper">
-  <app-view-panel></app-view-panel>
+  <app-view-panel [isLoading]="isLoading"></app-view-panel>
 
   <div class="list">
-    <ng-container *ngIf="productCards">
+    <app-loader *ngIf="isLoading; else productCards"></app-loader>
+
+    <ng-template #productCards>
       <app-product-card
-        *ngFor="let card of productCards"
+        *ngFor="let card of displayedData"
         class="product-card"
         [class.expanded]="isExpanded"
         [card]="card"
         [isExpanded]="isExpanded">
       </app-product-card>
-    </ng-container>
+    </ng-template>
   </div>
 </div>

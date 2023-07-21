@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ProductSortingService } from '../../services';
 import { SortingOption } from 'src/shared/enums/';
 import { FormControl } from '@angular/forms';
@@ -9,8 +9,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   templateUrl: './products-sorting.component.html',
   styleUrls: ['./products-sorting.component.scss']
 })
-export class ProductsSortingComponent implements OnInit {
-  sortFormControl: FormControl;
+export class ProductsSortingComponent implements OnInit, OnChanges {
+  readonly sortFormControl = new FormControl<SortingOption>(SortingOption.default);
+
+  @Input()
+  isLoading: boolean;
 
   readonly options: { value: SortingOption, label: string }[] = [
     { value: SortingOption.default, label: this.buildTranslationKey('default') },
@@ -25,11 +28,23 @@ export class ProductsSortingComponent implements OnInit {
   constructor(private productSortingService: ProductSortingService) {}
 
   ngOnInit(): void {
-    this.sortFormControl = new FormControl<SortingOption>(SortingOption.default);
-
     this.sortFormControl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((value: SortingOption): void => this.productSortingService.setSortingMethod(value));
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('isLoading' in changes) {
+      this.toggleFormControl();
+    }
+  }
+
+  toggleFormControl(): void {
+    if (this.isLoading) {
+      this.sortFormControl.disable();
+    } else {
+      this.sortFormControl.enable();
+    }
   }
 
   buildTranslationKey(relativeKey: string): string {

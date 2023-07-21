@@ -1,8 +1,15 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NavbarComponent, FooterComponent, HeaderComponent, SvgIconComponent, SearchbarComponent } from './components';
-import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchService } from './services';
+import {
+  NavbarComponent,
+  FooterComponent,
+  HeaderComponent,
+  SvgIconComponent,
+  SearchbarComponent,
+  LoaderComponent,
+} from './components';
+import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchService, } from './services';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -30,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HeaderComponent,
     SvgIconComponent,
     SearchbarComponent,
+    LoaderComponent,
   ],
   declarations: [
     NavbarComponent,
@@ -37,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HeaderComponent,
     SvgIconComponent,
     SearchbarComponent,
+    LoaderComponent,
   ],
   providers: [
     SpriteLoaderService,
