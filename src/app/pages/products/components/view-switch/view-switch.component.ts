@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CardStateService } from '../../services';
 
 @Component({
   selector: 'app-view-switch',
   templateUrl: './view-switch.component.html',
-  styleUrls: ['view-switch.component.scss']
+  styleUrls: ['view-switch.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ViewSwitchComponent {
   isRowView = false;
