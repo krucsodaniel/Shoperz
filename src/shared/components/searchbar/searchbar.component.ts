@@ -1,7 +1,8 @@
 import { Component, OnInit, inject, DestroyRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SearchService } from '../../services';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ProductsManipulationService } from 'src/app/pages/products/services';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-searchbar',
@@ -13,16 +14,18 @@ export class SearchbarComponent implements OnInit {
 
   private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private searchService: SearchService) {}
+  constructor(private productsManipulationService: ProductsManipulationService) {}
 
   ngOnInit(): void {
     this.searchValue.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((value: string) => this.searchService.setSearchValue(value));
+      .pipe(
+        debounceTime(600),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((value: string) => this.productsManipulationService.setSearchValue(value));
   }
 
   deleteSearch(): void {
-    this.searchService.setSearchValue('');
-    this.searchValue.reset();
+    this.searchValue.reset('');
   }
 }

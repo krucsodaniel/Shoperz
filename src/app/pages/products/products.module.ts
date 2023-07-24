@@ -9,7 +9,7 @@ import {
   ViewSwitchComponent,
   ProductsSortingComponent,
 } from './components';
-import { ProductService, ProductFacadeService, CardStateService, ProductSortingService } from './services';
+import { ProductService, ProductFacadeService, CardStateService } from './services';
 import { SharedModule } from 'src/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,7 +43,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductService,
     ProductFacadeService,
     CardStateService,
-    ProductSortingService,
   ],
 })
 export class ProductsModule {}
