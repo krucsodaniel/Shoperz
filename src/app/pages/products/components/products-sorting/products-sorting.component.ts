@@ -1,8 +1,8 @@
 import { Component, DestroyRef, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ProductSortingService } from '../../services';
 import { SortingOption } from 'src/shared/enums/';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ProductsManipulationService } from '../../services'
 
 @Component({
   selector: 'app-products-sorting',
@@ -25,12 +25,12 @@ export class ProductsSortingComponent implements OnInit, OnChanges {
 
   private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private productSortingService: ProductSortingService) {}
+  constructor(private productsManipulationService: ProductsManipulationService) {}
 
   ngOnInit(): void {
     this.sortFormControl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((value: SortingOption): void => this.productSortingService.setSortingMethod(value));
+      .subscribe((value: SortingOption): void => this.productsManipulationService.setSortingOption(value));
   }
 
   ngOnChanges(changes: SimpleChanges): void {

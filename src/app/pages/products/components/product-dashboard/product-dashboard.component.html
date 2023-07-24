@@ -8,7 +8,7 @@
 
     <ng-template #productCards>
       <app-product-card
-        *ngFor="let card of displayedData"
+        *ngFor="let card of products"
         class="product-card"
         [class.expanded]="isExpanded"
         [card]="card"
