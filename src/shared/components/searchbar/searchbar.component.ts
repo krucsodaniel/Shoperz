@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, DestroyRef } from '@angular/core';
+import { Component, OnInit, inject, DestroyRef, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProductsManipulationService } from 'src/app/pages/products/services';
@@ -7,7 +7,8 @@ import { debounceTime } from 'rxjs';
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
-  styleUrls: ['./searchbar.component.scss']
+  styleUrls: ['./searchbar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchbarComponent implements OnInit {
   readonly searchValue = new FormControl<string>('');

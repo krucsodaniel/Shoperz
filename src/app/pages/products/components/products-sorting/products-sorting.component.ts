@@ -1,4 +1,13 @@
-import { Component, DestroyRef, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 import { SortingOption } from 'src/shared/enums/';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -7,7 +16,8 @@ import { ProductsManipulationService } from '../../services'
 @Component({
   selector: 'app-products-sorting',
   templateUrl: './products-sorting.component.html',
-  styleUrls: ['./products-sorting.component.scss']
+  styleUrls: ['./products-sorting.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsSortingComponent implements OnInit, OnChanges {
   readonly sortFormControl = new FormControl<SortingOption>(SortingOption.default);
