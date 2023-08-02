@@ -1,5 +1,10 @@
-export * from './product.service';
-export * from './product-facade.service';
+export * from './product/product.service';
+export * from './product/product-facade.service';
 export * from './card-state.service';
-export * from './products-manipulation.service';
-
+export * from './product/products-manipulation.service';
+export * from './category/category.service';
+export * from './category/category-facade.service';
+export * from './brand/brand.service';
+export * from './brand/brand-facade.service';
+export * from './filter.service';
+export * from './product/product-filter.service';

@@ -1,7 +1,11 @@
 export const environment = {
   production: false,
   api: {
-    baseUrl: 'http://localhost:3000/products',
-    endpoints: {},
+    baseUrl: 'http://localhost:3000',
+    endpoints: {
+      products: '/products',
+      categories: '/categories',
+      brands: '/brands',
+    },
   },
 };

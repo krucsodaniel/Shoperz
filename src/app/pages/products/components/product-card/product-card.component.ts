@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IProduct } from 'src/shared/models';
+import { ICalculatedProduct } from 'src/shared/models';
 
 @Component({
   selector: 'app-product-card',
@@ -9,7 +9,7 @@ import { IProduct } from 'src/shared/models';
 })
 export class ProductCardComponent{
   @Input()
-  card: IProduct;
+  card: ICalculatedProduct;
 
   @Input()
   isExpanded: boolean;

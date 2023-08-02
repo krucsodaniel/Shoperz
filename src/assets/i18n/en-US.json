@@ -12,13 +12,24 @@
   "products": {
     "name": "Test translation",
     "category": "Today is day!",
-    "description": "Today is day!"
+    "description": "Today is day!",
+    "categories": "Categories",
+    "brands": "Brands",
+    "prices": "Prices"
+  },
+  "filter": {
+    "all": "All",
+    "allBrands": "Brands",
+    "allCategories": "Categories",
+    "allPrices": "Price"
   },
   "categories": {
-    "categories": "Categories",
     "all": "All",
+    "tv & audio": "TV & Audio",
     "smartphones": "Smartphones",
+    "laptops & pc": "Laptops & PC",
     "gadgets": "Gadgets",
+    "photo & video": "Photo & Video",
     "gifts": "Gifts",
     "books": "Books",
     "toys": "Toys"
@@ -40,5 +51,9 @@
       "price-ascending": "Price lowest to highest",
       "price-descending": "Price highest to lowest"
     }
+  },
+  "general": {
+    "productNotFound": "Sorry, no products found!",
+    "tryOtherFilters": "Try other filter options."
   }
 }

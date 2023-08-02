@@ -1,0 +1,52 @@
+@import 'src/styles';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.header {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.list-element {
+  list-style-type: none;
+  color: $grey-700;
+}
+
+.checkbox-label {
+  list-style-type: none;
+  color: $grey-700;
+  margin: 5px;
+}
+
+.label {
+  cursor: pointer;
+}
+
+.modified-label {
+  cursor: pointer;
+
+  &:hover {
+    font-weight: bold;
+  }
+}
+
+.checked-label {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.input {
+  cursor: pointer;
+}
+
+.modified-input {
+  appearance: none;
+}
+
+.checked {
+  font-weight: bold;
+}
