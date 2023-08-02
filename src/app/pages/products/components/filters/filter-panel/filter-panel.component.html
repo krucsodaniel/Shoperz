@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+  <app-filter-card
+    *ngFor="let definition of filterDefinitions, let i = index"
+    [ngClass]="definition.multiselect ? 'secondary-card' : 'primary-card'"
+    [options]="definition.options"
+    [headerText]="definition.label"
+    [control]="controls[i]"
+    [multiselect]="definition.multiselect"
+  >
+  </app-filter-card>
+</form>

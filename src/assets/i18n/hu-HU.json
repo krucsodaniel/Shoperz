@@ -12,13 +12,24 @@
   "products": {
     "name": "Test translation",
     "category": "Today is day!",
-    "description": "Today is day!"
+    "description": "Today is day!",
+    "categories": "Kategóriák",
+    "brands": "Márkák",
+    "prices": "Árak"
+  },
+  "filter": {
+    "all": "Összes",
+    "allBrands": "Márkák",
+    "allCategories": "Kategóriák",
+    "allPrices": "Ár"
   },
   "categories": {
-    "categories": "Kategóriák",
     "all": "Összes",
+    "tv & audio": "TV & Audio",
     "smartphones": "Telefonok",
+    "laptops & pc": "Laptopok & PC",
     "gadgets": "Kütyük",
+    "photo & video": "Foto & Video",
     "gifts": "Ajándékok",
     "books": "Könyvek",
     "toys": "Játékok"
@@ -40,5 +51,9 @@
       "price-ascending": "Ár szerint növekvő",
       "price-descending": "Ár szerint csökkenő"
     }
+  },
+  "general": {
+    "productNotFound": "Sajnáljuk, nem találtunk a keresésnek megfelelő terméket!",
+    "tryOtherFilters": "Próbáljon ki más szűrési lehetőségeket."
   }
 }

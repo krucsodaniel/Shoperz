@@ -4,10 +4,14 @@ import {
   Component,
   DestroyRef,
   inject,
-  OnInit
+  OnInit,
 } from '@angular/core';
-import { CardStateService, ProductFacadeService, ProductsManipulationService } from '../../services';
-import { IProduct } from 'src/shared/models';
+import {
+  CardStateService,
+  ProductFacadeService,
+  ProductsManipulationService
+} from '../../services';
+import { ICalculatedProduct, IProduct } from 'src/shared/models';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -18,8 +22,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class ProductDashboardComponent implements OnInit {
   isExpanded = false;
-  products: IProduct[];
+  products: ICalculatedProduct[];
   isLoading = true;
+  noProducts = false;
 
   private readonly destroyRef = inject(DestroyRef);
 
@@ -31,13 +36,14 @@ export class ProductDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productFacadeService.initProducts();
+    this.productFacadeService.initData();
 
     this.productsManipulationService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((products: IProduct[]) => {
-        this.products = products;
+      .subscribe((data: ICalculatedProduct[]) => {
+        this.products = data;
         this.isLoading = false;
+        this.noProducts = data.length === 0;
         this.cdr.markForCheck();
       });
 

@@ -2,14 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {
-  FilterCardComponent,
   ProductCardComponent,
   ProductDashboardComponent,
   ViewPanelComponent,
   ViewSwitchComponent,
   ProductsSortingComponent,
+  FilterPanelComponent,
+  FilterCardComponent,
+  ProductNotFoundComponent,
 } from './components';
-import { ProductService, ProductFacadeService, CardStateService } from './services';
+import {
+  ProductService,
+  ProductFacadeService,
+  CardStateService,
+  CategoryService,
+  CategoryFacadeService,
+  BrandService,
+  BrandFacadeService,
+  FilterService,
+  ProductFilterService,
+} from './services';
 import { SharedModule } from 'src/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,26 +35,33 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [
-    FilterCardComponent,
-    ProductCardComponent,
-    ProductDashboardComponent,
-    ViewPanelComponent,
-    ViewSwitchComponent,
-    ProductsSortingComponent,
-  ],
   declarations: [
-    FilterCardComponent,
     ProductCardComponent,
     ProductDashboardComponent,
     ViewPanelComponent,
     ViewSwitchComponent,
     ProductsSortingComponent,
+    FilterPanelComponent,
+    FilterCardComponent,
+    ProductNotFoundComponent,
   ],
   providers: [
     ProductService,
     ProductFacadeService,
     CardStateService,
+    CategoryService,
+    CategoryFacadeService,
+    BrandService,
+    BrandFacadeService,
+    FilterService,
+    ProductFilterService
+  ],
+  exports: [
+    ProductCardComponent,
+    ProductDashboardComponent,
+    ViewPanelComponent,
+    ViewSwitchComponent,
+    ProductsSortingComponent,
   ],
 })
 export class ProductsModule {}

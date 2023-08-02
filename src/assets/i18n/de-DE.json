@@ -13,14 +13,23 @@
     "name": "Name",
     "category": "Kategorie",
     "description": "Beschreibung",
-    "addToCart": "In den Warenkorb"
+    "addToCart": "In den Warenkorb",
+    "categories": "Kategorien",
+    "brands": "Marken",
+    "prices": "Preise"
+  },
+  "filter": {
+    "all": "Alle",
+    "allBrands": "Marken",
+    "allCategories": "Kategorien",
+    "allPrices": "Preise"
   },
   "categories": {
-    "category": "Kategorie",
-    "categories": "Kategorien",
-    "all": "Alle",
+    "tv & audio": "TV & Audio",
     "smartphones": "Smartphones",
+    "laptops & pc": "Laptops & PC",
     "gadgets": "Gadgets",
+    "photo & video": "Photo & Video",
     "gifts": "Geschenke",
     "books": "Bücher",
     "toys": "Spielzeug"
@@ -42,5 +51,9 @@
       "price-ascending": "Preis von unten nach oben",
       "price-descending": "Preis am höchsten bis am niedrigsten"
     }
+  },
+  "general": {
+    "productNotFound": "Sorry, keine Produkte gefunden!",
+    "tryOtherFilters": "Probieren Sie andere Filteroptionen aus."
   }
 }

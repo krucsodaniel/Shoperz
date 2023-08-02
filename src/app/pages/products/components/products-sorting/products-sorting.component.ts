@@ -14,7 +14,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProductsManipulationService } from '../../services'
 
 @Component({
-  selector: 'app-products-sorting',
+  selector: 'app-product-sorting',
   templateUrl: './products-sorting.component.html',
   styleUrls: ['./products-sorting.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

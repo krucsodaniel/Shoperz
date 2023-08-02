@@ -6,11 +6,12 @@ import { IProduct } from 'src/shared/models';
 
 @Injectable()
 export class ProductService {
-  private readonly apiUrl = environment.api.baseUrl;
+  private readonly baseUrl = environment.api.baseUrl;
+  private readonly products = environment.api.endpoints.products;
 
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.apiUrl).pipe(delay(3000));
+    return this.http.get<IProduct[]>(`${this.baseUrl}${this.products}`);
   }
 }

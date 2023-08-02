@@ -1,4 +1,4 @@
-<app-filter-card class="filters"></app-filter-card>
+<app-filter-panel class="filters"></app-filter-panel>
 
 <div class="list-wrapper">
   <app-view-panel [isLoading]="isLoading"></app-view-panel>
@@ -15,5 +15,7 @@
         [isExpanded]="isExpanded">
       </app-product-card>
     </ng-template>
+
+    <app-product-not-found *ngIf="noProducts"></app-product-not-found>
   </div>
 </div>
