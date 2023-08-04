@@ -1,7 +1,7 @@
 <header class="header-main">
   <a class="header-link">{{ buildTranslationKey('home') | translate }}</a>
 
-  <a class="header-link">{{ buildTranslationKey('products') | translate }}</a>
+  <a class="header-link" [routerLink]="Route.products">{{ buildTranslationKey('products') | translate }}</a>
 
   <a class="header-link">{{ buildTranslationKey('faq') | translate }}</a>
 </header>

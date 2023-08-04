@@ -9,6 +9,7 @@
   padding: 24px 240px 24px 240px;
 
   .searchbar {
+    min-width: 300px;
     max-width: 720px;
   }
 
@@ -16,10 +17,26 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 200px;
 
     .menu-button {
       width: 50px;
     }
+  }
+}
+
+.logo {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+  .navigation {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .searchbar {
+    margin: 20px 0;
   }
 }

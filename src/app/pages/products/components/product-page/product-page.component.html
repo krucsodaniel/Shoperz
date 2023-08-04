@@ -1,0 +1,44 @@
+<ng-container *ngIf="(product$ | async) as product">
+  <div class="image-container">
+    <div class="main-image-wrapper">
+      <img class="main-image" [src]="selectedPicture || product.images[0]" alt="Product image">
+    </div>
+
+    <div class="little-image-wrapper">
+      <img
+        *ngFor="let image of product?.images"
+        class="little-image"
+        [src]="image"
+        alt="Product image"
+        (click)="choosePicture(image)">
+    </div>
+  </div>
+
+  <div class="info-container">
+    <span class="product-category">{{ product?.categoryName }}</span>
+
+    <span class="product-name">{{ product?.name }}</span>
+
+    <ul class="product-description-list">
+      <li *ngFor="let description of product?.description" class="product-description-text">{{ description }}</li>
+    </ul>
+
+    <span class="product-brand">{{ product?.brandName }}</span>
+  </div>
+
+  <div class="price-container">
+    <span class="product-price">$ {{ product?.price }}</span>
+
+    <div class="button-wrapper">
+      <button class="quantity-button">-</button>
+      <span>1</span>
+      <button class="quantity-button">+</button>
+    </div>
+
+    <button class="add-to-cart-button">
+      <span class="add-to-cart-text">Add to Cart</span>
+      <svg-icon [src]="'add-to-cart'"></svg-icon>
+    </button>
+  </div>
+</ng-container>
+

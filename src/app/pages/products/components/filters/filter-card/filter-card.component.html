@@ -4,15 +4,14 @@
     *ngFor="let option of options"
     class="checkbox-label"
     [ngClass]="multiselect ? 'label' : 'modified-label'"
-    [class.checked-label]="isChecked(option.id)"
-  >
+    [class.checked-label]="isChecked(option.id)">
     <input
       [ngClass]="multiselect ? 'input' : 'modified-input'"
       [type]="multiselect ? 'checkbox' : 'radio'"
       [name]="multiselect ? null : 'radio'"
       [value]="option.id"
       [checked]="isChecked(option.id)"
-      (change)="onChange($event)"
-    />
+      (change)="onChange($event)"/>
+
     {{ option.value }}
   </label>

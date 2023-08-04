@@ -4,6 +4,6 @@ export interface IProduct {
   price: number;
   categoryId: string;
   brandId: string;
-  imgUrl: string;
   description: string[];
+  images: string[];
 }

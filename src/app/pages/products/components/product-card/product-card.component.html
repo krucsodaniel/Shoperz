@@ -1,24 +1,22 @@
-<div [class.expanded-card]="isExpanded" class="product-card">
-  <div class="product-text-wrapper">
-    <p class="product-category">{{ card.categoryName }}</p>
+<div class="product-text-wrapper">
+  <p class="product-category">{{ card.categoryName }}</p>
 
-    <h3 class="product-name">{{ card.name }}</h3>
+  <h3 class="product-name">{{ card.name }}</h3>
 
-    <ul *ngIf="isExpanded" class="product-list">
-      <li *ngFor="let listElement of card.description" class="list-element">{{ listElement }}</li>
-    </ul>
-  </div>
+  <ul *ngIf="isExpanded" class="product-list">
+    <li *ngFor="let listElement of card.description" class="list-element">{{ listElement }}</li>
+  </ul>
+</div>
 
-  <div class="product-image-wrapper">
-    <img [src]="card.imgUrl" class="product-image" alt="Product picture">
-  </div>
+<div class="product-image-wrapper">
+  <img  class="product-image" [src]="card.images[0]" alt="Product picture">
+</div>
 
-    <div class="button-wrapper">
-      <h4 class="product-price">$ {{ card.price }}</h4>
+<div class="button-wrapper">
+  <h4 class="product-price">$ {{ card.price }}</h4>
 
-      <button class="button-cart">
-        <p *ngIf="isExpanded">Add to Cart</p>
-        <svg-icon [src]="'add-to-cart'"></svg-icon>
-      </button>
-    </div>
+  <button class="button-cart">
+    <p *ngIf="isExpanded">Add to Cart</p>
+    <svg-icon [src]="'add-to-cart'"></svg-icon>
+  </button>
 </div>
