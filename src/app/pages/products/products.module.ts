@@ -10,6 +10,7 @@ import {
   FilterPanelComponent,
   FilterCardComponent,
   ProductNotFoundComponent,
+  ProductPageComponent,
 } from './components';
 import {
   ProductService,
@@ -44,6 +45,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FilterPanelComponent,
     FilterCardComponent,
     ProductNotFoundComponent,
+    ProductPageComponent,
   ],
   providers: [
     ProductService,

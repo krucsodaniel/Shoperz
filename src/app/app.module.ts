@@ -5,8 +5,15 @@ import { ProductsModule } from 'src/app/pages/products/products.module';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductDashboardComponent, ProductPageComponent } from './pages/products/components';
 
-const routes: Routes = [];
+import { Route } from 'src/shared/enums'
+
+const routes: Routes = [
+  { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
+  { path: Route.products, component: ProductDashboardComponent },
+  { path: Route.productById, component: ProductPageComponent },
+];
 
 @NgModule({
   declarations: [

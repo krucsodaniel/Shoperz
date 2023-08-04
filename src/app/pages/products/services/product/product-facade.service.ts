@@ -53,4 +53,11 @@ export class ProductFacadeService {
       })
     );
   }
+
+  getProductById(productId: number): Observable<ICalculatedProduct | undefined> {
+    return this.getProducts()
+      .pipe(
+        map((products: ICalculatedProduct[]) => products.find((product) => product.id === productId))
+      );
+  }
 }

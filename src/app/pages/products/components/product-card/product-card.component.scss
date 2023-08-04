@@ -1,125 +1,149 @@
 @import 'src/styles';
 
 :host {
-  display: block;
-  width: 100%;
-}
-
-.product-card {
   display: flex;
   flex-direction: column;
   gap: 20px;
 
+  width: 100%;
   padding: 20px;
+
   border: 1px solid $grey-200;
   border-radius: 6px;
+  transition: box-shadow 0.3s;
 
-  .product-image-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  .product-image {
-    border-radius: 10px;
-    max-width: 100%;
-    height: 200px;
-  }
-
-  .product-category {
-    font-size: $font-10;
-  }
-
-  .product-name {
-    color: $blue-700;
-    font-size: $font-16;
-  }
-
-  .product-price {
-    font-size: $font-16;
-  }
-
-  .button-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .button-cart {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-
-    width: 36px;
-    height: 36px;
-    padding: 9px 7px;
-
-    border: solid transparent;
-    border-width: 0 0 4px;
-    border-radius: 20px;
-
-    background-color: $grey-200;
-    color: $blue-100;
-
+  &:hover {
     cursor: pointer;
-    outline: none;
-    text-align: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+  }
 
-    &:hover {
-      background-color: $blue-500;
-      color: $blue-800;
-    }
+  &.expanded-card {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     gap: 20px;
+
+     padding: 20px 0 20px 0;
+     min-width: 100%;
+
+     .product-text-wrapper {
+       order: 1;
+       margin: 20px;
+       overflow-wrap: break-word;
+     }
+
+     .product-image-wrapper {
+       order: 0;
+       width: 240px;
+       margin: 20px;
+     }
+
+     .product-list {
+       font-size: $font-14;
+       color: $grey-700;
+
+       & > li {
+         list-style-type: disc;
+         margin-left: 20px;
+       }
+     }
+
+     .button-wrapper {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: flex-start;
+       order: 2;
+
+       width: 220px;
+       margin: 20px;
+     }
+
+     .button-cart {
+       width: 100%;
+       background-color: $blue-600;
+     }
+
+     .product-price {
+       font-size: $font-24;
+     }
+   }
+}
+
+.product-image-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.product-image {
+  max-width: 100%;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.product-category {
+  font-size: $font-10;
+}
+
+.product-name {
+  color: $blue-700;
+  font-size: $font-16;
+}
+
+.product-price {
+  font-size: $font-16;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-cart {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  width: 36px;
+  height: 36px;
+  padding: 9px 7px;
+
+  border: solid transparent;
+  border-width: 0 0 4px;
+  border-radius: 20px;
+
+  background-color: $grey-200;
+  color: $blue-100;
+
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+
+  &:hover {
+    background-color: $blue-500;
+    color: $blue-800;
   }
 }
 
-.expanded-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 20px;
+@media screen and (max-width: 1023px) {
+  :host {
+    &.expanded-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
 
-  width: 100%;
-  padding: 20px 0 20px 0;
+      .button-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        order: 2;
 
-  .product-text-wrapper {
-    order: 1;
-    margin: 20px;
-    width: 500px;
-    overflow-wrap: break-word;
-  }
-
-  .product-image-wrapper {
-    order: 0;
-    margin: 20px;
-    width: 240px;
-  }
-
-  .product-list {
-    font-size: $font-14;
-    color: $grey-700;
-
-    & > li {
-      list-style-type: disc;
-      margin-left: 20px;
+        width: 100%;
+      }
     }
-  }
-
-  .button-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    order: 2;
-
-    margin: 20px;
-    width: 220px;
-  }
-
-  .button-cart {
-    width: 100%;
-    background-color: $blue-600;
-  }
-
-  .product-price {
-    font-size: $font-24;
   }
 }

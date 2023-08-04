@@ -6,3 +6,4 @@ export * from './products-sorting/products-sorting.component';
 export * from './filters/filter-panel/filter-panel.component';
 export * from './filters/filter-card/filter-card.component';
 export * from './product-not-found/product-not-found.component';
+export * from './product-page/product-page.component';
