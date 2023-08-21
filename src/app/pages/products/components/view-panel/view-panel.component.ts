@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-view-panel',
@@ -6,7 +6,4 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   styleUrls: ['./view-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ViewPanelComponent {
-  @Input()
-  isLoading: boolean;
-}
+export class ViewPanelComponent {}

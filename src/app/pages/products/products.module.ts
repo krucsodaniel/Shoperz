@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {
@@ -21,11 +21,21 @@ import {
   BrandService,
   BrandFacadeService,
   FilterService,
-  ProductFilterService,
+  FilterFacadeService,
 } from './services';
 import { SharedModule } from 'src/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { productReducer, productsFeatureKey } from './store/products/product.reducer';
+import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
+import { categoriesFeatureKey, categoryReducer } from './store/categories/category.reducer';
+import { ProductEffects } from './store/products/product.effects';
+import { BrandEffects } from './store/brands/brand.effects';
+import { CategoryEffects } from './store/categories/category.effects';
 
 @NgModule({
   imports: [
@@ -35,6 +45,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forFeature(productsFeatureKey, productReducer),
+    StoreModule.forFeature(brandsFeatureKey, brandReducer),
+    StoreModule.forFeature(categoriesFeatureKey, categoryReducer),
+    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   declarations: [
     ProductCardComponent,
@@ -56,7 +71,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrandService,
     BrandFacadeService,
     FilterService,
-    ProductFilterService
+    FilterFacadeService,
   ],
   exports: [
     ProductCardComponent,

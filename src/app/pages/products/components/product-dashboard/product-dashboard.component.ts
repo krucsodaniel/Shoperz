@@ -11,7 +11,7 @@ import {
   ProductFacadeService,
   ProductsManipulationService
 } from '../../services';
-import { ICalculatedProduct, IProduct } from 'src/shared/models';
+import { ICalculatedProduct } from 'src/shared/models';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -24,7 +24,6 @@ export class ProductDashboardComponent implements OnInit {
   isExpanded = false;
   products: ICalculatedProduct[];
   isLoading = true;
-  noProducts = false;
 
   private readonly destroyRef = inject(DestroyRef);
 
@@ -36,18 +35,17 @@ export class ProductDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productFacadeService.initData();
+    this.productFacadeService.initStates();
 
     this.productsManipulationService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((data: ICalculatedProduct[]) => {
-        this.products = data;
+      .subscribe((products: ICalculatedProduct[]) => {
+        this.products = products;
         this.isLoading = false;
-        this.noProducts = data.length === 0;
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       });
 
-    this.cardStateService.getData()
+    this.cardStateService.getView()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((isExpanded: boolean) => this.isExpanded = isExpanded);
   };

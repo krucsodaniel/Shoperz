@@ -1,12 +1,12 @@
 <app-filter-panel class="filters"></app-filter-panel>
 
 <div class="list-wrapper">
-  <app-view-panel [isLoading]="isLoading"></app-view-panel>
+  <app-loader *ngIf="isLoading; else content" class="loading"></app-loader>
 
-  <div class="list">
-    <app-loader *ngIf="isLoading; else productCards"></app-loader>
+  <ng-template #content>
+    <app-view-panel></app-view-panel>
 
-    <ng-template #productCards>
+    <div class="list">
       <app-product-card
         *ngFor="let card of products"
         class="product-card"
@@ -14,8 +14,8 @@
         [card]="card"
         [isExpanded]="isExpanded">
       </app-product-card>
-    </ng-template>
 
-    <app-product-not-found *ngIf="noProducts"></app-product-not-found>
-  </div>
+      <app-product-not-found *ngIf="!products?.length"></app-product-not-found>
+    </div>
+  </ng-template>
 </div>

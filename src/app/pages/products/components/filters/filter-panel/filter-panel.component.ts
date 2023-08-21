@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject, DestroyRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FilterService, ProductsManipulationService } from '../../../services';
+import { ProductsManipulationService, FilterFacadeService } from '../../../services';
 import { IFilterDefinition } from 'src/shared/models';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -23,13 +23,13 @@ export class FilterPanelComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
 
   constructor(
-    private filterService: FilterService,
+    private filterFacadeService: FilterFacadeService,
     private productsManipulationService: ProductsManipulationService,
     private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
-    this.filterService.getFilterDefinitions()
+    this.filterFacadeService.getFilterDefinitions()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((filterDefinition: IFilterDefinition[]) => {
         this.filterDefinitions = filterDefinition;

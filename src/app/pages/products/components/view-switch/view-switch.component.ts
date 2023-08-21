@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, DestroyRef } from '@angular/core';
 import { CardStateService } from '../../services';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-view-switch',
@@ -7,13 +8,20 @@ import { CardStateService } from '../../services';
   styleUrls: ['view-switch.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ViewSwitchComponent {
-  isRowView = false;
+export class ViewSwitchComponent implements OnInit {
+  isExpanded = false;
+
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(private cardStateService: CardStateService) {}
 
+  ngOnInit() {
+    this.cardStateService.getView()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((isExpanded: boolean) => this.isExpanded = isExpanded);
+  }
+
   toggleView(isExpanded: boolean): void {
-    this.cardStateService.sendData(isExpanded);
-    this.isRowView = isExpanded;
+    this.cardStateService.setView(isExpanded);
   }
 }

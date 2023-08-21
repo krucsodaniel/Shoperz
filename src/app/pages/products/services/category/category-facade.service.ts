@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter, firstValueFrom, Observable } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { ICategory } from 'src/shared/models';
 import { CategoryService } from './category.service';
+import { Store } from '@ngrx/store';
+import { CategoryActions, CategorySelectors } from '../../store';
 
 @Injectable()
 export class CategoryFacadeService {
-  private readonly categories$ = new BehaviorSubject<ICategory[]>(undefined);
+  constructor(private categoryService: CategoryService, private store: Store) {}
 
-  constructor(private categoryService: CategoryService) {}
-
-  async initCategories(): Promise<void> {
-    if (!this.categories$.value) {
-      const categories = await firstValueFrom(this.categoryService.getCategories());
-      this.categories$.next(categories);
-    }
+  initCategoriesState(): void {
+    this.store.dispatch(CategoryActions.loadCategories());
   }
 
   getCategories(): Observable<ICategory[]> {
-    return this.categories$.pipe(filter(Boolean));
+    return this.store.select(CategorySelectors.selectCategories)
+      .pipe(filter(Boolean));
   }
 }

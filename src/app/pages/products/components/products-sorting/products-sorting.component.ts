@@ -3,10 +3,7 @@ import {
   Component,
   DestroyRef,
   inject,
-  Input,
-  OnChanges,
   OnInit,
-  SimpleChanges
 } from '@angular/core';
 import { SortingOption } from 'src/shared/enums/';
 import { FormControl } from '@angular/forms';
@@ -19,11 +16,8 @@ import { ProductsManipulationService } from '../../services'
   styleUrls: ['./products-sorting.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsSortingComponent implements OnInit, OnChanges {
+export class ProductsSortingComponent implements OnInit {
   readonly sortFormControl = new FormControl<SortingOption>(SortingOption.default);
-
-  @Input()
-  isLoading: boolean;
 
   readonly options: { value: SortingOption, label: string }[] = [
     { value: SortingOption.default, label: this.buildTranslationKey('default') },
@@ -41,20 +35,6 @@ export class ProductsSortingComponent implements OnInit, OnChanges {
     this.sortFormControl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((value: SortingOption): void => this.productsManipulationService.setSortingOption(value));
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('isLoading' in changes) {
-      this.toggleFormControl();
-    }
-  }
-
-  toggleFormControl(): void {
-    if (this.isLoading) {
-      this.sortFormControl.disable();
-    } else {
-      this.sortFormControl.enable();
-    }
   }
 
   buildTranslationKey(relativeKey: string): string {
