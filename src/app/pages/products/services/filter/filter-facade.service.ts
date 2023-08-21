@@ -3,14 +3,14 @@ import { BehaviorSubject, filter, Observable } from 'rxjs';
 import { IFilterDefinition } from 'src/shared/models';
 
 @Injectable()
-export class FilterService<Type = any> {
+export class FilterFacadeService {
   private readonly filter$ = new BehaviorSubject<IFilterDefinition[]>(undefined);
 
-  initializeFilterDefinitions(definitions: IFilterDefinition<Type>[]): void {
+  initializeFilterDefinitions(definitions: IFilterDefinition[]): void {
     this.filter$.next(definitions);
   }
 
-  getFilterDefinitions(): Observable<IFilterDefinition<Type>[]> {
+  getFilterDefinitions(): Observable<IFilterDefinition[]> {
     return this.filter$.pipe(filter(Boolean));
   }
 }

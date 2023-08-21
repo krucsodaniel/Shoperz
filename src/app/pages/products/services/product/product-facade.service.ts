@@ -3,55 +3,40 @@ import {
   BrandFacadeService,
   CategoryFacadeService,
   ProductService,
-  ProductFilterService
 } from '../index';
-import { BehaviorSubject, combineLatest, filter, firstValueFrom, map, Observable } from 'rxjs';
-import { IBrand, ICategory, IProduct, ICalculatedProduct } from 'src/shared/models';
+import { filter, map, Observable } from 'rxjs';
+import { ICalculatedProduct } from 'src/shared/models';
+import { Store } from '@ngrx/store';
+import {
+  ProductActions,
+  ProductSelectors,
+} from '../../store';
+import { FilterService } from '../filter/';
 
 @Injectable()
 export class ProductFacadeService {
-  private readonly products$ = new BehaviorSubject<IProduct[]>(undefined);
-
   constructor(
     private productService: ProductService,
     private categoryFacadeService: CategoryFacadeService,
     private brandFacadeService: BrandFacadeService,
-    private productFilterService: ProductFilterService,
+    private filterService: FilterService,
+    private store: Store,
   ) {}
 
-  async initProducts(): Promise<void> {
-    if (!this.products$.value) {
-      const products = await firstValueFrom(this.productService.getProducts());
-      this.products$.next(products);
-    }
+  initProductsState(): void {
+    this.store.dispatch(ProductActions.loadProducts());
   }
 
-  initData() {
-    this.initProducts();
-    this.categoryFacadeService.initCategories();
-    this.brandFacadeService.initBrands();
-    this.productFilterService.initializeFilter();
+  initStates() {
+    this.initProductsState();
+    this.brandFacadeService.initBrandsState();
+    this.categoryFacadeService.initCategoriesState();
+    this.filterService.initializeFilter();
   }
 
   getProducts(): Observable<ICalculatedProduct[]> {
-    return combineLatest([
-      this.products$.pipe(filter(Boolean)),
-      this.categoryFacadeService.getCategories(),
-      this.brandFacadeService.getBrands(),
-    ]).pipe(
-      map(([products, categories, brands]: [ICalculatedProduct[], ICategory[], IBrand[]]) => {
-        return products.map((product: ICalculatedProduct) => {
-          const category = categories.find((category) => category.id === product.categoryId);
-          const brand = brands.find((brand) => brand.id === product.brandId);
-
-          return {
-            ...product,
-            categoryName: category.name,
-            brandName: brand.name,
-          };
-        });
-      })
-    );
+    return this.store.select(ProductSelectors.getCalculatedProducts)
+      .pipe(filter(Boolean));
   }
 
   getProductById(productId: number): Observable<ICalculatedProduct | undefined> {

@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { CategoryFacadeService } from '../category/category-facade.service';
-import { BrandFacadeService } from '../brand/brand-facade.service';
+import { CategoryFacadeService } from '../category';
+import { BrandFacadeService } from '../brand';
 import { IBrand, ICategory, ICalculatedProduct, IFilterOption } from 'src/shared/models';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
-import { FilterService } from '../filter.service';
+import { FilterFacadeService } from './filter-facade.service';
 import { ProductFilterOption } from 'src/shared/enums';
 
 @Injectable()
-export class ProductFilterService {
+export class FilterService {
   constructor(
     private categoryFacadeService: CategoryFacadeService,
     private brandFacadeService: BrandFacadeService,
-    private filterService: FilterService<ICalculatedProduct>,
+    private filterFacadeService: FilterFacadeService,
     private translate: TranslateService,
   ) {}
 
@@ -20,7 +20,7 @@ export class ProductFilterService {
     const brands = await firstValueFrom(this.brandFacadeService.getBrands());
     const categories = await firstValueFrom(this.categoryFacadeService.getCategories());
 
-    this.filterService.initializeFilterDefinitions([
+    this.filterFacadeService.initializeFilterDefinitions([
       {
         id: ProductFilterOption.categories,
         propertySelector: (product: ICalculatedProduct) => product.categoryId,

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, combineLatest } from 'rxjs';
+import { BehaviorSubject, map, Observable, combineLatest, distinctUntilChanged } from 'rxjs';
 import { ICalculatedProduct, IFilterDefinition } from 'src/shared/models';
 import { SortingOption } from 'src/shared/enums';
 import { ProductFacadeService } from './product-facade.service';
-import { FilterService } from '../filter.service';
+import { FilterFacadeService } from '../filter/';
 
 @Injectable()
 export class ProductsManipulationService {
@@ -11,14 +11,22 @@ export class ProductsManipulationService {
   private readonly sortingOption$ = new BehaviorSubject<SortingOption>(SortingOption.default);
   private readonly filter$ = new BehaviorSubject<Record<string, string[]>>({});
 
-  constructor(private productFacadeService: ProductFacadeService, private filterService: FilterService) {}
+  constructor(private productFacadeService: ProductFacadeService, private filterFacadeService: FilterFacadeService) {}
 
   setSearchValue(value: string): void {
     this.search$.next(value);
   }
 
+  getSearchValue(): Observable<string> {
+    return this.search$.pipe(distinctUntilChanged());
+  }
+
   setSortingOption(sortingOption: SortingOption): void {
     this.sortingOption$.next(sortingOption);
+  }
+
+  getSortOption(): Observable<SortingOption> {
+    return this.sortingOption$.pipe(distinctUntilChanged());
   }
 
   searchProductsByName(products: ICalculatedProduct[], searchKeyword: string): ICalculatedProduct[] {
@@ -58,10 +66,10 @@ export class ProductsManipulationService {
   getProducts(): Observable<ICalculatedProduct[]> {
     return combineLatest([
       this.productFacadeService.getProducts(),
-      this.search$,
-      this.sortingOption$,
+      this.getSearchValue(),
+      this.getSortOption(),
       this.filter$,
-      this.filterService.getFilterDefinitions(),
+      this.filterFacadeService.getFilterDefinitions(),
     ])
       .pipe(
         map(([

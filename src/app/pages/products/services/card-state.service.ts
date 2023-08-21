@@ -5,11 +5,11 @@ import { Subject, Observable } from 'rxjs';
 export class CardStateService {
   private toggle$ = new Subject<boolean>();
 
-  sendData(data: boolean): void {
+  setView(data: boolean): void {
     this.toggle$.next(data);
   }
 
-  getData(): Observable<boolean> {
+  getView(): Observable<boolean> {
     return this.toggle$;
   }
 }

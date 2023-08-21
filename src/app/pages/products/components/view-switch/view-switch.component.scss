@@ -20,10 +20,11 @@
   margin: 0 10px;
 }
 
-.radio-label input[type="radio"] {
+.view-input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
+  display: none;
 }
 
 .icon-holder {
