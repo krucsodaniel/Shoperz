@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   BrandFacadeService,
   CategoryFacadeService,
+  FilterFacadeService,
   ProductService,
 } from '../index';
 import { filter, map, Observable } from 'rxjs';
@@ -20,6 +21,7 @@ export class ProductFacadeService {
     private categoryFacadeService: CategoryFacadeService,
     private brandFacadeService: BrandFacadeService,
     private filterService: FilterService,
+    private filterFacadeService: FilterFacadeService,
     private store: Store,
   ) {}
 
@@ -31,7 +33,7 @@ export class ProductFacadeService {
     this.initProductsState();
     this.brandFacadeService.initBrandsState();
     this.categoryFacadeService.initCategoriesState();
-    this.filterService.initializeFilter();
+    this.filterService.initializeFilterDefinitions();
   }
 
   getProducts(): Observable<ICalculatedProduct[]> {

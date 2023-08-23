@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter, Observable } from 'rxjs';
-import { IFilterDefinition } from 'src/shared/models';
+import { filter, Observable } from 'rxjs';
+import { ICalculatedProduct, IFilterDefinition } from 'src/shared/models';
+import { Store } from '@ngrx/store';
+import { FilterActions, FilterSelectors } from '../../store';
 
 @Injectable()
 export class FilterFacadeService {
-  private readonly filter$ = new BehaviorSubject<IFilterDefinition[]>(undefined);
-
-  initializeFilterDefinitions(definitions: IFilterDefinition[]): void {
-    this.filter$.next(definitions);
-  }
+  constructor(private store: Store) {}
 
   getFilterDefinitions(): Observable<IFilterDefinition[]> {
-    return this.filter$.pipe(filter(Boolean));
+    return this.store.select(FilterSelectors.selectAllFilters)
+      .pipe(filter(Boolean));
+  }
+
+  setFilterValue(selectedFilters: Record<string, string[]>): void {
+    this.store.dispatch(FilterActions.setSelectedFilters({ selectedFilters: selectedFilters }));
+  }
+
+  getManipulatedProducts(): Observable<ICalculatedProduct[]> {
+    return this.store.select(FilterSelectors.selectManipulatedProducts);
   }
 }

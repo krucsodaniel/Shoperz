@@ -22,6 +22,7 @@ import {
   BrandFacadeService,
   FilterService,
   FilterFacadeService,
+  SortFacadeService,
 } from './services';
 import { SharedModule } from 'src/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
@@ -32,7 +33,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { productReducer, productsFeatureKey } from './store/products/product.reducer';
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
-import { categoriesFeatureKey, categoryReducer } from './store/categories/category.reducer';
+import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
+import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
 import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
@@ -48,7 +50,8 @@ import { CategoryEffects } from './store/categories/category.effects';
     StoreModule.forFeature(productsFeatureKey, productReducer),
     StoreModule.forFeature(brandsFeatureKey, brandReducer),
     StoreModule.forFeature(categoriesFeatureKey, categoryReducer),
-    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects]),
+    StoreModule.forFeature(filtersFeatureKey, filterReducer),
+    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects,]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   declarations: [
@@ -72,6 +75,7 @@ import { CategoryEffects } from './store/categories/category.effects';
     BrandFacadeService,
     FilterService,
     FilterFacadeService,
+    SortFacadeService,
   ],
   exports: [
     ProductCardComponent,

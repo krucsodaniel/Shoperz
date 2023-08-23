@@ -38,7 +38,7 @@ export class FilterCardComponent implements OnInit {
 
   ngOnInit() {
     if (this.control.value) {
-      this.selectedOptions = this.control.value;
+      this.selectedOptions = [...this.control.value];
       this.cdr.detectChanges();
     }
 

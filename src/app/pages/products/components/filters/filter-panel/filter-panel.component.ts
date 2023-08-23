@@ -44,7 +44,7 @@ export class FilterPanelComponent implements OnInit {
     this.form.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((value: Record<string, string[]>) => {
-        this.productsManipulationService.setFilter(value);
+        this.filterFacadeService.setFilterValue(value);
       });
   }
 }
