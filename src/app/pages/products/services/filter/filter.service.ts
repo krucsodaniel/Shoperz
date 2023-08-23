@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CategoryFacadeService } from '../category';
 import { BrandFacadeService } from '../brand';
-import { IBrand, ICategory, ICalculatedProduct, IFilterOption } from 'src/shared/models';
+import { IBrand, ICategory, ICalculatedProduct, IFilterOption, IFilterDefinition } from 'src/shared/models';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { FilterFacadeService } from './filter-facade.service';
-import { ProductFilterOption } from 'src/shared/enums';
+import { ProductFilterOption, SortingOption } from 'src/shared/enums';
+import { Store } from '@ngrx/store';
+import { FilterActions } from '../../store';
 
 @Injectable()
 export class FilterService {
@@ -14,13 +16,14 @@ export class FilterService {
     private brandFacadeService: BrandFacadeService,
     private filterFacadeService: FilterFacadeService,
     private translate: TranslateService,
+    private store: Store,
   ) {}
 
-  async initializeFilter(): Promise<void> {
+  async initializeFilterDefinitions(): Promise<void> {
     const brands = await firstValueFrom(this.brandFacadeService.getBrands());
     const categories = await firstValueFrom(this.categoryFacadeService.getCategories());
 
-    this.filterFacadeService.initializeFilterDefinitions([
+    const filterDefinitions: IFilterDefinition[] = [
       {
         id: ProductFilterOption.categories,
         propertySelector: (product: ICalculatedProduct) => product.categoryId,
@@ -81,6 +84,14 @@ export class FilterService {
           },
         ],
       },
-    ]);
-  }
+    ];
+    const sortingOption = SortingOption.default;
+    const searchValue = '';
+
+    this.store.dispatch(FilterActions.initializeFilters({
+      filterDefinitions,
+      sortingOption,
+      searchValue,
+    }));
+  };
 }

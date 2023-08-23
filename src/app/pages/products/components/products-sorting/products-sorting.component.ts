@@ -8,7 +8,7 @@ import {
 import { SortingOption } from 'src/shared/enums/';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ProductsManipulationService } from '../../services'
+import { ProductsManipulationService, SortFacadeService } from '../../services';
 
 @Component({
   selector: 'app-product-sorting',
@@ -29,12 +29,15 @@ export class ProductsSortingComponent implements OnInit {
 
   private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private productsManipulationService: ProductsManipulationService) {}
+  constructor(
+    private productsManipulationService: ProductsManipulationService,
+    private sortFacadeService: SortFacadeService
+  ) {}
 
   ngOnInit(): void {
     this.sortFormControl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((value: SortingOption): void => this.productsManipulationService.setSortingOption(value));
+      .subscribe((value: SortingOption): void => this.sortFacadeService.setSortingOption(value));
   }
 
   buildTranslationKey(relativeKey: string): string {

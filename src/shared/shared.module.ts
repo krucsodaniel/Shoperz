@@ -9,7 +9,7 @@ import {
   SearchbarComponent,
   LoaderComponent,
 } from './components';
-import { SpriteLoaderService, SvgService, TranslationLoaderService } from './services';
+import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchFacadeService, } from './services';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -64,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       multi: true,
     },
     ProductsManipulationService,
+    SearchFacadeService,
   ],
 })
 export class SharedModule {

@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProductsManipulationService } from 'src/app/pages/products/services';
 import { debounceTime } from 'rxjs';
+import { SearchFacadeService } from '../../services';
 
 @Component({
   selector: 'app-searchbar',
@@ -15,7 +16,10 @@ export class SearchbarComponent implements OnInit {
 
   private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private productsManipulationService: ProductsManipulationService) {}
+  constructor(
+    private productsManipulationService: ProductsManipulationService,
+    private searchFacadeService: SearchFacadeService,
+  ) {}
 
   ngOnInit(): void {
     this.searchValue.valueChanges
@@ -23,7 +27,7 @@ export class SearchbarComponent implements OnInit {
         debounceTime(600),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((value: string) => this.productsManipulationService.setSearchValue(value));
+      .subscribe((value: string) => this.searchFacadeService.setSearchValue(value));
   }
 
   deleteSearch(): void {
