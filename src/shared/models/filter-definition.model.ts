@@ -1,4 +1,4 @@
-import { IFilterOption } from './filter-option.model';
+import { IFilterOption } from './index';
 
 export interface IFilterDefinition<Type = any> {
   id: string;

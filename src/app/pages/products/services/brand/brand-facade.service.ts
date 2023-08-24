@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { filter, Observable } from 'rxjs';
-import { IBrand } from 'src/shared/models';
+import { IBrand } from '@shared-module';
 import { BrandService } from './brand.service';
 import { Store } from '@ngrx/store';
 import { BrandActions, BrandSelectors } from '../../store';

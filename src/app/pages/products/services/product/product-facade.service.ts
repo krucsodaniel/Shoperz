@@ -4,15 +4,15 @@ import {
   CategoryFacadeService,
   FilterFacadeService,
   ProductService,
-} from '../index';
+  FilterService
+} from '../../services';
 import { filter, map, Observable } from 'rxjs';
-import { ICalculatedProduct } from 'src/shared/models';
+import { ICalculatedProduct } from '@shared-module';
 import { Store } from '@ngrx/store';
 import {
   ProductActions,
   ProductSelectors,
 } from '../../store';
-import { FilterService } from '../filter/';
 
 @Injectable()
 export class ProductFacadeService {

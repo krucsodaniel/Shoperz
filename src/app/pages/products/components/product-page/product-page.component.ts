@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProductFacadeService } from '../../services';
 import { Observable } from 'rxjs';
-import { ICalculatedProduct } from 'src/shared/models';
+import { ICalculatedProduct } from '@shared-module';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

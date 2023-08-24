@@ -8,7 +8,7 @@ import {
   inject
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { IFilterOption } from 'src/shared/models';
+import { IFilterOption } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

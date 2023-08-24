@@ -11,7 +11,7 @@ import {
   ProductFacadeService,
   ProductsManipulationService
 } from '../../services';
-import { ICalculatedProduct } from 'src/shared/models';
+import { ICalculatedProduct } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

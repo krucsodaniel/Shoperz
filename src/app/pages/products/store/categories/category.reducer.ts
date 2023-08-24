@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { ICategory } from 'src/shared/models';
+import { ICategory } from '@shared-module';
 import { CategoryActions } from './category.actions';
 
 export const categoriesFeatureKey = 'categories';

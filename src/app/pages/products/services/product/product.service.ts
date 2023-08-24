@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { delay, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IProduct } from 'src/shared/models';
+import { IProduct } from '@shared-module';
 
 @Injectable()
 export class ProductService {

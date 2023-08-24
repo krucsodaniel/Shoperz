@@ -1,6 +1,4 @@
-import { IProduct } from './product.model';
-import { ICategory } from './category.model';
-import { IBrand } from './brand.model';
+import { IProduct, ICategory, IBrand } from './index';
 
 export interface ICalculatedProduct extends IProduct {
   categoryName: ICategory['name'];

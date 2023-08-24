@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { IProduct } from 'src/shared/models';
-import { ProductActions } from './product.actions'
+import { IProduct } from '@shared-module';
+import { ProductActions } from './product.actions';
 
 export const productsFeatureKey = 'products';
 

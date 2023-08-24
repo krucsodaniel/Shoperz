@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SpriteLoaderService } from '../services/';
+import { SpriteLoaderService } from './sprite-loader.service';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 
 @Injectable()

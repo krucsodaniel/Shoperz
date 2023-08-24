@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductService } from '../../services';
-import { ProductActions } from './index';
+import { ProductActions } from './product.actions';
 import { catchError, map, Observable, of, switchMap } from 'rxjs';
-import { IProduct } from 'src/shared/models';
+import { IProduct } from '@shared-module';
 import { Action } from '@ngrx/store';
 
 @Injectable()

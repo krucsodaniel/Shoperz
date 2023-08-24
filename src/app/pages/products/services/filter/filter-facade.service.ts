@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { filter, Observable } from 'rxjs';
-import { ICalculatedProduct, IFilterDefinition } from 'src/shared/models';
+import { ICalculatedProduct, IFilterDefinition } from '@shared-module';
 import { Store } from '@ngrx/store';
 import { FilterActions, FilterSelectors } from '../../store';
 

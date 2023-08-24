@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Route } from 'src/shared/enums'
+import { Route } from '../../enums';
 
 @Component({
   selector: 'app-header',
