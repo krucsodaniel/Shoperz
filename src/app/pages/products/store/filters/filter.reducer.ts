@@ -1,6 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { IFilterDefinition } from 'src/shared/models';
-import { SortingOption } from 'src/shared/enums';
+import { IFilterDefinition, SortingOption } from '@shared-module';
 import { FilterActions } from './filter.actions';
 
 export const filtersFeatureKey = 'filters';

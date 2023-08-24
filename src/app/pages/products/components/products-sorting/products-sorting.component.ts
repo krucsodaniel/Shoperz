@@ -5,7 +5,7 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { SortingOption } from 'src/shared/enums/';
+import { SortingOption } from '@shared-module';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProductsManipulationService, SortFacadeService } from '../../services';

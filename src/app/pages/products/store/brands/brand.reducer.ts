@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { IBrand } from 'src/shared/models';
+import { IBrand } from '@shared-module';
 import { BrandActions } from './brand.actions';
 
 export const brandsFeatureKey = 'brands';

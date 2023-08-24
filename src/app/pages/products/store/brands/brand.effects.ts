@@ -4,7 +4,7 @@ import { BrandService } from '../../services';
 import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { BrandActions } from './brand.actions';
-import { IBrand } from 'src/shared/models';
+import { IBrand } from '@shared-module';
 
 @Injectable()
 export class BrandEffects {

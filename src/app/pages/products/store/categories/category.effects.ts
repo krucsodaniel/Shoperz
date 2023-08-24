@@ -4,7 +4,7 @@ import { CategoryService } from '../../services';
 import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { CategoryActions } from './category.actions';
-import { ICategory } from 'src/shared/models';
+import { ICategory } from '@shared-module';
 
 @Injectable()
 export class CategoryEffects {

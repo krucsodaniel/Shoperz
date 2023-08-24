@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
-import { CategoryFacadeService } from '../category';
-import { BrandFacadeService } from '../brand';
-import { IBrand, ICategory, ICalculatedProduct, IFilterOption, IFilterDefinition } from 'src/shared/models';
+import { CategoryFacadeService, FilterFacadeService, BrandFacadeService } from '../../services';
+import {
+  IBrand,
+  ICategory,
+  ICalculatedProduct,
+  IFilterOption,
+  IFilterDefinition,
+  ProductFilterOption,
+  SortingOption
+} from '@shared-module';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
-import { FilterFacadeService } from './filter-facade.service';
-import { ProductFilterOption, SortingOption } from 'src/shared/enums';
 import { Store } from '@ngrx/store';
 import { FilterActions } from '../../store';
 

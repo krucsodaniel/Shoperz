@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject, DestroyRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ProductsManipulationService, FilterFacadeService } from '../../../services';
-import { IFilterDefinition } from 'src/shared/models';
+import { IFilterDefinition } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 type FilterFormType = Record<string, FormControl<string[]>>;

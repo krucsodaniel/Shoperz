@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SortingOption } from 'src/shared/enums';
+import { SortingOption } from '@shared-module';
 import { FilterActions } from '../../store';
 
 @Injectable()

@@ -2,7 +2,7 @@ import { IProductState, productsFeatureKey } from './product.reducer';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { BrandSelectors } from '../brands';
 import { CategorySelectors } from '../categories';
-import { IProduct } from 'src/shared/models';
+import { IProduct } from '@shared-module';
 
 export namespace ProductSelectors {
   export const selectProductFeature = createFeatureSelector<IProductState>(productsFeatureKey);

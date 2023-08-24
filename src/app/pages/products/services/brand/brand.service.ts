@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { IBrand } from 'src/shared/models';
+import { IBrand } from '@shared-module';
 import { Observable } from 'rxjs';
 
 @Injectable()

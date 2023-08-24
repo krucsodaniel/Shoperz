@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ICategory } from 'src/shared/models';
+import { ICategory } from '@shared-module';
 
 const enum CategoryAction {
   loadCategories = '[Categories] Load categories',
