@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Route } from '../../enums';
+import { ProductFacadeService } from '../../services';
 
 @Component({
   selector: 'app-navbar',
@@ -9,4 +10,10 @@ import { Route } from '../../enums';
 })
 export class NavbarComponent {
   protected readonly Route = Route;
+
+  constructor(private productsFacadeService: ProductFacadeService) {}
+
+  resetFiltering(): void {
+    this.productsFacadeService.resetFiltering();
+  }
 }

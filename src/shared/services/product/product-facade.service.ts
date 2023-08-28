@@ -1,18 +1,11 @@
 import { Injectable } from '@angular/core';
-import {
-  BrandFacadeService,
-  CategoryFacadeService,
-  FilterFacadeService,
-  ProductService,
-  FilterService
-} from '../../services';
+import { BrandFacadeService, CategoryFacadeService, ProductService, SearchFacadeService } from '../../services';
+import { FilterService, FilterFacadeService, SortFacadeService } from 'src/app/pages/products/services';
 import { filter, map, Observable } from 'rxjs';
-import { ICalculatedProduct } from '@shared-module';
+import { SortingOption } from '../../enums';
+import { ICalculatedProduct } from '../../models';
 import { Store } from '@ngrx/store';
-import {
-  ProductActions,
-  ProductSelectors,
-} from '../../store';
+import { ProductActions, ProductSelectors } from '../../store';
 
 @Injectable()
 export class ProductFacadeService {
@@ -22,6 +15,8 @@ export class ProductFacadeService {
     private brandFacadeService: BrandFacadeService,
     private filterService: FilterService,
     private filterFacadeService: FilterFacadeService,
+    private searchFacadeService: SearchFacadeService,
+    private sortFacadeService: SortFacadeService,
     private store: Store,
   ) {}
 
@@ -46,5 +41,11 @@ export class ProductFacadeService {
       .pipe(
         map((products: ICalculatedProduct[]) => products.find((product) => product.id === productId))
       );
+  }
+
+  resetFiltering(): void {
+    this.searchFacadeService.setSearchValue('');
+    this.sortFacadeService.setSortingOption(SortingOption.default);
+    this.filterFacadeService.resetFilter();
   }
 }

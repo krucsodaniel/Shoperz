@@ -5,10 +5,11 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { SortingOption } from '@shared-module';
+import { SortingOption, ProductsManipulationService } from '@shared-module';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ProductsManipulationService, SortFacadeService } from '../../services';
+import { SortFacadeService } from '../../services';
+import { distinctUntilChanged, filter } from 'rxjs';
 
 @Component({
   selector: 'app-product-sorting',
@@ -35,8 +36,20 @@ export class ProductsSortingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.sortFacadeService.getSortOption()
+      .pipe(
+        filter((value: string) => value !== this.sortFormControl.value),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((value: SortingOption) => {
+        this.sortFormControl.setValue(value);
+      });
+
     this.sortFormControl.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        distinctUntilChanged(),
+        takeUntilDestroyed(this.destroyRef),
+      )
       .subscribe((value: SortingOption): void => this.sortFacadeService.setSortingOption(value));
   }
 

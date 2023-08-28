@@ -1,6 +1,6 @@
 import { IFilterState, filtersFeatureKey } from './filter.reducer';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { ProductSelectors } from '../products';
+import { ProductSelectors } from '@shared-module';
 import { ICalculatedProduct, SortingOption } from '@shared-module';
 
 export namespace FilterSelectors {
@@ -27,7 +27,7 @@ export namespace FilterSelectors {
   );
 
   const searchProductsByName = (products: ICalculatedProduct[], searchKeyword: string): ICalculatedProduct[] => {
-    return products.filter((product: ICalculatedProduct) => product.name.toLowerCase().includes(searchKeyword));
+    return products.filter((product: ICalculatedProduct) => product.name.toLowerCase().includes(searchKeyword.toLowerCase()));
   };
 
   const sortProducts = (productArray: ICalculatedProduct[], sortingMethod: SortingOption): ICalculatedProduct[] => {

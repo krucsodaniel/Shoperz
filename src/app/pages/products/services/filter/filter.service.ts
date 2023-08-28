@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CategoryFacadeService, FilterFacadeService, BrandFacadeService } from '../../services';
+import { FilterFacadeService } from '../../services';
 import {
   IBrand,
   ICategory,
@@ -7,7 +7,9 @@ import {
   IFilterOption,
   IFilterDefinition,
   ProductFilterOption,
-  SortingOption
+  SortingOption,
+  CategoryFacadeService,
+  BrandFacadeService,
 } from '@shared-module';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
@@ -90,13 +92,11 @@ export class FilterService {
         ],
       },
     ];
-    const sortingOption = SortingOption.default;
-    const searchValue = '';
 
-    this.store.dispatch(FilterActions.initializeFilters({
-      filterDefinitions,
-      sortingOption,
-      searchValue,
-    }));
+    this.store.dispatch(FilterActions.initializeFilters({ filterDefinitions }));
+
+    this.store.dispatch(FilterActions.setSortingOption({ sortingOption: SortingOption.default }));
+
+    this.store.dispatch(FilterActions.setSearch({ searchValue: '' }));
   };
 }

@@ -13,8 +13,25 @@ import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchFacade
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProductsManipulationService } from 'src/app/pages/products/services';
 import { RouterLink } from '@angular/router';
+
+import { productReducer, productsFeatureKey } from './store/products/product.reducer';
+import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
+import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
+import { ProductEffects } from './store/products/product.effects';
+import { BrandEffects } from './store/brands/brand.effects';
+import { CategoryEffects } from './store/categories/category.effects';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import {
+  BrandService,
+  BrandFacadeService,
+  CategoryService,
+  CategoryFacadeService,
+  ProductService,
+  ProductFacadeService,
+  ProductsManipulationService,
+} from './services';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -32,7 +49,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       },
     }),
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    StoreModule.forFeature(productsFeatureKey, productReducer),
+    StoreModule.forFeature(brandsFeatureKey, brandReducer),
+    StoreModule.forFeature(categoriesFeatureKey, categoryReducer),
+    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects,]),
   ],
   exports: [
     NavbarComponent,
@@ -63,8 +84,14 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       deps: [TranslationLoaderService],
       multi: true,
     },
-    ProductsManipulationService,
     SearchFacadeService,
+    ProductService,
+    ProductFacadeService,
+    CategoryService,
+    CategoryFacadeService,
+    BrandService,
+    BrandFacadeService,
+    ProductsManipulationService,
   ],
 })
 export class SharedModule {
