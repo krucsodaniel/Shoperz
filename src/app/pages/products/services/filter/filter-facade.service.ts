@@ -13,11 +13,20 @@ export class FilterFacadeService {
       .pipe(filter(Boolean));
   }
 
+  getFilterValue(): Observable<Record<string, string[]>> {
+    return this.store.select(FilterSelectors.selectFilter)
+      .pipe(filter(Boolean));
+  }
+
   setFilterValue(selectedFilters: Record<string, string[]>): void {
     this.store.dispatch(FilterActions.setSelectedFilters({ selectedFilters: selectedFilters }));
   }
 
   getManipulatedProducts(): Observable<ICalculatedProduct[]> {
     return this.store.select(FilterSelectors.selectManipulatedProducts);
+  }
+
+  resetFilter(): void {
+    this.store.dispatch(FilterActions.resetFilter());
   }
 }

@@ -6,13 +6,10 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import {
-  CardStateService,
-  ProductFacadeService,
-  ProductsManipulationService
-} from '../../services';
-import { ICalculatedProduct } from '@shared-module';
+import { CardStateService } from '../../services';
+import { ICalculatedProduct, ProductFacadeService, ProductsManipulationService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-dashboard',

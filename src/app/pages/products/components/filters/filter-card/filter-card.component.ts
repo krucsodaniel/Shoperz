@@ -44,7 +44,10 @@ export class FilterCardComponent implements OnInit {
 
     this.control.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((value: string[]) => this.selectedOptions = value);
+      .subscribe((value: string[]) => {
+        this.selectedOptions = value;
+        this.cdr.detectChanges();
+      });
   }
 
   isChecked(optionId: string): boolean {
@@ -57,7 +60,7 @@ export class FilterCardComponent implements OnInit {
 
     if (input.checked) {
       if (this.multiselect) {
-        this.selectedOptions.push(optionId);
+        this.selectedOptions = [...this.selectedOptions, optionId];
       } else {
         this.selectedOptions = [optionId];
       }

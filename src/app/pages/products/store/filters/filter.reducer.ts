@@ -27,8 +27,6 @@ export const filterReducer = createReducer(
   on(FilterActions.initializeFilters, (state, action) => ({
     ...state,
     filterDefinitions: action.filterDefinitions,
-    sortingOption: action.sortingOption,
-    searchValue: action.searchValue,
     isLoading: false,
   })),
   on(FilterActions.setSelectedFilters, (state, action) => ({
@@ -47,5 +45,14 @@ export const filterReducer = createReducer(
     ...state,
     isLoading: false,
     error: action.error,
+  })),
+  on(FilterActions.resetFilter, (state) => ({
+    ...state,
+    selectedFilters: state.filterDefinitions.reduce((result, definition) => {
+      return {
+        ...result,
+        [definition.id]: [],
+      };
+    }, {}),
   })),
 );

@@ -7,6 +7,7 @@
     "build": "npm run generate-sprite && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "json-server": "json-server --watch db.json",
     "generate-sprite": "node scripts/generate-svg-sprite.js",
     "watch-sprite": "onchange \"./src/assets/icons/**/*.svg\" --initial --kill -- npm run generate-sprite"
   },

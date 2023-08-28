@@ -1,6 +1,6 @@
 <nav class="navigation">
   <div class="left-section">
-    <svg-icon class="logo" [src]="'shoperz-logo'" [routerLink]="Route.products"></svg-icon>
+    <svg-icon class="logo" [src]="'shoperz-logo'" [routerLink]="Route.products" (click)="resetFiltering()"></svg-icon>
   </div>
 
     <app-searchbar class="searchbar"></app-searchbar>

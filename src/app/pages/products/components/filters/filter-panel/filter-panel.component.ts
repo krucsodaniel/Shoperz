@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject, DestroyRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ProductsManipulationService, FilterFacadeService } from '../../../services';
-import { IFilterDefinition } from '@shared-module';
+import { FilterFacadeService } from '../../../services';
+import { IFilterDefinition, ProductsManipulationService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, Router } from '@angular/router';
+import { distinctUntilChanged, filter } from 'rxjs';
 
 type FilterFormType = Record<string, FormControl<string[]>>;
 
@@ -25,10 +27,24 @@ export class FilterPanelComponent implements OnInit {
   constructor(
     private filterFacadeService: FilterFacadeService,
     private productsManipulationService: ProductsManipulationService,
+    private router: Router,
+    private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
+    this.filterFacadeService.getFilterValue()
+      .pipe(
+        filter((value: Record<string, string[]>) => JSON.stringify(value) !== JSON.stringify(this.form.value)),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((value: Record<string, string[]>) => {
+        this.form.setValue({
+          ...this.form.value,
+          ...value,
+        });
+      });
+
     this.filterFacadeService.getFilterDefinitions()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((filterDefinition: IFilterDefinition[]) => {
@@ -42,7 +58,12 @@ export class FilterPanelComponent implements OnInit {
       });
 
     this.form.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        distinctUntilChanged((prev: Record<string, string[]>, curr: Record<string, string[]>) => {
+          return JSON.stringify(prev) === JSON.stringify(curr);
+        }),
+        takeUntilDestroyed(this.destroyRef),
+      )
       .subscribe((value: Record<string, string[]>) => {
         this.filterFacadeService.setFilterValue(value);
       });
