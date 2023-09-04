@@ -1,149 +1,75 @@
 @import 'src/styles';
 
 :host {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  width: 100%;
-  padding: 20px;
-
-  border: 1px solid $grey-200;
-  border-radius: 6px;
-  transition: box-shadow 0.3s;
-
-  &:hover {
-    cursor: pointer;
-    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
-  }
+  @apply flex flex-col gap-5;
+  @apply w-full p-5;
+  @apply border border-grey-200 rounded-md transition-shadow duration-75;
+  @apply hover:cursor-pointer hover:shadow-md duration-300;
 
   &.expanded-card {
-     display: flex;
-     flex-direction: row;
-     justify-content: space-around;
-     gap: 20px;
+    @apply flex flex-col md:flex-row justify-center md:justify-around items-center gap-5;
+    @apply py-5 px-0 min-w-full;
 
-     padding: 20px 0 20px 0;
-     min-width: 100%;
+    .product-text-wrapper {
+      @apply order-1 m-5 break-words;
+    }
 
-     .product-text-wrapper {
-       order: 1;
-       margin: 20px;
-       overflow-wrap: break-word;
-     }
+    .product-image-wrapper {
+      @apply order-none w-60 m-5;
+    }
 
-     .product-image-wrapper {
-       order: 0;
-       width: 240px;
-       margin: 20px;
-     }
+    .product-list {
+      @apply text-size-14 text-grey-700;
 
-     .product-list {
-       font-size: $font-14;
-       color: $grey-700;
+      & > li {
+        @apply list-disc ml-5;
+      }
+    }
 
-       & > li {
-         list-style-type: disc;
-         margin-left: 20px;
-       }
-     }
+    .button-wrapper {
+      @apply flex flex-col justify-center items-center md:items-start order-2;
+      @apply w-full md:w-52 m-5 p-2;
+    }
 
-     .button-wrapper {
-       display: flex;
-       flex-direction: column;
-       justify-content: center;
-       align-items: flex-start;
-       order: 2;
+    .button-cart {
+      @apply w-full bg-blue-600;
+    }
 
-       width: 220px;
-       margin: 20px;
-     }
-
-     .button-cart {
-       width: 100%;
-       background-color: $blue-600;
-     }
-
-     .product-price {
-       font-size: $font-24;
-     }
-   }
+    .product-price {
+      @apply text-size-24;
+    }
+  }
 }
 
 .product-image-wrapper {
-  display: flex;
-  justify-content: center;
+  @apply flex justify-center;
 }
 
 .product-image {
-  max-width: 100%;
-  height: 200px;
-  border-radius: 10px;
+  @apply max-w-full h-50 rounded-lg;
 }
 
 .product-category {
-  font-size: $font-10;
+  @apply text-size-10;
 }
 
 .product-name {
-  color: $blue-700;
-  font-size: $font-16;
+  @apply text-blue-700 text-size-16;
 }
 
 .product-price {
-  font-size: $font-16;
+  @apply text-size-16;
 }
 
 .button-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @apply flex justify-between items-center;
 }
 
 .button-cart {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-
-  width: 36px;
-  height: 36px;
-  padding: 9px 7px;
-
-  border: solid transparent;
-  border-width: 0 0 4px;
-  border-radius: 20px;
-
-  background-color: $grey-200;
-  color: $blue-100;
-
-  cursor: pointer;
-  outline: none;
-  text-align: center;
-
-  &:hover {
-    background-color: $blue-500;
-    color: $blue-800;
-  }
-}
-
-@media screen and (max-width: 1023px) {
-  :host {
-    &.expanded-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-
-      .button-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        order: 2;
-
-        width: 100%;
-      }
-    }
-  }
+  @apply flex justify-center gap-5;
+  @apply w-9 h-9 py-2 px-1.5;
+  @apply border-b-4 rounded-full;
+  @apply bg-grey-200 text-blue-100;
+  @apply cursor-pointer outline-none text-center;
+  @apply hover:bg-blue-500 hover:text-blue-800;
 }

@@ -1,44 +1,45 @@
 <ng-container *ngIf="(product$ | async) as product">
-  <div class="image-container">
-    <div class="main-image-wrapper">
-      <img class="main-image" [src]="selectedPicture || product.images[0]" alt="Product image">
+  <div class="flex flex-col justify-center m-5">
+    <div class="flex justify-center items-center w-full pb-5">
+      <img class="w-75 h-100 mb-2.5" [src]="selectedPicture || product.images[0]" alt="Product image">
     </div>
 
-    <div class="little-image-wrapper">
+    <div class="flex justify-center flex-wrap md:flex-nowrap gap-2 md:gap-0">
       <img
         *ngFor="let image of product?.images"
-        class="little-image"
+        class="mx-2 w-20 h-20 rounded-md hover:shadow-md hover:shadow-blue-400 cursor-pointer hover-transition duration-300"
         [src]="image"
         alt="Product image"
         (click)="choosePicture(image)">
     </div>
   </div>
 
-  <div class="info-container">
-    <span class="product-category">{{ product?.categoryName }}</span>
+  <div class="flex flex-col gap-5 px-3 md:px-0 text-center md:text-left">
+    <span class="font-normal text-size-12 leading-4">{{ product?.categoryName }}</span>
 
-    <span class="product-name">{{ product?.name }}</span>
+    <span class="font-medium text-size-24 leading-7 text-blue-700">{{ product?.name }}</span>
 
-    <ul class="product-description-list">
-      <li *ngFor="let description of product?.description" class="product-description-text">{{ description }}</li>
+    <ul class="pb-5">
+      <li *ngFor="let description of product?.description"
+          class="font-normal text-size-14 leading-4 text-grey-700 mt-3.5">{{ description }}</li>
     </ul>
 
-    <span class="product-brand">{{ product?.brandName }}</span>
+    <span class="font-normal text-size-12 leading-4 text-grey-700">{{ product?.brandName }}</span>
   </div>
 
-  <div class="price-container">
-    <span class="product-price">$ {{ product?.price }}</span>
+  <div class="flex flex-col gap-5 justify-around border border-solid rounded-md border-grey-100 p-5 w-full md:w-fit">
+    <span class="font-medium text-size-36 leading-10">$ {{ product?.price }}</span>
 
-    <div class="button-wrapper">
-      <button class="quantity-button">-</button>
+    <div class="flex justify-between w-50 px-2 border border-solid rounded-3xl border-grey-100">
+      <button class="bg-white text-grey-700">-</button>
       <span>1</span>
-      <button class="quantity-button">+</button>
+      <button class="bg-white text-grey-700">+</button>
     </div>
 
-    <button class="add-to-cart-button">
-      <span class="add-to-cart-text">Add to Cart</span>
+    <button
+      class="flex justify-center items-center gap-2.5 w-full h-16 rounded-3xl py-5 bg-blue-600 text-white hover:bg-blue-700 transition duration-300">
+      <span class="font-medium text-size-16 leading-4">Add to Cart</span>
       <svg-icon [src]="'add-to-cart'"></svg-icon>
     </button>
   </div>
 </ng-container>
-

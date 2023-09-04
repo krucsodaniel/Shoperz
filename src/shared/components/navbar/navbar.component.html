@@ -1,16 +1,16 @@
-<nav class="navigation">
-  <div class="left-section">
-    <svg-icon class="logo" [src]="'shoperz-logo'" [routerLink]="Route.products" (click)="resetFiltering()"></svg-icon>
+<nav class="flex flex-col md:flex-row justify-between md:justify-center md:items-center md:gap-10 bg-grey-100 py-6 md:p-5">
+  <div class="flex justify-center">
+    <svg-icon class="cursor-pointer" [src]="'shoperz-logo'" [routerLink]="Route.products" (click)="resetFiltering()"></svg-icon>
   </div>
 
-    <app-searchbar class="searchbar"></app-searchbar>
+    <app-searchbar class="mx-auto md:mx-0 min-w-75 max-w-180 my-5"></app-searchbar>
 
-  <div class="right-section">
-    <button class="menu-button">
+  <div class="flex justify-center md:justify-evenly">
+    <button class="w-12">
       <svg-icon class="profile" [src]="'profile'"></svg-icon>
     </button>
 
-    <button class="menu-button">
+    <button class="w-12">
       <svg-icon [src]="'cart'"></svg-icon>
     </button>
   </div>

@@ -14,7 +14,6 @@ import { distinctUntilChanged, filter } from 'rxjs';
 @Component({
   selector: 'app-product-sorting',
   templateUrl: './products-sorting.component.html',
-  styleUrls: ['./products-sorting.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsSortingComponent implements OnInit {

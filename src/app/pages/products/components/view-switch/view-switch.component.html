@@ -1,17 +1,17 @@
-<div class="view-container">
-  <div class="icon-holder" [ngClass]="{ 'active-icon': !isExpanded }">
-    <input class="view-input" type="radio" id="cardView" name="option" value="view1" checked>
+<div class="flex justify-start p-2.5">
+  <div class="flex justify-center items-center rounded-lg" [ngClass]="{ 'active-icon': !isExpanded }">
+    <input class="absolute opacity-0 pointer-events-none hidden" type="radio" id="cardView" name="option" value="view1" checked>
 
-    <label class="radio-label" for="cardView" (click)="toggleView(false)">
-      <svg-icon class="radio-icon" [src]="'card-view'"></svg-icon>
+    <label class="inline-block relative cursor-pointer p-1" for="cardView" (click)="toggleView(false)">
+      <svg-icon class="w-7 mx-2.5" [src]="'card-view'"></svg-icon>
     </label>
   </div>
 
-  <div class="icon-holder" [ngClass]="{ 'active-icon': isExpanded }">
-    <input class="view-input" type="radio" id="rowView" name="option" value="view2">
+  <div class="flex justify-center items-center rounded-lg" [ngClass]="{ 'active-icon': isExpanded }">
+    <input class="absolute opacity-0 pointer-events-none hidden" type="radio" id="rowView" name="option" value="view2">
 
-    <label class="radio-label" for="rowView" (click)="toggleView(true)">
-      <svg-icon class="radio-icon" [src]="'row-view'"></svg-icon>
+    <label class="inline-block relative cursor-pointer p-1" for="rowView" (click)="toggleView(true)">
+      <svg-icon class="w-7 mx-2.5" [src]="'row-view'"></svg-icon>
     </label>
   </div>
 </div>
