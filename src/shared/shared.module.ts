@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {
   NavbarComponent,
-  FooterComponent,
   HeaderComponent,
   SvgIconComponent,
   SearchbarComponent,
@@ -57,7 +56,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   exports: [
     NavbarComponent,
-    FooterComponent,
     HeaderComponent,
     SvgIconComponent,
     SearchbarComponent,
@@ -65,7 +63,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   declarations: [
     NavbarComponent,
-    FooterComponent,
     HeaderComponent,
     SvgIconComponent,
     SearchbarComponent,

@@ -1,12 +1,12 @@
-<app-filter-panel class="filters"></app-filter-panel>
+<app-filter-panel class="order-1 md:order-0"></app-filter-panel>
 
-<div class="list-wrapper">
-  <app-loader *ngIf="isLoading; else content" class="loading"></app-loader>
+<div class="relative gap-5 order-0 md:order-1 w-full">
+  <app-loader *ngIf="isLoading; else content" class="absolute top-15 left-2/4 -translate-x-2/4"></app-loader>
 
   <ng-template #content>
     <app-view-panel></app-view-panel>
 
-    <div class="list">
+    <div class="flex flex-wrap gap-5 w-full mt-5">
       <app-product-card
         *ngFor="let card of products"
         class="product-card"

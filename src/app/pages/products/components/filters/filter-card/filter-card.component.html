@@ -1,12 +1,12 @@
-  <span *ngIf="headerText" class="header">{{ headerText }}</span>
+  <span *ngIf="headerText" class="ml-1.5 font-extrabold">{{ headerText }}</span>
 
   <label
     *ngFor="let option of options"
-    class="checkbox-label"
-    [ngClass]="multiselect ? 'label' : 'modified-label'"
+    class="list-none text-grey-700 m-1.5"
+    [ngClass]="multiselect ? 'cursor-pointer' : 'cursor-pointer hover:font-extrabold'"
     [class.checked-label]="isChecked(option.id)">
     <input
-      [ngClass]="multiselect ? 'input' : 'modified-input'"
+      [ngClass]="multiselect ? 'cursor-pointer' : 'appearance-none'"
       [type]="multiselect ? 'checkbox' : 'radio'"
       [name]="multiselect ? null : 'radio'"
       [value]="option.id"

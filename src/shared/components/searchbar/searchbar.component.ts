@@ -1,4 +1,12 @@
-import { Component, OnInit, inject, DestroyRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  inject,
+  DestroyRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  HostBinding
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SearchFacadeService, ProductsManipulationService } from '../../services';
@@ -8,11 +16,13 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
-  styleUrls: ['./searchbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchbarComponent implements OnInit {
   readonly searchValue = new FormControl<string>('');
+
+  @HostBinding('class')
+  private readonly classes = 'flex justify-center items-center w-full relative';
 
   private readonly destroyRef = inject(DestroyRef);
 
