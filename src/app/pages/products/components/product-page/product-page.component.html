@@ -1,4 +1,4 @@
-<ng-container *ngIf="(product$ | async) as product">
+<ng-container *ngIf="(product$ | async) as product else loading">
   <div class="flex flex-col justify-center m-5">
     <div class="flex justify-center items-center w-full pb-5">
       <img class="w-75 h-100 mb-2.5" [src]="selectedPicture || product.images[0]" alt="Product image">
@@ -15,31 +15,45 @@
   </div>
 
   <div class="flex flex-col gap-5 px-3 md:px-0 text-center md:text-left">
-    <span class="font-normal text-size-12 leading-4">{{ product?.categoryName }}</span>
+    <span class="font-normal text-size-12 leading-4">{{ product.categoryName }}</span>
 
-    <span class="font-medium text-size-24 leading-7 text-blue-700">{{ product?.name }}</span>
+    <span class="font-medium text-size-24 leading-7 text-blue-700">{{ product.name }}</span>
 
-    <ul class="pb-5">
-      <li *ngFor="let description of product?.description"
-          class="font-normal text-size-14 leading-4 text-grey-700 mt-3.5">{{ description }}</li>
-    </ul>
+    <div class="pb-5 max-w-180">
+      <span class="font-normal text-size-14 leading-4 text-grey-700 mt-3.5 whitespace-break-spaces break-words">
+        {{ product.description }}
+      </span>
+    </div>
 
-    <span class="font-normal text-size-12 leading-4 text-grey-700">{{ product?.brandName }}</span>
+    <span class="font-normal text-size-12 leading-4 text-grey-700 font-bold">{{ product.brandName }}</span>
   </div>
 
   <div class="flex flex-col gap-5 justify-around border border-solid rounded-md border-grey-100 p-5 w-full md:w-fit">
-    <span class="font-medium text-size-36 leading-10">$ {{ product?.price }}</span>
+    <span class="font-medium text-size-36 leading-10">$ {{ product.price }}</span>
 
-    <div class="flex justify-between w-50 px-2 border border-solid rounded-3xl border-grey-100">
-      <button class="bg-white text-grey-700">-</button>
-      <span>1</span>
-      <button class="bg-white text-grey-700">+</button>
+    <div
+      class="flex justify-between w-50 px-2 border border-solid rounded-3xl border-grey-100"
+      [ngClass]="{ 'border border-red-600 border-solid' : numberFormControl.invalid }">
+      <button class="bg-white text-grey-700" (click)="decrementQuantity()">-</button>
+
+      <input digitOnly [allowPaste]="false" [min]="1" [max]="10" class="text-center" type="text" [formControl]="numberFormControl">
+
+      <button class="bg-white text-grey-700" (click)="incrementQuantity()">+</button>
     </div>
 
     <button
-      class="flex justify-center items-center gap-2.5 w-full h-16 rounded-3xl py-5 bg-blue-600 text-white hover:bg-blue-700 transition duration-300">
-      <span class="font-medium text-size-16 leading-4">Add to Cart</span>
+      class="flex justify-center items-center gap-2.5 w-full h-16 rounded-3xl py-5 bg-blue-600 text-white hover:bg-blue-700 transition duration-300"
+      [disabled]="numberFormControl.invalid"
+      [ngClass]="{ 'bg-grey-600 hover:bg-grey-700 cursor-not-allowed' : numberFormControl.invalid }">
+        <span class="font-medium text-size-16 leading-4">
+          {{ numberFormControl.hasError('required') ? 'Add amount' : 'Add to Cart' }}
+        </span>
+
       <svg-icon [src]="'add-to-cart'"></svg-icon>
     </button>
   </div>
 </ng-container>
+
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
