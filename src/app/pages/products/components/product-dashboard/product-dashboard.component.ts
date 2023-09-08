@@ -9,7 +9,6 @@ import {
 import { CardStateService } from '../../services';
 import { ICalculatedProduct, ProductFacadeService, ProductsManipulationService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-dashboard',
@@ -31,8 +30,8 @@ export class ProductDashboardComponent implements OnInit {
     private cdr: ChangeDetectorRef,
   ) {}
 
-  ngOnInit(): void {
-    this.productFacadeService.initStates();
+  async ngOnInit(): Promise<void> {
+   await this.productFacadeService.initProductsState();
 
     this.productsManipulationService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))

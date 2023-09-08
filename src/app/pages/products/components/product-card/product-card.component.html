@@ -3,9 +3,9 @@
 
   <h3 class="product-name">{{ card.name }}</h3>
 
-  <ul *ngIf="isExpanded" class="product-list">
-    <li *ngFor="let listElement of card.description" class="list-element">{{ listElement }}</li>
-  </ul>
+  <div *ngIf="isExpanded" class="product-list">
+    <span class="list-element">{{ card.description }}</span>
+  </div>
 </div>
 
 <div class="product-image-wrapper">
