@@ -31,7 +31,7 @@ export class ProductDashboardComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-   await this.productFacadeService.initProductsState();
+   await this.productFacadeService.initProductsPage();
 
     this.productsManipulationService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))

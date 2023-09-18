@@ -15,7 +15,7 @@ export class ProductEffects {
         switchMap(() => {
           return this.productService.getProducts()
             .pipe(
-              map((products: IProduct[]) => ProductActions.productsLoaded({ products: products })),
+              map((products: IProduct[]) => ProductActions.productsLoaded({ products })),
               catchError((error) => of(ProductActions.errorProduct({ error: new Error(error) }))),
             );
         }),

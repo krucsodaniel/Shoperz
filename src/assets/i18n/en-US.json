@@ -17,6 +17,18 @@
     "brands": "Brands",
     "prices": "Prices"
   },
+  "cart": {
+    "subTotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "checkout": "Checkout",
+    "delete": "Delete",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "addAmount": "Add amount",
+    "addToCart": "Add to Cart"
+  },
   "filter": {
     "all": "All",
     "allBrands": "Brands",
@@ -54,6 +66,7 @@
   },
   "general": {
     "productNotFound": "Sorry, no products found!",
-    "tryOtherFilters": "Try other filter options."
+    "tryOtherFilters": "Try other filter options.",
+    "confirmMessage": "Are you sure you want to delete?"
   }
 }

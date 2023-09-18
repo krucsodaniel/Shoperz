@@ -2,7 +2,7 @@ import { IProductState, productsFeatureKey } from './product.reducer';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { BrandSelectors } from '../brands';
 import { CategorySelectors } from '../categories';
-import { IProduct } from '@shared-module';
+import { IBrand, ICalculatedProduct, ICategory, IProduct } from '../../models';
 
 export namespace ProductSelectors {
   export const selectProductFeature = createFeatureSelector<IProductState>(productsFeatureKey);
@@ -17,14 +17,19 @@ export namespace ProductSelectors {
     (state: IProductState) => state.products.find((product) => product.id === productId),
   );
 
+  export const selectProductsByIds = (productIds: number[]) => createSelector(
+    selectProductFeature,
+    (state: IProductState) => state.products.filter((product) => productIds.includes(product.id)),
+  );
+
   export const selectAreAllInitialized = createSelector(
     selectProductFeature,
-    (state: IProductState) => state.areAllInitialized,
+    (state: IProductState) => state.isProductsPageInitialized,
   );
 
   export const selectIsSpecificInitialized = createSelector(
     selectProductFeature,
-    (state: IProductState) => state.isSpecificInitialized,
+    (state: IProductState) => state.isSpecificProductPageInitialized,
   );
 
   export const getCalculatedProduct = (productId: number) => createSelector(
@@ -36,14 +41,7 @@ export namespace ProductSelectors {
         return undefined;
       }
 
-      const category = categories.find((category) => category.id === product.categoryId);
-      const brand = brands.find((brand) => brand.id === product.brandId);
-
-      return {
-        ...product,
-        categoryName: category.name,
-        brandName: brand.name,
-      };
+      return calculateProduct(product, categories, brands);
     }
   );
 
@@ -56,16 +54,18 @@ export namespace ProductSelectors {
         return undefined;
       }
 
-      return products.map((product: IProduct) => {
-        const category = categories.find((category) => category.id === product.categoryId);
-        const brand = brands.find((brand) => brand.id === product.brandId);
-
-        return {
-          ...product,
-          categoryName: category.name,
-          brandName: brand.name,
-        };
-      });
+      return products.map((product: IProduct) => calculateProduct(product, categories, brands));
     }
   );
+
+  export function calculateProduct(product: IProduct, categories: ICategory[], brands: IBrand[]): ICalculatedProduct {
+    const category = categories.find((category) => category.id === product.categoryId);
+    const brand = brands.find((brand) => brand.id === product.brandId);
+
+    return {
+      ...product,
+      categoryName: category.name,
+      brandName: brand.name,
+    };
+  }
 }

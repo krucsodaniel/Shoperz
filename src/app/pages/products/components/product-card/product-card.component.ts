@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input } from '@angular/core';
-import { ICalculatedProduct, Route } from '@shared-module';
+import { CartFacadeService, ICalculatedProduct, Route } from '@shared-module';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,10 +16,16 @@ export class ProductCardComponent {
   @Input()
   isExpanded: boolean;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cartFacadeService: CartFacadeService) {}
 
   @HostListener('click')
   navigateToProductPage(): void {
     this.router.navigate([Route.products, this.card.id]);
+  }
+
+  addToCart(id: number, event: Event): void {
+    event.stopPropagation();
+
+    this.cartFacadeService.addProductToCart(id, 1);
   }
 }

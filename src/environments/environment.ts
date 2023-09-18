@@ -6,6 +6,7 @@ export const environment = {
       products: '/products',
       categories: '/categories',
       brands: '/brands',
+      cart: '/cart',
     },
   },
 };

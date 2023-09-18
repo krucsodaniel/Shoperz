@@ -4,3 +4,5 @@ export * from './brand.model';
 export * from './calculated-product.model';
 export * from './filter-option.model';
 export * from './filter-definition.model';
+export * from './cart-item.model';
+export * from './cart-product.model';

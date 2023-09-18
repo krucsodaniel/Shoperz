@@ -1,0 +1,18 @@
+<div class="w-full flex justify-between text-size-24">
+  <span>{{ buildTranslationKey('subTotal') | translate }}</span>
+  <span>$ {{ subTotal }}</span>
+</div>
+
+<div class="w-full flex justify-between text-size-24">
+  <span>{{ buildTranslationKey('shipping') | translate }}</span>
+  <span>$ {{ shippingFee }}</span>
+</div>
+
+<div class="w-full flex justify-between text-size-24 font-bold">
+  <span>{{ buildTranslationKey('total') | translate }}</span>
+  <span>$ {{ calculateTotal }}</span>
+</div>
+
+<button class="w-full bg-blue-600 h-24 text-size-24 font-bold text-white hover:bg-blue-700 transition duration-300">
+  {{ buildTranslationKey('checkout') | translate }}
+</button>

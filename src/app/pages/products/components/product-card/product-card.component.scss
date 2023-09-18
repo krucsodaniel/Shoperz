@@ -72,4 +72,5 @@
   @apply bg-grey-200 text-blue-100;
   @apply cursor-pointer outline-none text-center;
   @apply hover:bg-blue-500 hover:text-blue-800;
+  @apply active:scale-150;
 }

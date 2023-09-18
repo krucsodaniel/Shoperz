@@ -7,6 +7,8 @@ import {
   SvgIconComponent,
   SearchbarComponent,
   LoaderComponent,
+  CartIconComponent,
+  BadgeComponent,
 } from './components';
 import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchFacadeService, } from './services';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -17,9 +19,11 @@ import { RouterLink } from '@angular/router';
 import { productReducer, productsFeatureKey } from './store/products/product.reducer';
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
 import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
+import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
 import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
+import { CartEffects } from './store/cart/cart.effects';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import {
@@ -30,6 +34,8 @@ import {
   ProductService,
   ProductFacadeService,
   ProductsManipulationService,
+  CartService,
+  CartFacadeService,
 } from './services';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -52,7 +58,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     StoreModule.forFeature(productsFeatureKey, productReducer),
     StoreModule.forFeature(brandsFeatureKey, brandReducer),
     StoreModule.forFeature(categoriesFeatureKey, categoryReducer),
-    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects,]),
+    StoreModule.forFeature(cartFeatureKey, cartReducer),
+    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects]),
   ],
   exports: [
     NavbarComponent,
@@ -67,6 +74,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SvgIconComponent,
     SearchbarComponent,
     LoaderComponent,
+    CartIconComponent,
+    BadgeComponent,
   ],
   providers: [
     SpriteLoaderService,
@@ -89,6 +98,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     BrandService,
     BrandFacadeService,
     ProductsManipulationService,
+    CartService,
+    CartFacadeService,
   ],
 })
 export class SharedModule {
