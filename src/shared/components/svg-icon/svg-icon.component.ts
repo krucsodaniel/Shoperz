@@ -3,6 +3,7 @@ import { BehaviorSubject, filter, Subject, switchMap, takeUntil } from 'rxjs';
 import { SvgService } from '../../services';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'svg-icon',
   template: '',
   styleUrls: ['./svg-icon.component.scss'],

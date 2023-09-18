@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  DestroyRef,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CardStateService } from '../../services';
 import { ICalculatedProduct, ProductFacadeService, ProductsManipulationService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -31,7 +24,7 @@ export class ProductDashboardComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-   await this.productFacadeService.initProductsPage();
+    await this.productFacadeService.initProductsPage();
 
     this.productsManipulationService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -44,5 +37,5 @@ export class ProductDashboardComponent implements OnInit {
     this.cardStateService.getView()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((isExpanded: boolean) => this.isExpanded = isExpanded);
-  };
+  }
 }

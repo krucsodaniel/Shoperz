@@ -9,7 +9,7 @@
         *ngFor="let image of product?.images"
         class="mx-2 w-20 h-20 rounded-md hover:shadow-md hover:shadow-blue-400 cursor-pointer hover-transition duration-300"
         [src]="image"
-        alt="Product image"
+        [alt]="product?.name"
         (click)="choosePicture(image)">
     </div>
   </div>
