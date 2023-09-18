@@ -15,8 +15,8 @@
 <div class="button-wrapper">
   <h4 class="product-price">$ {{ card.price }}</h4>
 
-  <button class="button-cart">
+  <button class="button-cart" (click)="addToCart(card.id, $event)">
     <p *ngIf="isExpanded">Add to Cart</p>
-    <svg-icon [src]="'add-to-cart'"></svg-icon>
+    <svg-icon class="cart-icon" [src]="'add-to-cart'"></svg-icon>
   </button>
 </div>

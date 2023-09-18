@@ -17,6 +17,18 @@
     "brands": "Márkák",
     "prices": "Árak"
   },
+  "cart": {
+    "subTotal": "Részösszeg",
+    "shipping": "Szállítás",
+    "total": "Total",
+    "checkout": "Rendelés",
+    "delete": "Delete",
+    "product": "Termék",
+    "price": "Ár",
+    "quantity": "Mennyiség",
+    "addAmount": "Adjon meg mennyiséget",
+    "addToCart": "Kosárba"
+  },
   "filter": {
     "all": "Összes",
     "allBrands": "Márkák",
@@ -54,6 +66,7 @@
   },
   "general": {
     "productNotFound": "Sajnáljuk, nem találtunk a keresésnek megfelelő terméket!",
-    "tryOtherFilters": "Próbáljon ki más szűrési lehetőségeket."
+    "tryOtherFilters": "Próbáljon ki más szűrési lehetőségeket.",
+    "confirmMessage": "Biztos benne, hogy törölni kívánja?"
   }
 }

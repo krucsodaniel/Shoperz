@@ -18,6 +18,18 @@
     "brands": "Marken",
     "prices": "Preise"
   },
+  "cart": {
+    "subTotal": "Zwischensumme",
+    "shipping": "Versand",
+    "total": "Gesamt",
+    "checkout": "Checkout",
+    "delete": "Delete",
+    "product": "Produkten",
+    "price": "Preis",
+    "quantity": "Menge",
+    "addAmount": "Betrag hinzufügen",
+    "addToCart": "Zum Warenkorb hinzufügen"
+  },
   "filter": {
     "all": "Alle",
     "allBrands": "Marken",
@@ -54,6 +66,7 @@
   },
   "general": {
     "productNotFound": "Sorry, keine Produkte gefunden!",
-    "tryOtherFilters": "Probieren Sie andere Filteroptionen aus."
+    "tryOtherFilters": "Probieren Sie andere Filteroptionen aus.",
+    "confirmMessage": "Sind Sie sicher, dass Sie löschen wollen?"
   }
 }

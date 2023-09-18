@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BrandFacadeService, CategoryFacadeService, ProductService, SearchFacadeService } from '../../services';
+import {
+  BrandFacadeService,
+  CartFacadeService,
+  CategoryFacadeService,
+  ProductService,
+  SearchFacadeService
+} from '../../services';
 import { FilterService, FilterFacadeService, SortFacadeService } from 'src/app/pages/products/services';
 import { filter, firstValueFrom, Observable } from 'rxjs';
 import { SortingOption } from '../../enums';
 import { ICalculatedProduct } from '../../models';
 import { Store } from '@ngrx/store';
 import { ProductActions, ProductSelectors } from '../../store';
+import { CartActions } from '../../store/cart/cart.actions';
 
 @Injectable()
 export class ProductFacadeService {
@@ -17,52 +24,55 @@ export class ProductFacadeService {
     private filterFacadeService: FilterFacadeService,
     private searchFacadeService: SearchFacadeService,
     private sortFacadeService: SortFacadeService,
+    private cartFacadeService: CartFacadeService,
     private store: Store,
   ) {}
 
-  areAllInitialized(): Observable<boolean> {
+  isProductsPageInitialized(): Observable<boolean> {
     return this.store.select(ProductSelectors.selectAreAllInitialized);
   }
 
-  isSpecificInitialized(): Observable<boolean> {
+  isSpecificProductPageInitialized(): Observable<boolean> {
     return this.store.select(ProductSelectors.selectIsSpecificInitialized);
   }
 
-  async initProductsState(): Promise<void> {
-    const areAllInitialized = await firstValueFrom(this.areAllInitialized());
-    const isSpecificInitialized = await firstValueFrom(this.isSpecificInitialized());
+  async initProductsPage(): Promise<void> {
+    const isProductsPageInitialized = await firstValueFrom(this.isProductsPageInitialized());
+    const isSpecificProductPageInitialized = await firstValueFrom(this.isSpecificProductPageInitialized());
 
-    if (!areAllInitialized && !isSpecificInitialized) {
+    if (!isProductsPageInitialized && !isSpecificProductPageInitialized) {
       const products = await firstValueFrom(this.getProducts());
 
       if (!products) {
         this.store.dispatch(ProductActions.loadProducts());
         this.brandFacadeService.initBrandsState();
         this.categoryFacadeService.initCategoriesState();
-        this.filterService.initializeFilterDefinitions();
+        await this.filterService.initializeFilterDefinitions();
+        this.initCartState();
         return;
       }
 
       return;
     }
 
-    if (!areAllInitialized && isSpecificInitialized) {
+    if (!isProductsPageInitialized && isSpecificProductPageInitialized) {
       this.store.dispatch(ProductActions.loadProducts());
-      this.filterService.initializeFilterDefinitions();
+      await this.filterService.initializeFilterDefinitions();
       this.searchFacadeService.setSearchValue('');
+      this.initCartState();
       return;
     }
   }
 
-  async initProductState(productId: number): Promise<void> {
-    const areAllInitialized = await firstValueFrom(this.areAllInitialized());
+  async initSpecificProductPage(productId: number): Promise<void> {
+    const isProductsPageInitialized = await firstValueFrom(this.isProductsPageInitialized());
 
-    if (areAllInitialized) {
+    if (isProductsPageInitialized) {
       const product = await firstValueFrom(this.getSingleProduct(productId));
 
       if (!product) {
         this.store.dispatch(ProductActions.loadProductById({ productId }));
-        await firstValueFrom(this.isSpecificInitialized().pipe(filter(Boolean)));
+        await firstValueFrom(this.isSpecificProductPageInitialized().pipe(filter(Boolean)));
       }
 
       return;
@@ -71,7 +81,37 @@ export class ProductFacadeService {
     this.store.dispatch(ProductActions.loadProductById({ productId }));
     this.brandFacadeService.initBrandsState();
     this.categoryFacadeService.initCategoriesState();
-    await firstValueFrom(this.isSpecificInitialized().pipe(filter(Boolean)));
+    await firstValueFrom(this.isSpecificProductPageInitialized().pipe(filter(Boolean)));
+    this.store.dispatch(CartActions.initCart());
+  }
+
+  async initCartPage(): Promise<void> {
+    const isProductsPageInitialized = await firstValueFrom(this.isProductsPageInitialized());
+    const isSpecificProductPageInitialized = await firstValueFrom(this.isSpecificProductPageInitialized());
+
+    if (!isProductsPageInitialized) {
+      const products = await firstValueFrom(this.getProducts());
+
+      if (!products) {
+        this.store.dispatch(ProductActions.loadProducts());
+        this.brandFacadeService.initBrandsState();
+        this.categoryFacadeService.initCategoriesState();
+        this.filterService.initializeFilterDefinitions();
+        this.searchFacadeService.setSearchValue('');
+        this.initCartState();
+        return;
+      }
+
+      return;
+    }
+
+    if (!isProductsPageInitialized && isSpecificProductPageInitialized) {
+      this.store.dispatch(ProductActions.loadProducts());
+      await this.filterService.initializeFilterDefinitions();
+      this.searchFacadeService.setSearchValue('');
+      this.initCartState();
+      return;
+    }
   }
 
   getProducts(): Observable<ICalculatedProduct[]> {
@@ -87,5 +127,9 @@ export class ProductFacadeService {
     this.searchFacadeService.setSearchValue('');
     this.sortFacadeService.setSortingOption(SortingOption.default);
     this.filterFacadeService.resetFilter();
+  }
+
+  initCartState(): void {
+    this.cartFacadeService.initCartState();
   }
 }

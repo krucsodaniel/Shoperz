@@ -1,0 +1,50 @@
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostBinding,
+  OnInit,
+  inject,
+  DestroyRef,
+} from '@angular/core';
+import { CartFacadeService, ICalculatedProduct, ICartItem, ProductFacadeService } from '@shared-module';
+import { FormControl, Validators } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+@Component({
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CartComponent implements OnInit {
+  cartItems: ICartItem[];
+  products: ICalculatedProduct[];
+  numberFormControl: FormControl<number>;
+
+  private readonly destroyRef = inject(DestroyRef);
+  @HostBinding('class')
+  private readonly classes = 'mx-auto flex items-start flex-wrap py-16 gap-8';
+
+  constructor(
+    private cartFacadeService: CartFacadeService,
+    private productFacadeService: ProductFacadeService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  async ngOnInit(): Promise<void> {
+    this.numberFormControl = new FormControl(1, [Validators.required]);
+
+    await this.productFacadeService.initCartPage();
+
+    this.cartFacadeService.getCartProducts()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((products: ICalculatedProduct[]) => {
+        this.products = products;
+        this.cdr.detectChanges();
+      });
+  }
+
+  buildTranslationKey(relativeKey: string): string {
+    return `cart.${relativeKey}`;
+  }
+}

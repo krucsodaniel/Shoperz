@@ -5,8 +5,8 @@ import {
   OnInit,
   ChangeDetectorRef,
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ICalculatedProduct, ProductFacadeService } from '@shared-module';
+import { firstValueFrom, Observable } from 'rxjs';
+import { CartFacadeService, ICalculatedProduct, ProductFacadeService } from '@shared-module';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -26,6 +26,7 @@ export class ProductPageComponent implements OnInit {
 
   constructor(
     private productFacadeService: ProductFacadeService,
+    private cartFacadeService: CartFacadeService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
   ) {}
@@ -35,7 +36,7 @@ export class ProductPageComponent implements OnInit {
 
     this.productId = +this.route.snapshot.paramMap.get('id');
 
-    await this.productFacadeService.initProductState(this.productId);
+    await this.productFacadeService.initSpecificProductPage(this.productId);
 
     this.product$ = this.productFacadeService.getSingleProduct(this.productId);
 
@@ -60,5 +61,28 @@ export class ProductPageComponent implements OnInit {
     if (currentValue >= 2) {
       this.numberFormControl.setValue(currentValue - 1);
     }
+  }
+
+  async updateAmount(productId: number, event: Event): Promise<void> {
+    event.stopPropagation();
+
+    const amount = +this.numberFormControl.value;
+
+    if (!amount || amount === 0) {
+      return;
+    }
+
+    const product = await firstValueFrom(this.cartFacadeService.checkIfProductIsInCart(productId));
+
+    if (product) {
+      this.cartFacadeService.updateProductAmount(productId, amount);
+      return;
+    }
+
+    this.cartFacadeService.addProductToCart(productId, amount);
+  }
+
+  buildTranslationKey(relativeKey: string): string {
+    return `cart.${ relativeKey }`;
   }
 }

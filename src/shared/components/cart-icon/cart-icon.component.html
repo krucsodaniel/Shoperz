@@ -1,0 +1,5 @@
+<button>
+  <svg-icon class="flex" [src]="'cart'" [routerLink]="Route.cart"></svg-icon>
+</button>
+
+<app-badge *ngIf="amountInCart > 0" [amountInCart]="amountInCart"></app-badge>
