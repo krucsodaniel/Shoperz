@@ -1,0 +1,65 @@
+<div class="footer">
+  <div class="footer-info">
+    <svg-icon [src]="'shoperz-logo'"></svg-icon>
+    <div>
+      <h5 class="footer-info-title">headquarters</h5>
+      <p>Presei Square No45, Bucharest - 099455</p>
+    </div>
+    <div>
+      <h5 class="footer-info-title">email</h5>
+      <p>contact@shoperz.com</p>
+    </div>
+    <div>
+      <h5 class="footer-info-title">telephone</h5>
+      <p>(+40) 987 123 654</p>
+    </div>
+    <div class="footer-info-icons">
+      <svg-icon class="mr-6" [src]="'facebook-logo'"></svg-icon>
+      <svg-icon class="mr-6" [src]="'instagram-logo'"></svg-icon>
+      <svg-icon class="mr-6" [src]="'linkedin-logo'"></svg-icon>
+      <svg-icon class="mr-6" [src]="'twitter-logo'"></svg-icon>
+      <svg-icon class="mr-6" [src]="'youtube-logo'"></svg-icon>
+    </div>
+  </div>
+
+  <div class="footer-categories">
+    <p class="footer-categories-title">categories</p>
+<ul>
+  <li *ngFor="let link of categoriesLinks" class="footer-links"
+       [routerLink]="link.routerLink" [queryParams]="link.queryParams">{{ link.title }}
+  </li>
+</ul>
+
+  </div>
+  <div class="footer-useful-links">
+    <p class="footer-useful-links-title">useful links</p>
+    <ul>
+      <li
+        *ngFor="let link of usefulLinks"
+        class="footer-links"><a routerLink="">{{ link }}</a></li>
+    </ul>
+  </div>
+  <div class="footer-customer-service">
+    <p class="footer-customer-service-title">customer service</p>
+    <ul>
+      <li
+        *ngFor="let link of customerServiceLinks"
+        class="footer-links"><a routerLink="">{{ link }}</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="bottom-footer">
+  <p>&copy; <strong>Shoperz</strong> {{ year }} - All Rights Reserved
+  <p>
+  <div class="bottom-footer-icons">
+    <svg-icon [src]="'visa-logo'"></svg-icon>
+    <svg-icon [src]="'mastercard-logo'"></svg-icon>
+    <svg-icon [src]="'paypal-logo'"></svg-icon>
+    <svg-icon [src]="'skrill-logo'"></svg-icon>
+  </div>
+</div>
+
+
+
+

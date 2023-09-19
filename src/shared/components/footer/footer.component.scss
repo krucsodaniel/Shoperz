@@ -1,0 +1,42 @@
+.footer {
+  @apply flex flex-row px-40 py-12 text-grey-700
+}
+
+.footer-info {
+  @apply flex flex-col justify-between h-100 w-2/5
+}
+
+.footer-categories,
+.footer-useful-links,
+.footer-customer-service {
+  @apply w-1/5
+}
+
+.footer-info-title,
+.footer-categories-title,
+.footer-useful-links-title,
+.footer-customer-service-title {
+  @apply text-lg font-medium capitalize text-grey-900
+}
+
+.footer-categories-title,
+.footer-useful-links-title,
+.footer-customer-service-title {
+  @apply py-5
+}
+
+.footer-links {
+  @apply capitalize leading-10
+}
+
+.footer-info-icons {
+  @apply flex flex-row
+}
+
+.bottom-footer {
+  @apply flex flex-row justify-between items-center px-40 text-grey-700
+}
+
+.bottom-footer-icons {
+  @apply flex flex-row items-center
+}
