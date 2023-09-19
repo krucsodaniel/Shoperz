@@ -16,7 +16,7 @@ jobs:
         uses: morrisoncole/pr-lint-action@v1.7.0
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          title-regex: '^(SH-[0-9]+|feature|fix|hotfix|custom):\\s.*'
+          title-regex: '^(SH-[0-9]+|feature|bugfix|hotfix|custom):\s.*'
           on-failed-regex-fail-action: true
           on-failed-regex-request-changes: true
           on-failed-regex-create-review: true
