@@ -36,6 +36,7 @@ import {
   ProductsManipulationService,
   CartService,
   CartFacadeService,
+  ToastFacadeService,
 } from './services';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -100,6 +101,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ProductsManipulationService,
     CartService,
     CartFacadeService,
+    ToastFacadeService,
   ],
 })
 export class SharedModule {
