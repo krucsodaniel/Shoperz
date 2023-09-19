@@ -20,5 +20,5 @@ jobs:
           on-failed-regex-fail-action: true
           on-failed-regex-request-changes: true
           on-failed-regex-create-review: true
-          on-failed-regex-comment: '⛔ The pull request title does not match the expected pattern: `%regex%`'
+          on-failed-regex-comment: '⛔ PR title does not match the expected pattern: `%regex%`'
           on-succeeded-regex-dismiss-review-comment: '🙌 PR title check passed successfully'
