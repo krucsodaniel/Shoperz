@@ -44,7 +44,7 @@ function getSvgFiles(dirPath, arrayOfFiles) {
 const svgFiles = getSvgFiles(ICONS_PATH);
 
 /* Add SVG files to sprite */
-svgFiles.forEach(svgFile => {
+svgFiles.forEach((svgFile) => {
   const svgPath = path.relative(ICONS_PATH, svgFile);
 
   spriter.add(
@@ -55,7 +55,7 @@ svgFiles.forEach(svgFile => {
 });
 
 /* Compile the sprite */
-spriter.compile((error, result, data) => {
+spriter.compile((error, result) => {
   const destFolder = path.dirname(path.join(spriter.config.dest, SVG_SPRITE_FILENAME));
 
   /* Create the destination folder if it doesn't exist */
