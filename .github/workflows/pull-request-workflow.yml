@@ -1,0 +1,18 @@
+name: PR workflow
+
+on:
+  pull_request:
+    branches: [ 'master', 'develop', 'feature/*', 'SH-*' ]
+    types: [ opened, synchronize ]
+
+jobs:
+  lint:
+    uses: ./.github/workflows/linter.yml
+
+  unit-tests:
+    needs: [ lint ]
+    uses: ./.github/workflows/unit-tests.yml
+
+  build:
+    needs: [ lint, unit-tests ]
+    uses: ./.github/workflows/build.yml

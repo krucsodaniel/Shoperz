@@ -41,7 +41,7 @@ export class ProductPageComponent implements OnInit {
     this.product$ = this.productFacadeService.getSingleProduct(this.productId);
 
     this.cdr.detectChanges();
-  };
+  }
 
   choosePicture(productPicture: string): void {
     this.selectedPicture = productPicture;

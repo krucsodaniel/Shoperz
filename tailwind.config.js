@@ -75,7 +75,7 @@ module.exports = {
         'size-40': pxToRem(40),
       },
       inset: {
-        15: '15%',
+        '15': '15%',
       },
       maxWidth: {
         '68': pxToRem(272),
@@ -86,10 +86,6 @@ module.exports = {
         '75': pxToRem(300),
       }
     },
-    fontFamily: {
-
-    }
   },
-  plugins: [],
 }
 
