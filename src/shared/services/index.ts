@@ -7,4 +7,4 @@ export * from './brand';
 export * from './product';
 export * from './category';
 export * from './cart';
-export * from './toast-facade.service';
+export * from './toast.service';

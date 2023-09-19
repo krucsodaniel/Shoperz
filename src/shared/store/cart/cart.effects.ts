@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CartService, ToastFacadeService } from '../../services';
+import { CartService, ToastService } from '../../services';
 import { ICartItem } from '../../models';
 import { CartActions } from './cart.actions';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 
 @Injectable()
@@ -28,11 +28,11 @@ export class CartEffects {
         return this.cartService.addProductToCart(action.id, action.amount)
           .pipe(
             map((cartItem: ICartItem) => {
-              this.toastFacadeService.productAddedToCartMessage();
+              this.toastFacadeService.showToastMessage('productAddedToCart');
               return CartActions.productAddedToCart({ cartItem });
             }),
             catchError((error) => {
-              this.toastFacadeService.productIsAlreadyInCartMessage();
+              this.toastFacadeService.showToastMessage('productAlreadyInCart');
               return of(CartActions.errorCart({ error }));
             })
           );
@@ -46,13 +46,9 @@ export class CartEffects {
       switchMap((action) => {
         return this.cartService.updateCart(action.id, action.amount)
           .pipe(
-            map((cartItem: ICartItem) => {
-              this.toastFacadeService.productAmountUpdatedMessage();
-              return CartActions.productAmountUpdated({ cartItem });
-            }),
-            catchError((error) =>
-              of(CartActions.errorCart({ error }))
-            )
+            map((cartItem: ICartItem) => CartActions.productAmountUpdated({ cartItem })),
+            tap(() => this.toastFacadeService.showToastMessage('productAmountUpdated')),
+            catchError((error) => of(CartActions.errorCart({ error })))
           );
       })
     )
@@ -66,13 +62,9 @@ export class CartEffects {
 
         return this.cartService.removeProductFromCartById(id)
           .pipe(
-            map(() => {
-              this.toastFacadeService.productRemovedFromCartMessage();
-              return CartActions.productRemovedFromCart({ id });
-            }),
-            catchError((error) =>
-              of(CartActions.errorCart({ error }))
-            )
+            map(() => CartActions.productRemovedFromCart({ id })),
+            tap(() => this.toastFacadeService.showToastMessage('productRemovedFromCart')),
+            catchError((error) => of(CartActions.errorCart({ error })))
           );
       })
     )
@@ -81,6 +73,6 @@ export class CartEffects {
   constructor(
     private actions$: Actions,
     private cartService: CartService,
-    private toastFacadeService: ToastFacadeService,
+    private toastFacadeService: ToastService,
   ) {}
 }
