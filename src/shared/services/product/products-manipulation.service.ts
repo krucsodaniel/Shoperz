@@ -14,5 +14,5 @@ export class ProductsManipulationService {
   getProducts(): Observable<ICalculatedProduct[]> {
     return this.filterFacadeService.getManipulatedProducts()
       .pipe(filter(Boolean));
-  };
+  }
 }

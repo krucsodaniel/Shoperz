@@ -1,0 +1,24 @@
+name: PR title validation
+
+on:
+  pull_request:
+    types: [ opened, edited, reopened ]
+
+jobs:
+  pr-title-check:
+    runs-on: ubuntu-latest
+
+    # Ignore checking for dependabot
+    if: ${{ github.actor != 'dependabot[bot]' }}
+
+    steps:
+      - name: '🔎 Check pull request title'
+        uses: morrisoncole/pr-lint-action@v1.7.0
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          title-regex: '^(SH-[0-9]+|feature|bugfix|hotfix|custom):\s.*'
+          on-failed-regex-fail-action: true
+          on-failed-regex-request-changes: true
+          on-failed-regex-create-review: true
+          on-failed-regex-comment: '⛔ PR title does not match the expected pattern: `%regex%`'
+          on-succeeded-regex-dismiss-review-comment: '🙌 PR title check passed successfully'
