@@ -1,10 +1,4 @@
-.footer {
-  @apply flex flex-row px-40 py-12 text-grey-700
-}
 
-.footer-info {
-  @apply flex flex-col justify-between h-100 w-2/5
-}
 
 .footer-categories,
 .footer-useful-links,
@@ -12,7 +6,6 @@
   @apply w-1/5
 }
 
-.footer-info-title,
 .footer-categories-title,
 .footer-useful-links-title,
 .footer-customer-service-title {
@@ -20,21 +13,8 @@
 }
 
 .footer-categories-title,
-.footer-useful-links-title,
-.footer-customer-service-title {
+{
   @apply py-5
-}
-
-.footer-links {
-  @apply capitalize leading-10
-}
-
-.footer-info-icons {
-  @apply flex flex-row
-}
-
-.footer-info-icon {
-  @apply mr-6
 }
 
 .bottom-footer {

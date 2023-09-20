@@ -1,82 +1,86 @@
-<footer>
-  <div class="footer-info">
+<footer class="flex px-40 py-12 text-grey-700">
+  <div class="flex flex-col justify-between h-100 w-2/5">
     <svg-icon [src]="'shoperz-logo'"></svg-icon>
+
     <div>
-      <h5 class="footer-info-title">headquarters</h5>
+      <span class="text-lg font-medium text-grey-900">Headquarters</span>
+
       <p>Presei Square No45, Bucharest - 099455</p>
     </div>
+
     <div>
-      <h5 class="footer-info-title">email</h5>
+      <span class="text-lg font-medium text-grey-900">Email</span>
+
       <p>contact@shoperz.com</p>
     </div>
+
     <div>
-      <h5 class="footer-info-title">telephone</h5>
+      <span class="text-lg font-medium text-grey-900">Telephone</span>
+
       <p>(+40) 987 123 654</p>
     </div>
-    <div class="footer-info-icons">
-      <a class="footer-info-icon"
-         href="https://www.facebook.com/"
-         target="_blank">
+
+    <div class="flex flex-row gap-x-6">
+      <a class="footer-info-icon" href="https://www.facebook.com/" target="_blank">
         <svg-icon [src]="'facebook-logo'"></svg-icon>
       </a>
-      <a class="footer-info-icon"
-         href="https://www.instagram.com/"
-         target="_blank">
-        <svg-icon [src]="'instagram-logo'" class="mr-6"></svg-icon>
+
+      <a class="footer-info-icon" href="https://www.instagram.com/" target="_blank">
+        <svg-icon [src]="'instagram-logo'"></svg-icon>
       </a>
-      <a class="footer-info-icon"
-         href="https://www.linkedin.com/"
-         target="_blank">
-        <svg-icon [src]="'linkedin-logo'" class="mr-6"></svg-icon>
+
+      <a class="footer-info-icon" href="https://www.linkedin.com/" target="_blank">
+        <svg-icon [src]="'linkedin-logo'"></svg-icon>
       </a>
-      <a class="footer-info-icon"
-         href="https://twitter.com/?lang=en"
-         target="_blank">
-        <svg-icon [src]="'twitter-logo'" class="mr-6"></svg-icon>
+
+      <a class="footer-info-icon" href="https://twitter.com/?lang=en" target="_blank">
+        <svg-icon [src]="'twitter-logo'"></svg-icon>
       </a>
-      <a class="footer-info-icon"
-         href="https://www.youtube.com/"
-         target="_blank">
-        <svg-icon [src]="'youtube-logo'" class="mr-6"></svg-icon>
+
+      <a class="footer-info-icon" href="https://www.youtube.com/" target="_blank">
+        <svg-icon [src]="'youtube-logo'" ></svg-icon>
       </a>
     </div>
   </div>
 
   <div class="footer-categories">
-    <p class="footer-categories-title">categories</p>
+    <span class="footer-categories-title">categories</span>
+
     <ul>
       <li *ngFor="let link of categoriesLinks"
+          class="leading-10"
           [queryParams]="link.queryParams"
-          [routerLink]="link.routerLink"
-          class="footer-links">
+          [routerLink]="link.routerLink">
         {{ link.title }}
       </li>
     </ul>
-
   </div>
+
   <div class="footer-useful-links">
-    <p class="footer-useful-links-title">useful links</p>
+    <span class="py-5">Useful Links</span>
+
     <ul>
-      <li *ngFor="let link of usefulLinks"
-          class="footer-links">
-        <a routerLink="">{{ link }}</a>
+      <li *ngFor="let link of usefulLinks" class="leading-10">
+        <a>{{ link }}</a>
       </li>
     </ul>
   </div>
+
   <div class="footer-customer-service">
-    <p class="footer-customer-service-title">customer service</p>
-    <ul>
-      <li *ngFor="let link of customerServiceLinks"
-          class="footer-links">
-        <a routerLink="">{{ link }}</a></li>
+    <span class="py-5">Customer Service</span>
+
+    <ul><li *ngFor="let link of customerServiceLinks"
+          class="leading-10">
+        <a>{{ link }}</a>
+        </li>
     </ul>
   </div>
 </footer>
 
 <div class="bottom-footer">
-  <p>&copy; <strong>Shoperz</strong> {{ year }} - All Rights Reserved</p>
-  <div
-    class="bottom-footer-icons">
+  <p>&copy; <span class="font-bold">Shoperz</span> 2023 - All Rights Reserved</p>
+
+  <div class="flex flex-row items-center">
     <svg-icon [src]="'visa-logo'"></svg-icon>
     <svg-icon [src]="'mastercard-logo'"></svg-icon>
     <svg-icon [src]="'paypal-logo'"></svg-icon>

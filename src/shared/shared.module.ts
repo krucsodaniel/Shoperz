@@ -15,7 +15,7 @@ import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchFacade
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ReactiveFormsModule } from '@angular/forms';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { productReducer, productsFeatureKey } from './store/products/product.reducer';
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
