@@ -14,21 +14,31 @@
       <p>(+40) 987 123 654</p>
     </div>
     <div class="footer-info-icons">
-      <svg-icon class="mr-6" [src]="'facebook-logo'"></svg-icon>
-      <svg-icon class="mr-6" [src]="'instagram-logo'"></svg-icon>
-      <svg-icon class="mr-6" [src]="'linkedin-logo'"></svg-icon>
-      <svg-icon class="mr-6" [src]="'twitter-logo'"></svg-icon>
-      <svg-icon class="mr-6" [src]="'youtube-logo'"></svg-icon>
+      <a href="https://www.facebook.com/" target="_blank" class="footer-info-icon">
+        <svg-icon [src]="'facebook-logo'"></svg-icon>
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" class="footer-info-icon">
+        <svg-icon class="mr-6" [src]="'instagram-logo'"></svg-icon>
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank" class="footer-info-icon">
+        <svg-icon class="mr-6" [src]="'linkedin-logo'"></svg-icon>
+      </a>
+      <a href="https://twitter.com/?lang=en" target="_blank" class="footer-info-icon">
+        <svg-icon class="mr-6" [src]="'twitter-logo'"></svg-icon>
+      </a>
+      <a href="https://www.youtube.com/" target="_blank" class="footer-info-icon">
+        <svg-icon class="mr-6" [src]="'youtube-logo'"></svg-icon>
+      </a>
     </div>
   </div>
 
   <div class="footer-categories">
     <p class="footer-categories-title">categories</p>
-<ul>
-  <li *ngFor="let link of categoriesLinks" class="footer-links"
-       [routerLink]="link.routerLink" [queryParams]="link.queryParams">{{ link.title }}
-  </li>
-</ul>
+    <ul>
+      <li *ngFor="let link of categoriesLinks" class="footer-links"
+          [routerLink]="link.routerLink" [queryParams]="link.queryParams">{{ link.title }}
+      </li>
+    </ul>
 
   </div>
   <div class="footer-useful-links">

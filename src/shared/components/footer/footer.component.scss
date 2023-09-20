@@ -33,6 +33,10 @@
   @apply flex flex-row
 }
 
+.footer-info-icon {
+  @apply mr-6
+}
+
 .bottom-footer {
   @apply flex flex-row justify-between items-center px-40 text-grey-700
 }
