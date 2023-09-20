@@ -5,6 +5,7 @@ import { ICartItem } from '../../models';
 import { CartActions } from './cart.actions';
 import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class CartEffects {
@@ -27,12 +28,10 @@ export class CartEffects {
       switchMap((action) => {
         return this.cartService.addProductToCart(action.id, action.amount)
           .pipe(
-            map((cartItem: ICartItem) => {
-              this.toastFacadeService.showToastMessage('productAddedToCart');
-              return CartActions.productAddedToCart({ cartItem });
-            }),
+            map((cartItem: ICartItem) => CartActions.productAddedToCart({ cartItem })),
+            tap(() => this.toastService.showSuccessToast(this.translate.instant('cart.productAddedToCart'))),
             catchError((error) => {
-              this.toastFacadeService.showToastMessage('productAlreadyInCart');
+              this.toastService.showWarningToast(this.translate.instant('cart.productIsAlreadyInCart'));
               return of(CartActions.errorCart({ error }));
             })
           );
@@ -47,7 +46,7 @@ export class CartEffects {
         return this.cartService.updateCart(action.id, action.amount)
           .pipe(
             map((cartItem: ICartItem) => CartActions.productAmountUpdated({ cartItem })),
-            tap(() => this.toastFacadeService.showToastMessage('productAmountUpdated')),
+            tap(() => this.toastService.showInfoToast(this.translate.instant('cart.productAmountUpdated'))),
             catchError((error) => of(CartActions.errorCart({ error })))
           );
       })
@@ -63,7 +62,7 @@ export class CartEffects {
         return this.cartService.removeProductFromCartById(id)
           .pipe(
             map(() => CartActions.productRemovedFromCart({ id })),
-            tap(() => this.toastFacadeService.showToastMessage('productRemovedFromCart')),
+            tap(() => this.toastService.showErrorToast(this.translate.instant('cart.productRemovedFromCart'))),
             catchError((error) => of(CartActions.errorCart({ error })))
           );
       })
@@ -73,6 +72,7 @@ export class CartEffects {
   constructor(
     private actions$: Actions,
     private cartService: CartService,
-    private toastFacadeService: ToastService,
+    private toastService: ToastService,
+    private translate: TranslateService,
   ) {}
 }

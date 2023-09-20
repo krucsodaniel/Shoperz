@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class ToastService {
@@ -8,25 +7,21 @@ export class ToastService {
     positionClass: 'toast-bottom-center',
   };
 
-  constructor(private toastr: ToastrService, private translate: TranslateService) {}
+  constructor(private toastr: ToastrService) {}
 
-  showToastMessage(type: string): void {
-    switch (type) {
-      case 'productAddedToCart':
-        this.toastr.success(this.translate.instant('cart.productAddedToCart'), '', this.toastConfigObject);
-        return;
+  showSuccessToast(message: string): void {
+    this.toastr.success(message, '', this.toastConfigObject);
+  }
 
-      case 'productAmountUpdated':
-        this.toastr.info(this.translate.instant('cart.productAmountUpdated'), '', this.toastConfigObject);
-        return;
+  showInfoToast(message: string): void {
+    this.toastr.info(message, '', this.toastConfigObject);
+  }
 
-      case 'productRemovedFromCart':
-        this.toastr.error(this.translate.instant('cart.productRemovedFromCart'), '', this.toastConfigObject);
-        return;
+  showWarningToast(message: string): void {
+    this.toastr.warning(message, '', this.toastConfigObject);
+  }
 
-      case 'productAlreadyInCart':
-        this.toastr.warning(this.translate.instant('cart.productIsAlreadyInCart'), '', this.toastConfigObject);
-        return;
-    }
+  showErrorToast(message: string): void {
+    this.toastr.error(message, '', this.toastConfigObject);
   }
 }
