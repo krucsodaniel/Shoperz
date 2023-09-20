@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
   categoriesLinks = [
@@ -48,7 +47,7 @@ export class FooterComponent {
       queryParams: { categories: 'categoryId8' }
     },
   ];
-  usefulLinks = ['about', 'contact', 'wishlist', 'compare', 'FAQ', 'terms & conditions', 'privacy policy', 'cookie policy'];
-  customerServiceLinks = ['my account', 'my cart', 'track order', 'returns & exchanges', 'repair services', 'support'];
+  usefulLinks = ['About', 'Contact', 'Wishlist', 'Compare', 'FAQ', 'Terms & Conditions', 'Privacy policy', 'Cookie Policy'];
+  customerServiceLinks = ['My Account', 'My Cart', 'Track Order', 'Returns & Exchanges', 'Repair Services', 'Support'];
 
 }

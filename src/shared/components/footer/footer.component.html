@@ -20,7 +20,7 @@
       <p>(+40) 987 123 654</p>
     </div>
 
-    <div class="flex flex-row gap-x-6">
+    <div class="flex gap-x-6">
       <a class="footer-info-icon" href="https://www.facebook.com/" target="_blank">
         <svg-icon [src]="'facebook-logo'"></svg-icon>
       </a>
@@ -43,8 +43,8 @@
     </div>
   </div>
 
-  <div class="footer-categories">
-    <span class="footer-categories-title">categories</span>
+  <div class="w-1/5">
+    <span class="text-lg font-medium text-grey-900 py-6 block">Categories</span>
 
     <ul>
       <li *ngFor="let link of categoriesLinks"
@@ -56,8 +56,8 @@
     </ul>
   </div>
 
-  <div class="footer-useful-links">
-    <span class="py-5">Useful Links</span>
+  <div class="w-1/5">
+    <span class="text-lg font-medium text-grey-900 py-6 block">Useful Links</span>
 
     <ul>
       <li *ngFor="let link of usefulLinks" class="leading-10">
@@ -66,8 +66,8 @@
     </ul>
   </div>
 
-  <div class="footer-customer-service">
-    <span class="py-5">Customer Service</span>
+  <div class="w-1/5">
+    <span class="text-lg font-medium text-grey-900 py-6 block">Customer Service</span>
 
     <ul><li *ngFor="let link of customerServiceLinks"
           class="leading-10">
@@ -77,10 +77,10 @@
   </div>
 </footer>
 
-<div class="bottom-footer">
+<div class="flex justify-between items-center px-40 text-grey-700">
   <p>&copy; <span class="font-bold">Shoperz</span> 2023 - All Rights Reserved</p>
 
-  <div class="flex flex-row items-center">
+  <div class="flex items-center">
     <svg-icon [src]="'visa-logo'"></svg-icon>
     <svg-icon [src]="'mastercard-logo'"></svg-icon>
     <svg-icon [src]="'paypal-logo'"></svg-icon>
