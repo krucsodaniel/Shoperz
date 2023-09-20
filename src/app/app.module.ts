@@ -13,6 +13,8 @@ import { Route } from '@shared-module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
@@ -34,6 +36,8 @@ const routes: Routes = [
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   bootstrap: [AppComponent]
 })

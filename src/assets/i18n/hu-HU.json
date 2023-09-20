@@ -27,7 +27,11 @@
     "price": "Ár",
     "quantity": "Mennyiség",
     "addAmount": "Adjon meg mennyiséget",
-    "addToCart": "Kosárba"
+    "addToCart": "Kosárba",
+    "productIsAlreadyInCart": "A termék már a kosárban van.",
+    "productAddedToCart": "Termék sikeresen hozzáadva",
+    "productAmountUpdated": "Termék mennyiség frissítve",
+    "productRemovedFromCart": "Termék eltávolítva a kosárból"
   },
   "filter": {
     "all": "Összes",
