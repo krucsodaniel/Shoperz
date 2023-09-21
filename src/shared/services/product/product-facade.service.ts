@@ -3,7 +3,6 @@ import {
   BrandFacadeService,
   CartFacadeService,
   CategoryFacadeService,
-  ProductService,
   SearchFacadeService
 } from '../../services';
 import { FilterService, FilterFacadeService, SortFacadeService } from 'src/app/pages/products/services';
@@ -17,7 +16,6 @@ import { CartActions } from '../../store/cart/cart.actions';
 @Injectable()
 export class ProductFacadeService {
   constructor(
-    private productService: ProductService,
     private categoryFacadeService: CategoryFacadeService,
     private brandFacadeService: BrandFacadeService,
     private filterService: FilterService,

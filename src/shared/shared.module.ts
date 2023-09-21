@@ -63,14 +63,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects]),
     RouterLinkActive,
   ],
-  exports: [
-    NavbarComponent,
-    HeaderComponent,
-    SvgIconComponent,
-    SearchbarComponent,
-    LoaderComponent,
-    FooterComponent,
-  ],
   declarations: [
     NavbarComponent,
     HeaderComponent,
@@ -104,6 +96,14 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ProductsManipulationService,
     CartService,
     CartFacadeService,
+  ],
+  exports: [
+    NavbarComponent,
+    HeaderComponent,
+    SvgIconComponent,
+    SearchbarComponent,
+    LoaderComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule {
