@@ -1,53 +1,113 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Route } from "../../enums";
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
 })
 export class FooterComponent {
-  categoriesLinks = [
+  readonly redirectUrls = environment.redirectUrls;
+  readonly categoriesLinks = [
     {
       title: 'TV & audio',
-      routerLink: '/products',
+      routerLink: `/${  Route.products  }`,
       queryParams: { categories: 'categoryId1' }
     },
     {
       title: 'Smartphones',
-      routerLink: '/products',
+      routerLink: `/${  Route.products  }`,
       queryParams: { categories: 'categoryId2' }
     },
     {
-      title: 'Laptops & PCs',
-      routerLink: '/products',
+      title: 'Laptops & PC',
+      routerLink: `/${  Route.products  }`,
       queryParams: { categories: 'categoryId3' }
     },
     {
       title: 'Gadgets',
-      routerLink: '/products',
+      routerLink: `/${  Route.products  }`,
       queryParams: { categories: 'categoryId4' }
     },
     {
       title: 'Photo & Video',
-      routerLink: '/products',
+      routerLink: `/${  Route.products  }`,
       queryParams: { categories: 'categoryId5' }
     },
     {
       title: 'Gifts',
-      routerLink: '/products',
+      routerLink: `/${  Route.products  }`,
       queryParams: { categories: 'categoryId6' }
     },
     {
       title: 'Books',
-      routerLink: '/products',
+      routerLink: `/${  Route.products  }`,
       queryParams: { categories: 'categoryId7' }
     },
     {
       title: 'Toys',
-      routerLink: '/products',
+      routerLink: `/${  Route.products  }`,
       queryParams: { categories: 'categoryId8' }
     },
   ];
-  usefulLinks = ['About', 'Contact', 'Wishlist', 'Compare', 'FAQ', 'Terms & Conditions', 'Privacy policy', 'Cookie Policy'];
-  customerServiceLinks = ['My Account', 'My Cart', 'Track Order', 'Returns & Exchanges', 'Repair Services', 'Support'];
+  readonly usefulLinks = [
+    {
+      title: 'about',
+      routerLink: `/${ Route.about }`,
+    },
+    {
+      title: 'contact',
+      routerLink: `/${ Route.contact }`,
+    },
+    {
+      title: 'wishlist',
+      routerLink: `/${ Route.wishlist }`,
+    },
+    {
+      title: 'compare',
+      routerLink: `/${ Route.compare }`,
+    },
+    {
+      title: 'faq',
+      routerLink: `/${ Route.faq }`,
+    },
+    {
+      title: 'terms & conditions',
+      routerLink: `/${ Route.terms }`,
+    }, {
+      title: 'privacy policy',
+      routerLink: `/${ Route.privacyPolicy }`,
+    }, {
+      title: 'cookie policy',
+      routerLink: `/${ Route.cookiePolicy }`,
+    },
+  ]
+  readonly customerServiceLinks = [
+    {
+      title: 'my account',
+      routerLink: `/${ Route.account }`,
+    },
+    {
+      title: 'my cart',
+      routerLink: `/${ Route.cart }`,
+    },
+    {
+      title: 'track order',
+      routerLink: `/${ Route.trackOrder }`,
+    },
+    {
+      title: 'returns & exchanges',
+      routerLink: `/${ Route.returns }`,
+    }, {
+      title: 'repair services',
+      routerLink: `/${ Route.repairServices }`,
+    }, {
+      title: 'support',
+      routerLink: `/${ Route.support }`,
+    },
+  ];
 
+  buildTranslationKey(link: string, relativeKey: string): string {
+    return `sharedComponents.footer.${link}.${relativeKey.toLowerCase()}`;
+  }
 }

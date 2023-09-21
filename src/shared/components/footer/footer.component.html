@@ -3,82 +3,101 @@
     <svg-icon [src]="'shoperz-logo'"></svg-icon>
 
     <div>
-      <span class="text-lg font-medium text-grey-900">Headquarters</span>
+      <span class="text-lg font-medium text-grey-900">
+        {{ buildTranslationKey('titles', 'headquarters') | translate }}
+      </span>
 
       <p>Presei Square No45, Bucharest - 099455</p>
     </div>
 
     <div>
-      <span class="text-lg font-medium text-grey-900">Email</span>
+      <span class="text-lg font-medium text-grey-900">
+        {{ buildTranslationKey('titles', 'email') | translate }}
+      </span>
 
-      <p>contact@shoperz.com</p>
+      <a class="block" href="mailto:contact@shoperz.com" target="_top">contact@shoperz.com</a>
     </div>
 
     <div>
-      <span class="text-lg font-medium text-grey-900">Telephone</span>
+      <span class="text-lg font-medium text-grey-900">
+        {{ buildTranslationKey('titles', 'telephone') | translate }}
+      </span>
 
       <p>(+40) 987 123 654</p>
     </div>
 
     <div class="flex gap-x-6">
-      <a class="footer-info-icon" href="https://www.facebook.com/" target="_blank">
+      <a class="footer-info-icon" [href]="redirectUrls.facebookUrl" target="_blank">
         <svg-icon [src]="'facebook-logo'"></svg-icon>
       </a>
 
-      <a class="footer-info-icon" href="https://www.instagram.com/" target="_blank">
+      <a class="footer-info-icon" [href]="redirectUrls.instagramUrl" target="_blank">
         <svg-icon [src]="'instagram-logo'"></svg-icon>
       </a>
 
-      <a class="footer-info-icon" href="https://www.linkedin.com/" target="_blank">
+      <a class="footer-info-icon" [href]="redirectUrls.linkedinUrl" target="_blank">
         <svg-icon [src]="'linkedin-logo'"></svg-icon>
       </a>
 
-      <a class="footer-info-icon" href="https://twitter.com/?lang=en" target="_blank">
+      <a class="footer-info-icon" [href]="redirectUrls.twitterUrl" target="_blank">
         <svg-icon [src]="'twitter-logo'"></svg-icon>
       </a>
 
-      <a class="footer-info-icon" href="https://www.youtube.com/" target="_blank">
-        <svg-icon [src]="'youtube-logo'" ></svg-icon>
+      <a class="footer-info-icon" [href]="redirectUrls.youtubeUrl" target="_blank">
+        <svg-icon [src]="'youtube-logo'"></svg-icon>
       </a>
     </div>
   </div>
 
   <div class="w-1/5">
-    <span class="text-lg font-medium text-grey-900 py-6 block">Categories</span>
+    <span
+      class="text-lg font-medium text-grey-900 py-6 block">
+      {{ buildTranslationKey('titles', 'categories') | translate }}
+    </span>
 
     <ul>
       <li *ngFor="let link of categoriesLinks"
-          class="leading-10"
+          class="leading-10 hover:font-bold"
           [queryParams]="link.queryParams"
           [routerLink]="link.routerLink">
-        {{ link.title }}
+        {{ buildTranslationKey('categories', link.title) | translate }}
       </li>
     </ul>
   </div>
 
   <div class="w-1/5">
-    <span class="text-lg font-medium text-grey-900 py-6 block">Useful Links</span>
+    <span
+      class="text-lg font-medium text-grey-900 py-6 block">
+      {{ buildTranslationKey('titles', 'useful links') | translate }}
+    </span>
 
     <ul>
-      <li *ngFor="let link of usefulLinks" class="leading-10">
-        <a>{{ link }}</a>
+      <li *ngFor="let link of usefulLinks" class="leading-10 hover:font-bold">
+        <a [routerLink]="link.routerLink">
+          {{ buildTranslationKey('usefulLinks', link.title) | translate }}
+        </a>
       </li>
     </ul>
   </div>
 
   <div class="w-1/5">
-    <span class="text-lg font-medium text-grey-900 py-6 block">Customer Service</span>
+    <span class="text-lg font-medium text-grey-900 py-6 block">
+      {{ buildTranslationKey('titles', 'customer service') | translate }}
+    </span>
 
-    <ul><li *ngFor="let link of customerServiceLinks"
-          class="leading-10">
-        <a>{{ link }}</a>
-        </li>
+    <ul>
+      <li *ngFor="let link of customerServiceLinks" class="leading-10 hover:font-bold">
+        <a [routerLink]="link.routerLink">
+          {{ buildTranslationKey('customerService', link.title) | translate }}</a>
+      </li>
     </ul>
   </div>
 </footer>
 
 <div class="flex justify-between items-center px-40 text-grey-700">
-  <p>&copy; <span class="font-bold">Shoperz</span> 2023 - All Rights Reserved</p>
+  <p>&copy; <span class="font-bold">Shoperz</span> 2023 -
+    {{ buildTranslationKey('other', 'all rights reserved') | translate }}
+  </p>
 
   <div class="flex items-center">
     <svg-icon [src]="'visa-logo'"></svg-icon>
