@@ -7,6 +7,47 @@
       "home": "Zuhause",
       "products": "Produkte",
       "faq": "HGF"
+    },
+    "footer": {
+      "categories": {
+        "tv & audio": "Fernsehen und Audio",
+        "smartphones": "Smartphones",
+        "laptops & pc": "Laptops und PCs",
+        "gadgets": "Gadgets",
+        "photo & video": "Foto & Video",
+        "gifts": "Geschenke",
+        "books": "Bücher",
+        "toys": "Spielzeuge"
+      },
+      "usefulLinks": {
+        "about": "Um",
+        "contact": "Kontakt",
+        "wishlist": "Wunschzettel",
+        "compare": "Vergleichen",
+        "FAQ": "FAQ",
+        "terms & conditions": "Geschäftsbedingungen",
+        "privacy policy": "Datenschutzrichtlinie",
+        "Cookie Policy": "Cookie-Richtlinie"
+      },
+      "customerService": {
+        "my account": "Mein Konto",
+        "my cart": "Mein Warenkorb",
+        "track order": "Bestellung verfolgen",
+        "returns & exchanges": "Rückgaben und Umtausch",
+        "repair services": "Reparaturdienste",
+        "support": "Unterstützung"
+      },
+      "titles": {
+        "categories": "Kategorien",
+        "useful links": "Nützliche Links",
+        "customer service": "Kundendienst",
+        "headquarters": "Hauptquartier",
+        "email": "Email",
+        "telephone": "Telefon"
+      },
+      "other": {
+        "all rights reserved": "Alle Rechte vorbehalten"
+      }
     }
   },
   "products": {
