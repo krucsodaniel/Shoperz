@@ -69,7 +69,11 @@
     "price": "Preis",
     "quantity": "Menge",
     "addAmount": "Betrag hinzufügen",
-    "addToCart": "Zum Warenkorb hinzufügen"
+    "addToCart": "Zum Warenkorb hinzufügen",
+    "productIsAlreadyInCart": "Das Produkt befindet sich bereits in Ihrem Einkaufswagen.",
+    "productAddedToCart": "Produkt erfolgreich in den Warenkorb gelegt",
+    "productAmountUpdated": "Produktmenge aktualisiert",
+    "productRemovedFromCart": "Produkt aus dem Warenkorb entfernt"
   },
   "filter": {
     "all": "Alle",
