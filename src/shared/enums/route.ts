@@ -15,5 +15,5 @@ export enum Route {
   trackOrder = 'track-order',
   returns = 'returns-and-exchanges',
   repairServices = 'repair-services',
-  support = 'support'
+  support = 'support',
 }
