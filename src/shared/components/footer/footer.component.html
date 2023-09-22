@@ -75,9 +75,7 @@
 
       <ul>
         <li *ngFor="let link of usefulLinks" class="leading-10 hover:font-bold">
-          <a [routerLink]="link.routerLink">
-            {{ buildTranslationKey('usefulLinks', link.title) | translate }}
-          </a>
+          <a [routerLink]="link.routerLink">{{ buildTranslationKey('usefulLinks', link.title) | translate }}</a>
         </li>
       </ul>
     </div>
