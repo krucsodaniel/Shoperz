@@ -37,6 +37,7 @@ import {
   ProductsManipulationService,
   CartService,
   CartFacadeService,
+  ToastService,
 } from './services';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -96,6 +97,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ProductsManipulationService,
     CartService,
     CartFacadeService,
+    ToastService,
   ],
   exports: [
     NavbarComponent,

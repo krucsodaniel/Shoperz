@@ -69,7 +69,11 @@
     "price": "Price",
     "quantity": "Quantity",
     "addAmount": "Add amount",
-    "addToCart": "Add to Cart"
+    "addToCart": "Add to Cart",
+    "productIsAlreadyInCart": "Product is already in cart.",
+    "productAddedToCart": "Product successfully added to cart",
+    "productAmountUpdated": "Amount in cart updated",
+    "productRemovedFromCart": "Product removed from cart"
   },
   "filter": {
     "all": "All",

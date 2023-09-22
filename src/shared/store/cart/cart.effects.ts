@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CartService, ICartItem } from '@shared-module';
+import { CartService, ToastService } from '../../services';
+import { ICartItem } from '../../models';
 import { CartActions } from './cart.actions';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class CartEffects {
@@ -15,7 +17,7 @@ export class CartEffects {
           .pipe(
             map((cartItems: ICartItem[]) => CartActions.cartInitialized({ cartItems })),
             catchError((error) => of(CartActions.errorCart({ error })))
-          )
+          );
       })
     )
   );
@@ -26,13 +28,13 @@ export class CartEffects {
       switchMap((action) => {
         return this.cartService.addProductToCart(action.id, action.amount)
           .pipe(
-            map((cartItem: ICartItem) =>
-              CartActions.productAddedToCart({ cartItem })
-            ),
-            catchError((error) =>
-              of(CartActions.errorCart({ error }))
-            )
-          )
+            map((cartItem: ICartItem) => CartActions.productAddedToCart({ cartItem })),
+            tap(() => this.toastService.showSuccessToast(this.translate.instant('cart.productAddedToCart'))),
+            catchError((error) => {
+              this.toastService.showWarningToast(this.translate.instant('cart.productIsAlreadyInCart'));
+              return of(CartActions.errorCart({ error }));
+            })
+          );
       })
     )
   );
@@ -43,13 +45,10 @@ export class CartEffects {
       switchMap((action) => {
         return this.cartService.updateCart(action.id, action.amount)
           .pipe(
-            map((cartItem: ICartItem) =>
-              CartActions.productAmountUpdated({ cartItem })
-            ),
-            catchError((error) =>
-              of(CartActions.errorCart({ error }))
-            )
-          )
+            map((cartItem: ICartItem) => CartActions.productAmountUpdated({ cartItem })),
+            tap(() => this.toastService.showInfoToast(this.translate.instant('cart.productAmountUpdated'))),
+            catchError((error) => of(CartActions.errorCart({ error })))
+          );
       })
     )
   );
@@ -62,13 +61,10 @@ export class CartEffects {
 
         return this.cartService.removeProductFromCartById(id)
           .pipe(
-            map(() =>
-              CartActions.productRemovedFromCart({ id })
-            ),
-            catchError((error) =>
-              of(CartActions.errorCart({ error }))
-            )
-          )
+            map(() => CartActions.productRemovedFromCart({ id })),
+            tap(() => this.toastService.showErrorToast(this.translate.instant('cart.productRemovedFromCart'))),
+            catchError((error) => of(CartActions.errorCart({ error })))
+          );
       })
     )
   );
@@ -76,5 +72,7 @@ export class CartEffects {
   constructor(
     private actions$: Actions,
     private cartService: CartService,
+    private toastService: ToastService,
+    private translate: TranslateService,
   ) {}
 }
