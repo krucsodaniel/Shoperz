@@ -53,25 +53,25 @@
     </div>
 
     <div class="w-1/5">
-    <span class="text-lg font-medium text-grey-900 py-6 block">
-      {{ buildTranslationKey('titles', 'categories') | translate }}
-    </span>
+      <span class="text-lg font-medium text-grey-900 py-6 block">
+        {{ buildTranslationKey('titles', 'categories') | translate }}
+      </span>
 
       <ul>
         <li
-            *ngFor="let link of categoriesLinks"
-            class="leading-10 hover:font-bold"
-            [queryParams]="link.queryParams"
-            [routerLink]="link.routerLink">
-            {{ buildTranslationKey('categories', link.title) | translate }}
+          *ngFor="let link of categoriesLinks"
+          [queryParams]="link.queryParams"
+          [routerLink]="link.routerLink"
+          class="leading-10 hover:font-bold">
+          {{ buildTranslationKey('categories', link.title) | translate }}
         </li>
       </ul>
     </div>
 
     <div class="w-1/5">
-    <span class="text-lg font-medium text-grey-900 py-6 block">
-      {{ buildTranslationKey('titles', 'useful links') | translate }}
-    </span>
+      <span class="text-lg font-medium text-grey-900 py-6 block">
+        {{ buildTranslationKey('titles', 'useful links') | translate }}
+      </span>
 
       <ul>
         <li *ngFor="let link of usefulLinks" class="leading-10 hover:font-bold">
@@ -81,9 +81,9 @@
     </div>
 
     <div class="w-1/5">
-    <span class="text-lg font-medium text-grey-900 py-6 block">
-      {{ buildTranslationKey('titles', 'customer service') | translate }}
-    </span>
+      <span class="text-lg font-medium text-grey-900 py-6 block">
+        {{ buildTranslationKey('titles', 'customer service') | translate }}
+      </span>
 
       <ul>
         <li *ngFor="let link of customerServiceLinks" class="leading-10 hover:font-bold">
