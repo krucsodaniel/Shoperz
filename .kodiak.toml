@@ -1,0 +1,9 @@
+# .kodiak.toml
+# docs: https://kodiakhq.com/docs/config-reference
+version = 1
+
+[merge]
+method = "squash"
+
+[update]
+autoupdate_label = "autoupdate"
