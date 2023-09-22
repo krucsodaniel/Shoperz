@@ -9,7 +9,7 @@ import {
   LoaderComponent,
   CartIconComponent,
   BadgeComponent,
-  FooterComponent
+  FooterComponent,
 } from './components';
 import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchFacadeService, } from './services';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
