@@ -9,12 +9,13 @@ import {
   LoaderComponent,
   CartIconComponent,
   BadgeComponent,
+  FooterComponent,
 } from './components';
 import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchFacadeService, } from './services';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { productReducer, productsFeatureKey } from './store/products/product.reducer';
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
@@ -61,13 +62,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     StoreModule.forFeature(categoriesFeatureKey, categoryReducer),
     StoreModule.forFeature(cartFeatureKey, cartReducer),
     EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects]),
-  ],
-  exports: [
-    NavbarComponent,
-    HeaderComponent,
-    SvgIconComponent,
-    SearchbarComponent,
-    LoaderComponent,
+    RouterLinkActive,
   ],
   declarations: [
     NavbarComponent,
@@ -77,6 +72,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     LoaderComponent,
     CartIconComponent,
     BadgeComponent,
+    FooterComponent,
   ],
   providers: [
     SpriteLoaderService,
@@ -102,6 +98,14 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     CartService,
     CartFacadeService,
     ToastService,
+  ],
+  exports: [
+    NavbarComponent,
+    HeaderComponent,
+    SvgIconComponent,
+    SearchbarComponent,
+    LoaderComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule {

@@ -7,6 +7,48 @@
       "home": "Home",
       "products": "Products",
       "faq": "FAQ"
+    },
+    "footer": {
+      "categories": {
+        "tv & audio": "TV & Audio",
+        "smartphones": "Smartphones",
+        "laptops & pc": "Laptops & PC",
+        "gadgets": "Gadgets",
+        "photo & video": "Photo & Video",
+        "gifts": "Gifts",
+        "books": "Books",
+        "toys": "Toys"
+      },
+      "usefulLinks": {
+        "about": "About",
+        "contact": "Contact",
+        "wishlist": "Wishlist",
+        "compare": "Compare",
+        "faq": "FAQ",
+        "terms & conditions": "Terms & Conditions",
+        "privacy policy": "Privacy Policy",
+        "cookie policy": "Cookie Policy"
+      },
+      "customerService": {
+        "my account": "My Account",
+        "my cart": "My Cart",
+        "track order": "Track Order",
+        "returns & exchanges": "Returns & Exchanges",
+        "repair services": "Repair Services",
+        "support": "Support"
+      },
+      "titles": {
+        "categories": "Categories",
+        "useful links": "Useful Links",
+        "customer service": "Customer Service",
+        "headquarters": "Headquarters",
+        "email": "Email",
+        "telephone": "Telephone"
+      },
+      "other": {
+        "presei square no45, bucharest - 099455": "Presei Square No45, Bucharest - 099455",
+        "all rights reserved": "All Rights Reserved"
+      }
     }
   },
   "products": {
