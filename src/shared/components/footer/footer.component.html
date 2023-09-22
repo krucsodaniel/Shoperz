@@ -1,6 +1,5 @@
 <footer>
   <div class="flex px-40 py-12 text-grey-700">
-
     <div class="flex flex-col justify-between h-100 w-2/5">
       <svg-icon [src]="'shoperz-logo'"></svg-icon>
 
@@ -64,7 +63,7 @@
             class="leading-10 hover:font-bold"
             [queryParams]="link.queryParams"
             [routerLink]="link.routerLink">
-          {{ buildTranslationKey('categories', link.title) | translate }}
+            {{ buildTranslationKey('categories', link.title) | translate }}
         </li>
       </ul>
     </div>
