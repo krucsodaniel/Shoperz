@@ -1,53 +1,54 @@
-import { Component } from '@angular/core';
-import { Route } from "../../enums";
-import { environment } from "../../../environments/environment";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Route } from '../../enums';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
   readonly redirectUrls = environment.redirectUrls;
   readonly categoriesLinks = [
     {
       title: 'TV & audio',
-      routerLink: `/${  Route.products  }`,
-      queryParams: { categories: 'categoryId1' }
+      routerLink: `/${ Route.products }`,
+      queryParams: { categories: 'categoryId1' },
     },
     {
       title: 'Smartphones',
-      routerLink: `/${  Route.products  }`,
-      queryParams: { categories: 'categoryId2' }
+      routerLink: `/${ Route.products }`,
+      queryParams: { categories: 'categoryId2' },
     },
     {
       title: 'Laptops & PC',
-      routerLink: `/${  Route.products  }`,
-      queryParams: { categories: 'categoryId3' }
+      routerLink: `/${ Route.products }`,
+      queryParams: { categories: 'categoryId3' },
     },
     {
       title: 'Gadgets',
-      routerLink: `/${  Route.products  }`,
-      queryParams: { categories: 'categoryId4' }
+      routerLink: `/${ Route.products }`,
+      queryParams: { categories: 'categoryId4' },
     },
     {
       title: 'Photo & Video',
-      routerLink: `/${  Route.products  }`,
-      queryParams: { categories: 'categoryId5' }
+      routerLink: `/${ Route.products }`,
+      queryParams: { categories: 'categoryId5' },
     },
     {
       title: 'Gifts',
-      routerLink: `/${  Route.products  }`,
-      queryParams: { categories: 'categoryId6' }
+      routerLink: `/${ Route.products }`,
+      queryParams: { categories: 'categoryId6' },
     },
     {
       title: 'Books',
-      routerLink: `/${  Route.products  }`,
-      queryParams: { categories: 'categoryId7' }
+      routerLink: `/${ Route.products }`,
+      queryParams: { categories: 'categoryId7' },
     },
     {
       title: 'Toys',
-      routerLink: `/${  Route.products  }`,
-      queryParams: { categories: 'categoryId8' }
+      routerLink: `/${ Route.products }`,
+      queryParams: { categories: 'categoryId8' },
     },
   ];
   readonly usefulLinks = [
@@ -74,14 +75,16 @@ export class FooterComponent {
     {
       title: 'terms & conditions',
       routerLink: `/${ Route.terms }`,
-    }, {
+    },
+    {
       title: 'privacy policy',
       routerLink: `/${ Route.privacyPolicy }`,
-    }, {
+    },
+    {
       title: 'cookie policy',
       routerLink: `/${ Route.cookiePolicy }`,
     },
-  ]
+  ];
   readonly customerServiceLinks = [
     {
       title: 'my account',
@@ -98,16 +101,18 @@ export class FooterComponent {
     {
       title: 'returns & exchanges',
       routerLink: `/${ Route.returns }`,
-    }, {
+    },
+    {
       title: 'repair services',
       routerLink: `/${ Route.repairServices }`,
-    }, {
+    },
+    {
       title: 'support',
       routerLink: `/${ Route.support }`,
     },
   ];
 
   buildTranslationKey(link: string, relativeKey: string): string {
-    return `sharedComponents.footer.${link}.${relativeKey.toLowerCase()}`;
+    return `sharedComponents.footer.${ link }.${ relativeKey.toLowerCase() }`;
   }
 }
