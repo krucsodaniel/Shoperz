@@ -5,7 +5,7 @@ import {
   DestroyRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  HostBinding
+  HostBinding,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -51,7 +51,13 @@ export class SearchbarComponent implements OnInit {
         debounceTime(600),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((value: string) => this.searchFacadeService.setSearchValue(value));
+      .subscribe((searchQuery: string) => {
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { searchQuery: searchQuery || undefined },
+          queryParamsHandling: 'merge',
+        });
+      });
   }
 
   deleteSearch(): void {

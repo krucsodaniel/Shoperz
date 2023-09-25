@@ -7,7 +7,6 @@ import {
   IFilterOption,
   IFilterDefinition,
   ProductFilterOption,
-  SortingOption,
   CategoryFacadeService,
   BrandFacadeService,
 } from '@shared-module';
@@ -94,9 +93,5 @@ export class FilterService {
     ];
 
     this.store.dispatch(FilterActions.initializeFilters({ filterDefinitions }));
-
-    this.store.dispatch(FilterActions.setSortingOption({ sortingOption: SortingOption.default }));
-
-    this.store.dispatch(FilterActions.setSearch({ searchValue: '' }));
   }
 }
