@@ -7,6 +7,48 @@
       "home": "Főoldal",
       "products": "Termékek",
       "faq": "GYIK"
+    },
+    "footer": {
+      "categories": {
+        "tv & audio": "TV és audió",
+        "smartphones": "Okostelefonok",
+        "laptops & pc": "Laptopok és PC-k",
+        "gadgets": "Kütyük",
+        "photo & video": "Fotó és Videó",
+        "gifts": "Ajándékok",
+        "books": "Könyvek",
+        "toys": "Játékok"
+      },
+      "usefulLinks": {
+        "about": "Rólunk",
+        "contact": "Kapcsolat",
+        "wishlist": "Kívánságlista",
+        "compare": "Összehasonlítás",
+        "FAQ": "GYIK",
+        "terms & conditions": "Felhasználási feltételek",
+        "privacy policy": "Adatvédelmi irányelvek",
+        "Cookie Policy": "Cookie-szabályzat"
+      },
+      "customerService": {
+        "my account": "Fiókom",
+        "my cart": "Kosaram",
+        "track order": "Csomagkövetés",
+        "returns & exchanges": "Visszaküldés és csere",
+        "repair services": "Garancia",
+        "support": "Segítség"
+      },
+      "titles": {
+        "categories": "Kategóriák",
+        "useful links": "Hasznos linkek",
+        "customer service": "Vevőszolgálat",
+        "headquarters": "Központ",
+        "email": "Email",
+        "telephone": "Telefon"
+      },
+      "other": {
+        "presei square no45, bucharest - 099455": "099455 Bukarest, Presei tér 45.",
+        "all rights reserved": "Minden jog fenntartva"
+      }
     }
   },
   "products": {
@@ -41,11 +83,11 @@
   },
   "categories": {
     "all": "Összes",
-    "tv & audio": "TV & Audio",
+    "tv & audio": "TV & Audió",
     "smartphones": "Telefonok",
     "laptops & pc": "Laptopok & PC",
     "gadgets": "Kütyük",
-    "photo & video": "Foto & Video",
+    "photo & video": "Fotó & Videó",
     "gifts": "Ajándékok",
     "books": "Könyvek",
     "toys": "Játékok"
