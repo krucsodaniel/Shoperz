@@ -4,7 +4,7 @@ import { FilterFacadeService } from '../../../services';
 import { IFilterDefinition, ProductsManipulationService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { distinctUntilChanged, filter, firstValueFrom, take } from 'rxjs';
+import { distinctUntilChanged, filter, firstValueFrom } from 'rxjs';
 
 type FilterFormType = Record<string, FormControl<string[]>>;
 
@@ -33,22 +33,11 @@ export class FilterPanelComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    await firstValueFrom(this.filterFacadeService.getFilterDefinitions());
+    this.filterDefinitions = await firstValueFrom(this.filterFacadeService.getFilterDefinitions());
 
-    this.filterFacadeService.getFilterDefinitions()
-      .pipe(
-        take(1),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe((filterDefinition: IFilterDefinition[]) => {
-        this.filterDefinitions = filterDefinition;
-
-        this.filterDefinitions.forEach((definition: IFilterDefinition) => {
-          this.form.addControl(definition.id, new FormControl([]));
-        });
-
-        this.cdr.detectChanges();
-      });
+    this.filterDefinitions.forEach((definition: IFilterDefinition) => {
+      this.form.addControl(definition.id, new FormControl([]));
+    });
 
     this.filterFacadeService.getFilterValue()
       .pipe(
@@ -80,5 +69,7 @@ export class FilterPanelComponent implements OnInit {
           queryParamsHandling: 'merge',
         });
       });
+
+    this.cdr.detectChanges();
   }
 }

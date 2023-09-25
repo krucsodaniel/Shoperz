@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { ProductsManipulationService, SortingOption } from '@shared-module';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -49,7 +49,7 @@ export class ProductsSortingComponent implements OnInit {
       .subscribe((sortingOption: SortingOption): void => {
         this.router.navigate([], {
           relativeTo: this.route,
-          queryParams: { sortingOption : sortingOption === SortingOption.default ? undefined : sortingOption },
+          queryParams: { sortingOption: sortingOption === SortingOption.default ? undefined : sortingOption },
           queryParamsHandling: 'merge',
         });
       });

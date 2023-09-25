@@ -6,6 +6,8 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { SortingOption } from '@shared-module';
 
+const ignoreProductIdPageRegex = /^\/products\/\d+$/;
+
 function getArrayFromQueryParam(queryParams: string | string[] | undefined): string[] {
   if (typeof queryParams === 'string') {
     return [queryParams];
@@ -21,7 +23,7 @@ export class FilterEffects {
   updateRouteOnFilterChange$ = createEffect(() =>
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
-      filter(() => !/^\/products\/\d+$/.test(this.router.url)),
+      filter(() => !ignoreProductIdPageRegex.test(this.router.url)),
       switchMap(() => {
         const queryParams = this.route.snapshot.queryParams;
 
