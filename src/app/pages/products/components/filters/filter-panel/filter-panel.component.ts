@@ -59,13 +59,9 @@ export class FilterPanelComponent implements OnInit {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe((filters: Record<string, string[]>) => {
-        const filterParams = {
-          ...filters,
-        };
-
         this.router.navigate([], {
           relativeTo: this.route,
-          queryParams: filterParams,
+          queryParams: filters,
           queryParamsHandling: 'merge',
         });
       });
