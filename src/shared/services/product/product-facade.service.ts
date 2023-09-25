@@ -56,7 +56,6 @@ export class ProductFacadeService {
     if (!isProductsPageInitialized && isSpecificProductPageInitialized) {
       this.store.dispatch(ProductActions.loadProducts());
       await this.filterService.initializeFilterDefinitions();
-      this.searchFacadeService.setSearchValue('');
       this.initCartState();
       return;
     }
@@ -95,7 +94,6 @@ export class ProductFacadeService {
         this.brandFacadeService.initBrandsState();
         this.categoryFacadeService.initCategoriesState();
         this.filterService.initializeFilterDefinitions();
-        this.searchFacadeService.setSearchValue('');
         this.initCartState();
         return;
       }
@@ -106,7 +104,6 @@ export class ProductFacadeService {
     if (!isProductsPageInitialized && isSpecificProductPageInitialized) {
       this.store.dispatch(ProductActions.loadProducts());
       await this.filterService.initializeFilterDefinitions();
-      this.searchFacadeService.setSearchValue('');
       this.initCartState();
       return;
     }
