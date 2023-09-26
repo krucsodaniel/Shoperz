@@ -10,11 +10,11 @@
     },
     "footer": {
       "categories": {
-        "tv & audio": "TV és audió",
+        "tvAndAudio": "TV és audió",
         "smartphones": "Okostelefonok",
-        "laptops & pc": "Laptopok és PC-k",
+        "laptopsAndPc": "Laptopok és PC-k",
         "gadgets": "Kütyük",
-        "photo & video": "Fotó és Videó",
+        "photoAndVideo": "Fotó és Videó",
         "gifts": "Ajándékok",
         "books": "Könyvek",
         "toys": "Játékok"
@@ -24,30 +24,30 @@
         "contact": "Kapcsolat",
         "wishlist": "Kívánságlista",
         "compare": "Összehasonlítás",
-        "FAQ": "GYIK",
-        "terms & conditions": "Felhasználási feltételek",
-        "privacy policy": "Adatvédelmi irányelvek",
-        "Cookie Policy": "Cookie-szabályzat"
+        "faq": "GYIK",
+        "termsAndConditions": "Felhasználási feltételek",
+        "privacyPolicy": "Adatvédelmi irányelvek",
+        "cookiePolicy": "Cookie-szabályzat"
       },
       "customerService": {
-        "my account": "Fiókom",
-        "my cart": "Kosaram",
-        "track order": "Csomagkövetés",
-        "returns & exchanges": "Visszaküldés és csere",
-        "repair services": "Garancia",
+        "myAccount": "Fiókom",
+        "myCart": "Kosaram",
+        "trackOrder": "Csomagkövetés",
+        "returnsAndExchanges": "Visszaküldés és csere",
+        "repairServices": "Garancia",
         "support": "Segítség"
       },
       "titles": {
         "categories": "Kategóriák",
-        "useful links": "Hasznos linkek",
-        "customer service": "Vevőszolgálat",
+        "usefulLinks": "Hasznos linkek",
+        "customerService": "Vevőszolgálat",
         "headquarters": "Központ",
         "email": "Email",
         "telephone": "Telefon"
       },
       "other": {
-        "presei square no45, bucharest - 099455": "099455 Bukarest, Presei tér 45.",
-        "all rights reserved": "Minden jog fenntartva"
+        "address": "099455 Bukarest, Presei tér 45.",
+        "copyright": "Minden jog fenntartva"
       }
     }
   },

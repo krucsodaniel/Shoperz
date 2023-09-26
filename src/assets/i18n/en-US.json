@@ -10,11 +10,11 @@
     },
     "footer": {
       "categories": {
-        "tv & audio": "TV & Audio",
+        "tvAndAudio": "TV & Audio",
         "smartphones": "Smartphones",
-        "laptops & pc": "Laptops & PC",
+        "laptopsAndPc": "Laptops & PC",
         "gadgets": "Gadgets",
-        "photo & video": "Photo & Video",
+        "photoAndVideo": "Photo & Video",
         "gifts": "Gifts",
         "books": "Books",
         "toys": "Toys"
@@ -25,29 +25,29 @@
         "wishlist": "Wishlist",
         "compare": "Compare",
         "faq": "FAQ",
-        "terms & conditions": "Terms & Conditions",
-        "privacy policy": "Privacy Policy",
-        "cookie policy": "Cookie Policy"
+        "termsAndConditions": "Terms & Conditions",
+        "privacyPolicy": "Privacy Policy",
+        "cookiePolicy": "Cookie Policy"
       },
       "customerService": {
-        "my account": "My Account",
-        "my cart": "My Cart",
-        "track order": "Track Order",
-        "returns & exchanges": "Returns & Exchanges",
-        "repair services": "Repair Services",
+        "myAccount": "My Account",
+        "myCart": "My Cart",
+        "trackOrder": "Track Order",
+        "returnsAndExchanges": "Returns & Exchanges",
+        "repairServices": "Repair Services",
         "support": "Support"
       },
       "titles": {
         "categories": "Categories",
-        "useful links": "Useful Links",
-        "customer service": "Customer Service",
+        "usefulLinks": "Useful Links",
+        "customerService": "Customer Service",
         "headquarters": "Headquarters",
         "email": "Email",
         "telephone": "Telephone"
       },
       "other": {
-        "presei square no45, bucharest - 099455": "Presei Square No45, Bucharest - 099455",
-        "all rights reserved": "All Rights Reserved"
+        "address": "Presei Square No45, Bucharest - 099455",
+        "copyright": "All Rights Reserved"
       }
     }
   },

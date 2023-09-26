@@ -10,11 +10,11 @@
     },
     "footer": {
       "categories": {
-        "tv & audio": "Fernsehen und Audio",
+        "tvAndAudio": "Fernsehen und Audio",
         "smartphones": "Smartphones",
-        "laptops & pc": "Laptops und PCs",
+        "laptopsAndPc": "Laptops und PCs",
         "gadgets": "Gadgets",
-        "photo & video": "Foto & Video",
+        "photoAndVideo": "Foto & Video",
         "gifts": "Geschenke",
         "books": "Bücher",
         "toys": "Spielzeuge"
@@ -24,30 +24,30 @@
         "contact": "Kontakt",
         "wishlist": "Wunschzettel",
         "compare": "Vergleichen",
-        "FAQ": "FAQ",
-        "terms & conditions": "Geschäftsbedingungen",
-        "privacy policy": "Datenschutzrichtlinie",
-        "Cookie Policy": "Cookie-Richtlinie"
+        "faq": "FAQ",
+        "termsAndConditions": "Geschäftsbedingungen",
+        "privacyPolicy": "Datenschutzrichtlinie",
+        "cookiePolicy": "Cookie-Richtlinie"
       },
       "customerService": {
-        "my account": "Mein Konto",
-        "my cart": "Mein Warenkorb",
-        "track order": "Bestellung verfolgen",
-        "returns & exchanges": "Rückgaben und Umtausch",
-        "repair services": "Reparaturdienste",
+        "myAccount": "Mein Konto",
+        "myCart": "Mein Warenkorb",
+        "trackOrder": "Bestellung verfolgen",
+        "returnsAndExchanges": "Rückgaben und Umtausch",
+        "repairServices": "Reparaturdienste",
         "support": "Unterstützung"
       },
       "titles": {
         "categories": "Kategorien",
-        "useful links": "Nützliche Links",
-        "customer service": "Kundendienst",
+        "usefulLinks": "Nützliche Links",
+        "customerService": "Kundendienst",
         "headquarters": "Hauptquartier",
         "email": "Email",
         "telephone": "Telefon"
       },
       "other": {
-        "presei square no45, bucharest - 099455": "Presei-Platz Nr. 45, 099455 Bukarest",
-        "all rights reserved": "Alle Rechte vorbehalten"
+        "address": "Presei-Platz Nr. 45, 099455 Bukarest",
+        "copyright": "Alle Rechte vorbehalten"
       }
     }
   },
