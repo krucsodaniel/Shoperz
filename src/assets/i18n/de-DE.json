@@ -10,11 +10,11 @@
     },
     "footer": {
       "categories": {
-        "tv & audio": "Fernsehen und Audio",
+        "tvAndAudio": "Fernsehen und Audio",
         "smartphones": "Smartphones",
-        "laptops & pc": "Laptops und PCs",
+        "laptopsAndPc": "Laptops und PCs",
         "gadgets": "Gadgets",
-        "photo & video": "Foto & Video",
+        "photoAndVideo": "Foto & Video",
         "gifts": "Geschenke",
         "books": "Bücher",
         "toys": "Spielzeuge"
@@ -24,30 +24,30 @@
         "contact": "Kontakt",
         "wishlist": "Wunschzettel",
         "compare": "Vergleichen",
-        "FAQ": "FAQ",
-        "terms & conditions": "Geschäftsbedingungen",
-        "privacy policy": "Datenschutzrichtlinie",
-        "Cookie Policy": "Cookie-Richtlinie"
+        "faq": "FAQ",
+        "termsAndConditions": "Geschäftsbedingungen",
+        "privacyPolicy": "Datenschutzrichtlinie",
+        "cookiePolicy": "Cookie-Richtlinie"
       },
       "customerService": {
-        "my account": "Mein Konto",
-        "my cart": "Mein Warenkorb",
-        "track order": "Bestellung verfolgen",
-        "returns & exchanges": "Rückgaben und Umtausch",
-        "repair services": "Reparaturdienste",
+        "myAccount": "Mein Konto",
+        "myCart": "Mein Warenkorb",
+        "trackOrder": "Bestellung verfolgen",
+        "returnsAndExchanges": "Rückgaben und Umtausch",
+        "repairServices": "Reparaturdienste",
         "support": "Unterstützung"
       },
       "titles": {
         "categories": "Kategorien",
-        "useful links": "Nützliche Links",
-        "customer service": "Kundendienst",
+        "usefulLinks": "Nützliche Links",
+        "customerService": "Kundendienst",
         "headquarters": "Hauptquartier",
         "email": "Email",
         "telephone": "Telefon"
       },
       "other": {
-        "presei square no45, bucharest - 099455": "Presei-Platz Nr. 45, 099455 Bukarest",
-        "all rights reserved": "Alle Rechte vorbehalten"
+        "address": "Presei-Platz Nr. 45, 099455 Bukarest",
+        "copyright": "Alle Rechte vorbehalten"
       }
     }
   },
@@ -114,5 +114,19 @@
     "productNotFound": "Sorry, keine Produkte gefunden!",
     "tryOtherFilters": "Probieren Sie andere Filteroptionen aus.",
     "confirmMessage": "Sind Sie sicher, dass Sie löschen wollen?"
+  },
+  "aboutUsPage": {
+    "aboutUs": {
+      "aboutUsHeading": "ÜBER UNS",
+      "aboutUsText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquam architecto consequuntur corporis dolorum eaque eligendi eveniet facilis fugiat id impedit maiores minus natus, nesciunt nostrum numquam placeat repellendus, repudiandae sint veniam vitae, voluptatum. Architecto cumque dolorem enim impedit ipsa iste praesentium quos, sit, tempore ut vel voluptate. Aperiam blanditiis deserunt molestias odio omnis quod rem sapiente? Exercitationem, maiores?"
+    },
+    "ourMission": {
+      "ourMissionHeading": "UNSERE AUFGABE",
+      "ourMissionText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis praesentium vero voluptate! Asperiores dignissimos doloremque expedita explicabo impedit laudantium libero modi nisi quaerat sequi! Aliquid dolorem expedita inventore nostrum repellat repudiandae sit vero. Aliquam beatae culpa ea earum eius eos est expedita fugit harum, ipsum laborum modi nihil odio omnis perferendis quod ratione repellendus sit tempore, veritatis! Accusamus aliquam architecto aut deserunt dicta, dolores ducimus eligendi impedit incidunt ipsum iste labore libero maiores officia optio quam qui quidem quisquam reiciendis sed sequi soluta sunt temporibus ullam ut vero voluptatem voluptatum? Adipisci consectetur deserunt facilis necessitatibus nesciunt quaerat reprehenderit soluta veritatis."
+    },
+    "meetUs": {
+      "meetUsHeading": "UNS TREFFEN",
+      "address": "Presei-Platz Nr. 45, 099455 Bukarest"
+    }
   }
 }

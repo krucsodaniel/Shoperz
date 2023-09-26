@@ -7,7 +7,7 @@ import { CartModule } from './pages/cart/cart.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductDashboardComponent, ProductPageComponent } from './pages/products/components';
-import { CartComponent } from './pages/cart/components';
+import { CartComponent } from './pages/cart';
 
 import { Route } from '@shared-module';
 import { StoreModule } from '@ngrx/store';
@@ -15,12 +15,17 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SvgIconsModule, TranslationConfigModule } from '../core';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
   { path: Route.products, component: ProductDashboardComponent },
   { path: Route.productById, component: ProductPageComponent },
   { path: Route.cart, component: CartComponent },
+  {
+    path: Route.about,
+    loadChildren: () => import('./pages/about-us/about-us.module').then(({ AboutUsModule }) => AboutUsModule),
+  },
 ];
 
 @NgModule({
@@ -32,12 +37,14 @@ const routes: Routes = [
     ProductsModule,
     CartModule,
     RouterModule.forRoot(routes),
-    SharedModule.forRoot(),
+    SharedModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    TranslationConfigModule,
+    SvgIconsModule.forRoot(),
   ],
   bootstrap: [AppComponent]
 })

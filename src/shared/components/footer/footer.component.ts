@@ -11,42 +11,42 @@ export class FooterComponent {
   readonly redirectUrls = environment.redirectUrls;
   readonly categoriesLinks = [
     {
-      title: 'TV & audio',
+      title: 'tvAndAudio',
       routerLink: `/${ Route.products }`,
       queryParams: { categories: 'categoryId1' },
     },
     {
-      title: 'Smartphones',
+      title: 'smartphones',
       routerLink: `/${ Route.products }`,
       queryParams: { categories: 'categoryId2' },
     },
     {
-      title: 'Laptops & PC',
+      title: 'laptopsAndPc',
       routerLink: `/${ Route.products }`,
       queryParams: { categories: 'categoryId3' },
     },
     {
-      title: 'Gadgets',
+      title: 'gadgets',
       routerLink: `/${ Route.products }`,
       queryParams: { categories: 'categoryId4' },
     },
     {
-      title: 'Photo & Video',
+      title: 'photoAndVideo',
       routerLink: `/${ Route.products }`,
       queryParams: { categories: 'categoryId5' },
     },
     {
-      title: 'Gifts',
+      title: 'gifts',
       routerLink: `/${ Route.products }`,
       queryParams: { categories: 'categoryId6' },
     },
     {
-      title: 'Books',
+      title: 'books',
       routerLink: `/${ Route.products }`,
       queryParams: { categories: 'categoryId7' },
     },
     {
-      title: 'Toys',
+      title: 'toys',
       routerLink: `/${ Route.products }`,
       queryParams: { categories: 'categoryId8' },
     },
@@ -73,37 +73,37 @@ export class FooterComponent {
       routerLink: `/${ Route.faq }`,
     },
     {
-      title: 'terms & conditions',
+      title: 'termsAndConditions',
       routerLink: `/${ Route.terms }`,
     },
     {
-      title: 'privacy policy',
+      title: 'privacyPolicy',
       routerLink: `/${ Route.privacyPolicy }`,
     },
     {
-      title: 'cookie policy',
+      title: 'cookiePolicy',
       routerLink: `/${ Route.cookiePolicy }`,
     },
   ];
   readonly customerServiceLinks = [
     {
-      title: 'my account',
+      title: 'myAccount',
       routerLink: `/${ Route.account }`,
     },
     {
-      title: 'my cart',
+      title: 'myCart',
       routerLink: `/${ Route.cart }`,
     },
     {
-      title: 'track order',
+      title: 'trackOrder',
       routerLink: `/${ Route.trackOrder }`,
     },
     {
-      title: 'returns & exchanges',
+      title: 'returnsAndExchanges',
       routerLink: `/${ Route.returns }`,
     },
     {
-      title: 'repair services',
+      title: 'repairServices',
       routerLink: `/${ Route.repairServices }`,
     },
     {
@@ -113,6 +113,6 @@ export class FooterComponent {
   ];
 
   buildTranslationKey(link: string, relativeKey: string): string {
-    return `sharedComponents.footer.${ link }.${ relativeKey.toLowerCase() }`;
+    return `sharedComponents.footer.${ link }.${ relativeKey }`;
   }
 }
