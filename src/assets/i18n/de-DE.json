@@ -114,5 +114,19 @@
     "productNotFound": "Sorry, keine Produkte gefunden!",
     "tryOtherFilters": "Probieren Sie andere Filteroptionen aus.",
     "confirmMessage": "Sind Sie sicher, dass Sie löschen wollen?"
+  },
+  "aboutUsPage": {
+    "aboutUs": {
+      "about us": "ÜBER UNS",
+      "about us text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquam architecto consequuntur corporis dolorum eaque eligendi eveniet facilis fugiat id impedit maiores minus natus, nesciunt nostrum numquam placeat repellendus, repudiandae sint veniam vitae, voluptatum. Architecto cumque dolorem enim impedit ipsa iste praesentium quos, sit, tempore ut vel voluptate. Aperiam blanditiis deserunt molestias odio omnis quod rem sapiente? Exercitationem, maiores?"
+    },
+    "ourMission": {
+      "our mission": "UNSERE AUFGABE",
+      "our mission text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis praesentium vero voluptate! Asperiores dignissimos doloremque expedita explicabo impedit laudantium libero modi nisi quaerat sequi! Aliquid dolorem expedita inventore nostrum repellat repudiandae sit vero. Aliquam beatae culpa ea earum eius eos est expedita fugit harum, ipsum laborum modi nihil odio omnis perferendis quod ratione repellendus sit tempore, veritatis! Accusamus aliquam architecto aut deserunt dicta, dolores ducimus eligendi impedit incidunt ipsum iste labore libero maiores officia optio quam qui quidem quisquam reiciendis sed sequi soluta sunt temporibus ullam ut vero voluptatem voluptatum? Adipisci consectetur deserunt facilis necessitatibus nesciunt quaerat reprehenderit soluta veritatis."
+    },
+    "meetUs": {
+      "meet us": "UNS TREFFEN",
+      "presei square no45, bucharest - 099455": "Presei-Platz Nr. 45, 099455 Bukarest"
+    }
   }
 }
