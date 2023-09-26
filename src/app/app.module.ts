@@ -15,12 +15,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { OrdersComponent } from './pages/orders';
+import { OrdersModule } from './pages/orders/orders.module';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
   { path: Route.products, component: ProductDashboardComponent },
   { path: Route.productById, component: ProductPageComponent },
   { path: Route.cart, component: CartComponent },
+  { path: Route.orders, component: OrdersComponent },
 ];
 
 @NgModule({
@@ -31,6 +34,7 @@ const routes: Routes = [
     BrowserModule,
     ProductsModule,
     CartModule,
+    OrdersModule,
     RouterModule.forRoot(routes),
     SharedModule.forRoot(),
     StoreModule.forRoot({}),
