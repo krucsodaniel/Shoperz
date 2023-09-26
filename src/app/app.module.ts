@@ -15,15 +15,17 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { AboutUsModule } from './pages/about-us/about-us.module';
-import { AboutUsComponent } from './pages/about-us';
+import { SvgIconsModule, TranslationConfigModule } from '../core';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
   { path: Route.products, component: ProductDashboardComponent },
   { path: Route.productById, component: ProductPageComponent },
   { path: Route.cart, component: CartComponent },
-  { path: Route.about, component: AboutUsComponent },
+  {
+    path: Route.about,
+    loadChildren: () => import('./pages/about-us/about-us.module').then(({ AboutUsModule }) => AboutUsModule),
+  },
 ];
 
 @NgModule({
@@ -34,14 +36,15 @@ const routes: Routes = [
     BrowserModule,
     ProductsModule,
     CartModule,
-    AboutUsModule,
     RouterModule.forRoot(routes),
-    SharedModule.forRoot(),
+    SharedModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    TranslationConfigModule,
+    SvgIconsModule.forRoot(),
   ],
   bootstrap: [AppComponent]
 })

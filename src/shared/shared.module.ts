@@ -1,21 +1,11 @@
-import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import {
-  NavbarComponent,
-  HeaderComponent,
-  SvgIconComponent,
-  SearchbarComponent,
-  LoaderComponent,
-  CartIconComponent,
-  BadgeComponent,
-  FooterComponent,
-} from './components';
-import { SpriteLoaderService, SvgService, TranslationLoaderService, SearchFacadeService, } from './services';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { productReducer, productsFeatureKey } from './store/products/product.reducer';
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
@@ -25,8 +15,6 @@ import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
 import { CartEffects } from './store/cart/cart.effects';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import {
   BrandService,
   BrandFacadeService,
@@ -38,23 +26,24 @@ import {
   CartService,
   CartFacadeService,
   ToastService,
+  SearchFacadeService,
 } from './services';
-
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+import {
+  NavbarComponent,
+  HeaderComponent,
+  SearchbarComponent,
+  LoaderComponent,
+  CartIconComponent,
+  BadgeComponent,
+  FooterComponent,
+} from './components';
+import { SvgIconsModule } from '../core';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
+    TranslateModule,
     ReactiveFormsModule,
     RouterLink,
     StoreModule.forFeature(productsFeatureKey, productReducer),
@@ -63,11 +52,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     StoreModule.forFeature(cartFeatureKey, cartReducer),
     EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects]),
     RouterLinkActive,
+    SvgIconsModule,
   ],
   declarations: [
     NavbarComponent,
     HeaderComponent,
-    SvgIconComponent,
     SearchbarComponent,
     LoaderComponent,
     CartIconComponent,
@@ -75,18 +64,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     FooterComponent,
   ],
   providers: [
-    SpriteLoaderService,
-    {
-      provide: 'SVG_SPRITE_PATH',
-      useValue: './assets/sprite/svg-sprite.svg',
-    },
-    TranslationLoaderService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (translationLoader: TranslationLoaderService) => () => translationLoader.loadTranslation(),
-      deps: [TranslationLoaderService],
-      multi: true,
-    },
     SearchFacadeService,
     ProductService,
     ProductFacadeService,
@@ -102,17 +79,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   exports: [
     NavbarComponent,
     HeaderComponent,
-    SvgIconComponent,
     SearchbarComponent,
     LoaderComponent,
     FooterComponent,
   ],
 })
-export class SharedModule {
-  static forRoot(): ModuleWithProviders<SharedModule> {
-    return {
-      ngModule: SharedModule,
-      providers: [SvgService],
-    };
-  }
-}
+export class SharedModule {}

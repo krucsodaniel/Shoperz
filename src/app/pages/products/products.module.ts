@@ -30,6 +30,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
 import { FilterEffects } from './store';
 import { DigitOnlyModule } from '@uiowa/digit-only';
+import { SvgIconsModule } from '../../../core';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { DigitOnlyModule } from '@uiowa/digit-only';
     EffectsModule.forFeature([FilterEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     DigitOnlyModule,
+    SvgIconsModule,
   ],
   declarations: [
     ProductCardComponent,
