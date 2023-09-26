@@ -7,6 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class AboutUsComponent {
   buildTranslationKey(link: string, relativeKey: string): string {
-    return `aboutUsPage.${ link }.${ relativeKey.toLowerCase() }`;
+    return `aboutUsPage.${ link }.${ relativeKey }`;
   }
 }
