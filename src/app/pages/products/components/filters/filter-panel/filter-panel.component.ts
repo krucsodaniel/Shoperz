@@ -4,7 +4,7 @@ import { FilterFacadeService } from '../../../services';
 import { IFilterDefinition, ProductsManipulationService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { distinctUntilChanged, filter } from 'rxjs';
+import { distinctUntilChanged, filter, firstValueFrom } from 'rxjs';
 
 type FilterFormType = Record<string, FormControl<string[]>>;
 
@@ -32,7 +32,13 @@ export class FilterPanelComponent implements OnInit {
     private cdr: ChangeDetectorRef,
   ) {}
 
-  ngOnInit() {
+  async ngOnInit(): Promise<void> {
+    this.filterDefinitions = await firstValueFrom(this.filterFacadeService.getFilterDefinitions());
+
+    this.filterDefinitions.forEach((definition: IFilterDefinition) => {
+      this.form.addControl(definition.id, new FormControl([]));
+    });
+
     this.filterFacadeService.getFilterValue()
       .pipe(
         filter((value: Record<string, string[]>) => JSON.stringify(value) !== JSON.stringify(this.form.value)),
@@ -45,18 +51,6 @@ export class FilterPanelComponent implements OnInit {
         });
       });
 
-    this.filterFacadeService.getFilterDefinitions()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((filterDefinition: IFilterDefinition[]) => {
-        this.filterDefinitions = filterDefinition;
-
-        this.filterDefinitions.forEach((definition: IFilterDefinition) => {
-          this.form.addControl(definition.id, new FormControl([]));
-        });
-
-        this.cdr.detectChanges();
-      });
-
     this.form.valueChanges
       .pipe(
         distinctUntilChanged((prev: Record<string, string[]>, curr: Record<string, string[]>) => {
@@ -64,8 +58,14 @@ export class FilterPanelComponent implements OnInit {
         }),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((value: Record<string, string[]>) => {
-        this.filterFacadeService.setFilterValue(value);
+      .subscribe((filters: Record<string, string[]>) => {
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: filters,
+          queryParamsHandling: 'merge',
+        });
       });
+
+    this.cdr.detectChanges();
   }
 }

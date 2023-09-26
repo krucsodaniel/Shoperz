@@ -1,15 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  inject,
-  OnInit,
-} from '@angular/core';
-import { SortingOption, ProductsManipulationService } from '@shared-module';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { ProductsManipulationService, SortingOption } from '@shared-module';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SortFacadeService } from '../../services';
 import { distinctUntilChanged, filter } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-sorting',
@@ -31,7 +26,9 @@ export class ProductsSortingComponent implements OnInit {
 
   constructor(
     private productsManipulationService: ProductsManipulationService,
-    private sortFacadeService: SortFacadeService
+    private sortFacadeService: SortFacadeService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -49,7 +46,13 @@ export class ProductsSortingComponent implements OnInit {
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((value: SortingOption): void => this.sortFacadeService.setSortingOption(value));
+      .subscribe((sortingOption: SortingOption): void => {
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { sortingOption: sortingOption === SortingOption.default ? undefined : sortingOption },
+          queryParamsHandling: 'merge',
+        });
+      });
   }
 
   buildTranslationKey(relativeKey: string): string {
