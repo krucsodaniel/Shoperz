@@ -21,10 +21,12 @@ import { productReducer, productsFeatureKey } from './store/products/product.red
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
 import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
 import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
+import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
 import { CartEffects } from './store/cart/cart.effects';
+import { OrdersEffects } from './store/orders/orders.effects';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import {
@@ -38,6 +40,8 @@ import {
   CartService,
   CartFacadeService,
   ToastService,
+  OrdersService,
+  OrdersFacadeService,
 } from './services';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -61,7 +65,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     StoreModule.forFeature(brandsFeatureKey, brandReducer),
     StoreModule.forFeature(categoriesFeatureKey, categoryReducer),
     StoreModule.forFeature(cartFeatureKey, cartReducer),
-    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects]),
+    StoreModule.forFeature(ordersFeatureKey, ordersReducer),
+    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects, OrdersEffects]),
     RouterLinkActive,
   ],
   declarations: [
@@ -98,6 +103,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     CartService,
     CartFacadeService,
     ToastService,
+    OrdersService,
+    OrdersFacadeService,
   ],
   exports: [
     NavbarComponent,
