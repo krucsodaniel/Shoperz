@@ -5,10 +5,18 @@ import {
   HostBinding,
   OnInit,
   inject,
-  DestroyRef
+  DestroyRef,
 } from '@angular/core';
-import { CartFacadeService } from '@shared-module';
+import {
+  CartFacadeService,
+  ICartItem,
+  IOrder,
+  OrdersFacadeService,
+  OrderStatus,
+  Route,
+} from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-summary',
@@ -17,6 +25,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class CartSummaryComponent implements OnInit {
   subTotal: number;
+  cart: ICartItem[];
   readonly shippingFee = 50;
 
   @HostBinding('class')
@@ -27,7 +36,12 @@ export class CartSummaryComponent implements OnInit {
     return this.subTotal + this.shippingFee;
   }
 
-  constructor(private cartFacadeService: CartFacadeService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cartFacadeService: CartFacadeService,
+    private cdr: ChangeDetectorRef,
+    private ordersFacadeService: OrdersFacadeService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.cartFacadeService.getTotalAmountOfPriceInCart()
@@ -36,9 +50,38 @@ export class CartSummaryComponent implements OnInit {
         this.subTotal = totalPrice;
         this.cdr.detectChanges();
       });
+
+    this.cartFacadeService.getCart()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((cart: ICartItem[]) => this.cart = cart);
   }
 
   buildTranslationKey(relativeKey: string): string {
     return `cart.${relativeKey}`;
+  }
+
+  checkout(): void {
+    const newOrder: IOrder = {
+      products: this.cart,
+      totalAmount: this.calculateTotal,
+      status: OrderStatus.processing,
+      orderDate: this.generateOrderDate(),
+    }
+
+    this.ordersFacadeService.createOrder(newOrder);
+    this.router.navigate([Route.orders]);
+  }
+
+  private generateOrderDate(): string {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+    const formattedDateTime = `${ year }.${ month }.${ day } ${ hours }:${ minutes }:${ seconds }`;
+
+    return formattedDateTime.toString();
   }
 }

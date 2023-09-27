@@ -13,6 +13,11 @@ export class CartFacadeService {
     this.store.dispatch(CartActions.initCart());
   }
 
+  getCart(): Observable<ICartItem[]> {
+    return this.store.select(CartSelectors.selectCart)
+      .pipe(filter(Boolean));
+  }
+
   getCartProducts(): Observable<ICalculatedProduct[]> {
     return this.store.select(CartSelectors.selectCartProducts)
       .pipe(filter(Boolean));

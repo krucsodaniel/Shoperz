@@ -7,7 +7,7 @@ import {
   inject,
   DestroyRef,
 } from '@angular/core';
-import { CartFacadeService, ICalculatedProduct, ICartItem, ProductFacadeService } from '@shared-module';
+import { CartFacadeService, ICalculatedProduct, ProductFacadeService } from '@shared-module';
 import { FormControl, Validators } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -17,7 +17,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent implements OnInit {
-  cartItems: ICartItem[];
   products: ICalculatedProduct[];
   numberFormControl: FormControl<number>;
 
