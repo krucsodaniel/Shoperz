@@ -75,6 +75,15 @@
     "productAmountUpdated": "Amount in cart updated",
     "productRemovedFromCart": "Product removed from cart"
   },
+  "orders": {
+    "orderId": "Order ID",
+    "products": "Products",
+    "total": "Total",
+    "status": "Status",
+    "dateCreated": "Date created",
+    "piece": "pcs",
+    "orderCreated": "Order created successfully"
+  },
   "filter": {
     "all": "All",
     "allBrands": "Brands",

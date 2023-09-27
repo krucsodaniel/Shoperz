@@ -76,6 +76,15 @@
     "productAmountUpdated": "Produktmenge aktualisiert",
     "productRemovedFromCart": "Produkt aus dem Warenkorb entfernt"
   },
+  "orders": {
+    "orderId": "Bestell-ID",
+    "products": "Produkte",
+    "total": "Gesamt",
+    "status": "Status",
+    "dateCreated": "Erstellungsdatum",
+    "piece": "Stck",
+    "orderCreated": "Auftrag erfolgreich erstellt"
+  },
   "filter": {
     "all": "Alle",
     "allBrands": "Marken",

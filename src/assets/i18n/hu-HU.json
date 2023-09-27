@@ -75,6 +75,15 @@
     "productAmountUpdated": "Termék mennyiség frissítve",
     "productRemovedFromCart": "Termék eltávolítva a kosárból"
   },
+  "orders": {
+    "orderId": "Rendelés azonosító",
+    "products": "Termékek",
+    "total": "Összesen",
+    "status": "Státusz",
+    "dateCreated": "Rendelés dátuma",
+    "piece": "db",
+    "orderCreated": "Sikeres megrendelés"
+  },
   "filter": {
     "all": "Összes",
     "allBrands": "Márkák",
