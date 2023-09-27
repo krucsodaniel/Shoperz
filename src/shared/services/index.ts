@@ -8,3 +8,4 @@ export * from './product';
 export * from './category';
 export * from './cart';
 export * from './toast.service';
+export * from './orders';

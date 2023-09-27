@@ -7,6 +7,7 @@ export const environment = {
       categories: '/categories',
       brands: '/brands',
       cart: '/cart',
+      orders: '/orders',
     },
   },
   redirectUrls: {
