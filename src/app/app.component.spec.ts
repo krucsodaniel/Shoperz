@@ -35,7 +35,7 @@ describe('AppComponent', () => {
       fixture.detectChanges();
       await fixture.whenRenderingDone();
 
-      const navbar = fixture.debugElement.query(By.css('.navbar'));
+      const navbar = fixture.debugElement.query(By.css('.middle-header'));
 
       // Assert
       expect(navbar).toBeTruthy();

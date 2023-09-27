@@ -18,6 +18,5 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SvgIconsModule,
   ],
-  declarations: [AboutUsComponent],
 })
 export class AboutUsModule {}

@@ -16,6 +16,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SvgIconsModule, TranslationConfigModule } from '../core';
+import { TranslateModule } from '@ngx-translate/core';
+import { AboutUsComponent } from './pages/about-us';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
@@ -31,6 +33,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    AboutUsComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,7 @@ const routes: Routes = [
     ToastrModule.forRoot(),
     TranslationConfigModule,
     SvgIconsModule.forRoot(),
+    TranslateModule,
   ],
   bootstrap: [AppComponent]
 })
