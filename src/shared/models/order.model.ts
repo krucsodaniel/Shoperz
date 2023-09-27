@@ -2,9 +2,9 @@ import { ICartItem } from '../models';
 import { OrderStatus } from '../enums';
 
 export interface IOrder {
-  orderId: string;
+  id?: number,
   products: ICartItem[],
   totalAmount: number,
   status: OrderStatus,
-  orderDate: Date,
+  orderDate: string,
 }
