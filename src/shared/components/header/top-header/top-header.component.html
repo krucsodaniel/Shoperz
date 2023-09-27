@@ -1,1 +1,6 @@
-<p>top-header works!</p>
+<div class="flex flex-row px-40 py-12 bg-grey-100 text-grey-900">
+    <svg-icon [src]="'localization-icon'"></svg-icon>
+  <select>
+    <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+  </select>
+</div>
