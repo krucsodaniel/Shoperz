@@ -17,7 +17,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SvgIconsModule, TranslationConfigModule } from '../core';
 import { TranslateModule } from '@ngx-translate/core';
-import { AboutUsComponent } from './pages/about-us';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
