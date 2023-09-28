@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Langs } from '../../enums/langs';
+import { Language } from '../../enums/language';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -9,14 +9,15 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TopHeaderComponent {
   readonly dropdownOptions = [
-    { value: Langs.english, label: 'English'},
-    { value: Langs.hungarian, label: 'Magyar'},
-    { value: Langs.german, label: 'Deutsch'},
+    { value: Language.english, label: 'English'},
+    { value: Language.hungarian, label: 'Magyar'},
+    { value: Language.german, label: 'Deutsch'},
   ];
 
   constructor(private translateService: TranslateService) {}
 
-  onChange(event: any){
-    this.translateService.use(event.target.value);
+  onChange(event: Event){
+    const element = event.target as HTMLSelectElement;
+    this.translateService.use(element.value);
   }
 }

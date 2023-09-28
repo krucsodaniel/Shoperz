@@ -31,11 +31,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AboutUsComponent,
-    CartComponent,
-  ],
   imports: [
     BrowserModule,
     ProductsModule,
@@ -50,6 +45,9 @@ const routes: Routes = [
     TranslationConfigModule,
     SvgIconsModule.forRoot(),
     TranslateModule,
+  ],
+  declarations: [
+    AppComponent,
   ],
   bootstrap: [AppComponent]
 })

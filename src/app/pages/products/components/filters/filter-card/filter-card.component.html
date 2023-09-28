@@ -1,4 +1,4 @@
-  <span *ngIf="headerText" class="ml-1.5 font-extrabold">{{ buildTranslationKey(headerText) | translate }}</span>
+  <span *ngIf="headerText" class="ml-1.5 font-extrabold">{{ buildTranslationKeyForHeading(headerText) | translate }}</span>
 
   <label
     *ngFor="let option of options"
@@ -6,12 +6,11 @@
     [ngClass]="multiselect ? 'cursor-pointer' : 'cursor-pointer hover:font-extrabold'"
     [class.checked-label]="isChecked(option.id)">
     <input
+      (change)="onChange($event)"
+      [checked]="isChecked(option.id)"
+      [name]="multiselect ? null : 'radio'"
       [ngClass]="multiselect ? 'cursor-pointer' : 'appearance-none'"
       [type]="multiselect ? 'checkbox' : 'radio'"
-      [name]="multiselect ? null : 'radio'"
-      [value]="option.id"
-      [checked]="isChecked(option.id)"
-      (change)="onChange($event)"/>
-
+      [value]="option.id"/>
     {{ buildTranslationKeyForLabels(option.id, option.value) | translate }}
   </label>

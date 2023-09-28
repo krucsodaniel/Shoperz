@@ -71,7 +71,7 @@ export class FilterCardComponent implements OnInit {
     this.control.setValue(this.selectedOptions);
   }
 
-  buildTranslationKey(relativeKey: string): string {
+  buildTranslationKeyForHeading(relativeKey: string): string {
     return `filter.all${ relativeKey }`;
   }
 
