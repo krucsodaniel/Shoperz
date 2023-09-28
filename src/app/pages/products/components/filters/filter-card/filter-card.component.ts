@@ -75,8 +75,8 @@ export class FilterCardComponent implements OnInit {
     return `filter.all${ relativeKey }`;
   }
 
-  buildTranslationKeyForLabels(optionId: string, relativeKey: string): any {
-    if (optionId.indexOf('category') >= 0 || (optionId === 'all')) {
+  buildTranslationKeyForLabels(optionId: string, relativeKey: string): string {
+    if (optionId.indexOf('category') >= 0 || optionId === 'all') {
       return `categories.${ relativeKey.toLowerCase() }`;
     }
 

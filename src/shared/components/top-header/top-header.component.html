@@ -2,6 +2,6 @@
     <svg-icon [src]="'localization-icon'"></svg-icon>
   <select (change)="onChange($event)">
     <option disabled selected>Language</option>
-    <option *ngFor="let option of dropdownOptions" [value]=option.value >{{ option.label }}</option>
+    <option *ngFor="let option of dropdownOptions" [value]=option.value>{{ option.label }}</option>
   </select>
 </div>
