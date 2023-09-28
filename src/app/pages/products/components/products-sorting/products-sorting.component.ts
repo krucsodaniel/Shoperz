@@ -25,7 +25,6 @@ export class ProductsSortingComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
 
   constructor(
-    private productsManipulationService: ProductsManipulationService,
     private sortFacadeService: SortFacadeService,
     private router: Router,
     private route: ActivatedRoute,

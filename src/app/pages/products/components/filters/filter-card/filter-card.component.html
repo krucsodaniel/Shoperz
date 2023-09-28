@@ -1,4 +1,4 @@
-  <span *ngIf="headerText" class="ml-1.5 font-extrabold">{{ headerText }}</span>
+  <span *ngIf="headerText" class="ml-1.5 font-extrabold">{{ buildTranslationKey(headerText) | translate }}</span>
 
   <label
     *ngFor="let option of options"
@@ -13,5 +13,5 @@
       [checked]="isChecked(option.id)"
       (change)="onChange($event)"/>
 
-    {{ option.value }}
+    {{ buildTranslationKeyForLabels(option.id, option.value) | translate }}
   </label>

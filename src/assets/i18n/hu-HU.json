@@ -79,13 +79,13 @@
     "all": "Összes",
     "allBrands": "Márkák",
     "allCategories": "Kategóriák",
-    "allPrices": "Ár"
+    "allPrice": "Ár"
   },
   "categories": {
     "all": "Összes",
     "tv & audio": "TV & Audió",
     "smartphones": "Telefonok",
-    "laptops & pc": "Laptopok & PC",
+    "laptops & pcs": "Laptopok & PC",
     "gadgets": "Kütyük",
     "photo & video": "Fotó & Videó",
     "gifts": "Ajándékok",

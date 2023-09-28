@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Route } from '../../../enums';
-import { ProductFacadeService } from '../../../services';
+import { Route } from '../../enums';
+import { ProductFacadeService } from '../../services';
 
 @Component({
   selector: 'app-middle-header',

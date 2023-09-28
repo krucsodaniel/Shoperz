@@ -79,13 +79,13 @@
     "all": "All",
     "allBrands": "Brands",
     "allCategories": "Categories",
-    "allPrices": "Price"
+    "allPrice": "Price"
   },
   "categories": {
     "all": "All",
     "tv & audio": "TV & Audio",
     "smartphones": "Smartphones",
-    "laptops & pc": "Laptops & PC",
+    "laptops & pcs": "Laptops & PC",
     "gadgets": "Gadgets",
     "photo & video": "Photo & Video",
     "gifts": "Gifts",

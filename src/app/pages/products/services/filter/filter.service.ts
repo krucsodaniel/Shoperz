@@ -61,7 +61,7 @@ export class FilterService {
       {
         id: ProductFilterOption.prices,
         propertySelector: (product: ICalculatedProduct) => product.price,
-        label: this.translate.instant('filter.allPrices'),
+        label: this.translate.instant('filter.allPrice'),
         options: [
           {
             id: '<50',
