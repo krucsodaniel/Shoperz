@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { ProductsManipulationService, SortingOption } from '@shared-module';
+import { SortingOption } from '@shared-module';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SortFacadeService } from '../../services';
@@ -25,7 +25,6 @@ export class ProductsSortingComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
 
   constructor(
-    private productsManipulationService: ProductsManipulationService,
     private sortFacadeService: SortFacadeService,
     private router: Router,
     private route: ActivatedRoute,

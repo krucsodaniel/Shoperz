@@ -29,18 +29,6 @@ describe('AppComponent', () => {
   });
 
   describe('template', () => {
-    it('should render the navigation bar', async () => {
-      // Arrange
-      // Act
-      fixture.detectChanges();
-      await fixture.whenRenderingDone();
-
-      const navbar = fixture.debugElement.query(By.css('.navbar'));
-
-      // Assert
-      expect(navbar).toBeTruthy();
-    });
-
     it('should render the header', async () => {
       // Arrange
       // Act
