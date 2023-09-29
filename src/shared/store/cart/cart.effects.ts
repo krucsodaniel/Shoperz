@@ -46,7 +46,6 @@ export class CartEffects {
         return this.cartService.updateCart(action.id, action.amount)
           .pipe(
             map((cartItem: ICartItem) => CartActions.productAmountUpdated({ cartItem })),
-            tap(() => this.toastService.showInfoToast(this.translate.instant('cart.productAmountUpdated'))),
             catchError((error) => of(CartActions.errorCart({ error })))
           );
       })
