@@ -1,13 +1,17 @@
-<ng-container>
+<ng-container *ngIf="orders; else loading">
   <div class="flex flex-col md:flex-row items-center justify-center w-full flex-wrap order-1 md:order-0 pb-48 md:pb-36">
     <div class="hidden md:flex md:w-10/12 justify-evenly items-center h-16 bg-grey-200 sticky top-0 rounded-md">
-      <span class="font-bold text-center">Order ID</span>
-      <span class="font-bold text-center">Products</span>
-      <span class="font-bold text-center">Total</span>
-      <span class="font-bold text-center">Status</span>
-      <span class="font-bold text-center">Date created</span>
+      <span class="font-bold text-center">{{ buildTranslationKey('orderId') | translate }}</span>
+      <span class="font-bold text-center">{{ buildTranslationKey('products') | translate }}</span>
+      <span class="font-bold text-center">{{ buildTranslationKey('total') | translate }}</span>
+      <span class="font-bold text-center">{{ buildTranslationKey('status') | translate }}</span>
+      <span class="font-bold text-center">{{ buildTranslationKey('dateCreated') | translate }}</span>
     </div>
 
-    <app-order-item></app-order-item>
+    <app-order-item *ngFor="let order of orders" [order]="order"></app-order-item>
   </div>
 </ng-container>
+
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
