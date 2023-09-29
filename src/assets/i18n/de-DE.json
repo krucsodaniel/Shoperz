@@ -80,12 +80,13 @@
     "all": "Alle",
     "allBrands": "Marken",
     "allCategories": "Kategorien",
-    "allPrices": "Preise"
+    "allPrice": "Preise"
   },
   "categories": {
+    "all": "Alle",
     "tv & audio": "TV & Audio",
     "smartphones": "Smartphones",
-    "laptops & pc": "Laptops & PC",
+    "laptops & pcs": "Laptops & PC",
     "gadgets": "Gadgets",
     "photo & video": "Photo & Video",
     "gifts": "Geschenke",

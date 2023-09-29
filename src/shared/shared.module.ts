@@ -29,13 +29,15 @@ import {
   SearchFacadeService,
 } from './services';
 import {
-  NavbarComponent,
-  HeaderComponent,
   SearchbarComponent,
   LoaderComponent,
   CartIconComponent,
   BadgeComponent,
   FooterComponent,
+  HeaderComponent,
+  TopHeaderComponent,
+  SubHeaderComponent,
+  MiddleHeaderComponent,
 } from './components';
 import { SvgIconsModule } from '../core';
 
@@ -55,13 +57,15 @@ import { SvgIconsModule } from '../core';
     SvgIconsModule,
   ],
   declarations: [
-    NavbarComponent,
-    HeaderComponent,
     SearchbarComponent,
     LoaderComponent,
     CartIconComponent,
     BadgeComponent,
     FooterComponent,
+    HeaderComponent,
+    TopHeaderComponent,
+    MiddleHeaderComponent,
+    SubHeaderComponent,
   ],
   providers: [
     SearchFacadeService,
@@ -77,10 +81,9 @@ import { SvgIconsModule } from '../core';
     ToastService,
   ],
   exports: [
-    NavbarComponent,
-    HeaderComponent,
     SearchbarComponent,
     LoaderComponent,
+    HeaderComponent,
     FooterComponent,
   ],
 })

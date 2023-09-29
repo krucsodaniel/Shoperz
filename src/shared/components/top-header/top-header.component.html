@@ -1,0 +1,8 @@
+<div class="flex flex-row px-40 py-2 bg-grey-100 text-grey-600">
+  <svg-icon [src]="'localization-icon'"></svg-icon>
+
+  <select (change)="onChange($event)" >
+    <option disabled selected class="text-grey-400">Language</option>
+    <option *ngFor="let option of dropdownOptions" [value]=option.value>{{ option.label }}</option>
+  </select>
+</div>

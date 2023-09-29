@@ -16,6 +16,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SvgIconsModule, TranslationConfigModule } from '../core';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
@@ -29,9 +30,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
   imports: [
     BrowserModule,
     ProductsModule,
@@ -45,6 +43,10 @@ const routes: Routes = [
     ToastrModule.forRoot(),
     TranslationConfigModule,
     SvgIconsModule.forRoot(),
+    TranslateModule,
+  ],
+  declarations: [
+    AppComponent,
   ],
   bootstrap: [AppComponent]
 })

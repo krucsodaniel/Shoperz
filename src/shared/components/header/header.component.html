@@ -1,7 +1,5 @@
-<header class="flex flex-col md:flex-row justify-center md:justify-start items-center md:items-start text-center md:text-start w-full bg-blue-600 text-blue-100 py-0 px-44">
-  <a class="mx-2.5 my-5">{{ buildTranslationKey('home') | translate }}</a>
+<app-top-header class="header"></app-top-header>
 
-  <a class="mx-2.5 my-5" [routerLink]="Route.products" (click)="resetFiltering()">{{ buildTranslationKey('products') | translate }}</a>
+<app-middle-header></app-middle-header>
 
-  <a class="mx-2.5 my-5">{{ buildTranslationKey('faq') | translate }}</a>
-</header>
+<app-sub-header></app-sub-header>
