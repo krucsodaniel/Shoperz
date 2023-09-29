@@ -20,5 +20,9 @@ import { TranslateModule } from '@ngx-translate/core';
     CartItemComponent,
     CartSummaryComponent,
   ],
+  exports: [
+    CartItemComponent,
+    CartSummaryComponent,
+  ],
 })
 export class CartModule {}

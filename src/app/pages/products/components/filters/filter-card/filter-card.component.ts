@@ -70,4 +70,16 @@ export class FilterCardComponent implements OnInit {
 
     this.control.setValue(this.selectedOptions);
   }
+
+  buildTranslationKeyForHeading(relativeKey: string): string {
+    return `filter.all${ relativeKey }`;
+  }
+
+  buildTranslationKeyForLabels(optionId: string, relativeKey: string): string {
+    if (optionId.indexOf('category') >= 0 || optionId === 'all') {
+      return `categories.${ relativeKey.toLowerCase() }`;
+    }
+
+    return relativeKey;
+  }
 }

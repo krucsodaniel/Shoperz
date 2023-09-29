@@ -3,11 +3,11 @@ import { Route } from '../../enums';
 import { ProductFacadeService } from '../../services';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: 'navbar.component.html',
+  selector: 'app-middle-header',
+  templateUrl: 'middle-header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavbarComponent {
+export class MiddleHeaderComponent {
   protected readonly Route = Route;
 
   constructor(private productsFacadeService: ProductFacadeService) {}

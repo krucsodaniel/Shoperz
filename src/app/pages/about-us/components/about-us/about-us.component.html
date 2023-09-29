@@ -1,0 +1,42 @@
+<main class="text-grey-700 px-40 py-6">
+  <div class="pb-6">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d997.1644710986066!2d26.049189365577227!3d44.481224171318786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b203ca74315c95%3A0x9070b3ecd57e3e9b!2sStrada%20Presei%2045%2C%20Bucure%C8%99ti%2C%20Romania!5e0!3m2!1sen!2shu!4v1695309396688!5m2!1sen!2shu"
+      class="w-full h-128"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-6">
+    <article class="bg-gradient-to-t from-lightTurquoiseForGradient to-darkTurquoiseForGradient rounded-lg text-justify p-6 md:p-10">
+      <h2 class="text-lg font-medium text-grey-900 py-6">{{ buildTranslationKey('aboutUs', 'aboutUsHeading') | translate }}</h2>
+      <span>{{ buildTranslationKey('aboutUs', 'aboutUsText') | translate }}</span>
+
+      <h2 class="text-lg font-medium text-grey-900 py-6">{{ buildTranslationKey('ourMission', 'ourMissionHeading') | translate }}</h2>
+      <span>{{ buildTranslationKey('ourMission', 'ourMissionText') | translate }}</span>
+    </article>
+
+    <aside class="flex flex-col bg-gradient-to-t from-darkPurpleForGradient to-lightPurpleForGradient rounded-lg min-w-fit p-6 md:p-10">
+      <h2 class="text-lg font-medium text-grey-900 py-6">{{ buildTranslationKey('meetUs', 'meetUsHeading') | translate }}</h2>
+
+      <div class="flex items-center mb-2">
+        <svg-icon class="mr-2" [src]="'map-icon'"></svg-icon>
+
+        <span class="leading-10 text-grey-700">{{ buildTranslationKey('meetUs', 'address') | translate }}</span>
+      </div>
+
+      <div class="flex items-center mb-2">
+        <svg-icon class="mr-2" [src]="'email-icon'"></svg-icon>
+
+        <a class="block leading-10 text-grey-700" href="mailto:contact@shoperz.com" target="_top">contact@shoperz.com</a>
+      </div>
+
+      <div class="flex items-center mb-2">
+        <svg-icon class="mr-2" [src]="'phone-icon'"></svg-icon>
+
+        <span class="leading-10 text-grey-700">(+40) 987 123 654</span>
+      </div>
+    </aside>
+  </div>
+</main>

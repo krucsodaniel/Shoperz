@@ -10,11 +10,11 @@
     },
     "footer": {
       "categories": {
-        "tv & audio": "TV & Audio",
+        "tvAndAudio": "TV & Audio",
         "smartphones": "Smartphones",
-        "laptops & pc": "Laptops & PC",
+        "laptopsAndPc": "Laptops & PC",
         "gadgets": "Gadgets",
-        "photo & video": "Photo & Video",
+        "photoAndVideo": "Photo & Video",
         "gifts": "Gifts",
         "books": "Books",
         "toys": "Toys"
@@ -25,29 +25,29 @@
         "wishlist": "Wishlist",
         "compare": "Compare",
         "faq": "FAQ",
-        "terms & conditions": "Terms & Conditions",
-        "privacy policy": "Privacy Policy",
-        "cookie policy": "Cookie Policy"
+        "termsAndConditions": "Terms & Conditions",
+        "privacyPolicy": "Privacy Policy",
+        "cookiePolicy": "Cookie Policy"
       },
       "customerService": {
-        "my account": "My Account",
-        "my cart": "My Cart",
-        "track order": "Track Order",
-        "returns & exchanges": "Returns & Exchanges",
-        "repair services": "Repair Services",
+        "myAccount": "My Account",
+        "myCart": "My Cart",
+        "trackOrder": "Track Order",
+        "returnsAndExchanges": "Returns & Exchanges",
+        "repairServices": "Repair Services",
         "support": "Support"
       },
       "titles": {
         "categories": "Categories",
-        "useful links": "Useful Links",
-        "customer service": "Customer Service",
+        "usefulLinks": "Useful Links",
+        "customerService": "Customer Service",
         "headquarters": "Headquarters",
         "email": "Email",
         "telephone": "Telephone"
       },
       "other": {
-        "presei square no45, bucharest - 099455": "Presei Square No45, Bucharest - 099455",
-        "all rights reserved": "All Rights Reserved"
+        "address": "Presei Square No45, Bucharest - 099455",
+        "copyright": "All Rights Reserved"
       }
     }
   },
@@ -88,13 +88,13 @@
     "all": "All",
     "allBrands": "Brands",
     "allCategories": "Categories",
-    "allPrices": "Price"
+    "allPrice": "Price"
   },
   "categories": {
     "all": "All",
     "tv & audio": "TV & Audio",
     "smartphones": "Smartphones",
-    "laptops & pc": "Laptops & PC",
+    "laptops & pcs": "Laptops & PC",
     "gadgets": "Gadgets",
     "photo & video": "Photo & Video",
     "gifts": "Gifts",
@@ -123,5 +123,19 @@
     "productNotFound": "Sorry, no products found!",
     "tryOtherFilters": "Try other filter options.",
     "confirmMessage": "Are you sure you want to delete?"
+  },
+  "aboutUsPage": {
+    "aboutUs": {
+      "aboutUsHeading": "ABOUT US",
+      "aboutUsText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquam architecto consequuntur corporis dolorum eaque eligendi eveniet facilis fugiat id impedit maiores minus natus, nesciunt nostrum numquam placeat repellendus, repudiandae sint veniam vitae, voluptatum. Architecto cumque dolorem enim impedit ipsa iste praesentium quos, sit, tempore ut vel voluptate. Aperiam blanditiis deserunt molestias odio omnis quod rem sapiente? Exercitationem, maiores?"
+    },
+    "ourMission": {
+      "ourMissionHeading": "OUR MISSION",
+      "ourMissionText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis praesentium vero voluptate! Asperiores dignissimos doloremque expedita explicabo impedit laudantium libero modi nisi quaerat sequi! Aliquid dolorem expedita inventore nostrum repellat repudiandae sit vero. Aliquam beatae culpa ea earum eius eos est expedita fugit harum, ipsum laborum modi nihil odio omnis perferendis quod ratione repellendus sit tempore, veritatis! Accusamus aliquam architecto aut deserunt dicta, dolores ducimus eligendi impedit incidunt ipsum iste labore libero maiores officia optio quam qui quidem quisquam reiciendis sed sequi soluta sunt temporibus ullam ut vero voluptatem voluptatum? Adipisci consectetur deserunt facilis necessitatibus nesciunt quaerat reprehenderit soluta veritatis."
+    },
+    "meetUs": {
+      "meetUsHeading": "MEET US",
+      "address": "Presei Square No45, Bucharest - 099455"
+    }
   }
 }
