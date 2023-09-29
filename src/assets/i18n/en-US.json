@@ -127,6 +127,18 @@
     "meetUs": {
       "meetUsHeading": "MEET US",
       "address": "Presei Square No45, Bucharest - 099455"
+    },
+    "feedbackForm": {
+      "feedbackFormHeading": "FEEDBACK FORM",
+      "pleaseShareYourOpinion": "Please share your opinion",
+      "rateOurService": "Rate our service!",
+      "whatCanBeImproved": "What can be improved?",
+      "whatCanBeImprovedPlaceholder": "Let's us know what can be done better",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "Your email",
+      "submitButtonTitle": "Add Review"
     }
   }
 }

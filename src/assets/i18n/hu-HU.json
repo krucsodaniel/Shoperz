@@ -127,6 +127,18 @@
     "meetUs": {
       "meetUsHeading": "KAPCSOLAT",
       "address": "099455 Bukarest, Presei tér 45."
+    },
+    "feedbackForm": {
+      "feedbackFormHeading": "FEEDBACK FORM",
+      "pleaseShareYourOpinion": "Írd meg a véleményed!",
+      "rateOurService": "Értékeld a szolgáltatásunkat!",
+      "whatCanBeImproved": "Min javíthatnánk?",
+      "whatCanBeImprovedPlaceholder": "Írd meg, mit lehetne jobban csinálni",
+      "nameLabel": "Név",
+      "namePlaceholder": "Neved",
+      "emailLabel": "Email",
+      "emailPlaceholder": "Email címed",
+      "submitButtonTitle": "Add Review"
     }
   }
 }

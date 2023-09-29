@@ -6,5 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedbackFormComponent {
-
+  buildTranslationKey(relativeKey: string): string {
+    return `aboutUsPage.feedbackForm.${ relativeKey }`;
+  }
 }
