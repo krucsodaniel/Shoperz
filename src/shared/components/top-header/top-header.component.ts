@@ -16,8 +16,8 @@ export class TopHeaderComponent {
 
   constructor(private translateService: TranslateService) {}
 
-  onChange(event: Event){
-    const element = event.target as HTMLSelectElement;
-    this.translateService.use(element.value);
+  onChange(event: Event): void {
+    const language = (event.target as HTMLSelectElement).value;
+    this.translateService.use(language);
   }
 }

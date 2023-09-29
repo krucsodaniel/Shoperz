@@ -23,6 +23,6 @@ import { TranslateModule } from '@ngx-translate/core';
   exports: [
     CartItemComponent,
     CartSummaryComponent,
-  ]
+  ],
 })
 export class CartModule {}
