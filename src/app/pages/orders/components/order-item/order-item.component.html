@@ -1,0 +1,20 @@
+<span class="text-center text-size-24 font-bold"># {{ order.id }}</span>
+
+<div class="flex gap-5 flex-wrap w-64 justify-center whitespace-break-spaces overflow-ellipsis">
+  <div *ngFor="let product of order.products" class="flex flex-col items-center gap-1">
+    <img [src]="product['image']" class="w-20">
+
+    <span class="text-center text-blue-600 font-bold">{{ product['productName'] }}</span>
+
+    <span class="text-center">
+      {{ product.amount }}
+      <span>{{ buildTranslationKey('piece') | translate }}</span>
+    </span>
+  </div>
+</div>
+
+<span class="text-center text-size-24">$ {{ order.totalAmount }}</span>
+
+<span class="text-center text-size-24 bg-amber-500 p-2 rounded-md text-white">{{ order.status }}</span>
+
+<span class="text-center text-size-18">{{ order.orderDate }}</span>
