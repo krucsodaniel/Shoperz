@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CartService, ToastService } from '../../services';
+import { CartFacadeService, CartService, ToastService } from '../../services';
 import { ICartItem } from '../../models';
 import { CartActions } from './cart.actions';
-import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, take, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -69,10 +69,27 @@ export class CartEffects {
     )
   );
 
+  removeOrderedItemFromCart$ = createEffect((): Observable<Action> =>
+    this.actions$.pipe(
+      ofType(CartActions.clearCart),
+      switchMap(() => this.cartFacadeService.getCart().pipe(take(1))),
+      switchMap((cart: ICartItem[]) => {
+        const ids = cart.map((cart: ICartItem) => cart.id);
+
+        return this.cartService.clearCart(ids)
+          .pipe(
+            map(() => CartActions.cartCleared()),
+            catchError((error) => of(CartActions.errorCart({ error })))
+          );
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private cartService: CartService,
     private toastService: ToastService,
     private translate: TranslateService,
+    private cartFacadeService: CartFacadeService,
   ) {}
 }

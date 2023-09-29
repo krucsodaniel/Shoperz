@@ -47,5 +47,11 @@ export const cartReducer = createReducer(
       cart: updatedCart,
     };
   }),
+  on(CartActions.cartCleared, (state) => {
+    return {
+      ...state,
+      cart: [],
+    };
+  }),
 );
 

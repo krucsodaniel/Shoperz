@@ -43,6 +43,10 @@ export class CartFacadeService {
     this.store.dispatch(CartActions.removeProductFromCart({ id }));
   }
 
+  clearCart(): void {
+    this.store.dispatch(CartActions.clearCart());
+  }
+
   checkIfProductIsInCart(id: number): Observable<ICartItem> {
     return this.store.select(CartSelectors.selectCartItemById(id));
   }

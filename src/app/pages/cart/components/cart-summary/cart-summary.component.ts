@@ -69,6 +69,9 @@ export class CartSummaryComponent implements OnInit {
     }
 
     this.ordersFacadeService.createOrder(newOrder);
+
+    this.cartFacadeService.clearCart();
+
     this.router.navigate([Route.orders]);
   }
 
