@@ -5,6 +5,7 @@ import { SharedModule } from 'src/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SvgIconsModule } from '../../../core';
+import { FeedbackFormComponent } from './components/feedback-form/feedback-form.component';
 
 const routes: Routes = [
   { path: '', component: AboutUsComponent },
@@ -18,6 +19,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SvgIconsModule,
   ],
-  declarations: [AboutUsComponent],
+  declarations: [AboutUsComponent, FeedbackFormComponent],
 })
 export class AboutUsModule {}
