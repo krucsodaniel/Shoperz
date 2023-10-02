@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ProductFacadeService, Route } from '@shared-module';
+import { Route } from '@shared-module';
 
 @Component({
   selector: 'app-sub-header',
@@ -9,13 +9,7 @@ import { ProductFacadeService, Route } from '@shared-module';
 export class SubHeaderComponent {
   protected readonly Route = Route;
 
-  constructor(private productFacadeService: ProductFacadeService) {}
-
   buildTranslationKey(relativeKey: string): string {
     return `sharedComponents.header.${ relativeKey }`;
-  }
-
-  resetFiltering(): void {
-    this.productFacadeService.resetFiltering();
   }
 }

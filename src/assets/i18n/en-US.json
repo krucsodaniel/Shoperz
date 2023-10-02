@@ -6,7 +6,8 @@
     "header": {
       "home": "Home",
       "products": "Products",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "orders": "Orders"
     },
     "footer": {
       "categories": {

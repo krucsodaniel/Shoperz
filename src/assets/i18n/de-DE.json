@@ -6,7 +6,8 @@
     "header": {
       "home": "Zuhause",
       "products": "Produkte",
-      "faq": "HGF"
+      "faq": "HGF",
+      "orders": "Aufträge"
     },
     "footer": {
       "categories": {

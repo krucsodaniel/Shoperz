@@ -18,7 +18,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class CartComponent implements OnInit {
   products: ICalculatedProduct[];
   numberFormControl: FormControl<number>;
-  readonly headerTexts = ['product', 'price', 'quantity', 'total'];
+  readonly headerTranslationKeys = ['product', 'price', 'quantity', 'total'];
 
   @HostBinding('class')
   private readonly classes = 'mx-auto flex items-start flex-wrap py-16 gap-8';

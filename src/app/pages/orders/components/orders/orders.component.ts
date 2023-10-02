@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   HostBinding,
   OnInit,
@@ -14,9 +13,9 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrdersComponent implements OnInit {
-  orders: Observable<IOrder[]>;
+  orders$: Observable<IOrder[]>;
 
-  readonly headerTexts = ['orderId', 'products', 'total', 'status', 'dateCreated'];
+  readonly headerTranslationKeys = ['orderId', 'products', 'total', 'status', 'dateCreated'];
 
   @HostBinding('class')
   private readonly classes = 'mx-auto flex items-start flex-wrap py-16 gap-8';
@@ -24,15 +23,12 @@ export class OrdersComponent implements OnInit {
   constructor(
     private ordersFacadeService: OrdersFacadeService,
     private productsFacadeService: ProductFacadeService,
-    private cdr: ChangeDetectorRef,
   ) {}
 
-  async ngOnInit(): Promise<void> {
-    await this.productsFacadeService.initOrdersPage();
+  ngOnInit(): void {
+    this.productsFacadeService.initOrdersPage();
 
-    this.orders = this.ordersFacadeService.getOrderProducts();
-
-    this.cdr.detectChanges();
+    this.orders$ = this.ordersFacadeService.getOrderProducts();
   }
 
   buildTranslationKey(relativeKey: string): string {

@@ -17,7 +17,6 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
-import { DateGeneratorService } from '../../services';
 
 @Component({
   selector: 'app-cart-summary',
@@ -41,7 +40,6 @@ export class CartSummaryComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private ordersFacadeService: OrdersFacadeService,
     private router: Router,
-    private dateGeneratorService: DateGeneratorService,
     private destroyRef: DestroyRef,
   ) {}
 
@@ -63,7 +61,7 @@ export class CartSummaryComponent implements OnInit {
       products: await firstValueFrom(this.cartFacadeService.getCart()),
       totalAmount: this.calculateTotal,
       status: OrderStatus.processing,
-      orderDate: this.dateGeneratorService.generateOrderDate(),
+      orderDate: Date.now(),
     }
 
     this.ordersFacadeService.createOrder(newOrder);

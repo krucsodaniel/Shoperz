@@ -6,7 +6,8 @@
     "header": {
       "home": "Főoldal",
       "products": "Termékek",
-      "faq": "GYIK"
+      "faq": "GYIK",
+      "orders": "Rendelések"
     },
     "footer": {
       "categories": {
