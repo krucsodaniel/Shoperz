@@ -16,7 +16,7 @@ export class CategoryEffects {
           return this.categoryService.getCategories()
             .pipe(
               map((categories: ICategory[]) => CategoryActions.categoriesLoaded({ categories: categories })),
-              catchError((error) => of(CategoryActions.errorCategories({ error: new Error(error) })))
+              catchError((error) => of(CategoryActions.errorCategories({ error: new Error(error) }))),
             );
         }),
       );

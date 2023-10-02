@@ -10,6 +10,8 @@ export const enum CartAction {
   productAmountUpdated = '[Cart] Product amount updated',
   removeProductFromCart = '[Cart] Remove product from cart',
   productRemovedFromCart = '[Cart] Product removed from cart',
+  clearCart = '[Cart] Clear cart',
+  cartCleared = '[Cart] Cart cleared',
   errorCart = '[Cart] Error during process',
 }
 
@@ -29,6 +31,10 @@ export namespace CartActions {
   export const removeProductFromCart = createAction(CartAction.removeProductFromCart, props<{ id: number }>());
 
   export const productRemovedFromCart = createAction(CartAction.productRemovedFromCart, props<{ id: number }>());
+
+  export const clearCart = createAction(CartAction.clearCart);
+
+  export const cartCleared = createAction(CartAction.cartCleared);
 
   export const errorCart = createAction(CartAction.errorCart, props<{ error: Error }>());
 }

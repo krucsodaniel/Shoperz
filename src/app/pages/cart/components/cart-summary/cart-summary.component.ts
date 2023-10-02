@@ -4,11 +4,19 @@ import {
   Component,
   HostBinding,
   OnInit,
-  inject,
-  DestroyRef
+  DestroyRef,
 } from '@angular/core';
-import { CartFacadeService } from '@shared-module';
+import {
+  CartFacadeService,
+  ICartItem,
+  IOrder,
+  OrdersFacadeService,
+  OrderStatus,
+  Route,
+} from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-cart-summary',
@@ -17,17 +25,23 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class CartSummaryComponent implements OnInit {
   subTotal: number;
+  cart: ICartItem[];
   readonly shippingFee = 50;
 
   @HostBinding('class')
   private readonly classes = 'flex flex-col justify-center items-start order-0 md:order-1 fixed bottom-0 right-0 mx-auto w-full md:w-96 rounded-md border-2 border-solid border-grey-600 h-72 gap-5 p-6 bg-grey-200';
-  private readonly destroyRef = inject(DestroyRef);
 
   get calculateTotal(): number {
     return this.subTotal + this.shippingFee;
   }
 
-  constructor(private cartFacadeService: CartFacadeService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cartFacadeService: CartFacadeService,
+    private cdr: ChangeDetectorRef,
+    private ordersFacadeService: OrdersFacadeService,
+    private router: Router,
+    private destroyRef: DestroyRef,
+  ) {}
 
   ngOnInit(): void {
     this.cartFacadeService.getTotalAmountOfPriceInCart()
@@ -40,5 +54,20 @@ export class CartSummaryComponent implements OnInit {
 
   buildTranslationKey(relativeKey: string): string {
     return `cart.${relativeKey}`;
+  }
+
+  async checkout(): Promise<void> {
+    const newOrder: IOrder = {
+      products: await firstValueFrom(this.cartFacadeService.getCart()),
+      totalAmount: this.calculateTotal,
+      status: OrderStatus.processing,
+      orderDate: Date.now(),
+    }
+
+    this.ordersFacadeService.createOrder(newOrder);
+
+    this.cartFacadeService.clearCart();
+
+    this.router.navigate([Route.orders]);
   }
 }

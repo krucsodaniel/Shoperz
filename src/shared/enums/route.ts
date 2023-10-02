@@ -3,6 +3,7 @@ export enum Route {
   products = 'products',
   productById = 'products/:id',
   cart = 'cart',
+  orders = 'orders',
   about = 'about',
   contact = 'contact',
   wishlist = 'wishlist',

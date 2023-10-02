@@ -13,6 +13,8 @@
   <span>$ {{ calculateTotal }}</span>
 </div>
 
-<button class="w-full bg-blue-600 h-24 text-size-24 font-bold text-white hover:bg-blue-700 transition duration-300">
+<button
+  class="w-full bg-blue-600 h-24 text-size-24 font-bold text-white hover:bg-blue-700 transition duration-300"
+  (click)="checkout()">
   {{ buildTranslationKey('checkout') | translate }}
 </button>

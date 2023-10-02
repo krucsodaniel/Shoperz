@@ -1,7 +1,6 @@
 import {
   Component,
   OnInit,
-  inject,
   DestroyRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -24,14 +23,13 @@ export class SearchbarComponent implements OnInit {
   @HostBinding('class')
   private readonly classes = 'flex justify-center items-center w-full relative';
 
-  private readonly destroyRef = inject(DestroyRef);
-
   constructor(
     private productsManipulationService: ProductsManipulationService,
     private searchFacadeService: SearchFacadeService,
     private router: Router,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
+    private destroyRef: DestroyRef,
   ) {}
 
   ngOnInit(): void {

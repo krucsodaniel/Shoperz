@@ -4,7 +4,6 @@ import {
   HostBinding,
   Input,
   OnInit,
-  inject,
   DestroyRef,
 } from '@angular/core';
 import { CartFacadeService, ICalculatedProduct } from '@shared-module';
@@ -23,12 +22,14 @@ export class CartItemComponent implements OnInit {
 
   numberFormControl: FormControl<number>;
 
-  private readonly destroyRef = inject(DestroyRef);
-
   @HostBinding('class')
-  private readonly classes = 'flex flex-col md:flex-row items-center md:justify-around gap-3 w-full md:w-10/12 active:outline-0 py-4 my-4 md:h-72 rounded-md border-2 border-grey-300 shadow-md hover:shadow-xl hover:shadow-zinc-900 duration-300';
+  private readonly classes = 'flex flex-col md:flex-row items-center md:justify-around gap-3 w-full md:w-10/12 active:outline-0 py-4 my-4 md:h-72 rounded-md border-2 border-grey-300 shadow-md hover:shadow-xl duration-300';
 
-  constructor(private cartFacadeService: CartFacadeService, private translate: TranslateService) {}
+  constructor(
+    private cartFacadeService: CartFacadeService,
+    private translate: TranslateService,
+    private destroyRef: DestroyRef,
+  ) {}
 
   ngOnInit(): void {
     this.numberFormControl = new FormControl(this.product['amount'], [Validators.required]);

@@ -4,8 +4,7 @@ import {
   Component,
   HostBinding,
   OnInit,
-  inject,
-  DestroyRef
+  DestroyRef,
 } from '@angular/core';
 import { Route } from '../../enums';
 import { CartFacadeService } from '../../services';
@@ -22,9 +21,12 @@ export class CartIconComponent implements OnInit {
   @HostBinding('class')
   private readonly classes = 'relative';
   protected readonly Route = Route;
-  private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private cartFacadeService: CartFacadeService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cartFacadeService: CartFacadeService,
+    private cdr: ChangeDetectorRef,
+    private destroyRef: DestroyRef,
+  ) {}
 
   ngOnInit() {
     this.cartFacadeService.getTotalAmountOfProductsInCart()

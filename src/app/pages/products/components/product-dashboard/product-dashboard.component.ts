@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnInit } from '@angular/core';
 import { CardStateService } from '../../services';
 import { ICalculatedProduct, ProductFacadeService, ProductsManipulationService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -14,13 +14,12 @@ export class ProductDashboardComponent implements OnInit {
   products: ICalculatedProduct[];
   isLoading = true;
 
-  private readonly destroyRef = inject(DestroyRef);
-
   constructor(
     private productFacadeService: ProductFacadeService,
     private cardStateService: CardStateService,
     private productsManipulationService: ProductsManipulationService,
     private cdr: ChangeDetectorRef,
+    private destroyRef: DestroyRef,
   ) {}
 
   async ngOnInit(): Promise<void> {
