@@ -5,7 +5,7 @@ import { CartActions } from './cart.actions';
 export const cartFeatureKey = 'cart';
 
 export interface ICartState {
-  cart: ICartItem[],
+  cart: ICartItem[];
   error: Error;
 }
 

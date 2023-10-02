@@ -5,6 +5,7 @@ import { DigitOnlyModule } from '@uiowa/digit-only';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { DateGeneratorService } from './services';
 
 @NgModule({
   imports: [
@@ -19,6 +20,9 @@ import { TranslateModule } from '@ngx-translate/core';
     CartComponent,
     CartItemComponent,
     CartSummaryComponent,
+  ],
+  providers: [
+    DateGeneratorService,
   ],
   exports: [
     CartItemComponent,

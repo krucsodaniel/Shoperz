@@ -2,7 +2,7 @@
 
 <div class="flex gap-5 flex-wrap w-64 justify-center whitespace-break-spaces overflow-ellipsis">
   <div *ngFor="let product of order.products" class="flex flex-col items-center gap-1">
-    <img [src]="product['image']" class="w-20" alt="Product image">
+    <img class="w-20" [src]="product['image']" alt="Product image">
 
     <span class="text-center text-blue-600 font-bold">{{ product['productName'] }}</span>
 
@@ -15,6 +15,8 @@
 
 <span class="text-center text-size-24">$ {{ order.totalAmount }}</span>
 
-<span class="text-center text-size-24 bg-amber-500 p-2 rounded-md text-white">{{ order.status }}</span>
+<span class="text-center text-size-24 bg-amber-500 p-2 rounded-md text-white">
+  {{ buildOrderStatusTranslationKey(order.status) | translate }}
+</span>
 
-<span class="text-center text-size-18">{{ order.orderDate }}</span>
+<span class="text-center text-size-18">{{ order.orderDate | date:'medium' }}</span>

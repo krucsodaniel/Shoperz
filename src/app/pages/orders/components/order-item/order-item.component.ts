@@ -16,4 +16,8 @@ export class OrderItemComponent {
   buildTranslationKey(relativeKey: string): string {
     return `orders.${ relativeKey }`;
   }
+
+  buildOrderStatusTranslationKey(relativeKey: string): string {
+    return `orders.orderStatuses.${ relativeKey }`;
+  }
 }

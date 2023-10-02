@@ -83,7 +83,13 @@
     "status": "Status",
     "dateCreated": "Erstellungsdatum",
     "piece": "Stck",
-    "orderCreated": "Auftrag erfolgreich erstellt"
+    "orderCreated": "Auftrag erfolgreich erstellt",
+    "orderStatuses": {
+      "processing": "Verarbeitung",
+      "underDelivery": "Unter Lieferung",
+      "completed": "Abgeschlossen",
+      "cancelled": "Abgesagt"
+    }
   },
   "filter": {
     "all": "Alle",

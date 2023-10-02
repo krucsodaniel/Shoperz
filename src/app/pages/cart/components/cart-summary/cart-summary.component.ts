@@ -4,7 +4,6 @@ import {
   Component,
   HostBinding,
   OnInit,
-  inject,
   DestroyRef,
 } from '@angular/core';
 import {
@@ -17,6 +16,8 @@ import {
 } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { DateGeneratorService } from '../../services';
 
 @Component({
   selector: 'app-cart-summary',
@@ -30,7 +31,6 @@ export class CartSummaryComponent implements OnInit {
 
   @HostBinding('class')
   private readonly classes = 'flex flex-col justify-center items-start order-0 md:order-1 fixed bottom-0 right-0 mx-auto w-full md:w-96 rounded-md border-2 border-solid border-grey-600 h-72 gap-5 p-6 bg-grey-200';
-  private readonly destroyRef = inject(DestroyRef);
 
   get calculateTotal(): number {
     return this.subTotal + this.shippingFee;
@@ -41,6 +41,8 @@ export class CartSummaryComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private ordersFacadeService: OrdersFacadeService,
     private router: Router,
+    private dateGeneratorService: DateGeneratorService,
+    private destroyRef: DestroyRef,
   ) {}
 
   ngOnInit(): void {
@@ -50,22 +52,18 @@ export class CartSummaryComponent implements OnInit {
         this.subTotal = totalPrice;
         this.cdr.detectChanges();
       });
-
-    this.cartFacadeService.getCart()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((cart: ICartItem[]) => this.cart = cart);
   }
 
   buildTranslationKey(relativeKey: string): string {
     return `cart.${relativeKey}`;
   }
 
-  checkout(): void {
+  async checkout(): Promise<void> {
     const newOrder: IOrder = {
-      products: this.cart,
+      products: await firstValueFrom(this.cartFacadeService.getCart()),
       totalAmount: this.calculateTotal,
       status: OrderStatus.processing,
-      orderDate: this.generateOrderDate(),
+      orderDate: this.dateGeneratorService.generateOrderDate(),
     }
 
     this.ordersFacadeService.createOrder(newOrder);
@@ -73,18 +71,5 @@ export class CartSummaryComponent implements OnInit {
     this.cartFacadeService.clearCart();
 
     this.router.navigate([Route.orders]);
-  }
-
-  private generateOrderDate(): string {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-    const day = String(currentDate.getDate()).padStart(2, '0');
-    const hours = String(currentDate.getHours()).padStart(2, '0');
-    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
-    const formattedDateTime = `${ year }.${ month }.${ day } ${ hours }:${ minutes }:${ seconds }`;
-
-    return formattedDateTime.toString();
   }
 }

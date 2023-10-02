@@ -5,7 +5,7 @@ import { OrdersActions } from './orders.actions';
 export const ordersFeatureKey = 'orders';
 
 export interface IOrdersState {
-  orders: IOrder[],
+  orders: IOrder[];
   error: Error;
 }
 

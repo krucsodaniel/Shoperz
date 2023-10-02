@@ -82,7 +82,13 @@
     "status": "Status",
     "dateCreated": "Date created",
     "piece": "pcs",
-    "orderCreated": "Order created successfully"
+    "orderCreated": "Order created successfully",
+    "orderStatuses": {
+      "processing": "Processing",
+      "underDelivery": "Under delivery",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
   },
   "filter": {
     "all": "All",

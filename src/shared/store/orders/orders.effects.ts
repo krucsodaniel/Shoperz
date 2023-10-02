@@ -14,9 +14,9 @@ export class OrdersEffects {
         return this.ordersService.getOrders()
           .pipe(
             map((orders: IOrder[]) => OrdersActions.ordersInitialized({ orders })),
-            catchError((error) => of(OrdersActions.errorOrders({ error })))
+            catchError((error) => of(OrdersActions.errorOrders({ error }))),
           );
-      })
+      }),
     )
   );
 
@@ -30,7 +30,7 @@ export class OrdersEffects {
             tap(() => this.toastService.showSuccessToast(this.translate.instant('orders.orderCreated'))),
             catchError((error) => of(OrdersActions.errorOrders({ error }))),
           );
-      })
+      }),
     )
   );
 

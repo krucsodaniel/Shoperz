@@ -6,5 +6,5 @@ export interface IOrder {
   products: ICartItem[],
   totalAmount: number,
   status: OrderStatus,
-  orderDate: string,
+  orderDate: number,
 }

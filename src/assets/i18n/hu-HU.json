@@ -82,7 +82,13 @@
     "status": "Státusz",
     "dateCreated": "Rendelés dátuma",
     "piece": "db",
-    "orderCreated": "Sikeres megrendelés"
+    "orderCreated": "Sikeres megrendelés",
+    "orderStatuses": {
+      "processing": "Feldolgozás alatt",
+      "underDelivery": "Szállítás alatt",
+      "completed": "Teljesítve",
+      "cancelled": "Törölve"
+    }
   },
   "filter": {
     "all": "Összes",

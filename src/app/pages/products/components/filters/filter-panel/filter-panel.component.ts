@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject, DestroyRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FilterFacadeService } from '../../../services';
 import { IFilterDefinition, ProductsManipulationService } from '@shared-module';
@@ -22,14 +22,13 @@ export class FilterPanelComponent implements OnInit {
     return Object.values(this.form.controls) as FormControl[];
   }
 
-  private readonly destroyRef = inject(DestroyRef);
-
   constructor(
     private filterFacadeService: FilterFacadeService,
     private productsManipulationService: ProductsManipulationService,
     private router: Router,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
+    private destroyRef: DestroyRef,
   ) {}
 
   async ngOnInit(): Promise<void> {

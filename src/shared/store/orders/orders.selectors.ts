@@ -25,7 +25,7 @@ export namespace OrdersSelectors {
 
       return orders.map((order: IOrder) => {
         const orderProducts: ICartItem[] = order.products.map((product: ICartItem) => {
-          const orderProduct = products.find((p: ICalculatedProduct) => p.id === product.id);
+          const orderProduct = products.find((product: ICalculatedProduct) => product.id === product.id);
 
           return {
             ...product,

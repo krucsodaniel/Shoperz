@@ -4,11 +4,9 @@ import {
   Component,
   HostBinding,
   OnInit,
-  inject,
-  DestroyRef,
 } from '@angular/core';
 import { IOrder, OrdersFacadeService, ProductFacadeService } from '@shared-module';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-orders',
@@ -16,9 +14,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrdersComponent implements OnInit {
-  orders: IOrder[];
+  orders: Observable<IOrder[]>;
 
-  private readonly destroyRef = inject(DestroyRef);
+  readonly headerTexts = ['orderId', 'products', 'total', 'status', 'dateCreated'];
 
   @HostBinding('class')
   private readonly classes = 'mx-auto flex items-start flex-wrap py-16 gap-8';
@@ -32,12 +30,9 @@ export class OrdersComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.productsFacadeService.initOrdersPage();
 
-    this.ordersFacadeService.getOrderProducts()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((orders: IOrder[]) => {
-        this.orders = orders;
-        this.cdr.detectChanges();
-      });
+    this.orders = this.ordersFacadeService.getOrderProducts();
+
+    this.cdr.detectChanges();
   }
 
   buildTranslationKey(relativeKey: string): string {

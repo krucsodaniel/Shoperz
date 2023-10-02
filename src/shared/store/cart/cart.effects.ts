@@ -16,9 +16,9 @@ export class CartEffects {
         return this.cartService.getCart()
           .pipe(
             map((cartItems: ICartItem[]) => CartActions.cartInitialized({ cartItems })),
-            catchError((error) => of(CartActions.errorCart({ error })))
+            catchError((error) => of(CartActions.errorCart({ error }))),
           );
-      })
+      }),
     )
   );
 
@@ -33,9 +33,9 @@ export class CartEffects {
             catchError((error) => {
               this.toastService.showWarningToast(this.translate.instant('cart.productIsAlreadyInCart'));
               return of(CartActions.errorCart({ error }));
-            })
+            }),
           );
-      })
+      }),
     )
   );
 
@@ -46,9 +46,9 @@ export class CartEffects {
         return this.cartService.updateCart(action.id, action.amount)
           .pipe(
             map((cartItem: ICartItem) => CartActions.productAmountUpdated({ cartItem })),
-            catchError((error) => of(CartActions.errorCart({ error })))
+            catchError((error) => of(CartActions.errorCart({ error }))),
           );
-      })
+      }),
     )
   );
 
@@ -62,9 +62,9 @@ export class CartEffects {
           .pipe(
             map(() => CartActions.productRemovedFromCart({ id })),
             tap(() => this.toastService.showErrorToast(this.translate.instant('cart.productRemovedFromCart'))),
-            catchError((error) => of(CartActions.errorCart({ error })))
+            catchError((error) => of(CartActions.errorCart({ error }))),
           );
-      })
+      }),
     )
   );
 
@@ -78,9 +78,9 @@ export class CartEffects {
         return this.cartService.clearCart(ids)
           .pipe(
             map(() => CartActions.cartCleared()),
-            catchError((error) => of(CartActions.errorCart({ error })))
+            catchError((error) => of(CartActions.errorCart({ error }))),
           );
-      })
+      }),
     )
   );
 

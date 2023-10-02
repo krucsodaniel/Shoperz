@@ -4,7 +4,7 @@ import {
   CartFacadeService,
   CategoryFacadeService,
   OrdersFacadeService,
-  SearchFacadeService
+  SearchFacadeService,
 } from '../../services';
 import { FilterService, FilterFacadeService, SortFacadeService } from 'src/app/pages/products/services';
 import { filter, firstValueFrom, Observable } from 'rxjs';
