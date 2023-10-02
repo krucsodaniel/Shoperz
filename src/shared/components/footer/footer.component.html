@@ -1,5 +1,5 @@
 <footer>
-  <div class="flex px-40 py-12 text-grey-700">
+  <div class="flex flex-col md:flex-row px-40 py-12 text-grey-700">
     <div class="flex flex-col justify-between h-100 w-2/5">
       <svg-icon [src]="'shoperz-logo'"></svg-icon>
 
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div class="w-1/5">
+    <div class="w-1/5 min-w-fit">
       <span class="text-lg font-medium text-grey-900 py-6 block">
         {{ buildTranslationKey('titles', 'categories') | translate }}
       </span>
@@ -68,7 +68,7 @@
       </ul>
     </div>
 
-    <div class="w-1/5">
+    <div class="w-1/5 min-w-fit">
       <span class="text-lg font-medium text-grey-900 py-6 block">
         {{ buildTranslationKey('titles', 'usefulLinks') | translate }}
       </span>
@@ -80,7 +80,7 @@
       </ul>
     </div>
 
-    <div class="w-1/5">
+    <div class="w-1/5 min-w-fit">
       <span class="text-lg font-medium text-grey-900 py-6 block">
         {{ buildTranslationKey('titles', 'customerService') | translate }}
       </span>

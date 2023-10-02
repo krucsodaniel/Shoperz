@@ -138,7 +138,11 @@
       "namePlaceholder": "Your name",
       "emailLabel": "Email",
       "emailPlaceholder": "Your email",
-      "submitButtonTitle": "Add Review"
+      "submitButtonTitle": "Add Review",
+      "requiredOpinionErrorMessage": "Please enter your opinion!",
+      "requiredNameErrorMessage": "Please enter a name!",
+      "requiredEmailErrorMessage": "Please enter an email!",
+      "invalidEmailFormErrorMessage": "Please enter a valid email!"
     }
   }
 }

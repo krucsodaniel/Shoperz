@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SvgIconsModule } from '../../../core';
 import { FeedbackFormComponent } from './components/feedback-form/feedback-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: AboutUsComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes),
     SvgIconsModule,
+    ReactiveFormsModule,
   ],
   declarations: [AboutUsComponent, FeedbackFormComponent],
 })
