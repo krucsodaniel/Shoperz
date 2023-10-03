@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { FeedbackFacadeService } from '@shared-module';
 
@@ -9,12 +9,12 @@ import { FeedbackFacadeService } from '@shared-module';
 })
 export class FeedbackFormComponent implements OnInit {
   feedbackForm: FormGroup;
-  readonly errorStyle = 'text-red-600 border-2 border-red-700'
+  thankYouMessageVisible: boolean = false;
+  readonly errorStyle = 'text-red-600 border border-red-700';
   private readonly emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
-  thankYouMessageVisible: boolean = true;
 
-  constructor(private feedbackFacadeService: FeedbackFacadeService) {
-  }
+  constructor(private feedbackFacadeService: FeedbackFacadeService,
+              private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.feedbackForm = new FormGroup({
@@ -28,7 +28,7 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   buildTranslationKey(relativeKey: string): string {
-    return `aboutUsPage.feedbackForm.${relativeKey}`;
+    return `aboutUsPage.feedbackForm.${ relativeKey }`;
   }
 
   onSubmit(): void {
@@ -36,6 +36,12 @@ export class FeedbackFormComponent implements OnInit {
 
     this.feedbackFacadeService.createNewFeedback(newFeedback);
     this.feedbackForm.reset();
+    this.thankYouMessageVisible = true;
+
+    setTimeout(() => {
+      this.thankYouMessageVisible = false;
+      this.cdr.markForCheck();
+    }, 2000);
   }
 
   getControl(controlName: string): AbstractControl {
@@ -43,7 +49,7 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   isTouched(controlName: string): boolean {
-    return this.getControl(controlName).touched
+    return this.getControl(controlName).touched;
   }
 
   isInputValid(controlName: string, hasPattern: boolean = false): boolean {

@@ -142,7 +142,8 @@
       "requiredOpinionErrorMessage": "Kérlek, írd meg a véleményed!",
       "requiredNameErrorMessage": "Kérlek, add meg a neved!",
       "requiredEmailErrorMessage": "Kérlek, add meg az e-mail címed!",
-      "invalidEmailFormErrorMessage": "Kérlek, érvényes email címet adj meg!"
+      "invalidEmailFormErrorMessage": "Kérlek, érvényes email címet adj meg!",
+      "thankYouMessage": "KÖSZÖNJÜK A VISSZAJELZÉSED!"
     }
   }
 }

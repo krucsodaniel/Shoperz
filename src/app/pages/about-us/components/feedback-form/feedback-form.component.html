@@ -1,9 +1,9 @@
-<div class="p-10 relative">
-  <h2 class="text-lg font-medium text-grey-900">{{ buildTranslationKey('feedbackFormHeading') | translate }}</h2>
+<div *ngIf="!thankYouMessageVisible" class="relative" >
+  <h2 class="text-lg font-medium text-grey-900 pt-10">{{ buildTranslationKey('feedbackFormHeading') | translate }}</h2>
 
   <span class="block pb-6">{{ buildTranslationKey('pleaseShareYourOpinion') | translate }}</span>
 
-  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+  <form class="pb-10" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
     <span class="block font-bold">{{ buildTranslationKey('rateOurService') | translate }}</span>
 
     <div class="flex mb-4">
@@ -14,7 +14,7 @@
       <svg-icon [src]="'star-icon'" class="mr-2"></svg-icon>
     </div>
 
-    <div>
+    <div class="h-48">
       <label class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
              for="feedback-textarea">
         {{ buildTranslationKey('whatCanBeImproved') | translate }}
@@ -22,7 +22,7 @@
 
       <textarea class="bg-grey-100 rounded mb-2 p-2 resize-none"
                 [ngClass]="isInputValid('feedbackMessage') ? errorStyle : ''"
-                cols="50"
+                cols="82"
                 rows="5"
                 id="feedback-textarea"
                 formControlName="feedbackMessage"
@@ -35,7 +35,7 @@
       </span>
     </div>
 
-    <div>
+    <div class="h-24">
       <label class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
              for="feedback-name">
         {{ buildTranslationKey('nameLabel') | translate }}
@@ -54,13 +54,13 @@
       </span>
     </div>
 
-    <div>
+    <div class="h-24">
       <label class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
              for="feedback-email">
         {{ buildTranslationKey('emailLabel') | translate }}
       </label>
 
-      <input class="bg-grey-100 w-full rounded mb-4 p-2"
+      <input class="bg-grey-100 w-full rounded mb-2 p-2"
              [ngClass]="getControl('email').invalid && getControl('email').touched ? errorStyle : ''"
              formControlName="email"
              id="feedback-email"
@@ -78,14 +78,16 @@
       </span>
     </div>
 
-    <button class="bg-blue-600 rounded-full py-2 px-4 text-white absolute right-10 disabled:bg-grey-600"
+    <button class="bg-blue-600 rounded-full py-2 px-4 text-white absolute right-0 disabled:bg-grey-600"
             type="submit"
             [disabled]="!feedbackForm.valid">
       {{ buildTranslationKey('submitButtonTitle') | translate }}</button>
   </form>
-  <div>
-    <h2 class="text-lg font-medium text-grey-900">Thank you for your feedback!</h2>
-  </div>
+</div>
+
+<div *ngIf="thankYouMessageVisible" class="h-full flex flex-col items-center justify-center p-10">
+  <h2 class="text-lg font-medium text-grey-900 block">{{ buildTranslationKey('thankYouMessage') | translate }}</h2>
+  <svg-icon  class="block" [src]="'heart-icon'"></svg-icon>
 </div>
 
 

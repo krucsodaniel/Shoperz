@@ -143,7 +143,8 @@
       "requiredOpinionErrorMessage": "Bitte gib deine Meinung ein!",
       "requiredNameErrorMessage": "Bitte gib einen Namen ein!",
       "requiredEmailErrorMessage": "Bitte gib eine E-Mail ein!",
-      "invalidEmailFormErrorMessage": "Bitte gib eine gültige Email-Adresse ein!"
+      "invalidEmailFormErrorMessage": "Bitte gib eine gültige Email-Adresse ein!",
+      "thankYouMessage": "DANKE FÜR DEINE RÜCKMELDUNG!"
     }
   }
 }

@@ -142,7 +142,8 @@
       "requiredOpinionErrorMessage": "Please enter your opinion!",
       "requiredNameErrorMessage": "Please enter a name!",
       "requiredEmailErrorMessage": "Please enter an email!",
-      "invalidEmailFormErrorMessage": "Please enter a valid email!"
+      "invalidEmailFormErrorMessage": "Please enter a valid email!",
+      "thankYouMessage": "THANK YOU FOR YOUR FEEDBACK!"
     }
   }
 }
