@@ -1,7 +1,7 @@
 export enum Route {
   base = '',
   products = 'products',
-  productById = 'products/:id',
+  productById = ':id',
   cart = 'cart',
   orders = 'orders',
   about = 'about',

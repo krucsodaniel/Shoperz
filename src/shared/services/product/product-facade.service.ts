@@ -6,9 +6,8 @@ import {
   OrdersFacadeService,
   SearchFacadeService,
 } from '../../services';
-import { FilterService, FilterFacadeService, SortFacadeService } from 'src/app/pages/products/services';
+import { FilterService, FilterFacadeService, SortFacadeService } from '@shared-module';
 import { filter, firstValueFrom, Observable } from 'rxjs';
-import { SortingOption } from '../../enums';
 import { ICalculatedProduct } from '../../models';
 import { Store } from '@ngrx/store';
 import { ProductActions, ProductSelectors } from '../../store';
@@ -152,12 +151,6 @@ export class ProductFacadeService {
   getSingleProduct(productId: number): Observable<ICalculatedProduct> {
     return this.store.select(ProductSelectors.getCalculatedProduct(productId))
       .pipe(filter(Boolean));
-  }
-
-  resetFiltering(): void {
-    this.searchFacadeService.setSearchValue('');
-    this.sortFacadeService.setSortingOption(SortingOption.default);
-    this.filterFacadeService.resetFilter();
   }
 
   initCartState(): void {

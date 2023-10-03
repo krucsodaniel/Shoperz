@@ -12,25 +12,23 @@ import {
   ProductNotFoundComponent,
   ProductPageComponent,
 } from './components';
-import {
-  CardStateService,
-  FilterService,
-  FilterFacadeService,
-  SortFacadeService,
-} from './services';
+import { CardStateService } from './services';
 
 import { SharedModule } from 'src/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
-import { FilterEffects } from './store';
 import { DigitOnlyModule } from '@uiowa/digit-only';
 import { SvgIconsModule } from '../../../core';
+import { RouterModule, Routes } from '@angular/router';
+import { Route } from '@shared-module';
+
+const routes: Routes = [
+  { path: '', component: ProductDashboardComponent },
+  { path: Route.productById, component: ProductPageComponent },
+];
 
 @NgModule({
   imports: [
@@ -40,11 +38,10 @@ import { SvgIconsModule } from '../../../core';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forFeature(filtersFeatureKey, filterReducer),
-    EffectsModule.forFeature([FilterEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     DigitOnlyModule,
     SvgIconsModule,
+    RouterModule.forChild(routes),
   ],
   declarations: [
     ProductCardComponent,
@@ -59,9 +56,6 @@ import { SvgIconsModule } from '../../../core';
   ],
   providers: [
     CardStateService,
-    FilterService,
-    FilterFacadeService,
-    SortFacadeService,
   ],
   exports: [
     ProductCardComponent,

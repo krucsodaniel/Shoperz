@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { FilterFacadeService } from '../../services';
 import {
   IBrand,
   ICategory,
@@ -9,11 +8,12 @@ import {
   ProductFilterOption,
   CategoryFacadeService,
   BrandFacadeService,
+  FilterFacadeService,
 } from '@shared-module';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { FilterActions } from '../../store';
+import { FilterActions } from '../store/filters';
 
 @Injectable()
 export class FilterService {
