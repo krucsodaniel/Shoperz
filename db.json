@@ -217,52 +217,5 @@
       "id": 2
     }
   ],
-  "feedbacks": [
-    {
-      "feedbackMessage": "Első feedback.\nizbvéiusdbfgéiuaesbgueshnbgáiubdslgfbhydbvoijxycbviuxcbvbxdnovbixcváicbvoincb\n\nKÖSZI!!!",
-      "name": "Rita",
-      "email": "rita@rita.com",
-      "id": 7184
-    },
-    {
-      "feedbackMessage": "b",
-      "name": "gggg",
-      "email": "dfg@etlgm.fv",
-      "id": 2438
-    },
-    {
-      "feedbackMessage": "w",
-      "name": "we",
-      "email": "qq@qq.qq",
-      "id": 4535
-    },
-    {
-      "feedbackMessage": "w",
-      "name": "w",
-      "email": "qq@qq.qq",
-      "id": 2298,
-      "date": "2023-10-03T07:22:52.874Z"
-    },
-    {
-      "feedbackMessage": "q",
-      "name": "q",
-      "email": "qq@qq.qq",
-      "id": 7157,
-      "date": "2023-10-03T07:24:27.003Z"
-    },
-    {
-      "feedbackMessage": "s",
-      "name": "s",
-      "email": "s@s.ss",
-      "id": 1971,
-      "date": "2023-10-03T07:27:44.848Z"
-    },
-    {
-      "feedbackMessage": "q",
-      "name": "q",
-      "email": "qq@qq.qq",
-      "id": 5456,
-      "date": "2023-10-03T08:48:11.387Z"
-    }
-  ]
+  "feedbacks": []
 }
