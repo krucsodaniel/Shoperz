@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
-import { SortingOption } from '@shared-module';
+import { SortingOption, SortFacadeService } from '@shared-module';
 import { FormControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { SortFacadeService } from '../../services';
 import { distinctUntilChanged, filter } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 

@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FilterFacadeService } from '../../../services';
-import { IFilterDefinition, ProductsManipulationService } from '@shared-module';
+import { FilterFacadeService, IFilterDefinition, ProductsManipulationService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { distinctUntilChanged, filter, firstValueFrom } from 'rxjs';

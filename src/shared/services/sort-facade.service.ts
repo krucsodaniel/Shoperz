@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { SortingOption } from '@shared-module';
-import { FilterActions, FilterSelectors } from '../../store';
+import { FilterSelectors } from '../store/filters';
 import { filter, Observable } from 'rxjs';
 
 @Injectable()
@@ -11,9 +11,5 @@ export class SortFacadeService {
   getSortOption(): Observable<SortingOption> {
     return this.store.select(FilterSelectors.selectSortingOption)
       .pipe(filter(Boolean));
-  }
-
-  setSortingOption(sortValue: SortingOption): void {
-    this.store.dispatch(FilterActions.setSortingOption({ sortingOption: sortValue }));
   }
 }
