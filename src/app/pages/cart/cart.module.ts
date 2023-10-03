@@ -5,6 +5,11 @@ import { DigitOnlyModule } from '@uiowa/digit-only';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', component: CartComponent },
+];
 
 @NgModule({
   imports: [
@@ -14,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     SharedModule,
     ReactiveFormsModule,
     TranslateModule,
+    RouterModule.forChild(routes),
   ],
   declarations: [
     CartComponent,
