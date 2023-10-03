@@ -4,10 +4,9 @@ import {
   Component,
   HostBinding,
   OnInit,
-  inject,
   DestroyRef,
 } from '@angular/core';
-import { CartFacadeService, ICalculatedProduct, ICartItem, ProductFacadeService } from '@shared-module';
+import { CartFacadeService, ICalculatedProduct, ProductFacadeService } from '@shared-module';
 import { FormControl, Validators } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -17,11 +16,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent implements OnInit {
-  cartItems: ICartItem[];
   products: ICalculatedProduct[];
   numberFormControl: FormControl<number>;
+  readonly headerTranslationKeys = ['product', 'price', 'quantity', 'total'];
 
-  private readonly destroyRef = inject(DestroyRef);
   @HostBinding('class')
   private readonly classes = 'mx-auto flex items-start flex-wrap py-16 gap-8';
 
@@ -29,6 +27,7 @@ export class CartComponent implements OnInit {
     private cartFacadeService: CartFacadeService,
     private productFacadeService: ProductFacadeService,
     private cdr: ChangeDetectorRef,
+    private destroyRef: DestroyRef,
   ) {}
 
   async ngOnInit(): Promise<void> {

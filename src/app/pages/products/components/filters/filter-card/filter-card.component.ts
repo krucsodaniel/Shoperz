@@ -5,7 +5,6 @@ import {
   Input,
   OnInit,
   DestroyRef,
-  inject
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { IFilterOption } from '@shared-module';
@@ -32,9 +31,7 @@ export class FilterCardComponent implements OnInit {
 
   selectedOptions: string[] = [];
 
-  private readonly destroyRef = inject(DestroyRef);
-
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private destroyRef: DestroyRef) {}
 
   ngOnInit() {
     if (this.control.value) {

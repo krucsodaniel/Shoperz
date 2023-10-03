@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FilterActions, FilterSelectors } from 'src/app/pages/products/store';
+import { FilterActions, FilterSelectors } from '../store/filters';
 import { filter, Observable } from 'rxjs';
 
 @Injectable()

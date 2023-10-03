@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject, DestroyRef, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, DestroyRef, HostBinding } from '@angular/core';
 import { CardStateService } from '../../services';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -12,10 +12,8 @@ export class ViewSwitchComponent implements OnInit {
 
   @HostBinding('class')
   private readonly classes = 'bg-grey-100';
-  
-  private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private cardStateService: CardStateService) {}
+  constructor(private cardStateService: CardStateService, private destroyRef: DestroyRef) {}
 
   ngOnInit() {
     this.cardStateService.getView()

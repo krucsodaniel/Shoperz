@@ -12,11 +12,15 @@ import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
 import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
 import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
 import { feedbackReducer, feedbackFeatureKey } from './store/feedback/feedback.reducer'
+import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
+import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
 import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
 import { CartEffects } from './store/cart/cart.effects';
 import { FeedbackEffects } from './store/feedback/feedback.effects';
+import { OrdersEffects } from './store/orders/orders.effects';
+import { FilterEffects } from './store/filters/filter.effect';
 import {
   BrandService,
   BrandFacadeService,
@@ -31,6 +35,11 @@ import {
   SearchFacadeService,
   FeedbackService,
   FeedbackFacadeService,
+  OrdersService,
+  OrdersFacadeService,
+  FilterFacadeService,
+  FilterService,
+  SortFacadeService,
 } from './services';
 import {
   SearchbarComponent,
@@ -58,6 +67,9 @@ import { SvgIconsModule } from '../core';
     StoreModule.forFeature(cartFeatureKey, cartReducer),
     StoreModule.forFeature(feedbackFeatureKey, feedbackReducer),
     EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects, FeedbackEffects]),
+    StoreModule.forFeature(ordersFeatureKey, ordersReducer),
+    StoreModule.forFeature(filtersFeatureKey, filterReducer),
+    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects, OrdersEffects, FilterEffects]),
     RouterLinkActive,
     SvgIconsModule,
   ],
@@ -86,6 +98,11 @@ import { SvgIconsModule } from '../core';
     ToastService,
     FeedbackService,
     FeedbackFacadeService,
+    OrdersService,
+    OrdersFacadeService,
+    FilterFacadeService,
+    FilterService,
+    SortFacadeService,
   ],
   exports: [
     SearchbarComponent,

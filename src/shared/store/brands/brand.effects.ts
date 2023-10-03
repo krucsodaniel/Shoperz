@@ -16,7 +16,7 @@ export class BrandEffects {
           return this.brandService.getBrands()
             .pipe(
               map((brands: IBrand[]) => BrandActions.brandsLoaded({ brands: brands })),
-              catchError((error) => of(BrandActions.errorBrands({ error: new Error(error) })))
+              catchError((error) => of(BrandActions.errorBrands({ error: new Error(error) }))),
             );
         }),
       );

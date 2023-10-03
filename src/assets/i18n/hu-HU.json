@@ -6,7 +6,8 @@
     "header": {
       "home": "Főoldal",
       "products": "Termékek",
-      "faq": "GYIK"
+      "faq": "GYIK",
+      "orders": "Rendelések"
     },
     "footer": {
       "categories": {
@@ -74,6 +75,21 @@
     "productAddedToCart": "Termék sikeresen hozzáadva",
     "productAmountUpdated": "Termék mennyiség frissítve",
     "productRemovedFromCart": "Termék eltávolítva a kosárból"
+  },
+  "orders": {
+    "orderId": "Rendelés azonosító",
+    "products": "Termékek",
+    "total": "Összesen",
+    "status": "Státusz",
+    "dateCreated": "Rendelés dátuma",
+    "piece": "db",
+    "orderCreated": "Sikeres megrendelés",
+    "orderStatuses": {
+      "processing": "Feldolgozás alatt",
+      "underDelivery": "Szállítás alatt",
+      "completed": "Teljesítve",
+      "cancelled": "Törölve"
+    }
   },
   "filter": {
     "all": "Összes",

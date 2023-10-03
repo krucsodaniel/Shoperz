@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { forkJoin, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { ICartItem } from '../../models';
 
 @Injectable()
@@ -33,4 +33,9 @@ export class CartService {
     return this.http.delete<ICartItem>(`${this.baseUrl}${this.cart}/${id}`);
   }
 
+  clearCart(productIds: number[]): Observable<ICartItem[]> {
+    return forkJoin(
+      productIds.map((id: number) => this.removeProductFromCartById(id))
+    );
+  }
 }

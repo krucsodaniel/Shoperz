@@ -3,11 +3,11 @@ import {
   BrandFacadeService,
   CartFacadeService,
   CategoryFacadeService,
-  SearchFacadeService
+  OrdersFacadeService,
+  SearchFacadeService,
 } from '../../services';
-import { FilterService, FilterFacadeService, SortFacadeService } from 'src/app/pages/products/services';
+import { FilterService, FilterFacadeService, SortFacadeService } from '@shared-module';
 import { filter, firstValueFrom, Observable } from 'rxjs';
-import { SortingOption } from '../../enums';
 import { ICalculatedProduct } from '../../models';
 import { Store } from '@ngrx/store';
 import { ProductActions, ProductSelectors } from '../../store';
@@ -23,6 +23,7 @@ export class ProductFacadeService {
     private searchFacadeService: SearchFacadeService,
     private sortFacadeService: SortFacadeService,
     private cartFacadeService: CartFacadeService,
+    private ordersFacadeService: OrdersFacadeService,
     private store: Store,
   ) {}
 
@@ -47,6 +48,7 @@ export class ProductFacadeService {
         this.categoryFacadeService.initCategoriesState();
         await this.filterService.initializeFilterDefinitions();
         this.initCartState();
+        this.initOrdersState();
         return;
       }
 
@@ -57,6 +59,7 @@ export class ProductFacadeService {
       this.store.dispatch(ProductActions.loadProducts());
       await this.filterService.initializeFilterDefinitions();
       this.initCartState();
+      this.initOrdersState();
       return;
     }
   }
@@ -80,6 +83,7 @@ export class ProductFacadeService {
     this.categoryFacadeService.initCategoriesState();
     await firstValueFrom(this.isSpecificProductPageInitialized().pipe(filter(Boolean)));
     this.store.dispatch(CartActions.initCart());
+    this.initOrdersState();
   }
 
   async initCartPage(): Promise<void> {
@@ -95,6 +99,7 @@ export class ProductFacadeService {
         this.categoryFacadeService.initCategoriesState();
         this.filterService.initializeFilterDefinitions();
         this.initCartState();
+        this.initOrdersState();
         return;
       }
 
@@ -105,6 +110,36 @@ export class ProductFacadeService {
       this.store.dispatch(ProductActions.loadProducts());
       await this.filterService.initializeFilterDefinitions();
       this.initCartState();
+      this.initOrdersState();
+      return;
+    }
+  }
+
+  async initOrdersPage(): Promise<void> {
+    const isProductsPageInitialized = await firstValueFrom(this.isProductsPageInitialized());
+    const isSpecificProductPageInitialized = await firstValueFrom(this.isSpecificProductPageInitialized());
+
+    if (!isProductsPageInitialized) {
+      const products = await firstValueFrom(this.getProducts());
+
+      if (!products) {
+        this.store.dispatch(ProductActions.loadProducts());
+        this.brandFacadeService.initBrandsState();
+        this.categoryFacadeService.initCategoriesState();
+        this.filterService.initializeFilterDefinitions();
+        this.initCartState();
+        this.initOrdersState();
+        return;
+      }
+
+      return;
+    }
+
+    if (!isProductsPageInitialized && isSpecificProductPageInitialized) {
+      this.store.dispatch(ProductActions.loadProducts());
+      await this.filterService.initializeFilterDefinitions();
+      this.initCartState();
+      this.initOrdersState();
       return;
     }
   }
@@ -118,13 +153,11 @@ export class ProductFacadeService {
       .pipe(filter(Boolean));
   }
 
-  resetFiltering(): void {
-    this.searchFacadeService.setSearchValue('');
-    this.sortFacadeService.setSortingOption(SortingOption.default);
-    this.filterFacadeService.resetFilter();
-  }
-
   initCartState(): void {
     this.cartFacadeService.initCartState();
+  }
+
+  initOrdersState(): void {
+    this.ordersFacadeService.initOrdersState();
   }
 }

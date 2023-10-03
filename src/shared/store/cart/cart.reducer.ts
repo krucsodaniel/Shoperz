@@ -5,7 +5,7 @@ import { CartActions } from './cart.actions';
 export const cartFeatureKey = 'cart';
 
 export interface ICartState {
-  cart: ICartItem[],
+  cart: ICartItem[];
   error: Error;
 }
 
@@ -45,6 +45,12 @@ export const cartReducer = createReducer(
     return {
       ...state,
       cart: updatedCart,
+    };
+  }),
+  on(CartActions.cartCleared, (state) => {
+    return {
+      ...state,
+      cart: [],
     };
   }),
 );

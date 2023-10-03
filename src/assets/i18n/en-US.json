@@ -6,7 +6,8 @@
     "header": {
       "home": "Home",
       "products": "Products",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "orders": "Orders"
     },
     "footer": {
       "categories": {
@@ -74,6 +75,21 @@
     "productAddedToCart": "Product successfully added to cart",
     "productAmountUpdated": "Amount in cart updated",
     "productRemovedFromCart": "Product removed from cart"
+  },
+  "orders": {
+    "orderId": "Order ID",
+    "products": "Products",
+    "total": "Total",
+    "status": "Status",
+    "dateCreated": "Date created",
+    "piece": "pcs",
+    "orderCreated": "Order created successfully",
+    "orderStatuses": {
+      "processing": "Processing",
+      "underDelivery": "Under delivery",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
   },
   "filter": {
     "all": "All",

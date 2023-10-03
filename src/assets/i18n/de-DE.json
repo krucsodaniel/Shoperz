@@ -6,7 +6,8 @@
     "header": {
       "home": "Zuhause",
       "products": "Produkte",
-      "faq": "HGF"
+      "faq": "HGF",
+      "orders": "Aufträge"
     },
     "footer": {
       "categories": {
@@ -75,6 +76,21 @@
     "productAddedToCart": "Produkt erfolgreich in den Warenkorb gelegt",
     "productAmountUpdated": "Produktmenge aktualisiert",
     "productRemovedFromCart": "Produkt aus dem Warenkorb entfernt"
+  },
+  "orders": {
+    "orderId": "Bestell-ID",
+    "products": "Produkte",
+    "total": "Gesamt",
+    "status": "Status",
+    "dateCreated": "Erstellungsdatum",
+    "piece": "Stck",
+    "orderCreated": "Auftrag erfolgreich erstellt",
+    "orderStatuses": {
+      "processing": "Verarbeitung",
+      "underDelivery": "Unter Lieferung",
+      "completed": "Abgeschlossen",
+      "cancelled": "Abgesagt"
+    }
   },
   "filter": {
     "all": "Alle",

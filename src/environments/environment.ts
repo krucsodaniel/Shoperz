@@ -8,6 +8,7 @@ export const environment = {
       brands: '/brands',
       cart: '/cart',
       feedbacks: '/feedbacks',
+      orders: '/orders',
     },
   },
   redirectUrls: {
