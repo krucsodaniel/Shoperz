@@ -6,3 +6,4 @@ export * from './filter-option.model';
 export * from './filter-definition.model';
 export * from './cart-item.model';
 export * from './cart-product.model';
+export * from './feedback.model';

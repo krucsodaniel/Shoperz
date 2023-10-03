@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FeedbackFacadeService } from '@shared-module';
 
 @Component({
   selector: 'app-feedback-form',
@@ -8,11 +9,11 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 })
 export class FeedbackFormComponent implements OnInit {
   feedbackForm: FormGroup;
-  readonly errorStyle= 'text-red-600 border-2 border-red-700'
+  readonly errorStyle = 'text-red-600 border-2 border-red-700'
   private readonly emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+  thankYouMessageVisible: boolean = true;
 
-  get emailControl(): AbstractControl { // TODO: Make it generic with parameter
-    return this.feedbackForm.get('email');
+  constructor(private feedbackFacadeService: FeedbackFacadeService) {
   }
 
   ngOnInit(): void {
@@ -27,19 +28,31 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   buildTranslationKey(relativeKey: string): string {
-    return `aboutUsPage.feedbackForm.${ relativeKey }`;
+    return `aboutUsPage.feedbackForm.${relativeKey}`;
   }
 
-  onSubmit() {
-    const feedbackFormValues = this.feedbackForm.value;
-    console.log(feedbackFormValues);
+  onSubmit(): void {
+    const newFeedback = this.feedbackForm.value;
+
+    this.feedbackFacadeService.createNewFeedback(newFeedback);
+    this.feedbackForm.reset();
   }
 
   getControl(controlName: string): AbstractControl {
     return this.feedbackForm.get(controlName);
   }
 
-  isFormControlNameValid(controlName: string) {
-    return this.getControl('controlName').hasError('pattern') && this.getControl('controlName').touched
+  isTouched(controlName: string): boolean {
+    return this.getControl(controlName).touched
+  }
+
+  isInputValid(controlName: string, hasPattern: boolean = false): boolean {
+    if (controlName === 'email' && hasPattern) {
+      return this.getControl(controlName).hasError('pattern') && this.isTouched(controlName);
+    }
+    if (controlName === 'email') {
+      return !this.getControl(controlName).value && this.isTouched(controlName);
+    }
+    return this.getControl(controlName).invalid && this.isTouched(controlName);
   }
 }

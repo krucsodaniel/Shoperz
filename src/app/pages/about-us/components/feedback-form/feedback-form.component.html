@@ -15,17 +15,21 @@
     </div>
 
     <div>
-      <label class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600" for="feedback-textarea">{{ buildTranslationKey('whatCanBeImproved') | translate }}</label>
+      <label class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
+             for="feedback-textarea">
+        {{ buildTranslationKey('whatCanBeImproved') | translate }}
+      </label>
 
       <textarea class="bg-grey-100 rounded mb-2 p-2 resize-none"
-                [ngClass]="feedbackForm.get('feedbackMessage').invalid && feedbackForm.get('feedbackMessage').touched ? errorStyle : ''"
+                [ngClass]="isInputValid('feedbackMessage') ? errorStyle : ''"
                 cols="50"
                 rows="5"
                 id="feedback-textarea"
                 formControlName="feedbackMessage"
                 placeholder="{{ buildTranslationKey('whatCanBeImprovedPlaceholder') | translate }}">
       </textarea>
-      <span *ngIf="feedbackForm.get('feedbackMessage').invalid && feedbackForm.get('feedbackMessage').touched"
+
+      <span *ngIf="isInputValid('feedbackMessage')"
             class="text-red-600 block mb-6">
         {{ buildTranslationKey('requiredOpinionErrorMessage') | translate }}
       </span>
@@ -38,16 +42,16 @@
       </label>
 
       <input class="bg-grey-100 w-full rounded mb-2 p-2"
-             [ngClass]="!feedbackForm.get('name').valid && feedbackForm.get('name').touched ? errorStyle : ''"
+             [ngClass]="isInputValid('name') ? errorStyle : ''"
              formControlName="name"
              id="feedback-name"
              placeholder="{{ buildTranslationKey('namePlaceholder') | translate }}"
              type="text">
-      <span *ngIf="!feedbackForm.get('name').valid && feedbackForm.get('name').touched"
+
+      <span *ngIf="isInputValid('name')"
             class="text-red-600 block mb-6">
          {{ buildTranslationKey('requiredNameErrorMessage') | translate }}
       </span>
-
     </div>
 
     <div>
@@ -57,17 +61,18 @@
       </label>
 
       <input class="bg-grey-100 w-full rounded mb-4 p-2"
-             [ngClass]="emailControl.hasError('pattern') && emailControl.touched ? errorStyle : ''"
+             [ngClass]="getControl('email').invalid && getControl('email').touched ? errorStyle : ''"
              formControlName="email"
              id="feedback-email"
              placeholder="{{ buildTranslationKey('emailPlaceholder') | translate }}"
              type="email">
-      <span *ngIf="!emailControl.value && emailControl.touched"
+
+      <span *ngIf="isInputValid('email')"
             class="text-red-600 block mb-6">
         {{ buildTranslationKey('requiredEmailErrorMessage') | translate }}
       </span>
 
-      <span *ngIf="getControl('email').hasError('pattern') && getControl('email').touched"
+      <span *ngIf="isInputValid('email', true)"
             class="text-red-600 block mb-6">
         {{ buildTranslationKey('invalidEmailFormErrorMessage') | translate }}
       </span>
@@ -78,4 +83,10 @@
             [disabled]="!feedbackForm.valid">
       {{ buildTranslationKey('submitButtonTitle') | translate }}</button>
   </form>
+  <div>
+    <h2 class="text-lg font-medium text-grey-900">Thank you for your feedback!</h2>
+  </div>
 </div>
+
+
+
