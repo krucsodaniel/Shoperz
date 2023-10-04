@@ -12,20 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SvgIconsModule, TranslationConfigModule } from '../core';
 import { TranslateModule } from '@ngx-translate/core';
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCX-QhUKmVOMy5dE7jUXI8rMnk1zfvHCCA",
-  authDomain: "shoperz-7ff36.firebaseapp.com",
-  projectId: "shoperz-7ff36",
-  storageBucket: "shoperz-7ff36.appspot.com",
-  messagingSenderId: "561182531709",
-  appId: "1:561182531709:web:4c4e93e349cc05644f9114"
-}; // TODO: Put it in another file, dotenv, gitignore
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
@@ -64,7 +53,7 @@ const routes: Routes = [
     TranslationConfigModule,
     SvgIconsModule.forRoot(),
     TranslateModule,
-    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
   ],
   declarations: [
