@@ -81,7 +81,6 @@ module.exports = {
         'lightTurquoiseForGradient': '#c3f4ff',
         'darkTurquoiseForGradient': '#f2fff7',
       },
-
       spacing: {
         '12.5': pxToRem(50),
         '50': pxToRem(200),
@@ -129,4 +128,3 @@ module.exports = {
     },
   },
 }
-

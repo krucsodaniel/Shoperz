@@ -8,13 +8,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
 })
 export class RatingComponent {
   @Output()
-  currentRateEvent = new EventEmitter<number>();
+  readonly changeRate = new EventEmitter<number>();
+
   currentRate: number;
   selectedStarIndex: number;
 
   onStarRate(index: number): void {
     this.selectedStarIndex = index;
     this.currentRate = index + 1;
-    this.currentRateEvent.emit(this.currentRate);
+    this.changeRate.emit(this.currentRate);
   }
 }

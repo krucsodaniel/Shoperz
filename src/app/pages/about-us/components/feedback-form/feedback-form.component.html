@@ -5,7 +5,7 @@
 
   <span class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600">{{ buildTranslationKey('rateOurService') | translate }}</span>
 
-  <app-rating (currentRateEvent)="newCurrentRate($event)"></app-rating>
+  <app-rating (changeRate)="newCurrentRate($event)"></app-rating>
 
   <form class="pb-10" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
     <div class="h-48">
@@ -22,7 +22,7 @@
         cols="70"
         rows="5"
         formControlName="feedbackMessage"
-        placeholder="{{ buildTranslationKey('whatCanBeImprovedPlaceholder') | translate }}">
+        [placeholder]="buildTranslationKey('whatCanBeImprovedPlaceholder') | translate">
       </textarea>
 
       <span
@@ -41,10 +41,10 @@
 
       <input
         id="feedback-name"
-        class="bg-grey-100 w-full rounded mb-2 p-2"
+        class="bg-grey-100 w-full rounded mb-2 p-2 h-8 box-border"
         [class.error]="isInputValid('name')"
         formControlName="name"
-        placeholder="{{ buildTranslationKey('namePlaceholder') | translate }}"
+        [placeholder]="buildTranslationKey('namePlaceholder') | translate"
         type="text">
 
       <span
@@ -54,7 +54,7 @@
       </span>
     </div>
 
-    <div class="h-24">
+    <div class="relative">
       <label
         class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
         for="feedback-email">
@@ -62,24 +62,26 @@
       </label>
 
       <input
+        type="email"
         id="feedback-email"
-        class="bg-grey-100 w-full rounded mb-2 p-2"
+        class="bg-grey-100 w-full rounded mb-2 p-2 h-8 box-border"
         [class.error]="getControl('email').invalid && getControl('email').touched"
         formControlName="email"
-        placeholder="{{ buildTranslationKey('emailPlaceholder') | translate }}"
-        type="email">
+        [placeholder]="buildTranslationKey('emailPlaceholder') | translate">
 
-      <span
-        *ngIf="isInputValid('email')"
-        class="text-red-600 block mb-6">
-        {{ buildTranslationKey('requiredEmailErrorMessage') | translate }}
-      </span>
+      <div class="absolute">
+        <span
+          *ngIf="isInputValid('email')"
+          class="text-red-600 block mb-6">
+          {{ buildTranslationKey('requiredEmailErrorMessage') | translate }}
+        </span>
 
-      <span
-        *ngIf="isInputValid('email', true)"
-        class="text-red-600 block mb-6">
-        {{ buildTranslationKey('invalidEmailFormErrorMessage') | translate }}
-      </span>
+        <span
+          *ngIf="isInputValid('email', true)"
+          class="text-red-600 block mb-6">
+          {{ buildTranslationKey('invalidEmailFormErrorMessage') | translate }}
+        </span>
+      </div>
     </div>
 
     <button

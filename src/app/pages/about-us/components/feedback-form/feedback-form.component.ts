@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { FeedbackFacadeService } from '@shared-module';
+import { emailRegex } from '@shared-module';
+
+const DELAY_TIME = 3000;
 
 @Component({
   selector: 'app-feedback-form',
@@ -12,8 +15,6 @@ export class FeedbackFormComponent implements OnInit {
   feedbackForm: FormGroup;
   currentRate: number;
   isThankYouMessageVisible = false;
-  private readonly emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
-  private readonly delayTime = 3000;
 
   constructor(private feedbackFacadeService: FeedbackFacadeService, private cdr: ChangeDetectorRef) {}
 
@@ -21,7 +22,7 @@ export class FeedbackFormComponent implements OnInit {
     this.feedbackForm = new FormGroup({
       feedbackMessage: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.pattern(this.emailRegex)]),
+      email: new FormControl(null, [Validators.required, Validators.pattern(emailRegex)]),
     });
   }
 
@@ -38,7 +39,7 @@ export class FeedbackFormComponent implements OnInit {
     setTimeout(() => {
       this.isThankYouMessageVisible = false;
       this.cdr.markForCheck();
-    }, this.delayTime);
+    }, DELAY_TIME);
   }
 
   newCurrentRate(currentRate: number): void {
