@@ -62,10 +62,10 @@
       </label>
 
       <input
+        id="feedback-email"
         class="bg-grey-100 w-full rounded mb-2 p-2"
         [class.error]="getControl('email').invalid && getControl('email').touched"
         formControlName="email"
-        id="feedback-email"
         placeholder="{{ buildTranslationKey('emailPlaceholder') | translate }}"
         type="email">
 
@@ -93,5 +93,5 @@
 
 <div *ngIf="isThankYouMessageVisible" class="h-full flex flex-col items-center justify-center p-10">
   <h2 class="text-lg font-medium text-grey-900">{{ buildTranslationKey('thankYouMessage') | translate }}</h2>
-  <svg-icon class="block" [src]="'heart-icon'"></svg-icon>
+  <svg-icon class="block" [src]="'heart'"></svg-icon>
 </div>
