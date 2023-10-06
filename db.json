@@ -211,11 +211,6 @@
       "name": "Nokia"
     }
   ],
-  "cart": [
-    {
-      "amount": 5,
-      "id": 2
-    }
-  ],
+  "cart": [],
   "feedbacks": []
 }
