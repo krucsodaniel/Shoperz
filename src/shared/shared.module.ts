@@ -11,14 +11,14 @@ import { productReducer, productsFeatureKey } from './store/products/product.red
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
 import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
 import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
-import { feedbackReducer, feedbackFeatureKey } from './store/feedback/feedback.reducer'
+import { feedbackReducer, feedbackFeatureKey } from './store/feedback'
 import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
 import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
 import { CartEffects } from './store/cart/cart.effects';
-import { FeedbackEffects } from './store/feedback/feedback.effects';
+import { FeedbackEffects } from './store/feedback';
 import { OrdersEffects } from './store/orders/orders.effects';
 import { FilterEffects } from './store/filters/filter.effect';
 import {
