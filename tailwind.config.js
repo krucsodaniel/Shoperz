@@ -1,5 +1,5 @@
 const BASE_FONT_SIZE = 16;
-const pxToRem = (px) => `${px / BASE_FONT_SIZE}rem`;
+const pxToRem = (px) => `${ px / BASE_FONT_SIZE }rem`;
 
 module.exports = {
   content: [

@@ -5,14 +5,15 @@ import { FeedbackFacadeService } from '@shared-module';
 @Component({
   selector: 'app-feedback-form',
   templateUrl: './feedback-form.component.html',
+  styleUrls: ['./feedback-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedbackFormComponent implements OnInit {
   feedbackForm: FormGroup;
   currentRate: number;
-  thankYouMessageVisible = false;
-  readonly errorStyle = 'text-red-600 border border-red-700';
+  isThankYouMessageVisible = false;
   private readonly emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+  private readonly delayTime = 3000;
 
   constructor(private feedbackFacadeService: FeedbackFacadeService, private cdr: ChangeDetectorRef) {}
 
@@ -20,10 +21,7 @@ export class FeedbackFormComponent implements OnInit {
     this.feedbackForm = new FormGroup({
       feedbackMessage: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
-      email: new FormControl(null, [
-        Validators.required,
-        Validators.pattern(this.emailRegex),
-      ]),
+      email: new FormControl(null, [Validators.required, Validators.pattern(this.emailRegex)]),
     });
   }
 
@@ -32,15 +30,15 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const newFeedback = {...this.feedbackForm.value, rate: this.currentRate};
+    const newFeedback = { ...this.feedbackForm.value, rate: this.currentRate };
     this.feedbackFacadeService.createNewFeedback(newFeedback);
     this.feedbackForm.reset();
-    this.thankYouMessageVisible = true;
+    this.isThankYouMessageVisible = true;
 
     setTimeout(() => {
-      this.thankYouMessageVisible = false;
+      this.isThankYouMessageVisible = false;
       this.cdr.markForCheck();
-    }, 3000);
+    }, this.delayTime);
   }
 
   newCurrentRate(currentRate: number): void {
@@ -59,9 +57,11 @@ export class FeedbackFormComponent implements OnInit {
     if (controlName === 'email' && hasPattern) {
       return this.getControl(controlName).hasError('pattern') && this.isTouched(controlName);
     }
+
     if (controlName === 'email') {
       return !this.getControl(controlName).value && this.isTouched(controlName);
     }
+
     return this.getControl(controlName).invalid && this.isTouched(controlName);
   }
 }

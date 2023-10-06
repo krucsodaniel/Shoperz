@@ -7,13 +7,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RatingComponent {
-  @Output() currentRateEvent = new EventEmitter<number>();
+  @Output()
+  currentRateEvent = new EventEmitter<number>();
   currentRate: number;
   selectedStarIndex: number;
 
-  onStarRate(i: number):void {
-    this.selectedStarIndex = i;
-    this.currentRate = i + 1;
+  onStarRate(index: number): void {
+    this.selectedStarIndex = index;
+    this.currentRate = index + 1;
     this.currentRateEvent.emit(this.currentRate);
   }
 }

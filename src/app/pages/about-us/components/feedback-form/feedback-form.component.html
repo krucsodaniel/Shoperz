@@ -1,4 +1,4 @@
-<div *ngIf="!thankYouMessageVisible" class="relative" >
+<div *ngIf="!isThankYouMessageVisible" class="relative" >
   <h2 class="text-lg font-medium text-grey-900 pt-10">{{ buildTranslationKey('feedbackFormHeading') | translate }}</h2>
 
   <span class="block pb-6">{{ buildTranslationKey('pleaseShareYourOpinion') | translate }}</span>
@@ -9,77 +9,89 @@
 
   <form class="pb-10" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
     <div class="h-48">
-      <label class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
-             for="feedback-textarea">
+      <label
+        class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600 test"
+        for="feedback-textarea">
         {{ buildTranslationKey('whatCanBeImproved') | translate }}
       </label>
 
-      <textarea class="bg-grey-100 rounded mb-2 p-2 resize-none w-full"
-                [ngClass]="isInputValid('feedbackMessage') ? errorStyle : ''"
-                cols="70"
-                rows="5"
-                id="feedback-textarea"
-                formControlName="feedbackMessage"
-                placeholder="{{ buildTranslationKey('whatCanBeImprovedPlaceholder') | translate }}">
+      <textarea
+        id="feedback-textarea"
+        class="bg-grey-100 rounded mb-2 p-2 resize-none w-full"
+        [class.error]="isInputValid('feedbackMessage')"
+        cols="70"
+        rows="5"
+        formControlName="feedbackMessage"
+        placeholder="{{ buildTranslationKey('whatCanBeImprovedPlaceholder') | translate }}">
       </textarea>
 
-      <span *ngIf="isInputValid('feedbackMessage')"
-            class="text-red-600 block mb-6">
+      <span
+        *ngIf="isInputValid('feedbackMessage')"
+        class="text-red-600 block mb-6">
         {{ buildTranslationKey('requiredOpinionErrorMessage') | translate }}
       </span>
     </div>
 
     <div class="h-24">
-      <label class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
-             for="feedback-name">
+      <label
+        class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
+        for="feedback-name">
         {{ buildTranslationKey('nameLabel') | translate }}
       </label>
 
-      <input class="bg-grey-100 w-full rounded mb-2 p-2"
-             [ngClass]="isInputValid('name') ? errorStyle : ''"
-             formControlName="name"
-             id="feedback-name"
-             placeholder="{{ buildTranslationKey('namePlaceholder') | translate }}"
-             type="text">
+      <input
+        id="feedback-name"
+        class="bg-grey-100 w-full rounded mb-2 p-2"
+        [class.error]="isInputValid('name')"
+        formControlName="name"
+        placeholder="{{ buildTranslationKey('namePlaceholder') | translate }}"
+        type="text">
 
-      <span *ngIf="isInputValid('name')"
-            class="text-red-600 block mb-6">
-         {{ buildTranslationKey('requiredNameErrorMessage') | translate }}
+      <span
+        *ngIf="isInputValid('name')"
+        class="text-red-600 block mb-6">
+        {{ buildTranslationKey('requiredNameErrorMessage') | translate }}
       </span>
     </div>
 
     <div class="h-24">
-      <label class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
-             for="feedback-email">
+      <label
+        class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
+        for="feedback-email">
         {{ buildTranslationKey('emailLabel') | translate }}
       </label>
 
-      <input class="bg-grey-100 w-full rounded mb-2 p-2"
-             [ngClass]="getControl('email').invalid && getControl('email').touched ? errorStyle : ''"
-             formControlName="email"
-             id="feedback-email"
-             placeholder="{{ buildTranslationKey('emailPlaceholder') | translate }}"
-             type="email">
+      <input
+        class="bg-grey-100 w-full rounded mb-2 p-2"
+        [class.error]="getControl('email').invalid && getControl('email').touched"
+        formControlName="email"
+        id="feedback-email"
+        placeholder="{{ buildTranslationKey('emailPlaceholder') | translate }}"
+        type="email">
 
-      <span *ngIf="isInputValid('email')"
-            class="text-red-600 block mb-6">
+      <span
+        *ngIf="isInputValid('email')"
+        class="text-red-600 block mb-6">
         {{ buildTranslationKey('requiredEmailErrorMessage') | translate }}
       </span>
 
-      <span *ngIf="isInputValid('email', true)"
-            class="text-red-600 block mb-6">
+      <span
+        *ngIf="isInputValid('email', true)"
+        class="text-red-600 block mb-6">
         {{ buildTranslationKey('invalidEmailFormErrorMessage') | translate }}
       </span>
     </div>
 
-    <button class="bg-blue-600 rounded-full py-2 px-4 text-white absolute right-0 disabled:bg-grey-600"
-            type="submit"
-            [disabled]="!feedbackForm.valid || !currentRate">
-      {{ buildTranslationKey('submitButtonTitle') | translate }}</button>
+    <button
+      class="bg-blue-600 rounded-full py-2 px-4 text-white absolute right-0 disabled:bg-grey-600"
+      type="submit"
+      [disabled]="!feedbackForm.valid || !currentRate">
+      {{ buildTranslationKey('submitButtonTitle') | translate }}
+    </button>
   </form>
 </div>
 
-<div *ngIf="thankYouMessageVisible" class="h-full flex flex-col items-center justify-center p-10">
-  <h2 class="text-lg font-medium text-grey-900 block">{{ buildTranslationKey('thankYouMessage') | translate }}</h2>
-  <svg-icon  class="block" [src]="'heart-icon'"></svg-icon>
+<div *ngIf="isThankYouMessageVisible" class="h-full flex flex-col items-center justify-center p-10">
+  <h2 class="text-lg font-medium text-grey-900">{{ buildTranslationKey('thankYouMessage') | translate }}</h2>
+  <svg-icon class="block" [src]="'heart-icon'"></svg-icon>
 </div>

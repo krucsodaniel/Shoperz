@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FeedbackActions } from '../../store/feedback/feedback.actions';
+import { FeedbackActions } from '../../store/feedback';
 import { IFeedback } from '../../models';
 
 @Injectable()
