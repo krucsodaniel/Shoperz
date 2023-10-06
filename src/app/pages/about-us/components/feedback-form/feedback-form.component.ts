@@ -9,12 +9,12 @@ import { FeedbackFacadeService } from '@shared-module';
 })
 export class FeedbackFormComponent implements OnInit {
   feedbackForm: FormGroup;
-  thankYouMessageVisible: boolean = false;
+  currentRate: number;
+  thankYouMessageVisible = false;
   readonly errorStyle = 'text-red-600 border border-red-700';
   private readonly emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
 
-  constructor(private feedbackFacadeService: FeedbackFacadeService,
-              private cdr: ChangeDetectorRef) {}
+  constructor(private feedbackFacadeService: FeedbackFacadeService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.feedbackForm = new FormGroup({
@@ -32,8 +32,7 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const newFeedback = this.feedbackForm.value;
-
+    const newFeedback = {...this.feedbackForm.value, rate: this.currentRate};
     this.feedbackFacadeService.createNewFeedback(newFeedback);
     this.feedbackForm.reset();
     this.thankYouMessageVisible = true;
@@ -41,7 +40,11 @@ export class FeedbackFormComponent implements OnInit {
     setTimeout(() => {
       this.thankYouMessageVisible = false;
       this.cdr.markForCheck();
-    }, 2000);
+    }, 3000);
+  }
+
+  newCurrentRate(currentRate: number): void {
+    this.currentRate = currentRate;
   }
 
   getControl(controlName: string): AbstractControl {

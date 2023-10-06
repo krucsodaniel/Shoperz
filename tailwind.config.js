@@ -1,5 +1,5 @@
 const BASE_FONT_SIZE = 16;
-const pxToRem = (px) => `${ px / BASE_FONT_SIZE }rem`;
+const pxToRem = (px) => `${px / BASE_FONT_SIZE}rem`;
 
 module.exports = {
   content: [
@@ -42,8 +42,46 @@ module.exports = {
           800: '#98002a',
           900: '#4c0015',
         },
+        'turquoise': {
+          100: '#caf6f9',
+          200: '#95edf2',
+          300: '#80e8ee',
+          400: '#60e4ec',
+          500: '#17b5bf',
+          600: '#129199',
+          700: '#0e6d73',
+          800: '#09484c',
+          900: '#052426',
+        },
+        'purple': {
+          100: '#ecd0fd',
+          200: '#d8a1fa',
+          300: '#c571f8',
+          400: '#b142f5',
+          500: '#9e13f3',
+          600: '#800ac7',
+          700: '#600896',
+          800: '#400564',
+          900: '#200332',
+        },
+        'yellow': {
+          100: '#fff2da',
+          200: '#ffe6b5',
+          300: '#ffd98f',
+          400: '#ffcd6a',
+          500: '#ffc045',
+          600: '#ffaa04',
+          700: '#c28100',
+          800: '#825600',
+          900: '#412b00',
+        },
         'white': '#ffffff',
+        'lightPurpleForGradient': '#fff4fd',
+        'darkPurpleForGradient': '#cbcdff',
+        'lightTurquoiseForGradient': '#c3f4ff',
+        'darkTurquoiseForGradient': '#f2fff7',
       },
+
       spacing: {
         '12.5': pxToRem(50),
         '50': pxToRem(200),

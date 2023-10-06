@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SvgIconsModule } from '../../../core';
 import { FeedbackFormComponent } from './components/feedback-form/feedback-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RatingComponent } from './components/rating/rating.component';
 
 const routes: Routes = [
   { path: '', component: AboutUsComponent },
@@ -21,6 +22,6 @@ const routes: Routes = [
     SvgIconsModule,
     ReactiveFormsModule,
   ],
-  declarations: [AboutUsComponent, FeedbackFormComponent],
+  declarations: [AboutUsComponent, FeedbackFormComponent, RatingComponent],
 })
 export class AboutUsModule {}

@@ -3,26 +3,20 @@
 
   <span class="block pb-6">{{ buildTranslationKey('pleaseShareYourOpinion') | translate }}</span>
 
+  <span class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600">{{ buildTranslationKey('rateOurService') | translate }}</span>
+
+  <app-rating (currentRateEvent)="newCurrentRate($event)"></app-rating>
+
   <form class="pb-10" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
-    <span class="block font-bold">{{ buildTranslationKey('rateOurService') | translate }}</span>
-
-    <div class="flex mb-4">
-      <svg-icon [src]="'star-icon'" class="mr-2"></svg-icon>
-      <svg-icon [src]="'star-icon'" class="mr-2"></svg-icon>
-      <svg-icon [src]="'star-icon'" class="mr-2"></svg-icon>
-      <svg-icon [src]="'star-icon'" class="mr-2"></svg-icon>
-      <svg-icon [src]="'star-icon'" class="mr-2"></svg-icon>
-    </div>
-
     <div class="h-48">
       <label class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
              for="feedback-textarea">
         {{ buildTranslationKey('whatCanBeImproved') | translate }}
       </label>
 
-      <textarea class="bg-grey-100 rounded mb-2 p-2 resize-none"
+      <textarea class="bg-grey-100 rounded mb-2 p-2 resize-none w-full"
                 [ngClass]="isInputValid('feedbackMessage') ? errorStyle : ''"
-                cols="82"
+                cols="70"
                 rows="5"
                 id="feedback-textarea"
                 formControlName="feedbackMessage"
@@ -80,7 +74,7 @@
 
     <button class="bg-blue-600 rounded-full py-2 px-4 text-white absolute right-0 disabled:bg-grey-600"
             type="submit"
-            [disabled]="!feedbackForm.valid">
+            [disabled]="!feedbackForm.valid || !currentRate">
       {{ buildTranslationKey('submitButtonTitle') | translate }}</button>
   </form>
 </div>
@@ -89,6 +83,3 @@
   <h2 class="text-lg font-medium text-grey-900 block">{{ buildTranslationKey('thankYouMessage') | translate }}</h2>
   <svg-icon  class="block" [src]="'heart-icon'"></svg-icon>
 </div>
-
-
-

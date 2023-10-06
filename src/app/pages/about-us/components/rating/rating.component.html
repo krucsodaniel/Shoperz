@@ -1,0 +1,9 @@
+<div class="flex mt-2 mb-5 ">
+  <svg-icon
+    *ngFor="let _ of [].constructor(5); let i = index"
+    class="star mr-2"
+    [class.fill]="i <= selectedStarIndex"
+    [src]="'star'"
+    (click)="onStarRate(i)">
+  </svg-icon>
+</div>
