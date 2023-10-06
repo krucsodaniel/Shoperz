@@ -52,7 +52,7 @@ import {
   SubHeaderComponent,
   MiddleHeaderComponent,
 } from './components';
-import { SvgIconsModule } from '../core';
+import { SvgIconsModule } from '@core-module';
 
 @NgModule({
   imports: [
