@@ -55,7 +55,7 @@ export class FeedbackFormComponent implements OnInit {
     return this.getControl(controlName).touched;
   }
 
-  isInputValid(controlName: string, hasPattern: boolean = false): boolean {
+  isInputValid(controlName: string, hasPattern = false): boolean {
     if (controlName === 'email' && hasPattern) {
       return this.getControl(controlName).hasError('pattern') && this.isTouched(controlName);
     }
