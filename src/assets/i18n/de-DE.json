@@ -144,6 +144,23 @@
     "meetUs": {
       "meetUsHeading": "UNS TREFFEN",
       "address": "Presei-Platz Nr. 45, 099455 Bukarest"
+    },
+    "feedbackForm": {
+      "feedbackFormHeading": "Feedback Formular",
+      "pleaseShareYourOpinion": "Bitte teil uns Ihre Meinung mit",
+      "rateOurService": "Bewerte unseren Service!",
+      "whatCanBeImproved": "Was kann verbessert werden?",
+      "whatCanBeImprovedPlaceholder": "Lass uns wissen, was besser gemacht werden kann",
+      "nameLabel": "Name",
+      "namePlaceholder": "deine Name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "deine E-Mail",
+      "submitButtonTitle": "Bewertung hinzufügen",
+      "requiredOpinionErrorMessage": "Bitte gib deine Meinung ein!",
+      "requiredNameErrorMessage": "Bitte gib einen Namen ein!",
+      "requiredEmailErrorMessage": "Bitte gib eine E-Mail ein!",
+      "invalidEmailFormErrorMessage": "Bitte gib eine gültige Email-Adresse ein!",
+      "thankYouMessage": "DANKE FÜR DEINE RÜCKMELDUNG!"
     }
   }
 }

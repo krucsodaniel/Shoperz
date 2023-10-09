@@ -1,0 +1,15 @@
+.star::ng-deep {
+  svg {
+    path {
+      @apply fill-gray-400 hover:fill-amber-400;
+    }
+  }
+}
+
+.fill::ng-deep {
+  svg {
+    path {
+      @apply fill-amber-400;
+    }
+  }
+}

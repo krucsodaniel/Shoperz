@@ -1,7 +1,7 @@
 <footer>
-  <div class="flex px-40 py-12 text-grey-700">
+  <div class="flex flex-col md:flex-row px-40 py-12 text-grey-700">
     <div class="flex flex-col justify-between h-100 w-2/5">
-      <svg-icon [src]="'shoperz-logo'"></svg-icon>
+      <svg-icon [src]="'shoperz'"></svg-icon>
 
       <div>
         <span class="text-lg font-medium text-grey-900">
@@ -31,28 +31,28 @@
 
       <div class="flex gap-x-6">
         <a [href]="redirectUrls.facebookUrl" target="_blank">
-          <svg-icon [src]="'facebook-logo'"></svg-icon>
+          <svg-icon [src]="'facebook'"></svg-icon>
         </a>
 
         <a [href]="redirectUrls.instagramUrl" target="_blank">
-          <svg-icon [src]="'instagram-logo'"></svg-icon>
+          <svg-icon [src]="'instagram'"></svg-icon>
         </a>
 
         <a [href]="redirectUrls.linkedinUrl" target="_blank">
-          <svg-icon [src]="'linkedin-logo'"></svg-icon>
+          <svg-icon [src]="'linkedin'"></svg-icon>
         </a>
 
         <a [href]="redirectUrls.twitterUrl" target="_blank">
-          <svg-icon [src]="'twitter-logo'"></svg-icon>
+          <svg-icon [src]="'twitter'"></svg-icon>
         </a>
 
         <a [href]="redirectUrls.youtubeUrl" target="_blank">
-          <svg-icon [src]="'youtube-logo'"></svg-icon>
+          <svg-icon [src]="'youtube'"></svg-icon>
         </a>
       </div>
     </div>
 
-    <div class="w-1/5">
+    <div class="w-1/5 min-w-fit">
       <span class="text-lg font-medium text-grey-900 py-6 block">
         {{ buildTranslationKey('titles', 'categories') | translate }}
       </span>
@@ -68,7 +68,7 @@
       </ul>
     </div>
 
-    <div class="w-1/5">
+    <div class="w-1/5 min-w-fit">
       <span class="text-lg font-medium text-grey-900 py-6 block">
         {{ buildTranslationKey('titles', 'usefulLinks') | translate }}
       </span>
@@ -80,7 +80,7 @@
       </ul>
     </div>
 
-    <div class="w-1/5">
+    <div class="w-1/5 min-w-fit">
       <span class="text-lg font-medium text-grey-900 py-6 block">
         {{ buildTranslationKey('titles', 'customerService') | translate }}
       </span>
@@ -101,10 +101,10 @@
     </span>
 
     <div class="flex items-center">
-      <svg-icon [src]="'visa-logo'"></svg-icon>
-      <svg-icon [src]="'mastercard-logo'"></svg-icon>
-      <svg-icon [src]="'paypal-logo'"></svg-icon>
-      <svg-icon [src]="'skrill-logo'"></svg-icon>
+      <svg-icon [src]="'visa'"></svg-icon>
+      <svg-icon [src]="'mastercard'"></svg-icon>
+      <svg-icon [src]="'paypal'"></svg-icon>
+      <svg-icon [src]="'skrill'"></svg-icon>
     </div>
   </div>
 </footer>
