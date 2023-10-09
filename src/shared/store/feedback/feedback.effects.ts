@@ -15,7 +15,7 @@ export class FeedbackEffects {
         return this.feedbackService.createNewFeedback(feedback)
           .pipe(
             map((feedback: IFeedback) => FeedbackActions.feedbackCreated({ feedback })),
-            catchError((error) => of(FeedbackActions.errorFeedback({ error }))),
+            catchError((error: Error) => of(FeedbackActions.errorFeedback({ error }))),
           );
       }),
     ),

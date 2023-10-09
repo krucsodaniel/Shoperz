@@ -8,16 +8,16 @@
   <app-rating (changeRate)="newCurrentRate($event)"></app-rating>
 
   <form class="pb-10" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
-    <div class="h-48">
+    <div>
       <label
-        class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600 test"
+        class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
         for="feedback-textarea">
         {{ buildTranslationKey('whatCanBeImproved') | translate }}
       </label>
 
       <textarea
         id="feedback-textarea"
-        class="bg-grey-100 rounded mb-2 p-2 resize-none w-full"
+        class="bg-grey-100 rounded p-2 resize-none w-full h-32 box-border"
         [class.error]="feedbackControl.invalid && feedbackControl.touched"
         cols="70"
         rows="5"
@@ -27,21 +27,21 @@
 
       <span
         *ngIf="feedbackControl.invalid && feedbackControl.touched"
-        class="text-red-600 block mb-6">
+        class="text-red-600 block absolute">
         {{ buildTranslationKey('requiredOpinionErrorMessage') | translate }}
       </span>
     </div>
 
-    <div class="h-24">
+    <div>
       <label
-        class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
+        class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600 mt-6"
         for="feedback-name">
         {{ buildTranslationKey('nameLabel') | translate }}
       </label>
 
       <input
         id="feedback-name"
-        class="bg-grey-100 w-full rounded mb-2 p-2 h-8 box-border"
+        class="bg-grey-100 w-full rounded p-2 h-8 box-border"
         [class.error]="nameControl.invalid && nameControl.touched"
         formControlName="name"
         [placeholder]="buildTranslationKey('namePlaceholder') | translate"
@@ -49,14 +49,14 @@
 
       <span
         *ngIf="nameControl.invalid && nameControl.touched"
-        class="text-red-600 block mb-6">
+        class="text-red-600 block absolute">
         {{ buildTranslationKey('requiredNameErrorMessage') | translate }}
       </span>
     </div>
 
-    <div class="relative">
+    <div>
       <label
-        class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600"
+        class="block font-bold after:content-['*'] after:ml-0.5 after:text-red-600 mt-6"
         for="feedback-email">
         {{ buildTranslationKey('emailLabel') | translate }}
       </label>
@@ -64,7 +64,7 @@
       <input
         type="email"
         id="feedback-email"
-        class="bg-grey-100 w-full rounded mb-2 p-2 h-8 box-border"
+        class="bg-grey-100 w-full rounded p-2 h-8 box-border"
         [class.error]="emailControl.invalid && emailControl.touched"
         formControlName="email"
         [placeholder]="buildTranslationKey('emailPlaceholder') | translate">

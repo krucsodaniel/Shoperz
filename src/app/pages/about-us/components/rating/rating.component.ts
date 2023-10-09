@@ -7,14 +7,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Output }
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RatingComponent {
+  currentRate: number;
+  selectedStarIndex: number;
+
   @Output()
   readonly changeRate = new EventEmitter<number>();
 
   @HostBinding('class')
   private readonly classes = 'flex mt-2 mb-5';
-
-  currentRate: number;
-  selectedStarIndex: number;
 
   onStarRate(index: number): void {
     this.selectedStarIndex = index;
