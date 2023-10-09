@@ -18,7 +18,7 @@
       <textarea
         id="feedback-textarea"
         class="bg-grey-100 rounded mb-2 p-2 resize-none w-full"
-        [class.error]="isInputValid('feedbackMessage')"
+        [class.error]="feedbackControl.invalid && feedbackControl.touched"
         cols="70"
         rows="5"
         formControlName="feedbackMessage"
@@ -26,7 +26,7 @@
       </textarea>
 
       <span
-        *ngIf="isInputValid('feedbackMessage')"
+        *ngIf="feedbackControl.invalid && feedbackControl.touched"
         class="text-red-600 block mb-6">
         {{ buildTranslationKey('requiredOpinionErrorMessage') | translate }}
       </span>
@@ -42,13 +42,13 @@
       <input
         id="feedback-name"
         class="bg-grey-100 w-full rounded mb-2 p-2 h-8 box-border"
-        [class.error]="isInputValid('name')"
+        [class.error]="nameControl.invalid && nameControl.touched"
         formControlName="name"
         [placeholder]="buildTranslationKey('namePlaceholder') | translate"
         type="text">
 
       <span
-        *ngIf="isInputValid('name')"
+        *ngIf="nameControl.invalid && nameControl.touched"
         class="text-red-600 block mb-6">
         {{ buildTranslationKey('requiredNameErrorMessage') | translate }}
       </span>
@@ -65,19 +65,19 @@
         type="email"
         id="feedback-email"
         class="bg-grey-100 w-full rounded mb-2 p-2 h-8 box-border"
-        [class.error]="getControl('email').invalid && getControl('email').touched"
+        [class.error]="emailControl.invalid && emailControl.touched"
         formControlName="email"
         [placeholder]="buildTranslationKey('emailPlaceholder') | translate">
 
       <div class="absolute">
         <span
-          *ngIf="isInputValid('email')"
+          *ngIf="emailControl.hasError('required') && emailControl.touched"
           class="text-red-600 block mb-6">
           {{ buildTranslationKey('requiredEmailErrorMessage') | translate }}
         </span>
 
         <span
-          *ngIf="isInputValid('email', true)"
+          *ngIf="emailControl.hasError('pattern') && emailControl.touched"
           class="text-red-600 block mb-6">
           {{ buildTranslationKey('invalidEmailFormErrorMessage') | translate }}
         </span>

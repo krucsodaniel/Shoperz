@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, HostBinding } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { FeedbackFacadeService } from '@shared-module';
-import { emailRegex } from '@shared-module';
+
+import { FeedbackFacadeService, EMAIL_REGEX, Control } from '@shared-module';
 
 const DELAY_TIME = 3000;
 
@@ -16,13 +16,25 @@ export class FeedbackFormComponent implements OnInit {
   currentRate: number;
   isThankYouMessageVisible = false;
 
+  get emailControl(): AbstractControl {
+    return this.feedbackForm.controls[Control.email];
+  }
+
+  get feedbackControl(): AbstractControl {
+    return this.feedbackForm.controls[Control.feedbackMessage];
+  }
+
+  get nameControl(): AbstractControl {
+    return this.feedbackForm.controls[Control.name];
+  }
+
   constructor(private feedbackFacadeService: FeedbackFacadeService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.feedbackForm = new FormGroup({
-      feedbackMessage: new FormControl(null, Validators.required),
-      name: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.pattern(emailRegex)]),
+      [Control.feedbackMessage]: new FormControl(null, Validators.required),
+      [Control.name]: new FormControl(null, Validators.required),
+      [Control.email]: new FormControl(null, [Validators.required, Validators.pattern(EMAIL_REGEX)]),
     });
   }
 
@@ -44,25 +56,5 @@ export class FeedbackFormComponent implements OnInit {
 
   newCurrentRate(currentRate: number): void {
     this.currentRate = currentRate;
-  }
-
-  getControl(controlName: string): AbstractControl {
-    return this.feedbackForm.get(controlName);
-  }
-
-  isTouched(controlName: string): boolean {
-    return this.getControl(controlName).touched;
-  }
-
-  isInputValid(controlName: string, hasPattern = false): boolean {
-    if (controlName === 'email' && hasPattern) {
-      return this.getControl(controlName).hasError('pattern') && this.isTouched(controlName);
-    }
-
-    if (controlName === 'email') {
-      return !this.getControl(controlName).value && this.isTouched(controlName);
-    }
-
-    return this.getControl(controlName).invalid && this.isTouched(controlName);
   }
 }

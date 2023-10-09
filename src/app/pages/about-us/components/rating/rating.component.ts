@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Output } from '@angular/core';
 
 @Component({
   selector: 'app-rating',
@@ -9,6 +9,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
 export class RatingComponent {
   @Output()
   readonly changeRate = new EventEmitter<number>();
+
+  @HostBinding('class')
+  private readonly classes = 'flex mt-2 mb-5';
 
   currentRate: number;
   selectedStarIndex: number;

@@ -76,10 +76,6 @@ module.exports = {
           900: '#412b00',
         },
         'white': '#ffffff',
-        'lightPurpleForGradient': '#fff4fd',
-        'darkPurpleForGradient': '#cbcdff',
-        'lightTurquoiseForGradient': '#c3f4ff',
-        'darkTurquoiseForGradient': '#f2fff7',
       },
       spacing: {
         '12.5': pxToRem(50),
