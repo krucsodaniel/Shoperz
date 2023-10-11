@@ -69,6 +69,7 @@
     "product": "Product",
     "price": "Price",
     "quantity": "Quantity",
+    "wishlist": "Wishlist",
     "addAmount": "Add amount",
     "addToCart": "Add to Cart",
     "productIsAlreadyInCart": "Product is already in cart.",

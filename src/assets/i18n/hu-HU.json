@@ -69,6 +69,7 @@
     "product": "Termék",
     "price": "Ár",
     "quantity": "Mennyiség",
+    "wishlist": "Kívánság listába",
     "addAmount": "Adjon meg mennyiséget",
     "addToCart": "Kosárba",
     "productIsAlreadyInCart": "A termék már a kosárban van.",
