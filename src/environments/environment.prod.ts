@@ -6,6 +6,7 @@ export const environmentProd = {
       products: '/product',
       categories: '/categories',
       brands: '/brands',
+      wishList: '/wishlist',
     },
   },
   redirectUrls: {
