@@ -21,5 +21,10 @@ export class FeedbackEffects {
     ),
   );
 
+  // TODO: Create two selector: getWishlist, getWishlistById (for example Cart)
+  // TODO: If selector getWishlistById returns true -> remove item from Store
+  // TODO: If selector getWishlistById returns false -> add item to Store
+  // TODO: icon color
+
   constructor(private actions$: Actions, private feedbackService: FeedbackService) {}
 }

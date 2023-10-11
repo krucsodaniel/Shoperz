@@ -14,6 +14,7 @@ import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
 import { feedbackReducer, feedbackFeatureKey } from './store/feedback'
 import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
+import { wishlistReducer, wishlistFeatureKey, WishlistEffects } from './store/wishlist';
 import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
@@ -40,6 +41,8 @@ import {
   FilterFacadeService,
   FilterService,
   SortFacadeService,
+  WishlistService,
+  WishlistFacadeService,
 } from './services';
 import {
   SearchbarComponent,
@@ -69,7 +72,16 @@ import { SvgIconsModule } from '@core-module';
     EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects, FeedbackEffects]),
     StoreModule.forFeature(ordersFeatureKey, ordersReducer),
     StoreModule.forFeature(filtersFeatureKey, filterReducer),
-    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects, OrdersEffects, FilterEffects]),
+    StoreModule.forFeature(wishlistFeatureKey, wishlistReducer),
+    EffectsModule.forFeature([
+      ProductEffects,
+      BrandEffects,
+      CategoryEffects,
+      CartEffects,
+      OrdersEffects,
+      FilterEffects,
+      WishlistEffects,
+    ]),
     RouterLinkActive,
     SvgIconsModule,
   ],
@@ -103,6 +115,8 @@ import { SvgIconsModule } from '@core-module';
     FilterFacadeService,
     FilterService,
     SortFacadeService,
+    WishlistService,
+    WishlistFacadeService,
   ],
   exports: [
     SearchbarComponent,

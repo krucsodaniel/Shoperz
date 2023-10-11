@@ -6,13 +6,14 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
-import { CartFacadeService, ICalculatedProduct, ProductFacadeService } from '@shared-module';
+import { CartFacadeService, ICalculatedProduct, ProductFacadeService, WishlistFacadeService } from '@shared-module';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
+  styleUrls: ['./product-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductPageComponent implements OnInit {
@@ -29,6 +30,7 @@ export class ProductPageComponent implements OnInit {
     private cartFacadeService: CartFacadeService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
+    private wishlistFacadeService: WishlistFacadeService,
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -80,6 +82,11 @@ export class ProductPageComponent implements OnInit {
     }
 
     this.cartFacadeService.addProductToCart(productId, amount);
+  }
+
+  async toggleProductToWishlist(productId: number) {
+    console.log(productId);
+    this.wishlistFacadeService.createNewWishlistItem(productId);
   }
 
   buildTranslationKey(relativeKey: string): string {

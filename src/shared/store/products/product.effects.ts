@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductService } from '../../services';
-import { ProductActions } from './product.actions';
+import { ProductActions } from '@shared-module';
 import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { IProduct } from '@shared-module';
 import { Action } from '@ngrx/store';
