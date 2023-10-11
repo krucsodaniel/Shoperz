@@ -163,5 +163,10 @@
       "invalidEmailFormErrorMessage": "Bitte gib eine gültige Email-Adresse ein!",
       "thankYouMessage": "DANKE FÜR DEINE RÜCKMELDUNG!"
     }
+  },
+  "wishlist": {
+    "productAddedToWishlist": "Das Produkt wurde zu Ihrer Wunschliste hinzugefügt",
+    "productIsAlreadyOnWishlist": "Das Produkt befindet sich bereits auf Ihrer Wunschliste",
+    "productRemovedFromWishlist": "Das Produkt wurde von Ihrer Wunschliste entfernt"
   }
 }

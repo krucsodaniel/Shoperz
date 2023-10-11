@@ -162,5 +162,10 @@
       "invalidEmailFormErrorMessage": "Please enter a valid email!",
       "thankYouMessage": "THANK YOU FOR YOUR FEEDBACK!"
     }
+  },
+  "wishlist": {
+    "productAddedToWishlist": "The product was added to your wishlist",
+    "productIsAlreadyOnWishlist": "The product is already on your wishlist",
+    "productRemovedFromWishlist": "The product was removed from your wishlist"
   }
 }

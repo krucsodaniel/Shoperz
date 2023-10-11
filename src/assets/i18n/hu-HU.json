@@ -162,5 +162,10 @@
       "invalidEmailFormErrorMessage": "Kérlek, érvényes email címet adj meg!",
       "thankYouMessage": "KÖSZÖNJÜK A VISSZAJELZÉSED!"
     }
+  },
+  "wishlist": {
+    "productAddedToWishlist": "A terméket kívánságlistádhoz adtuk",
+    "productIsAlreadyOnWishlist": "A termék már szerepel kívánságlistádon",
+    "productRemovedFromWishlist": "A terméket eltávolítottuk a kívánságlistádról"
   }
 }
