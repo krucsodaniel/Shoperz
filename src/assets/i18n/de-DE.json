@@ -168,5 +168,11 @@
     "productAddedToWishlist": "Das Produkt wurde zu Ihrer Wunschliste hinzugefügt",
     "productIsAlreadyOnWishlist": "Das Produkt befindet sich bereits auf Ihrer Wunschliste",
     "productRemovedFromWishlist": "Das Produkt wurde von Ihrer Wunschliste entfernt"
+  },
+  "wishlistPage": {
+    "picture": "Bild",
+    "product": "Produkt",
+    "price": "Preis",
+    "operations": "Operationen"
   }
 }

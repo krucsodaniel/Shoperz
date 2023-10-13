@@ -1,7 +1,14 @@
 <div class="product-text-wrapper">
-  <p class="product-category">{{ card.categoryName }}</p>
+  <div class="flex justify-between">
+    <div>
+      <p class="product-category">{{ card.categoryName }}</p>
 
-  <h3 class="product-name">{{ card.name }}</h3>
+      <h3 class="product-name">{{ card.name }}</h3>
+    </div>
+    <app-wishlist-button class="p-1" [productId]="card.id" [isOnProductPage]="true"></app-wishlist-button>
+  </div>
+
+
 
   <div *ngIf="isExpanded" class="product-list">
     <span class="list-element">{{ card.description }}</span>

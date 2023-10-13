@@ -54,6 +54,7 @@ import {
   TopHeaderComponent,
   SubHeaderComponent,
   MiddleHeaderComponent,
+  WishlistButtonComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
 
@@ -95,6 +96,7 @@ import { SvgIconsModule } from '@core-module';
     TopHeaderComponent,
     MiddleHeaderComponent,
     SubHeaderComponent,
+    WishlistButtonComponent,
   ],
   providers: [
     SearchFacadeService,
@@ -123,6 +125,7 @@ import { SvgIconsModule } from '@core-module';
     LoaderComponent,
     HeaderComponent,
     FooterComponent,
+    WishlistButtonComponent,
   ],
 })
 export class SharedModule {}

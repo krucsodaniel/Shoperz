@@ -3,7 +3,7 @@ import { IWishlistItem } from '../../models';
 
 export const enum WishlistAction {
   createWishlist = '[Wishlist] Create wishlist',
-  wishlistCreated = '[Wishlist] Feedback wishlist',
+  wishlistCreated = '[Wishlist] Wishlist created',
   errorWishlist = '[Wishlist] Error during wishlist',
 }
 
