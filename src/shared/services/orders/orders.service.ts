@@ -26,7 +26,7 @@ export class OrdersService {
   }
 
   createOrder(order: IOrder): Observable<IOrder> {
-    return from(addDoc(this.ordersCollectionRef, {...order, timestamp: serverTimestamp()}))
+    return from(addDoc(this.ordersCollectionRef, { ...order, timestamp: serverTimestamp()} ))
       .pipe(
         map((docRef) => {
           const orderId = docRef.id;
