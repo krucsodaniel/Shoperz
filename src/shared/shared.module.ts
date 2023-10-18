@@ -11,7 +11,7 @@ import { productReducer, productsFeatureKey } from './store/products/product.red
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
 import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
 import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
-import { feedbackReducer, feedbackFeatureKey } from './store/feedback'
+import { feedbackReducer, feedbackFeatureKey } from './store/feedback';
 import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
 import { ProductEffects } from './store/products/product.effects';

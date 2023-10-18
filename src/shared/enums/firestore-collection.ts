@@ -4,4 +4,5 @@ export enum FirestoreCollection {
   cart = 'cart',
   orders = 'orders',
   products = 'products',
+  feedbacks = 'feedbacks',
 }
