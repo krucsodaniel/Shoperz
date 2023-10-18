@@ -31,23 +31,29 @@ export class CartFacadeService {
     return this.store.select(CartSelectors.selectTotalAmountOfPrice);
   }
 
-  addProductToCart(id: number, amount: number): void {
+  checkIfProductIsInCart(productId: string): Observable<boolean> {
+    return this.store.select(CartSelectors.isProductInCart(productId))
+      .pipe(filter(Boolean));
+  }
+
+  getCurrentCartItemAmount(productId: string): Observable<number> {
+    return this.store.select(CartSelectors.selectAmountOfCurrentCartItem(productId))
+      .pipe(filter(Boolean));
+  }
+
+  addProductToCart(id: string, amount: number): void {
     this.store.dispatch(CartActions.addProductToCart({ id, amount }));
   }
 
-  updateProductAmount(id: number, amount: number): void {
+  updateProductAmount(id: string, amount: number): void {
     this.store.dispatch(CartActions.updateProductAmount({ id, amount }));
   }
 
-  removeProductFromCart(id: number): void {
+  removeProductFromCart(id: string): void {
     this.store.dispatch(CartActions.removeProductFromCart({ id }));
   }
 
   clearCart(): void {
     this.store.dispatch(CartActions.clearCart());
-  }
-
-  checkIfProductIsInCart(id: number): Observable<ICartItem> {
-    return this.store.select(CartSelectors.selectCartItemById(id));
   }
 }

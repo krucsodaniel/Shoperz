@@ -64,7 +64,7 @@ export class ProductFacadeService {
     }
   }
 
-  async initSpecificProductPage(productId: number): Promise<void> {
+  async initSpecificProductPage(productId: string): Promise<void> {
     const isProductsPageInitialized = await firstValueFrom(this.isProductsPageInitialized());
 
     if (isProductsPageInitialized) {
@@ -148,7 +148,7 @@ export class ProductFacadeService {
     return this.store.select(ProductSelectors.getCalculatedProducts);
   }
 
-  getSingleProduct(productId: number): Observable<ICalculatedProduct> {
+  getSingleProduct(productId: string): Observable<ICalculatedProduct> {
     return this.store.select(ProductSelectors.getCalculatedProduct(productId))
       .pipe(filter(Boolean));
   }
