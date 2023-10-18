@@ -1,0 +1,7 @@
+  <svg-icon
+    *ngFor="let _ of [].constructor(5); let index = index"
+    class="star mr-2"
+    [class.fill]="index <= selectedStarIndex"
+    [src]="'star'"
+    (click)="onStarRate(index)">
+  </svg-icon>

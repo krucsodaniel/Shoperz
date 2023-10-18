@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { DigitOnlyModule } from '@uiowa/digit-only';
-import { SvgIconsModule } from '../../../core';
+import { SvgIconsModule } from '@core-module';
 import { RouterModule, Routes } from '@angular/router';
 import { Route } from '@shared-module';
 

@@ -5,6 +5,7 @@ export * from './product';
 export * from './category';
 export * from './cart';
 export * from './toast.service';
+export * from './feedback';
 export * from './orders';
 export * from './filter.service';
 export * from './filter-facade.service';

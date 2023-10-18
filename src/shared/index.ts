@@ -6,3 +6,4 @@ export * from './services/product';
 export * from './services/brand';
 export * from './services/category';
 export * from './store';
+export * from './regex';
