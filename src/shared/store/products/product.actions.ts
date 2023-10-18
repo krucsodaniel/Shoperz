@@ -14,7 +14,7 @@ export namespace ProductActions {
 
   export const productsLoaded = createAction(ProductAction.productsLoaded, props<{ products: IProduct[] }>());
 
-  export const loadProductById = createAction(ProductAction.loadProductById, props<{ productId: number }>());
+  export const loadProductById = createAction(ProductAction.loadProductById, props<{ productId: string }>());
 
   export const productByIdLoaded = createAction(ProductAction.productByIdLoaded, props<{ product: IProduct }>());
 

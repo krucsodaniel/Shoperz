@@ -19,4 +19,4 @@
   {{ buildOrderStatusTranslationKey(order.status) | translate }}
 </span>
 
-<span class="text-center text-size-18">{{ order.orderDate | date:'medium' }}</span>
+<span class="relative -z-50 right-0 bottom-20 text-center text-size-12">{{ order.timestamp | firestoreDate | date: 'medium' }}</span>

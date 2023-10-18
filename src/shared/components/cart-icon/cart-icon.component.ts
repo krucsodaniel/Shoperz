@@ -28,13 +28,14 @@ export class CartIconComponent implements OnInit {
     private destroyRef: DestroyRef,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.cartFacadeService.getTotalAmountOfProductsInCart()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((totalNumberOfCartItems: number) => {
         this.amountInCart = totalNumberOfCartItems;
         this.cdr.detectChanges();
       });
+
     this.cdr.detectChanges();
   }
 }

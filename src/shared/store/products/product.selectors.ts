@@ -12,12 +12,12 @@ export namespace ProductSelectors {
     (state: IProductState) => state.products,
   );
 
-  export const selectProductById = (productId: number) => createSelector(
+  export const selectProductById = (productId: string) => createSelector(
     selectProductFeature,
     (state: IProductState) => state.products.find((product) => product.id === productId),
   );
 
-  export const selectProductsByIds = (productIds: number[]) => createSelector(
+  export const selectProductsByIds = (productIds: string[]) => createSelector(
     selectProductFeature,
     (state: IProductState) => state.products.filter((product) => productIds.includes(product.id)),
   );
@@ -32,7 +32,7 @@ export namespace ProductSelectors {
     (state: IProductState) => state.isSpecificProductPageInitialized,
   );
 
-  export const getCalculatedProduct = (productId: number) => createSelector(
+  export const getCalculatedProduct = (productId: string) => createSelector(
     selectProductById(productId),
     BrandSelectors.selectBrands,
     CategorySelectors.selectCategories,

@@ -63,7 +63,7 @@ export class CartItemComponent implements OnInit {
     }
   }
 
-  removeItemFromCart(productId: number): void {
+  removeItemFromCart(productId: string): void {
     if (confirm(this.translate.instant('general.confirmMessage'))) {
       this.cartFacadeService.removeProductFromCart(productId);
     }
@@ -73,7 +73,7 @@ export class CartItemComponent implements OnInit {
     return `cart.${ relativeKey }`;
   }
 
-  private updateItemInCart(productId: number, amount: number): void {
+  private updateItemInCart(productId: string, amount: number): void {
     this.cartFacadeService.updateProductAmount(productId, amount);
   }
 }
