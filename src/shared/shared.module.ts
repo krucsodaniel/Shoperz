@@ -47,8 +47,10 @@ import {
   TopHeaderComponent,
   SubHeaderComponent,
   MiddleHeaderComponent,
+  AddToCartIconComponent,
 } from './components';
 import { SvgIconsModule } from '../core';
+import { FirestoreDatePipe } from './pipes';
 
 @NgModule({
   imports: [
@@ -77,6 +79,8 @@ import { SvgIconsModule } from '../core';
     TopHeaderComponent,
     MiddleHeaderComponent,
     SubHeaderComponent,
+    AddToCartIconComponent,
+    FirestoreDatePipe,
   ],
   providers: [
     SearchFacadeService,
@@ -101,6 +105,8 @@ import { SvgIconsModule } from '../core';
     LoaderComponent,
     HeaderComponent,
     FooterComponent,
+    AddToCartIconComponent,
+    FirestoreDatePipe,
   ],
 })
 export class SharedModule {}
