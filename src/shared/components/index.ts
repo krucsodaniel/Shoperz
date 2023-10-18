@@ -7,3 +7,4 @@ export * from './loader/loader.component';
 export * from './cart-icon/cart-icon.component';
 export * from './badge/badge.component';
 export * from './footer/footer.component';
+export * from './add-to-cart-icon/add-to-cart-icon.component';

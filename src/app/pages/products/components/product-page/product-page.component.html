@@ -50,17 +50,12 @@
       <button class="bg-white text-grey-700" (click)="incrementQuantity()">+</button>
     </div>
 
-    <button
-      class="flex justify-center items-center gap-2.5 w-full h-16 rounded-3xl py-5 bg-blue-600 text-white hover:bg-blue-700 transition duration-300"
-      [disabled]="numberFormControl.invalid"
-      [ngClass]="{ 'bg-grey-600 hover:bg-grey-700 cursor-not-allowed' : numberFormControl.invalid }"
-      (click)="updateAmount(product.id, $event)">
-        <span class="font-medium text-size-16 leading-4">
-          {{ (buildTranslationKey(numberFormControl.hasError('required') ? 'addAmount' : 'addToCart') | translate) }}
-        </span>
-
-      <svg-icon [src]="'add-to-cart'"></svg-icon>
-    </button>
+    <app-add-to-cart-icon
+      [productId]="product.id"
+      [typeOfPage]="typeOfPage"
+      [amountOfProductInCart]="amountOfProductInCart"
+      (amountChange)="setFormCurrentValue($event)">
+    </app-add-to-cart-icon>
   </div>
 </ng-container>
 

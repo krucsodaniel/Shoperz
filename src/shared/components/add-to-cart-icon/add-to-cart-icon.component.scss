@@ -1,0 +1,32 @@
+.add-to-cart-button {
+  @apply flex justify-center flex-wrap gap-5;
+  @apply border-b-4 rounded-full;
+  @apply cursor-pointer outline-none text-center;
+  @apply active:scale-150;
+}
+
+.collapsed {
+  @apply w-9 h-9 py-2 px-1.5;
+  @apply bg-grey-200 text-blue-100;
+  @apply hover:bg-green-400 hover:text-blue-800;
+}
+
+.expanded {
+  @apply sm:w-full md:w-44 p-5;
+  @apply bg-blue-600 text-white;
+  @apply hover:bg-blue-500 hover:text-blue-800;
+}
+
+.item-in-cart {
+  @apply bg-green-400 hover:bg-green-500;
+}
+
+.product-page-button {
+  @apply sm:w-full md:w-44 p-5;
+  @apply bg-blue-600 text-white;
+  @apply hover:bg-blue-500 hover:text-blue-800;
+}
+
+.update-amount {
+  @apply bg-amber-600 hover:bg-amber-500 hover:text-white;
+}
