@@ -15,7 +15,7 @@ export class BrandService {
       .pipe(
         map((snapShot) => {
           const resultList = snapShot.docs.map((doc) => {
-            let brandData = doc.data() as IBrand;
+            const brandData = doc.data() as IBrand;
             brandData.id = doc.id;
             return brandData;
           });

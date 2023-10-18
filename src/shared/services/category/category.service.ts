@@ -15,7 +15,7 @@ export class CategoryService {
       .pipe(
         map((snapShot) => {
           const resultList = snapShot.docs.map((doc) => {
-            let categoryData = doc.data() as ICategory;
+            const categoryData = doc.data() as ICategory;
             categoryData.id = doc.id;
             return categoryData;
           })

@@ -15,7 +15,7 @@ export class OrdersService {
       .pipe(
         map((snapShot) => {
           const resultList = snapShot.docs.map((doc) => {
-            let ordersData = doc.data() as IOrder;
+            const ordersData = doc.data() as IOrder;
             ordersData.id = doc.id;
             return ordersData;
           });

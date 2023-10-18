@@ -15,7 +15,7 @@ export class CartService {
       .pipe(
         map((snapShot) => {
           const resultList = snapShot.docs.map((doc) => {
-            let cartData = doc.data() as ICartItem;
+            const cartData = doc.data() as ICartItem;
             cartData.id = doc.id;
             return cartData;
           });

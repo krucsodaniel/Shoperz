@@ -15,7 +15,7 @@ export class ProductService {
       .pipe(
         map((snapShot) => {
           const resultList = snapShot.docs.map((doc) => {
-            let productData = doc.data() as IProduct;
+            const productData = doc.data() as IProduct;
             productData.id = doc.id;
 
             return productData;
