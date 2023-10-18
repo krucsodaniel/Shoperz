@@ -1,41 +1,71 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { forkJoin, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { forkJoin, from, map, Observable } from 'rxjs';
 import { ICartItem } from '../../models';
+import { FirestoreCollection } from '../../enums';
+import { collection, deleteDoc, doc, Firestore, getDocs, setDoc, updateDoc } from '@angular/fire/firestore';
 
 @Injectable()
 export class CartService {
-  private readonly baseUrl = environment.api.baseUrl;
-  private readonly cart = environment.api.endpoints.cart;
+  private readonly cartCollectionRef = collection(this.firestore, FirestoreCollection.cart);
 
-  constructor(private http: HttpClient) {}
+  constructor(private firestore: Firestore) {}
 
   getCart(): Observable<ICartItem[]> {
-    return this.http.get<ICartItem[]>(`${this.baseUrl}${this.cart}`);
+    return from(getDocs(this.cartCollectionRef))
+      .pipe(
+        map((snapShot) => {
+          const resultList = snapShot.docs.map((doc) => {
+            let cartData = doc.data() as ICartItem;
+            cartData.id = doc.id;
+            return cartData;
+          });
+
+          return resultList;
+        }),
+      );
   }
 
-  addProductToCart(id: number, amount: number): Observable<ICartItem> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const options = { headers };
+  addProductToCart(id: string, amount: number): Observable<ICartItem> {
+    const cartItemRef = doc(this.firestore, `${ FirestoreCollection.cart }/${ id }`);
 
-    return this.http.post<ICartItem>(`${this.baseUrl}${this.cart}`, { id, amount }, options);
+    return from(setDoc(cartItemRef, { amount }))
+      .pipe(
+        map(() => {
+          const cartItem: ICartItem = {
+            id: id,
+            amount: amount,
+          };
+
+          return cartItem;
+        }),
+      );
   }
 
-  updateCart(id: number, amount: number): Observable<ICartItem> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const options = { headers };
+  updateCart(id: string, amount: number): Observable<ICartItem> {
+    const cartItemRef = doc(this.firestore, `${ FirestoreCollection.cart }/${ id }`);
 
-    return this.http.put<ICartItem>(`${this.baseUrl}${this.cart}/${id}`, { amount }, options);
+    return from(updateDoc(cartItemRef, { amount }))
+      .pipe(
+        map(() => {
+          const updatedItem: ICartItem = {
+            id: id,
+            amount: amount,
+          };
+
+          return updatedItem;
+        }),
+      )
   }
 
-  removeProductFromCartById(id: number): Observable<ICartItem> {
-    return this.http.delete<ICartItem>(`${this.baseUrl}${this.cart}/${id}`);
+  removeProductFromCartById(id: string): Observable<void> {
+    const cartItemRef = doc(this.firestore, `${ FirestoreCollection.cart }/${ id }`);
+
+    return from(deleteDoc(cartItemRef));
   }
 
-  clearCart(productIds: number[]): Observable<ICartItem[]> {
+  clearCart(productIds: string[]): Observable<void[]> {
     return forkJoin(
-      productIds.map((id: number) => this.removeProductFromCartById(id))
+      productIds.map((id: string) => this.removeProductFromCartById(id)),
     );
   }
 }

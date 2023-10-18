@@ -1,17 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { ICategory } from '@shared-module';
-import { Observable } from 'rxjs';
+import { ICategory } from '../../models';
+import { FirestoreCollection } from '../../enums';
+import { from, map, Observable } from 'rxjs';
+import { collection, Firestore, getDocs } from '@angular/fire/firestore';
 
 @Injectable()
 export class CategoryService {
-  private readonly baseUrl = environment.api.baseUrl;
-  private readonly categories = environment.api.endpoints['categories'];
+  private readonly categoriesCollectionRef = collection(this.firestore, FirestoreCollection.categories);
 
-  constructor(private http: HttpClient) {}
+  constructor(private firestore: Firestore) {}
 
   getCategories(): Observable<ICategory[]> {
-    return this.http.get<ICategory[]>(`${this.baseUrl}${this.categories}`);
+    return from(getDocs(this.categoriesCollectionRef))
+      .pipe(
+        map((snapShot) => {
+          const resultList = snapShot.docs.map((doc) => {
+            let categoryData = doc.data() as ICategory;
+            categoryData.id = doc.id;
+            return categoryData;
+          })
+
+          return resultList;
+        }),
+      );
   }
 }
