@@ -29,6 +29,18 @@ jobs:
       - name: '🛠️ Build the app'
         run: npm run build
 
+      - name: '🔍 Set up environment variables'
+        run: |
+          echo "::set-env name=FIREBASE_API_KEY::${{ secrets.FIREBASE_API_KEY }}"
+          echo "::set-env name=FIREBASE_AUTH_DOMAIN::${{ secrets.FIREBASE_AUTH_DOMAIN }}"
+          echo "::set-env name=FIREBASE_DATABASE_URL::${{ secrets.FIREBASE_DATABASE_URL }}"
+          echo "::set-env name=FIREBASE_PROJECT_ID::${{ secrets.FIREBASE_PROJECT_ID }}"
+        env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          FIREBASE_DATABASE_URL: ${{ secrets.FIREBASE_DATABASE_URL }}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+
       - name: '🔍 Cache build artifacts'
         uses: actions/cache@v3
         with:
