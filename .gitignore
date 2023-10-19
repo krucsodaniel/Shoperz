@@ -42,6 +42,3 @@ Thumbs.db
 
 # Auto-generated sprites folder
 svg-sprite.svg
-
-# Firebase
-firebase-keys.config.ts

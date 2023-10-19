@@ -1,5 +1,3 @@
-import { firebaseKeysConfig } from '../../firebase-keys.config';
-
 export const environment = {
   production: false,
   api: {
@@ -21,11 +19,11 @@ export const environment = {
     youtubeUrl: 'https://www.youtube.com/',
   },
   firebase: {
-    apiKey: firebaseKeysConfig.FIREBASE_API_KEY,
-    authDomain: firebaseKeysConfig.FIREBASE_AUTH_DOMAIN,
-    projectId: firebaseKeysConfig.FIREBASE_PROJECT_ID,
-    storageBucket: firebaseKeysConfig.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: firebaseKeysConfig.FIREBASE_MESSAGING_SENDER_ID,
-    appId: firebaseKeysConfig.FIREBASE_APP_ID,
+    apiKey: "AIzaSyCX-QhUKmVOMy5dE7jUXI8rMnk1zfvHCCA",
+    authDomain: "shoperz-7ff36.firebaseapp.com",
+    projectId: "shoperz-7ff36",
+    storageBucket: "shoperz-7ff36.appspot.com",
+    messagingSenderId: "561182531709",
+    appId: "1:561182531709:web:4c4e93e349cc05644f9114"
   },
 };
