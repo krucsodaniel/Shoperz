@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CartFacadeService } from '../../services';
 import { firstValueFrom } from 'rxjs';
+import { Page } from '../../enums';
 
 @Component({
   selector: 'app-add-to-cart-icon',
@@ -11,7 +12,7 @@ export class AddToCartIconComponent implements OnInit {
   isProductInCart: boolean;
 
   @Input()
-  typeOfPage: 'product-card' | 'product-page';
+  typeOfPage: Page;
   @Input()
   productId: string;
   @Input()
@@ -27,7 +28,7 @@ export class AddToCartIconComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.isProductInCart = await firstValueFrom(this.cartFacadeService.checkIfProductIsInCart(this.productId));
 
-    if (this.typeOfPage === 'product-page' && this.isProductInCart) {
+    if (this.typeOfPage === Page.productPage && this.isProductInCart) {
       const currentAmount = await firstValueFrom(this.cartFacadeService.getCurrentCartItemAmount(this.productId));
       this.amountChange.emit(currentAmount);
     }
@@ -39,19 +40,19 @@ export class AddToCartIconComponent implements OnInit {
     event.stopPropagation();
 
     if (this.isProductInCart) {
-      if (this.typeOfPage === 'product-card') {
+      if (this.typeOfPage === Page.productCard) {
         this.cartFacadeService.removeProductFromCart(this.productId);
-      } else if (this.typeOfPage === 'product-page') {
+      } else if (this.typeOfPage === Page.productPage) {
         this.cartFacadeService.updateProductAmount(this.productId, this.amountOfProductInCart);
         return;
       }
 
       this.isProductInCart = false;
     } else {
-      if (this.typeOfPage === 'product-card') {
+      if (this.typeOfPage === Page.productCard) {
         this.cartFacadeService.addProductToCart(this.productId, 1);
         this.isProductInCart = true;
-      } else if (this.typeOfPage === 'product-page') {
+      } else if (this.typeOfPage === Page.productPage) {
         this.cartFacadeService.addProductToCart(this.productId, this.amountOfProductInCart);
         this.isProductInCart = true;
       }
@@ -61,11 +62,11 @@ export class AddToCartIconComponent implements OnInit {
   }
 
   getButtonClasses(): string {
-    if (this.typeOfPage === 'product-card') {
+    if (this.typeOfPage === Page.productCard) {
       return this.isExpanded ? 'expanded' : 'collapsed';
     }
 
-    if (this.typeOfPage === 'product-page') {
+    if (this.typeOfPage === Page.productPage) {
       return this.isProductInCart ? 'product-page-button update-amount' : 'product-page-button';
     }
 
@@ -73,7 +74,7 @@ export class AddToCartIconComponent implements OnInit {
   }
 
   getButtonText(): string {
-    if ((!this.isProductInCart && this.isExpanded) || (!this.isProductInCart && this.typeOfPage === 'product-page')) {
+    if ((!this.isProductInCart && this.isExpanded) || (!this.isProductInCart && this.typeOfPage === Page.productPage)) {
       return this.buildTranslationKey('addToCart');
     }
 

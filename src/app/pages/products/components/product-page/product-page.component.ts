@@ -7,7 +7,7 @@ import {
   DestroyRef,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CartFacadeService, ICalculatedProduct, ProductFacadeService } from '@shared-module';
+import { CartFacadeService, ICalculatedProduct, Page, ProductFacadeService } from '@shared-module';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -22,7 +22,7 @@ export class ProductPageComponent implements OnInit {
   selectedPicture: string;
   numberFormControl: FormControl<number>;
   amountOfProductInCart: number;
-  readonly typeOfPage = 'product-page';
+  readonly typeOfPage = Page.productPage;
 
   @HostBinding('class')
   private readonly classes = 'flex flex-col md:flex-row flex-wrap justify-center md:justify-around gap-5 mx-auto pt-10 pb-5 mt-4';

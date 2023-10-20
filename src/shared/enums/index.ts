@@ -4,3 +4,4 @@ export * from './route';
 export * from './order-status';
 export * from './control';
 export * from './firestore-collection';
+export * from './page';
