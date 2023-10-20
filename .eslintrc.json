@@ -7,7 +7,7 @@
     {
       "files": ["custom-webpack.config.ts"],
       "rules": {
-        "@typescript-eslint/no-var-requires": "off"  // Disable the rule for the specified file(s).
+        "@typescript-eslint/no-var-requires": 0
       }
     },
     {
