@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run generate-sprite && ng serve && npm run watch-sprite",
+    "start": "npm run generate-sprite && ng serve & npm run watch-sprite & npm run server",
     "build": "npm run generate-sprite && ng build",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
-    "json-server": "json-server --watch db.json",
+    "server": "json-server --watch db.json",
     "generate-sprite": "node scripts/generate-svg-sprite.js",
     "watch-sprite": "onchange \"./src/assets/icons/**/*.svg\" --initial --kill -- npm run generate-sprite",
     "lint": "ng lint"
