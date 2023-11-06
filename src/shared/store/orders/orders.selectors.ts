@@ -10,7 +10,13 @@ export namespace OrdersSelectors {
 
   export const selectOrders = createSelector(
     selectOrdersFeature,
-    (state: IOrdersState) => state.orders,
+    (state: IOrdersState) => {
+      if (!Object.values(state.orders.entities).length) {
+        return undefined;
+      }
+
+      return Object.values(state.orders.entities);
+    },
   );
 
   export const selectOrderProducts = createSelector(
