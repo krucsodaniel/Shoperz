@@ -6,6 +6,12 @@ export namespace BrandSelectors {
 
   export const selectBrands = createSelector(
     selectBrandFeature,
-    (state: IBrandState) => state.brands,
+    (state: IBrandState) => {
+      if (!Object.values(state.brands.entities).length) {
+        return undefined;
+      }
+
+      return Object.values(state.brands.entities);
+    },
   )
 }
