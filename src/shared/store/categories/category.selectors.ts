@@ -6,6 +6,12 @@ export namespace CategorySelectors {
 
   export const selectCategories = createSelector(
     selectCategoryFeature,
-    (state: ICategoryState) => state.categories,
+    (state: ICategoryState) => {
+      if (!Object.values(state.categories.entities).length) {
+        return undefined;
+      }
+
+      return Object.values(state.categories.entities);
+    },
   );
 }

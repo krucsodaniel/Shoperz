@@ -1,11 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import { IFilterDefinition, SortingOption } from '@shared-module';
 import { FilterActions } from './filter.actions';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export const filtersFeatureKey = 'filters';
 
 export interface IFilterState {
-  filterDefinitions: IFilterDefinition[];
+  filterDefinitions: EntityState<IFilterDefinition>;
   selectedFilters: Record<string, string[]>;
   sortingOption?: SortingOption;
   searchValue?: string;
@@ -13,8 +14,12 @@ export interface IFilterState {
   error: Error;
 }
 
+export const filterAdapter: EntityAdapter<IFilterDefinition> = createEntityAdapter<IFilterDefinition>({
+  selectId: (filterDefinition: IFilterDefinition) => filterDefinition.id,
+});
+
 export const initialState: IFilterState = {
-  filterDefinitions: undefined,
+  filterDefinitions: filterAdapter.getInitialState({}),
   selectedFilters: undefined,
   sortingOption: undefined,
   searchValue: undefined,
@@ -24,35 +29,36 @@ export const initialState: IFilterState = {
 
 export const filterReducer = createReducer(
   initialState,
-  on(FilterActions.initializeFilters, (state, action) => ({
-    ...state,
-    filterDefinitions: action.filterDefinitions,
-    isLoading: false,
-  })),
-  on(FilterActions.setSelectedFilters, (state, action) => ({
-    ...state,
-    selectedFilters: action.selectedFilters,
-  })),
-  on(FilterActions.setSortingOption, (state, action) => ({
-    ...state,
-    sortingOption: action.sortingOption,
-  })),
-  on(FilterActions.setSearch, (state, action) => ({
-    ...state,
-    searchValue: action.searchValue,
-  })),
-  on(FilterActions.errorFilter, (state, action) => ({
-    ...state,
-    isLoading: false,
-    error: action.error,
-  })),
-  on(FilterActions.resetFilter, (state) => ({
-    ...state,
-    selectedFilters: state.filterDefinitions.reduce((result, definition) => {
-      return {
-        ...result,
-        [definition.id]: [],
-      };
-    }, {}),
-  })),
+  on(FilterActions.initializeFilters, (state, { filterDefinitions }) => {
+    return {
+      ...state,
+      filterDefinitions: filterAdapter.addMany(filterDefinitions, state.filterDefinitions),
+      isLoading: false,
+    };
+  }),
+  on(FilterActions.setSelectedFilters, (state, { selectedFilters }) => {
+    return {
+      ...state,
+      selectedFilters,
+    };
+  }),
+  on(FilterActions.setSortingOption, (state, { sortingOption }) => {
+    return {
+      ...state,
+      sortingOption,
+    };
+  }),
+  on(FilterActions.setSearch, (state, { searchValue }) => {
+    return {
+      ...state,
+      searchValue,
+    };
+  }),
+  on(FilterActions.errorFilter, (state, { error }) => {
+    return {
+      ...state,
+      isLoading: false,
+      error,
+    };
+  }),
 );

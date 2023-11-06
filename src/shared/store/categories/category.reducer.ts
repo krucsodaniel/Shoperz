@@ -1,27 +1,36 @@
 import { createReducer, on } from '@ngrx/store';
 import { ICategory } from '@shared-module';
 import { CategoryActions } from './category.actions';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export const categoriesFeatureKey = 'categories';
 
 export interface ICategoryState {
-  categories: ICategory[];
-  error: Error;
+  categories: EntityState<ICategory>;
+  error?: Error;
 }
 
+export const categoryAdapter: EntityAdapter<ICategory> = createEntityAdapter<ICategory>({
+  selectId: (category: ICategory) => category.id,
+});
+
 export const initialState: ICategoryState = {
-  categories: undefined,
+  categories: categoryAdapter.getInitialState({}),
   error: undefined,
 }
 
 export const categoryReducer = createReducer(
   initialState,
-  on(CategoryActions.categoriesLoaded, (state, action) => ({
-    ...state,
-    categories: action.categories,
-  })),
-  on(CategoryActions.errorCategories, (state, action) => ({
-    ...state,
-    error: action.error,
-  })),
+  on(CategoryActions.categoriesLoaded, (state, { categories }) => {
+    return {
+      ...state,
+      categories: categoryAdapter.addMany(categories, state.categories),
+    };
+  }),
+  on(CategoryActions.errorCategories, (state, { error }) => {
+    return {
+      ...state,
+      error,
+    };
+  }),
 );

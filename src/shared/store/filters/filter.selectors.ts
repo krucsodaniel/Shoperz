@@ -8,7 +8,13 @@ export namespace FilterSelectors {
 
   export const selectAllFilters = createSelector(
     selectFilterFeature,
-    (state: IFilterState) => state.filterDefinitions,
+    (state: IFilterState) => {
+      if (!Object.values(state.filterDefinitions.entities).length) {
+        return undefined;
+      }
+
+      return Object.values(state.filterDefinitions.entities);
+    },
   );
 
   export const selectFilter = createSelector(
