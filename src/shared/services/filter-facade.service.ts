@@ -21,8 +21,4 @@ export class FilterFacadeService {
   getManipulatedProducts(): Observable<ICalculatedProduct[]> {
     return this.store.select(FilterSelectors.selectManipulatedProducts);
   }
-
-  resetFilter(): void {
-    this.store.dispatch(FilterActions.resetFilter());
-  }
 }
