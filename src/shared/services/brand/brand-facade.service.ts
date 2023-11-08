@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { filter, Observable } from 'rxjs';
-import { ActionDispatcherService, BrandActions, IBrand } from '@shared-module';
+import { ActionDispatcherService, IBrand } from '@shared-module';
 import { BrandService } from './brand.service';
 import { Store } from '@ngrx/store';
-import { BrandSelectors } from '../../store';
+import { BrandSelectors, BrandActions } from '../../store';
 import { BrandActionEnum } from '../../enums';
 
 @Injectable()
