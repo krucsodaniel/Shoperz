@@ -1,11 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import { IProduct } from '@shared-module';
 import { ProductActions } from './product.actions';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export const productsFeatureKey = 'products';
 
 export interface IProductState {
-  products: IProduct[];
+  products: EntityState<IProduct>;
   isLoading: boolean;
   isExpanded: boolean;
   isProductsPageInitialized: boolean;
@@ -13,8 +14,12 @@ export interface IProductState {
   error: Error;
 }
 
+export const productAdapter: EntityAdapter<IProduct> = createEntityAdapter<IProduct>({
+  selectId: (product: IProduct) => product.id,
+});
+
 export const initialState: IProductState = {
-  products: undefined,
+  products: productAdapter.getInitialState({}),
   isLoading: false,
   isExpanded: false,
   isProductsPageInitialized: false,
@@ -24,25 +29,33 @@ export const initialState: IProductState = {
 
 export const productReducer = createReducer(
   initialState,
-  on(ProductActions.loadProducts, (state) => ({
-    ...state,
-    isLoading: true,
-  })),
-  on(ProductActions.productsLoaded, (state, action) => ({
-    ...state,
-    isLoading: false,
-    products: action.products,
-    isProductsPageInitialized: true,
-    isSpecificProductPageInitialized: false,
-  })),
-  on(ProductActions.productByIdLoaded, (state, action) => ({
-    ...state,
-    products: [...(state.products || []), action.product],
-    isSpecificProductPageInitialized: true,
-  })),
-  on(ProductActions.errorProduct, (state, action) => ({
-    ...state,
-    isLoading: false,
-    error: action.error,
-  })),
+  on(ProductActions.loadProducts, (state) => {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }),
+  on(ProductActions.productsLoaded, (state, { products }) => {
+    return {
+      ...state,
+      isLoading: false,
+      products: productAdapter.addMany(products, state.products),
+      isProductsPageInitialized: true,
+      isSpecificProductPageInitialized: false,
+    };
+  }),
+  on(ProductActions.productByIdLoaded, (state, { product }) => {
+    return {
+      ...state,
+      products: productAdapter.addOne(product, state.products),
+      isSpecificProductPageInitialized: true,
+    };
+  }),
+  on(ProductActions.errorProduct, (state, { error }) => {
+    return {
+      ...state,
+      isLoading: false,
+      error,
+    };
+  }),
 );

@@ -1,56 +1,54 @@
 import { createReducer, on } from '@ngrx/store';
 import { ICartItem } from '../../models';
 import { CartActions } from './cart.actions';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export const cartFeatureKey = 'cart';
 
 export interface ICartState {
-  cart: ICartItem[];
+  cart: EntityState<ICartItem>;
   error: Error;
 }
 
+export const cartAdapter: EntityAdapter<ICartItem> = createEntityAdapter<ICartItem>({
+  selectId: (cartItem: ICartItem) => cartItem.id,
+});
+
 export const initialState: ICartState = {
-  cart: undefined,
+  cart: cartAdapter.getInitialState({}),
   error: undefined,
 }
 
 export const cartReducer = createReducer(
   initialState,
-  on(CartActions.cartInitialized, (state, action) => ({
-    ...state,
-    cart: action.cartItems,
-  })),
-  on(CartActions.productAddedToCart, (state, action) => ({
-    ...state,
-    cart: [...(state.cart || []), action.cartItem],
-  })),
-  on(CartActions.productAmountUpdated, (state, action) => {
-    const itemIndex = state.cart.findIndex((item) => item.id === action.cartItem.id);
-
-    if (itemIndex === -1) {
-      return state;
-    }
-
-    const updatedCart = [...state.cart];
-    updatedCart[itemIndex] = action.cartItem;
-
+  on(CartActions.cartInitialized, (state, { cartItems }) => {
     return {
       ...state,
-      cart: updatedCart,
+      cart: cartAdapter.addMany(cartItems, state.cart),
     };
   }),
-  on(CartActions.productRemovedFromCart, (state, action) => {
-    const updatedCart = state.cart.filter((item) => item.id !== action.id);
-
+  on(CartActions.productAddedToCart, (state, { cartItem }) => {
     return {
       ...state,
-      cart: updatedCart,
+      cart: cartAdapter.addOne(cartItem, state.cart),
+    };
+  }),
+  on(CartActions.productAmountUpdated, (state, { cartItem }) => {
+    return {
+      ...state,
+      cart: cartAdapter.updateOne({ id: cartItem.id, changes: cartItem }, state.cart),
+    };
+  }),
+  on(CartActions.productRemovedFromCart, (state, { id }) => {
+    return {
+      ...state,
+      cart: cartAdapter.removeOne(id, state.cart),
     };
   }),
   on(CartActions.cartCleared, (state) => {
     return {
       ...state,
-      cart: [],
+      cart: cartAdapter.removeAll(state.cart),
     };
   }),
 );
