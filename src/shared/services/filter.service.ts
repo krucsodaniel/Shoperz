@@ -5,11 +5,14 @@ import {
   ICalculatedProduct,
   IFilterOption,
   IFilterDefinition,
-  ProductFilterOption,
+} from '../models';
+import { ProductFilterOption, FilterActionEnum } from '../enums';
+import {
   CategoryFacadeService,
   BrandFacadeService,
   FilterFacadeService,
-} from '@shared-module';
+  ActionDispatcherService,
+} from '../services';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -23,6 +26,7 @@ export class FilterService {
     private filterFacadeService: FilterFacadeService,
     private translate: TranslateService,
     private store: Store,
+    private actionDispatcherService: ActionDispatcherService,
   ) {}
 
   async initializeFilterDefinitions(): Promise<void> {
@@ -92,6 +96,9 @@ export class FilterService {
       },
     ];
 
-    this.store.dispatch(FilterActions.initializeFilters({ filterDefinitions }));
+    return await this.actionDispatcherService.dispatchAsync(
+      FilterActions.initializeFilters({ filterDefinitions }),
+      FilterActionEnum.loadFilters,
+    );
   }
 }

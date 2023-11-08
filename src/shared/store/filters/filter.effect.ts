@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect } from '@ngrx/effects';
 import { FilterActions } from './filter.actions';
-import { filter, switchMap } from 'rxjs';
+import { SortingOption, FilterActionEnum } from '../../enums';
+import { ActionTrackerService } from '../../services';
+import { filter, switchMap, tap } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SortingOption } from '@shared-module';
 
 const ignoreProductIdPageRegex = /^\/products\/\d+$/;
 
@@ -46,6 +47,7 @@ export class FilterEffects {
           FilterActions.setSortingOption({ sortingOption }),
         ];
       }),
+      tap(() => this.actionTrackerService.sendAction(FilterActionEnum.setFilters)),
     )
   );
 
@@ -54,5 +56,6 @@ export class FilterEffects {
     private router: Router,
     private store: Store,
     private route: ActivatedRoute,
+    private actionTrackerService: ActionTrackerService,
   ) {}
 }
