@@ -12,7 +12,7 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { FilterActions } from '../store/filters';
+import { FilterActions } from '../store';
 
 @Injectable()
 export class FilterService {
