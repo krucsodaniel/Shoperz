@@ -5,10 +5,9 @@ import {
   ICalculatedProduct,
   IFilterOption,
   IFilterDefinition,
-  ProductFilterOption,
-  CategoryFacadeService,
-  BrandFacadeService,
-} from '@shared-module';
+} from '../models';
+import { ProductFilterOption } from '../enums';
+import { CategoryFacadeService, BrandFacadeService } from '../services';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
