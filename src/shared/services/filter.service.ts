@@ -6,17 +6,12 @@ import {
   IFilterOption,
   IFilterDefinition,
 } from '../models';
-import { ProductFilterOption, FilterActionEnum } from '../enums';
-import {
-  CategoryFacadeService,
-  BrandFacadeService,
-  FilterFacadeService,
-  ActionDispatcherService,
-} from '../services';
+import { ProductFilterOption } from '../enums';
+import { CategoryFacadeService, BrandFacadeService, FilterFacadeService } from '../services';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { FilterActions } from '../store/filters';
+import { FilterActions } from '../store';
 
 @Injectable()
 export class FilterService {
@@ -26,7 +21,6 @@ export class FilterService {
     private filterFacadeService: FilterFacadeService,
     private translate: TranslateService,
     private store: Store,
-    private actionDispatcherService: ActionDispatcherService,
   ) {}
 
   async initializeFilterDefinitions(): Promise<void> {
@@ -96,9 +90,6 @@ export class FilterService {
       },
     ];
 
-    return await this.actionDispatcherService.dispatchAsync(
-      FilterActions.initializeFilters({ filterDefinitions }),
-      FilterActionEnum.loadFilters,
-    );
+    this.store.dispatch(FilterActions.initializeFilters( { filterDefinitions }));
   }
 }

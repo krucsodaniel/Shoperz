@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect } from '@ngrx/effects';
 import { FilterActions } from './filter.actions';
-import { SortingOption, FilterActionEnum } from '../../enums';
-import { ActionTrackerService } from '../../services';
-import { filter, switchMap, tap } from 'rxjs';
+import { SortingOption } from '../../enums';
+import { filter, switchMap } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
@@ -47,7 +46,6 @@ export class FilterEffects {
           FilterActions.setSortingOption({ sortingOption }),
         ];
       }),
-      tap(() => this.actionTrackerService.sendAction(FilterActionEnum.setFilters)),
     )
   );
 
@@ -56,6 +54,5 @@ export class FilterEffects {
     private router: Router,
     private store: Store,
     private route: ActivatedRoute,
-    private actionTrackerService: ActionTrackerService,
   ) {}
 }
