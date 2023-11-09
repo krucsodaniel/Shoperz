@@ -7,7 +7,7 @@ import {
   IFilterDefinition,
 } from '../models';
 import { ProductFilterOption } from '../enums';
-import { CategoryFacadeService, BrandFacadeService, FilterFacadeService } from '../services';
+import { CategoryFacadeService, BrandFacadeService } from '../services';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -18,7 +18,6 @@ export class FilterService {
   constructor(
     private categoryFacadeService: CategoryFacadeService,
     private brandFacadeService: BrandFacadeService,
-    private filterFacadeService: FilterFacadeService,
     private translate: TranslateService,
     private store: Store,
   ) {}
@@ -62,34 +61,43 @@ export class FilterService {
         label: this.translate.instant('filter.allPrice'),
         options: [
           {
-            id: '<50',
-            value: '<50',
-            customFilterFn: (price: number) => price < 50,
+            id: 'all',
+            value: 'all',
+          },
+          {
+            id: '<100',
+            value: '<100',
+            customFilterFn: (price: number) => price < 100,
           },
           {
             id: '100-200',
             value: '100-200',
-            customFilterFn: (price: number) => price > 100 && price < 200,
+            customFilterFn: (price: number) => price >= 100 && price < 200,
           },
           {
             id: '200-300',
             value: '200-300',
-            customFilterFn: (price: number) => price > 200 && price < 300,
+            customFilterFn: (price: number) => price >= 200 && price < 300,
           },
           {
             id: '300-400',
             value: '300-400',
-            customFilterFn: (price: number) => price > 300 && price < 400,
+            customFilterFn: (price: number) => price >= 300 && price < 400,
           },
           {
-            id: '>500',
+            id: '400-500',
+            value: '400-500',
+            customFilterFn: (price: number) => price >= 400 && price < 500,
+          },
+          {
+            id: '>=500',
             value: '>500',
-            customFilterFn: (price: number) => price > 500,
+            customFilterFn: (price: number) => price >= 500,
           },
         ],
       },
     ];
 
-    this.store.dispatch(FilterActions.initializeFilters( { filterDefinitions }));
+    this.store.dispatch(FilterActions.initializeFilters({ filterDefinitions }));
   }
 }
