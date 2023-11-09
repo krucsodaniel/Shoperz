@@ -1,3 +1,3 @@
-export const enum CategoryActionEnum {
+export const enum CategoryActionKey {
   loadCategories = 'load-categories',
 }

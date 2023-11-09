@@ -4,7 +4,7 @@ import { ActionDispatcherService, ICategory } from '@shared-module';
 import { CategoryService } from './category.service';
 import { Store } from '@ngrx/store';
 import { CategoryActions, CategorySelectors } from '../../store';
-import { CategoryActionEnum } from '../../enums';
+import { CategoryActionKey } from '../../enums';
 
 @Injectable()
 export class CategoryFacadeService {
@@ -17,7 +17,7 @@ export class CategoryFacadeService {
   async initCategoriesState(): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       CategoryActions.loadCategories(),
-      CategoryActionEnum.loadCategories,
+      CategoryActionKey.loadCategories,
     );
   }
 

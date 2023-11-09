@@ -6,7 +6,7 @@ import { CartActions } from './cart.actions';
 import { catchError, EMPTY, map, Observable, switchMap, take, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { CartActionEnum } from '@shared-module';
+import { CartActionKey } from '@shared-module';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
@@ -18,9 +18,9 @@ export class CartEffects {
         return this.cartService.getCart()
           .pipe(
             map((cartItems: ICartItem[]) => CartActions.cartInitialized({ cartItems })),
-            tap(() => this.actionTrackerService.sendAction(CartActionEnum.loadCart)),
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.loadCart)),
             catchError((error: HttpErrorResponse) => {
-              this.actionTrackerService.sendAction(CartActionEnum.loadCart, error);
+              this.actionTrackerService.sendAction(CartActionKey.loadCart, error);
               return EMPTY;
             }),
           );
@@ -36,9 +36,9 @@ export class CartEffects {
           .pipe(
             map((cartItem: ICartItem) => CartActions.productAddedToCart({ cartItem })),
             tap(() => this.toastService.showSuccessToast(this.translate.instant('cart.productAddedToCart'))),
-            tap(() => this.actionTrackerService.sendAction(CartActionEnum.addCartItem)),
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.addCartItem)),
             catchError((error: HttpErrorResponse) => {
-              this.actionTrackerService.sendAction(CartActionEnum.addCartItem, error);
+              this.actionTrackerService.sendAction(CartActionKey.addCartItem, error);
               return EMPTY;
             }),
           );
@@ -53,9 +53,9 @@ export class CartEffects {
         return this.cartService.updateCart(action.id, action.amount)
           .pipe(
             map((cartItem: ICartItem) => CartActions.productAmountUpdated({ cartItem })),
-            tap(() => this.actionTrackerService.sendAction(CartActionEnum.updateCartItem)),
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.updateCartItem)),
             catchError((error: HttpErrorResponse) => {
-              this.actionTrackerService.sendAction(CartActionEnum.updateCartItem, error);
+              this.actionTrackerService.sendAction(CartActionKey.updateCartItem, error);
               return EMPTY;
             }),
           );
@@ -73,9 +73,9 @@ export class CartEffects {
           .pipe(
             map(() => CartActions.productRemovedFromCart({ id })),
             tap(() => this.toastService.showErrorToast(this.translate.instant('cart.productRemovedFromCart'))),
-            tap(() => this.actionTrackerService.sendAction(CartActionEnum.deleteCartItem)),
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.deleteCartItem)),
             catchError((error: HttpErrorResponse) => {
-              this.actionTrackerService.sendAction(CartActionEnum.deleteCartItem, error);
+              this.actionTrackerService.sendAction(CartActionKey.deleteCartItem, error);
               return EMPTY;
             }),
           );
@@ -93,9 +93,9 @@ export class CartEffects {
         return this.cartService.clearCart(ids)
           .pipe(
             map(() => CartActions.cartCleared()),
-            tap(() => this.actionTrackerService.sendAction(CartActionEnum.clearCart)),
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.clearCart)),
             catchError((error: HttpErrorResponse) => {
-              this.actionTrackerService.sendAction(CartActionEnum.clearCart, error);
+              this.actionTrackerService.sendAction(CartActionKey.clearCart, error);
               return EMPTY;
             }),
           );

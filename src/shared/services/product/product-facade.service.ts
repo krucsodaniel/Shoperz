@@ -6,13 +6,15 @@ import {
   CategoryFacadeService,
   OrdersFacadeService,
   SearchFacadeService,
+  FilterService,
+  FilterFacadeService,
+  SortFacadeService,
 } from '../../services';
-import { FilterService, FilterFacadeService, SortFacadeService, ProductActionEnum } from '@shared-module';
 import { filter, firstValueFrom, Observable } from 'rxjs';
 import { ICalculatedProduct } from '../../models';
 import { Store } from '@ngrx/store';
-import { ProductActions, ProductSelectors } from '../../store';
-import { CartActions } from '../../store/cart/cart.actions';
+import { ProductActions, ProductSelectors, CartActions } from '../../store';
+import { ProductActionKey } from '../../enums';
 
 @Injectable()
 export class ProductFacadeService {
@@ -91,14 +93,14 @@ export class ProductFacadeService {
   async initProducts(): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       ProductActions.loadProducts(),
-      ProductActionEnum.loadProducts,
+      ProductActionKey.loadProducts,
     );
   }
 
   async loadProductById(productId: number): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       ProductActions.loadProductById({ productId }),
-      ProductActionEnum.loadProductById,
+      ProductActionKey.loadProductById,
     );
   }
 

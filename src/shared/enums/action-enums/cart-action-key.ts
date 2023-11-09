@@ -1,4 +1,4 @@
-export const enum CartActionEnum {
+export const enum CartActionKey {
   loadCart = 'load-cart',
   addCartItem= 'add-cart-item',
   updateCartItem = 'update-cart-item',

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { FeedbackActions } from '../../store';
 import { IFeedback } from '../../models';
 import { ActionDispatcherService } from '../action-dispatcher.service';
-import { FeedbackActionEnum } from '../../enums';
+import { FeedbackActionKey } from '../../enums';
 
 @Injectable()
 export class FeedbackFacadeService {
@@ -12,7 +12,7 @@ export class FeedbackFacadeService {
   async createNewFeedback(feedback: IFeedback): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       FeedbackActions.createFeedback({ feedback }),
-      FeedbackActionEnum.addFeedback,
+      FeedbackActionKey.addFeedback,
     );
   }
 }

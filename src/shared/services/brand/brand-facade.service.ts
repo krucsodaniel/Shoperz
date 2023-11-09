@@ -4,7 +4,7 @@ import { ActionDispatcherService, IBrand } from '@shared-module';
 import { BrandService } from './brand.service';
 import { Store } from '@ngrx/store';
 import { BrandSelectors, BrandActions } from '../../store';
-import { BrandActionEnum } from '../../enums';
+import { BrandActionKey } from '../../enums';
 
 @Injectable()
 export class BrandFacadeService {
@@ -17,7 +17,7 @@ export class BrandFacadeService {
   async initBrandsState(): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       BrandActions.loadBrands(),
-      BrandActionEnum.loadBrands,
+      BrandActionKey.loadBrands,
     );
   }
 

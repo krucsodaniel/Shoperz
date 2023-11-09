@@ -4,7 +4,7 @@ import { OrdersActions, OrdersSelectors } from '../../store';
 import { IOrder } from '../../models';
 import { filter, Observable } from 'rxjs';
 import { ActionDispatcherService } from '../action-dispatcher.service';
-import { OrderActionEnum } from '../../enums';
+import { OrderActionKey } from '../../enums';
 
 @Injectable()
 export class OrdersFacadeService {
@@ -13,14 +13,14 @@ export class OrdersFacadeService {
   async initOrdersState(): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       OrdersActions.initOrders(),
-      OrderActionEnum.loadOrders,
+      OrderActionKey.loadOrders,
     );
   }
 
   async createOrder(order: IOrder): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       OrdersActions.createOrder({ order }),
-      OrderActionEnum.addOrder,
+      OrderActionKey.addOrder,
     );
   }
 

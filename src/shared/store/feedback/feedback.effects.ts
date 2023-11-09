@@ -5,7 +5,7 @@ import { IFeedback } from '../../models';
 import { FeedbackActions } from './feedback.actions';
 import { Action } from '@ngrx/store';
 import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
-import { FeedbackActionEnum } from '../../enums';
+import { FeedbackActionKey } from '../../enums';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
@@ -17,9 +17,9 @@ export class FeedbackEffects {
         return this.feedbackService.createNewFeedback(feedback)
           .pipe(
             map((feedback: IFeedback) => FeedbackActions.feedbackCreated({ feedback })),
-            tap(() => this.actionTrackerService.sendAction(FeedbackActionEnum.addFeedback)),
+            tap(() => this.actionTrackerService.sendAction(FeedbackActionKey.addFeedback)),
             catchError((error: HttpErrorResponse) => {
-              this.actionTrackerService.sendAction(FeedbackActionEnum.addFeedback, error);
+              this.actionTrackerService.sendAction(FeedbackActionKey.addFeedback, error);
               return EMPTY;
             }),
           );

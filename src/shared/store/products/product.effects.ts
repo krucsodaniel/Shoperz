@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ActionTrackerService, ProductService } from '../../services';
-import { ProductActionEnum } from '../../enums';
+import { ProductActionKey } from '../../enums';
 import { IProduct } from '../../models';
 import { ProductActions } from './product.actions';
 import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
@@ -18,9 +18,9 @@ export class ProductEffects {
           return this.productService.getProducts()
             .pipe(
               map((products: IProduct[]) => ProductActions.productsLoaded({ products })),
-              tap(() => this.actionTrackerService.sendAction(ProductActionEnum.loadProducts)),
+              tap(() => this.actionTrackerService.sendAction(ProductActionKey.loadProducts)),
               catchError((error: HttpErrorResponse) => {
-                this.actionTrackerService.sendAction(ProductActionEnum.loadProducts, error);
+                this.actionTrackerService.sendAction(ProductActionKey.loadProducts, error);
                 return EMPTY;
               }),
             );
@@ -36,9 +36,9 @@ export class ProductEffects {
           return this.productService.getProductById(productId)
             .pipe(
               map((product: IProduct) => ProductActions.productByIdLoaded({ product })),
-              tap(() => this.actionTrackerService.sendAction(ProductActionEnum.loadProductById)),
+              tap(() => this.actionTrackerService.sendAction(ProductActionKey.loadProductById)),
               catchError((error: HttpErrorResponse) => {
-                this.actionTrackerService.sendAction(ProductActionEnum.loadProductById, error);
+                this.actionTrackerService.sendAction(ProductActionKey.loadProductById, error);
                 return EMPTY;
               }),
             );

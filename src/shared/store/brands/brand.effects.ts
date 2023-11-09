@@ -4,7 +4,7 @@ import { ActionTrackerService, BrandService } from '../../services';
 import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { BrandActions } from './brand.actions';
-import { BrandActionEnum, IBrand } from '@shared-module';
+import { BrandActionKey, IBrand } from '@shared-module';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
@@ -17,9 +17,9 @@ export class BrandEffects {
           return this.brandService.getBrands()
             .pipe(
               map((brands: IBrand[]) => BrandActions.brandsLoaded({ brands })),
-              tap(() => this.actionTrackerService.sendAction(BrandActionEnum.loadBrands)),
+              tap(() => this.actionTrackerService.sendAction(BrandActionKey.loadBrands)),
               catchError((error: HttpErrorResponse) => {
-                this.actionTrackerService.sendAction(BrandActionEnum.loadBrands, error);
+                this.actionTrackerService.sendAction(BrandActionKey.loadBrands, error);
                 return EMPTY;
               }),
             );

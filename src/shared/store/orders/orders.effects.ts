@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
-import { OrderActionEnum } from '../../enums';
+import { OrderActionKey } from '../../enums';
 import { OrdersActions } from '../../store';
 import { IOrder } from '../../models';
 import { ActionTrackerService, OrdersService, ToastService } from '../../services';
@@ -18,9 +18,9 @@ export class OrdersEffects {
         return this.ordersService.getOrders()
           .pipe(
             map((orders: IOrder[]) => OrdersActions.ordersInitialized({ orders })),
-            tap(() => this.actionTrackerService.sendAction(OrderActionEnum.loadOrders)),
+            tap(() => this.actionTrackerService.sendAction(OrderActionKey.loadOrders)),
             catchError((error: HttpErrorResponse) => {
-              this.actionTrackerService.sendAction(OrderActionEnum.loadOrders, error);
+              this.actionTrackerService.sendAction(OrderActionKey.loadOrders, error);
               return EMPTY;
             }),
           );
@@ -36,9 +36,9 @@ export class OrdersEffects {
           .pipe(
             map((order: IOrder) => OrdersActions.orderCreated({ order })),
             tap(() => this.toastService.showSuccessToast(this.translate.instant('orders.orderCreated'))),
-            tap(() => this.actionTrackerService.sendAction(OrderActionEnum.addOrder)),
+            tap(() => this.actionTrackerService.sendAction(OrderActionKey.addOrder)),
             catchError((error: HttpErrorResponse) => {
-              this.actionTrackerService.sendAction(OrderActionEnum.addOrder, error);
+              this.actionTrackerService.sendAction(OrderActionKey.addOrder, error);
               return EMPTY;
             }),
           );

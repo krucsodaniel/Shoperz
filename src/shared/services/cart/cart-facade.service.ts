@@ -4,7 +4,7 @@ import { filter, Observable } from 'rxjs';
 import { ICalculatedProduct, ICartItem } from '../../models';
 import { CartSelectors, CartActions } from '../../store/';
 import { ActionDispatcherService } from '../action-dispatcher.service';
-import { CartActionEnum } from '../../enums';
+import { CartActionKey } from '../../enums';
 
 @Injectable()
 export class CartFacadeService {
@@ -13,35 +13,35 @@ export class CartFacadeService {
   async initCartState(): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       CartActions.initCart(),
-      CartActionEnum.loadCart,
+      CartActionKey.loadCart,
     )
   }
 
   async addProductToCart(id: number, amount: number): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       CartActions.addProductToCart({ id, amount }),
-      CartActionEnum.addCartItem,
+      CartActionKey.addCartItem,
     );
   }
 
   async updateProductAmount(id: number, amount: number): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       CartActions.updateProductAmount({ id, amount }),
-      CartActionEnum.updateCartItem,
+      CartActionKey.updateCartItem,
     );
   }
 
   async removeProductFromCart(id: number): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       CartActions.removeProductFromCart({ id }),
-      CartActionEnum.deleteCartItem,
+      CartActionKey.deleteCartItem,
     );
   }
 
   async clearCart(): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       CartActions.clearCart(),
-      CartActionEnum.clearCart,
+      CartActionKey.clearCart,
     );
   }
 

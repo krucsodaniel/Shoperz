@@ -4,7 +4,7 @@ import { ActionTrackerService, CategoryService } from '../../services';
 import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { CategoryActions } from './category.actions';
-import { CategoryActionEnum, ICategory } from '@shared-module';
+import { CategoryActionKey, ICategory } from '@shared-module';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
@@ -17,9 +17,9 @@ export class CategoryEffects {
           return this.categoryService.getCategories()
             .pipe(
               map((categories: ICategory[]) => CategoryActions.categoriesLoaded({ categories })),
-              tap(() => this.actionTrackerService.sendAction(CategoryActionEnum.loadCategories)),
+              tap(() => this.actionTrackerService.sendAction(CategoryActionKey.loadCategories)),
               catchError((error: HttpErrorResponse) => {
-                this.actionTrackerService.sendAction(CategoryActionEnum.loadCategories, error);
+                this.actionTrackerService.sendAction(CategoryActionKey.loadCategories, error);
                 return EMPTY;
               }),
             );
