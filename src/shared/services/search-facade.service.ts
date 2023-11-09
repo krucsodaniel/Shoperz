@@ -13,8 +13,4 @@ export class SearchFacadeService {
         filter((searchValue: string | undefined) => searchValue !== undefined),
       );
   }
-
-  setSearchValue(searchValue: string): void {
-    this.store.dispatch(FilterActions.setSearch({ searchValue }));
-  }
 }
