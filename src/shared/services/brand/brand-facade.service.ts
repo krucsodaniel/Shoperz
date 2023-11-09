@@ -12,7 +12,7 @@ export class BrandFacadeService {
     private brandService: BrandService,
     private store: Store,
     private actionDispatcherService: ActionDispatcherService,
-    ) {}
+  ) {}
 
   async initBrandsState(): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
