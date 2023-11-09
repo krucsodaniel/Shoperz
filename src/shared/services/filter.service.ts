@@ -64,7 +64,7 @@ export class FilterService {
           {
             id: 'all',
             value: 'all',
-            customFilterFn: (price: number) => true,
+            customFilterFn: () => true,
           },
           {
             id: '<100',
