@@ -3,17 +3,25 @@ import { Store } from '@ngrx/store';
 import { OrdersActions, OrdersSelectors } from '../../store';
 import { IOrder } from '../../models';
 import { filter, Observable } from 'rxjs';
+import { ActionDispatcherService } from '../action-dispatcher.service';
+import { OrderActionKey } from '../../enums';
 
 @Injectable()
 export class OrdersFacadeService {
-  constructor(private store: Store) {}
+  constructor(private store: Store, private actionDispatcherService: ActionDispatcherService) {}
 
-  initOrdersState(): void {
-    this.store.dispatch(OrdersActions.initOrders());
+  async initOrdersState(): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      OrdersActions.initOrders(),
+      OrderActionKey.loadOrders,
+    );
   }
 
-  createOrder(order: IOrder): void {
-    this.store.dispatch(OrdersActions.createOrder({ order }))
+  async createOrder(order: IOrder): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      OrdersActions.createOrder({ order }),
+      OrderActionKey.addOrder,
+    );
   }
 
   getOrderProducts(): Observable<IOrder[]> {

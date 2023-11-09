@@ -40,6 +40,8 @@ import {
   FilterFacadeService,
   FilterService,
   SortFacadeService,
+  ActionDispatcherService,
+  ActionTrackerService,
 } from './services';
 import {
   SearchbarComponent,
@@ -103,6 +105,8 @@ import { SvgIconsModule } from '@core-module';
     FilterFacadeService,
     FilterService,
     SortFacadeService,
+    ActionDispatcherService,
+    ActionTrackerService,
   ],
   exports: [
     SearchbarComponent,

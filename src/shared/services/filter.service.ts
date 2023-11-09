@@ -5,15 +5,13 @@ import {
   ICalculatedProduct,
   IFilterOption,
   IFilterDefinition,
-  ProductFilterOption,
-  CategoryFacadeService,
-  BrandFacadeService,
-  FilterFacadeService,
-} from '@shared-module';
+} from '../models';
+import { ProductFilterOption } from '../enums';
+import { CategoryFacadeService, BrandFacadeService, FilterFacadeService } from '../services';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { FilterActions } from '../store/filters';
+import { FilterActions } from '../store';
 
 @Injectable()
 export class FilterService {
@@ -92,6 +90,6 @@ export class FilterService {
       },
     ];
 
-    this.store.dispatch(FilterActions.initializeFilters({ filterDefinitions }));
+    this.store.dispatch(FilterActions.initializeFilters( { filterDefinitions }));
   }
 }
