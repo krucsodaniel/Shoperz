@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect } from '@ngrx/effects';
 import { FilterActions } from './filter.actions';
+import { SortingOption } from '../../enums';
 import { filter, switchMap } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SortingOption } from '@shared-module';
 
 const ignoreProductIdPageRegex = /^\/products\/\d+$/;
 

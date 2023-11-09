@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProductService } from '../../services';
+import { ActionTrackerService, ProductService } from '../../services';
+import { ProductActionKey } from '../../enums';
+import { IProduct } from '../../models';
 import { ProductActions } from './product.actions';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
-import { IProduct } from '@shared-module';
+import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class ProductEffects {
@@ -16,7 +18,11 @@ export class ProductEffects {
           return this.productService.getProducts()
             .pipe(
               map((products: IProduct[]) => ProductActions.productsLoaded({ products })),
-              catchError((error) => of(ProductActions.errorProduct({ error: new Error(error) }))),
+              tap(() => this.actionTrackerService.sendAction(ProductActionKey.loadProducts)),
+              catchError((error: HttpErrorResponse) => {
+                this.actionTrackerService.sendAction(ProductActionKey.loadProducts, error);
+                return EMPTY;
+              }),
             );
         }),
       )
@@ -30,7 +36,11 @@ export class ProductEffects {
           return this.productService.getProductById(productId)
             .pipe(
               map((product: IProduct) => ProductActions.productByIdLoaded({ product })),
-              catchError((error) => of(ProductActions.errorProduct({ error: new Error(error) }))),
+              tap(() => this.actionTrackerService.sendAction(ProductActionKey.loadProductById)),
+              catchError((error: HttpErrorResponse) => {
+                this.actionTrackerService.sendAction(ProductActionKey.loadProductById, error);
+                return EMPTY;
+              }),
             );
         }),
       )
@@ -39,5 +49,6 @@ export class ProductEffects {
   constructor(
     private actions$: Actions,
     private productService: ProductService,
+    private actionTrackerService: ActionTrackerService,
   ) {}
 }

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CartFacadeService, CartService, ToastService } from '../../services';
+import { ActionTrackerService, CartFacadeService, CartService, ToastService } from '../../services';
 import { ICartItem } from '../../models';
 import { CartActions } from './cart.actions';
-import { catchError, map, Observable, of, switchMap, take, tap } from 'rxjs';
+import { catchError, EMPTY, map, Observable, switchMap, take, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
+import { CartActionKey } from '@shared-module';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class CartEffects {
@@ -16,7 +18,11 @@ export class CartEffects {
         return this.cartService.getCart()
           .pipe(
             map((cartItems: ICartItem[]) => CartActions.cartInitialized({ cartItems })),
-            catchError((error) => of(CartActions.errorCart({ error }))),
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.loadCart)),
+            catchError((error: HttpErrorResponse) => {
+              this.actionTrackerService.sendAction(CartActionKey.loadCart, error);
+              return EMPTY;
+            }),
           );
       }),
     )
@@ -30,9 +36,10 @@ export class CartEffects {
           .pipe(
             map((cartItem: ICartItem) => CartActions.productAddedToCart({ cartItem })),
             tap(() => this.toastService.showSuccessToast(this.translate.instant('cart.productAddedToCart'))),
-            catchError((error) => {
-              this.toastService.showWarningToast(this.translate.instant('cart.productIsAlreadyInCart'));
-              return of(CartActions.errorCart({ error }));
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.addCartItem)),
+            catchError((error: HttpErrorResponse) => {
+              this.actionTrackerService.sendAction(CartActionKey.addCartItem, error);
+              return EMPTY;
             }),
           );
       }),
@@ -46,7 +53,11 @@ export class CartEffects {
         return this.cartService.updateCart(action.id, action.amount)
           .pipe(
             map((cartItem: ICartItem) => CartActions.productAmountUpdated({ cartItem })),
-            catchError((error) => of(CartActions.errorCart({ error }))),
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.updateCartItem)),
+            catchError((error: HttpErrorResponse) => {
+              this.actionTrackerService.sendAction(CartActionKey.updateCartItem, error);
+              return EMPTY;
+            }),
           );
       }),
     )
@@ -62,13 +73,17 @@ export class CartEffects {
           .pipe(
             map(() => CartActions.productRemovedFromCart({ id })),
             tap(() => this.toastService.showErrorToast(this.translate.instant('cart.productRemovedFromCart'))),
-            catchError((error) => of(CartActions.errorCart({ error }))),
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.deleteCartItem)),
+            catchError((error: HttpErrorResponse) => {
+              this.actionTrackerService.sendAction(CartActionKey.deleteCartItem, error);
+              return EMPTY;
+            }),
           );
       }),
     )
   );
 
-  removeOrderedItemFromCart$ = createEffect((): Observable<Action> =>
+  clearCart$ = createEffect((): Observable<Action> =>
     this.actions$.pipe(
       ofType(CartActions.clearCart),
       switchMap(() => this.cartFacadeService.getCart().pipe(take(1))),
@@ -78,7 +93,11 @@ export class CartEffects {
         return this.cartService.clearCart(ids)
           .pipe(
             map(() => CartActions.cartCleared()),
-            catchError((error) => of(CartActions.errorCart({ error }))),
+            tap(() => this.actionTrackerService.sendAction(CartActionKey.clearCart)),
+            catchError((error: HttpErrorResponse) => {
+              this.actionTrackerService.sendAction(CartActionKey.clearCart, error);
+              return EMPTY;
+            }),
           );
       }),
     )
@@ -90,5 +109,6 @@ export class CartEffects {
     private toastService: ToastService,
     private translate: TranslateService,
     private cartFacadeService: CartFacadeService,
+    private actionTrackerService: ActionTrackerService,
   ) {}
 }

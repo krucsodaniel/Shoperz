@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CategoryService } from '../../services';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
+import { ActionTrackerService, CategoryService } from '../../services';
+import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { CategoryActions } from './category.actions';
-import { ICategory } from '@shared-module';
+import { CategoryActionKey, ICategory } from '@shared-module';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class CategoryEffects {
@@ -15,8 +16,12 @@ export class CategoryEffects {
         switchMap(() => {
           return this.categoryService.getCategories()
             .pipe(
-              map((categories: ICategory[]) => CategoryActions.categoriesLoaded({ categories: categories })),
-              catchError((error) => of(CategoryActions.errorCategories({ error: new Error(error) }))),
+              map((categories: ICategory[]) => CategoryActions.categoriesLoaded({ categories })),
+              tap(() => this.actionTrackerService.sendAction(CategoryActionKey.loadCategories)),
+              catchError((error: HttpErrorResponse) => {
+                this.actionTrackerService.sendAction(CategoryActionKey.loadCategories, error);
+                return EMPTY;
+              }),
             );
         }),
       );
@@ -25,5 +30,6 @@ export class CategoryEffects {
   constructor(
     private actions$: Actions,
     private categoryService: CategoryService,
+    private actionTrackerService: ActionTrackerService,
   ) {}
 }
