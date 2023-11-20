@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FilterActions, FilterSelectors } from '../store/filters';
+import { FilterSelectors } from '../store';
 import { filter, Observable } from 'rxjs';
 
 @Injectable()
@@ -12,9 +12,5 @@ export class SearchFacadeService {
       .pipe(
         filter((searchValue: string | undefined) => searchValue !== undefined),
       );
-  }
-
-  setSearchValue(searchValue: string): void {
-    this.store.dispatch(FilterActions.setSearch({ searchValue }));
   }
 }

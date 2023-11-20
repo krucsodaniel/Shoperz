@@ -9,17 +9,24 @@ export namespace ProductSelectors {
 
   export const selectProducts = createSelector(
     selectProductFeature,
-    (state: IProductState) => state.products,
+    (state: IProductState) => {
+      if (!Object.values(state.products.entities).length) {
+        return undefined;
+      }
+
+      return Object.values(state.products.entities);
+    },
   );
 
   export const selectProductById = (productId: string) => createSelector(
-    selectProductFeature,
-    (state: IProductState) => state.products.find((product) => product.id === productId),
-  );
+    selectProducts,
+    (products: IProduct[]) => {
+      if (!products) {
+        return undefined;
+      }
 
-  export const selectProductsByIds = (productIds: string[]) => createSelector(
-    selectProductFeature,
-    (state: IProductState) => state.products.filter((product) => productIds.includes(product.id)),
+      return products.find((product) => product.id === productId);
+    },
   );
 
   export const selectAreAllInitialized = createSelector(

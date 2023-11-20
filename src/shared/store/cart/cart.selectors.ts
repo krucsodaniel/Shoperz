@@ -10,7 +10,7 @@ export namespace CartSelectors {
 
   export const selectCart = createSelector(
     selectCartFeature,
-    (state: ICartState) => state.cart,
+    (state: ICartState) => Object.values(state.cart.entities),
   );
 
   export const selectTotalCartAmount = createSelector(

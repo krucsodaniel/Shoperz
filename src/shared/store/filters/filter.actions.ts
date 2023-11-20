@@ -6,7 +6,6 @@ export const enum FilterAction {
   setSelectedFilters = '[Filters] Set selected filters',
   setSortingOption = '[Filters] Set sorting option',
   setSearch = '[Filters] Set search',
-  resetFilter = '[Filters] Reset filter',
   errorFilter = '[Filters] Error during process',
 }
 
@@ -23,6 +22,4 @@ export namespace FilterActions {
   export const setSearch = createAction(FilterAction.setSearch, props<{ searchValue: string }>());
 
   export const errorFilter = createAction(FilterAction.errorFilter, props<{ error: Error }>());
-
-  export const resetFilter = createAction(FilterAction.resetFilter);
 }

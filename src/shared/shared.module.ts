@@ -40,6 +40,8 @@ import {
   FilterFacadeService,
   FilterService,
   SortFacadeService,
+  ActionDispatcherService,
+  ActionTrackerService,
 } from './services';
 import {
   SearchbarComponent,
@@ -114,6 +116,8 @@ import { FirestoreDatePipe } from './pipes';
     FilterFacadeService,
     FilterService,
     SortFacadeService,
+    ActionDispatcherService,
+    ActionTrackerService,
   ],
   exports: [
     SearchbarComponent,

@@ -1,16 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CartActions } from '../../store/cart/cart.actions';
 import { filter, Observable } from 'rxjs';
 import { ICalculatedProduct, ICartItem } from '../../models';
-import { CartSelectors } from '../../store/cart/cart.selectors';
+import { CartSelectors, CartActions } from '../../store/';
+import { ActionDispatcherService } from '../action-dispatcher.service';
+import { CartActionKey } from '../../enums';
 
 @Injectable()
 export class CartFacadeService {
-  constructor(private store: Store) {}
+  constructor(private store: Store, private actionDispatcherService: ActionDispatcherService) {}
 
-  initCartState(): void {
-    this.store.dispatch(CartActions.initCart());
+  async initCartState(): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      CartActions.initCart(),
+      CartActionKey.loadCart,
+    )
+  }
+
+  async addProductToCart(id: number, amount: number): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      CartActions.addProductToCart({ id, amount }),
+      CartActionKey.addCartItem,
+    );
+  }
+
+  async updateProductAmount(id: number, amount: number): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      CartActions.updateProductAmount({ id, amount }),
+      CartActionKey.updateCartItem,
+    );
+  }
+
+  async removeProductFromCart(id: number): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      CartActions.removeProductFromCart({ id }),
+      CartActionKey.deleteCartItem,
+    );
+  }
+
+  async clearCart(): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      CartActions.clearCart(),
+      CartActionKey.clearCart,
+    );
   }
 
   getCart(): Observable<ICartItem[]> {
@@ -31,29 +63,7 @@ export class CartFacadeService {
     return this.store.select(CartSelectors.selectTotalAmountOfPrice);
   }
 
-  checkIfProductIsInCart(productId: string): Observable<boolean> {
-    return this.store.select(CartSelectors.isProductInCart(productId))
-      .pipe(filter(Boolean));
-  }
-
-  getCurrentCartItemAmount(productId: string): Observable<number> {
-    return this.store.select(CartSelectors.selectAmountOfCurrentCartItem(productId))
-      .pipe(filter(Boolean));
-  }
-
-  addProductToCart(id: string, amount: number): void {
-    this.store.dispatch(CartActions.addProductToCart({ id, amount }));
-  }
-
-  updateProductAmount(id: string, amount: number): void {
-    this.store.dispatch(CartActions.updateProductAmount({ id, amount }));
-  }
-
-  removeProductFromCart(id: string): void {
-    this.store.dispatch(CartActions.removeProductFromCart({ id }));
-  }
-
-  clearCart(): void {
-    this.store.dispatch(CartActions.clearCart());
+  checkIfProductIsInCart(id: number): Observable<ICartItem> {
+    return this.store.select(CartSelectors.selectCartItemById(id));
   }
 }
