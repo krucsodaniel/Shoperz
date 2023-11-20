@@ -24,6 +24,14 @@ export class GeneralAddToCartIconComponent implements OnInit {
   @Input()
   amountOfProductInCart: number;
 
+  get buttonText(): string {
+    if (!this.isProductInCart && this.isExpanded) {
+      return this.buildTranslationKey('addToCart');
+    }
+
+    return this.buildTranslationKey('productIsInCart');
+  }
+
   constructor(
     private cartFacadeService: CartFacadeService,
     private cdr: ChangeDetectorRef,
@@ -40,21 +48,13 @@ export class GeneralAddToCartIconComponent implements OnInit {
 
     if (this.isProductInCart) {
       this.cartFacadeService.removeProductFromCart(this.productId);
-      this.isProductInCart = false;
     } else {
       this.cartFacadeService.addProductToCart(this.productId, 1);
-      this.isProductInCart = true;
     }
+
+    this.isProductInCart = !this.isProductInCart;
 
     this.cdr.detectChanges();
-  }
-
-  get buttonText(): string {
-    if (!this.isProductInCart && this.isExpanded) {
-      return this.buildTranslationKey('addToCart');
-    } else {
-      return this.buildTranslationKey('productIsInCart');
-    }
   }
 
   buildTranslationKey(relativeKey: string): string {

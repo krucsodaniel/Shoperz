@@ -30,6 +30,14 @@ export class ProductPageAddToCartIconComponent implements OnInit {
   @Output()
   readonly amountChange = new EventEmitter<number>();
 
+  get buttonText(): string {
+    if (this.isProductInCart) {
+      return this.buildTranslationKey('updateAmount');
+    }
+
+    return this.buildTranslationKey('addToCart');
+  }
+
   constructor(
     private cartFacadeService: CartFacadeService,
     private cdr: ChangeDetectorRef,
@@ -58,14 +66,6 @@ export class ProductPageAddToCartIconComponent implements OnInit {
     }
 
     this.cdr.detectChanges();
-  }
-
-  get buttonText(): string {
-    if (this.isProductInCart) {
-      return this.buildTranslationKey('updateAmount');
-    } else {
-      return this.buildTranslationKey('addToCart');
-    }
   }
 
   buildTranslationKey(relativeKey: string): string {
