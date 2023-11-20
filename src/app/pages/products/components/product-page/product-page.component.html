@@ -50,12 +50,11 @@
       <button class="bg-white text-grey-700" (click)="incrementQuantity()">+</button>
     </div>
 
-    <app-add-to-cart-icon
+    <app-product-page-add-to-cart-icon
       [productId]="product.id"
-      [typeOfPage]="typeOfPage"
       [amountOfProductInCart]="numberFormControl.value"
       (amountChange)="setFormCurrentValue($event)">
-    </app-add-to-cart-icon>
+    </app-product-page-add-to-cart-icon>
   </div>
 </ng-container>
 

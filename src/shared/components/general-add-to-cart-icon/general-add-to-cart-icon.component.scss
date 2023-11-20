@@ -20,13 +20,3 @@
 .item-in-cart {
   @apply bg-green-400 hover:bg-green-500 hover:text-green-200;
 }
-
-.product-page-button {
-  @apply sm:w-full md:w-44 p-5;
-  @apply bg-blue-600 text-white;
-  @apply hover:bg-blue-500 hover:text-blue-800;
-}
-
-.update-amount {
-  @apply bg-amber-600 hover:bg-amber-500 hover:text-white;
-}

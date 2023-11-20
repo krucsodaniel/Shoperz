@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input } from '@angular/core';
-import { ICalculatedProduct, Page, Route } from '@shared-module';
+import { ICalculatedProduct, Route } from '@shared-module';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {
-  readonly typeOfPage = Page.productCard;
-
   @Input()
   card: ICalculatedProduct;
 

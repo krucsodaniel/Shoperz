@@ -53,7 +53,8 @@ import {
   TopHeaderComponent,
   SubHeaderComponent,
   MiddleHeaderComponent,
-  AddToCartIconComponent,
+  GeneralAddToCartIconComponent,
+  ProductPageAddToCartIconComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
 import { FirestoreDatePipe } from './pipes';
@@ -94,8 +95,9 @@ import { FirestoreDatePipe } from './pipes';
     TopHeaderComponent,
     MiddleHeaderComponent,
     SubHeaderComponent,
-    AddToCartIconComponent,
+    GeneralAddToCartIconComponent,
     FirestoreDatePipe,
+    ProductPageAddToCartIconComponent,
   ],
   providers: [
     SearchFacadeService,
@@ -124,8 +126,9 @@ import { FirestoreDatePipe } from './pipes';
     LoaderComponent,
     HeaderComponent,
     FooterComponent,
-    AddToCartIconComponent,
+    GeneralAddToCartIconComponent,
     FirestoreDatePipe,
+    ProductPageAddToCartIconComponent,
   ],
 })
 export class SharedModule {}
