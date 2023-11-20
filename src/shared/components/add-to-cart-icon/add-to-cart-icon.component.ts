@@ -1,12 +1,22 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component, DestroyRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { CartFacadeService } from '../../services';
 import { firstValueFrom } from 'rxjs';
 import { Page } from '../../enums';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-add-to-cart-icon',
   templateUrl: './add-to-cart-icon.component.html',
   styleUrls: ['./add-to-cart-icon.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddToCartIconComponent implements OnInit {
   isProductInCart: boolean;
@@ -23,14 +33,19 @@ export class AddToCartIconComponent implements OnInit {
   @Output()
   readonly amountChange = new EventEmitter<number>();
 
-  constructor(private cartFacadeService: CartFacadeService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cartFacadeService: CartFacadeService,
+    private cdr: ChangeDetectorRef,
+    private destroyRef: DestroyRef,
+  ) {}
 
   async ngOnInit(): Promise<void> {
     this.isProductInCart = await firstValueFrom(this.cartFacadeService.checkIfProductIsInCart(this.productId));
 
     if (this.typeOfPage === Page.productPage && this.isProductInCart) {
-      const currentAmount = await firstValueFrom(this.cartFacadeService.getCurrentCartItemAmount(this.productId));
-      this.amountChange.emit(currentAmount);
+      this.cartFacadeService.getCurrentCartItemAmount(this.productId)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe((amountInCart: number) => this.amountChange.emit(amountInCart));
     }
 
     this.cdr.detectChanges();
@@ -61,7 +76,7 @@ export class AddToCartIconComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  getButtonClasses(): string {
+  get buttonClasses(): string {
     if (this.typeOfPage === Page.productCard) {
       return this.isExpanded ? 'expanded' : 'collapsed';
     }
@@ -73,7 +88,7 @@ export class AddToCartIconComponent implements OnInit {
     return '';
   }
 
-  getButtonText(): string {
+  get buttonText(): string {
     if ((!this.isProductInCart && this.isExpanded) || (!this.isProductInCart && this.typeOfPage === Page.productPage)) {
       return this.buildTranslationKey('addToCart');
     }

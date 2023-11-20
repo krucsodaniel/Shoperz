@@ -4,13 +4,11 @@ import {
   HostBinding,
   OnInit,
   ChangeDetectorRef,
-  DestroyRef,
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartFacadeService, ICalculatedProduct, Page, ProductFacadeService } from '@shared-module';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product-page',
@@ -21,7 +19,6 @@ export class ProductPageComponent implements OnInit {
   product$: Observable<ICalculatedProduct>;
   selectedPicture: string;
   numberFormControl: FormControl<number>;
-  amountOfProductInCart: number;
   readonly typeOfPage = Page.productPage;
 
   @HostBinding('class')
@@ -33,17 +30,10 @@ export class ProductPageComponent implements OnInit {
     private cartFacadeService: CartFacadeService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
-    private destroyRef: DestroyRef,
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.numberFormControl = new FormControl(1, [Validators.required]);
-
-    this.amountOfProductInCart = this.numberFormControl.value;
-
-    this.numberFormControl.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((amount: number) => this.amountOfProductInCart = +amount);
 
     this.productId = this.route.snapshot.paramMap.get('id');
 

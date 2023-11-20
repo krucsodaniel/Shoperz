@@ -1,15 +1,15 @@
 <button
   class="add-to-cart-button"
-  [ngClass]="getButtonClasses()"
+  [ngClass]="buttonClasses"
   [class.item-in-cart]="isProductInCart"
   (click)="toggleProductInCart($event)">
   <ng-container *ngIf="typeOfPage === 'product-card'">
-    <p *ngIf="isExpanded">{{ getButtonText() | translate }}</p>
+    <p *ngIf="isExpanded">{{ buttonText | translate }}</p>
     <svg-icon [src]="'add-to-cart'"></svg-icon>
   </ng-container>
 
   <ng-container *ngIf="typeOfPage === 'product-page'">
-    <p>{{ getButtonText() | translate }}</p>
+    <p>{{ buttonText | translate }}</p>
     <svg-icon *ngIf="!isProductInCart" [src]="'add-to-cart'"></svg-icon>
   </ng-container>
 </button>

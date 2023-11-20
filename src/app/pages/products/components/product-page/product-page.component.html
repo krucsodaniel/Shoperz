@@ -53,7 +53,7 @@
     <app-add-to-cart-icon
       [productId]="product.id"
       [typeOfPage]="typeOfPage"
-      [amountOfProductInCart]="amountOfProductInCart"
+      [amountOfProductInCart]="numberFormControl.value"
       (amountChange)="setFormCurrentValue($event)">
     </app-add-to-cart-icon>
   </div>

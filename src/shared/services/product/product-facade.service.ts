@@ -97,7 +97,7 @@ export class ProductFacadeService {
     );
   }
 
-  async loadProductById(productId: number): Promise<void> {
+  async loadProductById(productId: string): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       ProductActions.loadProductById({ productId }),
       ProductActionKey.loadProductById,
