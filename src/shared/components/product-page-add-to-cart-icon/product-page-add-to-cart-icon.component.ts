@@ -62,7 +62,7 @@ export class ProductPageAddToCartIconComponent implements OnInit {
     if (this.isProductInCart) {
       this.cartFacadeService.updateProductAmount(this.productId, this.amountOfProductInCart);
     } else {
-      this.cartFacadeService.addProductToCart(this.productId, 1);
+      this.cartFacadeService.addProductToCart(this.productId, this.amountOfProductInCart);
     }
 
     this.cdr.detectChanges();
