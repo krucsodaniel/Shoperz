@@ -9,3 +9,4 @@ export * from './cart-product.model';
 export * from './feedback.model';
 export * from './order.model';
 export * from './wishlist.model';
+export * from './action-tracker.model';

@@ -1,0 +1,9 @@
+<button
+  class="product-page-button"
+  [class.update-amount]="isProductInCart"
+  (click)="toggleProductInCart($event)">
+  <ng-container>
+    <p>{{ buttonText | translate }}</p>
+    <svg-icon *ngIf="!isProductInCart" [src]="'add-to-cart'"></svg-icon>
+  </ng-container>
+</button>

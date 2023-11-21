@@ -13,10 +13,6 @@ export class ToastService {
     this.toastr.success(message, '', this.toastConfigObject);
   }
 
-  showWarningToast(message: string): void {
-    this.toastr.warning(message, '', this.toastConfigObject);
-  }
-
   showErrorToast(message: string): void {
     this.toastr.error(message, '', this.toastConfigObject);
   }

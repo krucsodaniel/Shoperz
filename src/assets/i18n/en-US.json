@@ -72,6 +72,8 @@
     "wishlist": "Wishlist",
     "addAmount": "Add amount",
     "addToCart": "Add to Cart",
+    "updateAmount": "Update amount",
+    "productIsInCart": "Product is in cart",
     "productIsAlreadyInCart": "Product is already in cart.",
     "productAddedToCart": "Product successfully added to cart",
     "productAmountUpdated": "Amount in cart updated",

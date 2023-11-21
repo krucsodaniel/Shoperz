@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import {
+  ActionDispatcherService,
   BrandFacadeService,
   CartFacadeService,
   CategoryFacadeService,
   OrdersFacadeService,
   SearchFacadeService,
+  FilterService,
+  FilterFacadeService,
+  SortFacadeService,
 } from '../../services';
-import { FilterService, FilterFacadeService, SortFacadeService } from '@shared-module';
 import { filter, firstValueFrom, Observable } from 'rxjs';
 import { ICalculatedProduct } from '../../models';
 import { Store } from '@ngrx/store';
-import { ProductActions, ProductSelectors } from '../../store';
-import { CartActions } from '../../store/cart/cart.actions';
+import { ProductActions, ProductSelectors, CartActions } from '../../store';
+import { ProductActionKey } from '../../enums';
 
 @Injectable()
 export class ProductFacadeService {
@@ -25,6 +28,7 @@ export class ProductFacadeService {
     private cartFacadeService: CartFacadeService,
     private ordersFacadeService: OrdersFacadeService,
     private store: Store,
+    private actionDispatcherService: ActionDispatcherService,
   ) {}
 
   isProductsPageInitialized(): Observable<boolean> {
@@ -43,10 +47,10 @@ export class ProductFacadeService {
       const products = await firstValueFrom(this.getProducts());
 
       if (!products) {
-        this.store.dispatch(ProductActions.loadProducts());
+        this.initProducts();
         this.brandFacadeService.initBrandsState();
         this.categoryFacadeService.initCategoriesState();
-        await this.filterService.initializeFilterDefinitions();
+        this.filterService.initializeFilterDefinitions();
         this.initCartState();
         this.initOrdersState();
         return;
@@ -56,22 +60,22 @@ export class ProductFacadeService {
     }
 
     if (!isProductsPageInitialized && isSpecificProductPageInitialized) {
-      this.store.dispatch(ProductActions.loadProducts());
-      await this.filterService.initializeFilterDefinitions();
+      this.initProducts();
+      this.filterService.initializeFilterDefinitions();
       this.initCartState();
       this.initOrdersState();
       return;
     }
   }
 
-  async initSpecificProductPage(productId: number): Promise<void> {
+  async initSpecificProductPage(productId: string): Promise<void> {
     const isProductsPageInitialized = await firstValueFrom(this.isProductsPageInitialized());
 
     if (isProductsPageInitialized) {
       const product = await firstValueFrom(this.getSingleProduct(productId));
 
       if (!product) {
-        this.store.dispatch(ProductActions.loadProductById({ productId }));
+        this.loadProductById(productId);
         await firstValueFrom(this.isSpecificProductPageInitialized().pipe(filter(Boolean)));
       }
 
@@ -84,6 +88,20 @@ export class ProductFacadeService {
     await firstValueFrom(this.isSpecificProductPageInitialized().pipe(filter(Boolean)));
     this.store.dispatch(CartActions.initCart());
     this.initOrdersState();
+  }
+
+  async initProducts(): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      ProductActions.loadProducts(),
+      ProductActionKey.loadProducts,
+    );
+  }
+
+  async loadProductById(productId: string): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      ProductActions.loadProductById({ productId }),
+      ProductActionKey.loadProductById,
+    );
   }
 
   async initCartPage(): Promise<void> {
@@ -144,20 +162,20 @@ export class ProductFacadeService {
     }
   }
 
-  getProducts(): Observable<ICalculatedProduct[]> {
-    return this.store.select(ProductSelectors.getCalculatedProducts);
-  }
-
-  getSingleProduct(productId: number): Observable<ICalculatedProduct> {
-    return this.store.select(ProductSelectors.getCalculatedProduct(productId))
-      .pipe(filter(Boolean));
-  }
-
   initCartState(): void {
     this.cartFacadeService.initCartState();
   }
 
   initOrdersState(): void {
     this.ordersFacadeService.initOrdersState();
+  }
+
+  getProducts(): Observable<ICalculatedProduct[]> {
+    return this.store.select(ProductSelectors.getCalculatedProducts);
+  }
+
+  getSingleProduct(productId: string): Observable<ICalculatedProduct> {
+    return this.store.select(ProductSelectors.getCalculatedProduct(productId))
+      .pipe(filter(Boolean));
   }
 }

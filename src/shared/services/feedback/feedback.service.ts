@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { from, map, Observable } from 'rxjs';
 import { IFeedback } from '../../models';
+import { FirestoreCollection } from '../../enums';
+import { addDoc, collection, Firestore, serverTimestamp } from '@angular/fire/firestore';
 
 @Injectable()
 export class FeedbackService {
-  private readonly baseUrl = environment.api.baseUrl;
-  private readonly feedbacks = environment.api.endpoints.feedbacks;
+  private readonly feedbacksCollectionRef = collection(this.firestore, FirestoreCollection.feedbacks);
 
-  constructor(private http: HttpClient) {}
+  constructor(private firestore: Firestore) {}
 
   createNewFeedback(feedback: IFeedback): Observable<IFeedback> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const options = { headers };
+    return from(addDoc(this.feedbacksCollectionRef, { ...feedback, timestamp: serverTimestamp() }))
+      .pipe(
+        map((docRef) => {
+          const feedbackId = docRef.id;
 
-    return this.http.post<IFeedback>(`${this.baseUrl}${this.feedbacks}`, { ...feedback, id: this.generateFeedbackId(), date: new Date() }, options);
-  }
+          const newFeedback: IFeedback = {
+            id: feedbackId,
+            message: feedback.message,
+            name: feedback.name,
+            email: feedback.email,
+            rate: feedback.rate,
+          };
 
-  private generateFeedbackId(): number {
-    return Math.floor(1000 + Math.random() * 9000);
+          return newFeedback;
+        }),
+      );
   }
 }

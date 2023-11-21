@@ -8,3 +8,5 @@ export * from './cart-icon/cart-icon.component';
 export * from './badge/badge.component';
 export * from './footer/footer.component';
 export * from './wishlist-button/wishlist-button.component';
+export * from './general-add-to-cart-icon/general-add-to-cart-icon.component';
+export * from './product-page-add-to-cart-icon/product-page-add-to-cart-icon.component';

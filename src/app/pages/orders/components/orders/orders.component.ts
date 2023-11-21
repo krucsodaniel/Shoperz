@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 export class OrdersComponent implements OnInit {
   orders$: Observable<IOrder[]>;
 
-  readonly headerTranslationKeys = ['orderId', 'products', 'total', 'status', 'dateCreated'];
+  readonly headerTranslationKeys = ['orderId', 'products', 'total', 'status'];
 
   @HostBinding('class')
   private readonly classes = 'mx-auto flex items-start flex-wrap py-16 gap-8';

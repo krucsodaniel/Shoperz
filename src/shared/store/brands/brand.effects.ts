@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { BrandService } from '../../services';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
+import { ActionTrackerService, BrandService } from '../../services';
+import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { BrandActions } from './brand.actions';
-import { IBrand } from '@shared-module';
+import { BrandActionKey, IBrand } from '@shared-module';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class BrandEffects {
@@ -15,8 +16,12 @@ export class BrandEffects {
         switchMap(() => {
           return this.brandService.getBrands()
             .pipe(
-              map((brands: IBrand[]) => BrandActions.brandsLoaded({ brands: brands })),
-              catchError((error) => of(BrandActions.errorBrands({ error: new Error(error) }))),
+              map((brands: IBrand[]) => BrandActions.brandsLoaded({ brands })),
+              tap(() => this.actionTrackerService.sendAction(BrandActionKey.loadBrands)),
+              catchError((error: HttpErrorResponse) => {
+                this.actionTrackerService.sendAction(BrandActionKey.loadBrands, error);
+                return EMPTY;
+              }),
             );
         }),
       );
@@ -25,5 +30,6 @@ export class BrandEffects {
   constructor(
     private actions$: Actions,
     private brandService: BrandService,
+    private actionTrackerService: ActionTrackerService,
   ) {}
 }

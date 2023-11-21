@@ -1,17 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { IBrand } from '@shared-module';
-import { Observable } from 'rxjs';
+import { IBrand } from '../../models';
+import { FirestoreCollection } from '../../enums';
+import { from, map, Observable } from 'rxjs';
+import { collection, Firestore, getDocs } from '@angular/fire/firestore';
 
 @Injectable()
 export class BrandService {
-  private readonly baseUrl = environment.api.baseUrl;
-  private readonly brands = environment.api.endpoints['brands'];
+  private readonly brandsCollectionRef = collection(this.firestore, FirestoreCollection.brands);
 
-  constructor(private http: HttpClient) {}
+  constructor(private firestore: Firestore) {}
 
   getBrands(): Observable<IBrand[]> {
-    return this.http.get<IBrand[]>(`${this.baseUrl}${this.brands}`);
+    return from(getDocs(this.brandsCollectionRef))
+      .pipe(
+        map((snapShot) => {
+          const resultList = snapShot.docs.map((doc) => {
+            const brandData = doc.data() as IBrand;
+            brandData.id = doc.id;
+            return brandData;
+          });
+
+          return resultList;
+        }),
+      );
   }
 }

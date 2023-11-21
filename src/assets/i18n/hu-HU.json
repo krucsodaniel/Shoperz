@@ -72,6 +72,8 @@
     "wishlist": "Kívánság listába",
     "addAmount": "Adjon meg mennyiséget",
     "addToCart": "Kosárba",
+    "updateAmount": "Mennyiség frissítése",
+    "productIsInCart": "A termék a kosárban van",
     "productIsAlreadyInCart": "A termék már a kosárban van.",
     "productAddedToCart": "Termék sikeresen hozzáadva",
     "productAmountUpdated": "Termék mennyiség frissítve",

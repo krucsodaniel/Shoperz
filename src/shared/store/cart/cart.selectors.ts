@@ -44,11 +44,6 @@ export namespace CartSelectors {
     }
   );
 
-  export const selectCartItemById = (id: number) => createSelector(
-    selectCart,
-    (cart: ICartItem[]) => cart.find((item: ICartItem) => item.id === id),
-  );
-
   export const selectCartProducts = createSelector(
     selectCart,
     ProductSelectors.getCalculatedProducts,
@@ -68,5 +63,29 @@ export namespace CartSelectors {
         return ProductSelectors.calculateProduct(cartProduct, categories, brands);
       });
     },
+  );
+
+  export const isProductInCart = (productId: string) => createSelector(
+    selectCart,
+    (cart: ICartItem[]) => {
+      if (!cart?.length) {
+        return null;
+      }
+
+      return cart.some((item: ICartItem) => item.id === productId)
+    }
+  );
+
+  export const selectAmountOfCurrentCartItem = (productId: string) => createSelector(
+    selectCart,
+    (cart: ICartItem[]) => {
+      if (!cart?.length) {
+        return null;
+      }
+
+      const currentItem = cart.find((cartItem: ICartItem) => cartItem.id === productId);
+
+      return currentItem.amount;
+    }
   );
 }

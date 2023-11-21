@@ -73,6 +73,8 @@
     "wishlist": "Wunschzettel",
     "addAmount": "Betrag hinzufügen",
     "addToCart": "Zum Warenkorb hinzufügen",
+    "updateAmount": "Menge aktuelisieren",
+    "productIsInCart": "Das Produkt befindet sich im Warenkorb",
     "productIsAlreadyInCart": "Das Produkt befindet sich bereits in Ihrem Einkaufswagen.",
     "productAddedToCart": "Produkt erfolgreich in den Warenkorb gelegt",
     "productAmountUpdated": "Produktmenge aktualisiert",

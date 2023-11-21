@@ -11,7 +11,7 @@ import { productReducer, productsFeatureKey } from './store/products/product.red
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
 import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
 import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
-import { feedbackReducer, feedbackFeatureKey } from './store/feedback'
+import { feedbackReducer, feedbackFeatureKey } from './store/feedback';
 import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
 import { wishlistReducer, wishlistFeatureKey, WishlistEffects } from './store/wishlist';
@@ -43,6 +43,8 @@ import {
   SortFacadeService,
   WishlistService,
   WishlistFacadeService,
+  ActionDispatcherService,
+  ActionTrackerService,
 } from './services';
 import {
   SearchbarComponent,
@@ -55,8 +57,11 @@ import {
   SubHeaderComponent,
   MiddleHeaderComponent,
   WishlistButtonComponent,
+  GeneralAddToCartIconComponent,
+  ProductPageAddToCartIconComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
+import { FirestoreDatePipe } from './pipes';
 
 @NgModule({
   imports: [
@@ -80,8 +85,8 @@ import { SvgIconsModule } from '@core-module';
       CartEffects,
       OrdersEffects,
       FilterEffects,
-      WishlistEffects,
       FeedbackEffects,
+      WishlistEffects,
     ]),
     RouterLinkActive,
     SvgIconsModule,
@@ -97,6 +102,9 @@ import { SvgIconsModule } from '@core-module';
     MiddleHeaderComponent,
     SubHeaderComponent,
     WishlistButtonComponent,
+    GeneralAddToCartIconComponent,
+    FirestoreDatePipe,
+    ProductPageAddToCartIconComponent,
   ],
   providers: [
     SearchFacadeService,
@@ -119,6 +127,8 @@ import { SvgIconsModule } from '@core-module';
     SortFacadeService,
     WishlistService,
     WishlistFacadeService,
+    ActionDispatcherService,
+    ActionTrackerService,
   ],
   exports: [
     SearchbarComponent,
@@ -126,6 +136,9 @@ import { SvgIconsModule } from '@core-module';
     HeaderComponent,
     FooterComponent,
     WishlistButtonComponent,
+    GeneralAddToCartIconComponent,
+    FirestoreDatePipe,
+    ProductPageAddToCartIconComponent,
   ],
 })
 export class SharedModule {}

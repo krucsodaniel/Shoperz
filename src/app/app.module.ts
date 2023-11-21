@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SvgIconsModule, TranslationConfigModule } from '../core';
 import { TranslateModule } from '@ngx-translate/core';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
@@ -50,6 +53,8 @@ const routes: Routes = [
     TranslationConfigModule,
     SvgIconsModule.forRoot(),
     TranslateModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
   ],
   declarations: [
     AppComponent,

@@ -18,7 +18,7 @@ export namespace ProductSelectors {
     },
   );
 
-  export const selectProductById = (productId: number) => createSelector(
+  export const selectProductById = (productId: string) => createSelector(
     selectProducts,
     (products: IProduct[]) => {
       if (!products) {
@@ -39,7 +39,7 @@ export namespace ProductSelectors {
     (state: IProductState) => state.isSpecificProductPageInitialized,
   );
 
-  export const getCalculatedProduct = (productId: number) => createSelector(
+  export const getCalculatedProduct = (productId: string) => createSelector(
     selectProductById(productId),
     BrandSelectors.selectBrands,
     CategorySelectors.selectCategories,
