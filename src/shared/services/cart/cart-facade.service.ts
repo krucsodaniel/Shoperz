@@ -17,21 +17,21 @@ export class CartFacadeService {
     )
   }
 
-  async addProductToCart(id: number, amount: number): Promise<void> {
+  async addProductToCart(id: string, amount: number): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       CartActions.addProductToCart({ id, amount }),
       CartActionKey.addCartItem,
     );
   }
 
-  async updateProductAmount(id: number, amount: number): Promise<void> {
+  async updateProductAmount(id: string, amount: number): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       CartActions.updateProductAmount({ id, amount }),
       CartActionKey.updateCartItem,
     );
   }
 
-  async removeProductFromCart(id: number): Promise<void> {
+  async removeProductFromCart(id: string): Promise<void> {
     return await this.actionDispatcherService.dispatchAsync(
       CartActions.removeProductFromCart({ id }),
       CartActionKey.deleteCartItem,
@@ -63,7 +63,12 @@ export class CartFacadeService {
     return this.store.select(CartSelectors.selectTotalAmountOfPrice);
   }
 
-  checkIfProductIsInCart(id: number): Observable<ICartItem> {
-    return this.store.select(CartSelectors.selectCartItemById(id));
+  checkIfProductIsInCart(id: string): Observable<boolean> {
+    return this.store.select(CartSelectors.isProductInCart(id))
+      .pipe(filter(Boolean));
+  }
+
+  getCurrentCartItemAmount(id: string): Observable<number> {
+    return this.store.select(CartSelectors.selectAmountOfCurrentCartItem(id));
   }
 }

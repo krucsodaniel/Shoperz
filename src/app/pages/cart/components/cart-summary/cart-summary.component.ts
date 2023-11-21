@@ -61,8 +61,7 @@ export class CartSummaryComponent implements OnInit {
       products: await firstValueFrom(this.cartFacadeService.getCart()),
       totalAmount: this.calculateTotal,
       status: OrderStatus.processing,
-      orderDate: Date.now(),
-    }
+    };
 
     this.ordersFacadeService.createOrder(newOrder);
 

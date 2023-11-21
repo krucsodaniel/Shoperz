@@ -1,0 +1,10 @@
+<button
+  class="add-to-cart-button"
+  [ngClass]="isExpanded ? 'expanded' : 'collapsed'"
+  [class.item-in-cart]="isProductInCart"
+  (click)="toggleProductInCart($event)">
+  <ng-container>
+    <p *ngIf="isExpanded">{{ buttonText | translate }}</p>
+    <svg-icon [src]="'add-to-cart'"></svg-icon>
+  </ng-container>
+</button>

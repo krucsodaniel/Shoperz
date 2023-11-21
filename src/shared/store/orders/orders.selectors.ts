@@ -30,11 +30,11 @@ export namespace OrdersSelectors {
       }
 
       return orders.map((order: IOrder) => {
-        const orderProducts: ICartItem[] = order.products.map((product: ICartItem) => {
-          const orderProduct = products.find((product: ICalculatedProduct) => product.id === product.id);
+        const orderProducts: ICartItem[] = order.products.map((cartProduct: ICartItem) => {
+          const orderProduct = products.find((product: ICalculatedProduct) => product.id === cartProduct.id);
 
           return {
-            ...product,
+            ...cartProduct,
             image: orderProduct ? orderProduct.images[0] : '',
             productName: orderProduct ? orderProduct.name : '',
           };

@@ -45,7 +45,7 @@ export namespace FilterSelectors {
 
     switch (sortingMethod) {
       case SortingOption.default:
-        sortedArray.sort((a: ICalculatedProduct, b: ICalculatedProduct) => a.id - b.id);
+        sortedArray.sort((a: ICalculatedProduct, b: ICalculatedProduct) => a.id.localeCompare(b.id));
         break;
       case SortingOption.nameAscending:
         sortedArray.sort((a: ICalculatedProduct, b: ICalculatedProduct) =>

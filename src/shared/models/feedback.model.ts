@@ -1,8 +1,10 @@
+import { FirestoreTimestampType } from '../types';
+
 export interface IFeedback {
-  id: number;
+  id: string;
   message: string;
   name: string;
   email: string;
   rate: number;
-  date: string;
+  timestamp?: FirestoreTimestampType;
 }

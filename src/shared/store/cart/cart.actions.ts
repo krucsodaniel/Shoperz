@@ -20,17 +20,17 @@ export namespace CartActions {
 
   export const cartInitialized = createAction(CartAction.cartInitialized, props<({ cartItems: ICartItem[] })>());
 
-  export const addProductToCart = createAction(CartAction.addProductToCart, props<{ id: number, amount: number }>());
+  export const addProductToCart = createAction(CartAction.addProductToCart, props<{ id: string, amount: number }>());
 
   export const productAddedToCart = createAction(CartAction.productAddedToCart, props<{ cartItem: ICartItem }>());
 
-  export const updateProductAmount = createAction(CartAction.updateProductAmount, props<{ id: number, amount: number }>());
+  export const updateProductAmount = createAction(CartAction.updateProductAmount, props<{ id: string, amount: number }>());
 
   export const productAmountUpdated = createAction(CartAction.productAmountUpdated, props<{ cartItem: ICartItem }>());
 
-  export const removeProductFromCart = createAction(CartAction.removeProductFromCart, props<{ id: number }>());
+  export const removeProductFromCart = createAction(CartAction.removeProductFromCart, props<{ id: string }>());
 
-  export const productRemovedFromCart = createAction(CartAction.productRemovedFromCart, props<{ id: number }>());
+  export const productRemovedFromCart = createAction(CartAction.productRemovedFromCart, props<{ id: string }>());
 
   export const clearCart = createAction(CartAction.clearCart);
 

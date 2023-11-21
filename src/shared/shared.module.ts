@@ -11,7 +11,7 @@ import { productReducer, productsFeatureKey } from './store/products/product.red
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
 import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
 import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
-import { feedbackReducer, feedbackFeatureKey } from './store/feedback'
+import { feedbackReducer, feedbackFeatureKey } from './store/feedback';
 import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
 import { ProductEffects } from './store/products/product.effects';
@@ -53,8 +53,11 @@ import {
   TopHeaderComponent,
   SubHeaderComponent,
   MiddleHeaderComponent,
+  GeneralAddToCartIconComponent,
+  ProductPageAddToCartIconComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
+import { FirestoreDatePipe } from './pipes';
 
 @NgModule({
   imports: [
@@ -68,10 +71,17 @@ import { SvgIconsModule } from '@core-module';
     StoreModule.forFeature(categoriesFeatureKey, categoryReducer),
     StoreModule.forFeature(cartFeatureKey, cartReducer),
     StoreModule.forFeature(feedbackFeatureKey, feedbackReducer),
-    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects, FeedbackEffects]),
     StoreModule.forFeature(ordersFeatureKey, ordersReducer),
     StoreModule.forFeature(filtersFeatureKey, filterReducer),
-    EffectsModule.forFeature([ProductEffects, BrandEffects, CategoryEffects, CartEffects, OrdersEffects, FilterEffects]),
+    EffectsModule.forFeature([
+      ProductEffects,
+      BrandEffects,
+      CategoryEffects,
+      CartEffects,
+      OrdersEffects,
+      FilterEffects,
+      FeedbackEffects,
+    ]),
     RouterLinkActive,
     SvgIconsModule,
   ],
@@ -85,6 +95,9 @@ import { SvgIconsModule } from '@core-module';
     TopHeaderComponent,
     MiddleHeaderComponent,
     SubHeaderComponent,
+    GeneralAddToCartIconComponent,
+    FirestoreDatePipe,
+    ProductPageAddToCartIconComponent,
   ],
   providers: [
     SearchFacadeService,
@@ -113,6 +126,9 @@ import { SvgIconsModule } from '@core-module';
     LoaderComponent,
     HeaderComponent,
     FooterComponent,
+    GeneralAddToCartIconComponent,
+    FirestoreDatePipe,
+    ProductPageAddToCartIconComponent,
   ],
 })
 export class SharedModule {}
