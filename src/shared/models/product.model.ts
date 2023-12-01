@@ -6,4 +6,5 @@ export interface IProduct {
   brandId: string;
   description: string;
   images: string[];
+  isOnWishlist: boolean;
 }

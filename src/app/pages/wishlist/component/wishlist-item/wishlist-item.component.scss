@@ -1,0 +1,24 @@
+.heart::ng-deep {
+  svg {
+    path {
+      @apply fill-gray-500;
+    }
+  }
+  @apply mt-6;
+}
+
+.heart:hover ::ng-deep {
+  svg {
+    path {
+      @apply fill-red-600;
+    }
+  }
+}
+
+.fill::ng-deep {
+  svg {
+    path {
+      @apply fill-red-600;
+    }
+  }
+}

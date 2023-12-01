@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-badge',
@@ -7,5 +7,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class BadgeComponent {
   @Input()
-  amountInCart: number;
+  amount: number;
+
+  @HostBinding('class')
+  private readonly classes = 'flex justify-center items-center rounded-full w-6 h-6 bg-red-600 text-white font-bold';
 }

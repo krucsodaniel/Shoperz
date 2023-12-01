@@ -14,7 +14,6 @@ import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
 import { feedbackReducer, feedbackFeatureKey } from './store/feedback';
 import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
-import { wishlistReducer, wishlistFeatureKey, WishlistEffects } from './store/wishlist';
 import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
@@ -49,7 +48,7 @@ import {
 import {
   SearchbarComponent,
   LoaderComponent,
-  CartIconComponent,
+  NavIconComponent,
   BadgeComponent,
   FooterComponent,
   HeaderComponent,
@@ -77,7 +76,6 @@ import { FirestoreDatePipe } from './pipes';
     StoreModule.forFeature(feedbackFeatureKey, feedbackReducer),
     StoreModule.forFeature(ordersFeatureKey, ordersReducer),
     StoreModule.forFeature(filtersFeatureKey, filterReducer),
-    StoreModule.forFeature(wishlistFeatureKey, wishlistReducer),
     EffectsModule.forFeature([
       ProductEffects,
       BrandEffects,
@@ -86,7 +84,6 @@ import { FirestoreDatePipe } from './pipes';
       OrdersEffects,
       FilterEffects,
       FeedbackEffects,
-      WishlistEffects,
     ]),
     RouterLinkActive,
     SvgIconsModule,
@@ -94,7 +91,7 @@ import { FirestoreDatePipe } from './pipes';
   declarations: [
     SearchbarComponent,
     LoaderComponent,
-    CartIconComponent,
+    NavIconComponent,
     BadgeComponent,
     FooterComponent,
     HeaderComponent,

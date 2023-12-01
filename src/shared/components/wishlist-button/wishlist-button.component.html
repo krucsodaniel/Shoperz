@@ -1,11 +1,12 @@
 <button
-     (click)="toggleProductToWishlist(productId, $event)"
-     [class.border]="!isOnProductPage"
-     class="flex justify-center items-center gap-2.5 w-full rounded-3xl button">
+     (click)="toggleProductInWishlist(productId, $event)"
+     [ngClass]="{ 'border rounded-full px-10' : !isOnProductPage }"
+     [class.item-on-wishlist]="isProductOnWishlist"
+     class="flex justify-center items-center gap-2.5 w-full button">
 
      <span *ngIf="!isOnProductPage" class="font-medium py-6 text-size-16 leading-4">
          {{ (buildTranslationKey('wishlist') | translate) }}
      </span>
 
-    <svg-icon [src]="'heart'" class="heart px-0.5"></svg-icon>
+    <svg-icon class="heart h-8 w-8" [src]="'heart'"></svg-icon>
 </button>

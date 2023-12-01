@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { WishlistFacadeService } from '../../services';
 
 @Component({
@@ -7,27 +7,21 @@ import { WishlistFacadeService } from '../../services';
   styleUrls: ['./wishlist-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WishlistButtonComponent implements OnInit{
+export class WishlistButtonComponent {
   @Input()
-  productId: number;
+  productId: string;
   @Input()
   isOnProductPage: boolean;
+  @Input()
+  isProductOnWishlist: boolean;
 
-  constructor( private wishlistFacadeService: WishlistFacadeService,
-               private cdr: ChangeDetectorRef,
-               ) {}
+  constructor(private wishlistFacadeService: WishlistFacadeService) {}
 
-  async ngOnInit(): Promise<void> {
-    this.cdr.detectChanges();
-    this.wishlistFacadeService.getAllItemsOnWishlist()
-      .subscribe((wishlist) => console.log(wishlist))
-
-  }
-
-  async toggleProductToWishlist(productId: number, event: Event) {
+  async toggleProductInWishlist(productId: string, event: Event) {
     event.stopPropagation();
-    this.wishlistFacadeService.createNewWishlistItem(productId);
+    this.wishlistFacadeService.addToWishlist(productId);
   }
+
   buildTranslationKey(relativeKey: string): string {
     return `cart.${ relativeKey }`;
   }

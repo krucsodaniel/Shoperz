@@ -1,29 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Firestore } from '@angular/fire/firestore';
 
-import { environment } from 'src/environments/environment';
-import { IWishlistItem } from '../../models';
 
 @Injectable()
 export class WishlistService {
-  private readonly baseUrl = environment.api.baseUrl;
-  private readonly wishList = environment.api.endpoints.wishList;
 
-  constructor(private http: HttpClient) {}
+  constructor(private firestore: Firestore) {}
 
-  getWishlist(): Observable<IWishlistItem[]> {
-    return this.http.get<IWishlistItem[]>(`${this.baseUrl}${this.wishList}`);
+  getWishlist() {
   }
 
-  addProductToWishlist(id: number): Observable<IWishlistItem> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const options = { headers };
+  // addProductToWishlist(id: string): Observable<IProduct> {
+  //   const productRef = doc(this.firestore, `${ FirestoreCollection.products }/${ id }`)
 
-    return this.http.post<IWishlistItem>(`${this.baseUrl}${this.wishList}`, { id }, options);
-  }
+    // return from(updateDoc(productRef, { isOnWishlist: true }))
+    //   .pipe(
+    //     map(() => {
+    //       const updatedItem: IProduct = {
+    //         ...products,
+    //         id: id,
+    //         isOnWishlist: true
+    //       };
+    //
+    //       return updatedItem
+    //     })
+    //   )
 
-  removeProductFromWishlistById(id: number): Observable<IWishlistItem> {
-    return this.http.delete<IWishlistItem>(`${this.baseUrl}${this.wishList}/${id}`);
-  }
+  // }
+
+
+  // removeProductFromWishlistById(id: string) {
+  //
+  // }
 }

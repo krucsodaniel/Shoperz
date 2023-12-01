@@ -45,6 +45,9 @@ export class SvgIconComponent implements OnChanges, OnInit, OnDestroy {
   private loadSvg(src: string): void {
     const svgElement = this.svgService.getSvg(src);
 
+    svgElement.classList.add('w-full');
+    svgElement.classList.add('h-full');
+
     this.elementRef.nativeElement.innerHTML = null;
     this.elementRef.nativeElement.appendChild(svgElement);
   }

@@ -6,13 +6,23 @@
 
   <app-searchbar class="mx-auto md:mx-0 min-w-75 max-w-180 my-5"></app-searchbar>
 
-  <div class="flex justify-center md:justify-evenly">
-    <button class="w-12">
-      <svg-icon [src]="'profile'"></svg-icon>
-    </button>
+  <div class="flex justify-center md:justify-evenly gap-x-4">
+    <app-nav-icon
+      [url]="'profile'">
+    </app-nav-icon>
 
-    <app-cart-icon></app-cart-icon>
+    <app-nav-icon
+      [routerLink]="Route.cart"
+      [url]="'cart'"
+      [amount]="amountInCart$ | async">
+    </app-nav-icon>
 
-    <svg-icon class="cursor-pointer m-6" [src]="'heart'" [routerLink]="Route.wishlist"></svg-icon>
+    <app-nav-icon
+      class="heart"
+      [routerLink]="Route.wishlist"
+      [url]="'heart'"
+      [amount]="amountOnWishlist$ | async">
+    </app-nav-icon>
+
   </div>
 </nav>

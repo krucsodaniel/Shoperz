@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, Observable } from 'rxjs';
-
-import { IWishlistItem } from '../../models';
 import { WishlistActions } from '../../store/wishlist';
-import { WishlistSelectors } from '../../store/wishlist/wishlist.selectors';
+import { IProduct } from '../../models';
+import { ProductSelectors } from '../../store';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class WishlistFacadeService {
   constructor(private store: Store) {}
 
-  getAllItemsOnWishlist(): Observable<IWishlistItem[]> {
-    return this.store.select(WishlistSelectors.selectWishlist)              // to filter out falsy values like null or undefined
+  getWishlist(): Observable<IProduct[]> {
+    return this.store.select(ProductSelectors.productsOnWishlist);
   }
 
-  createNewWishlistItem(id: number): void {
-    this.store.dispatch(WishlistActions.createWishlist({ productId: id }));
+  addToWishlist(id: string): void {
+    this.store.dispatch(WishlistActions.toggleProductOnWishlist({ productId: id }));
   }
 }

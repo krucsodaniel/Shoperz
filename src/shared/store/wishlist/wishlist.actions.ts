@@ -1,16 +1,16 @@
 import { createAction, props } from '@ngrx/store';
-import { IWishlistItem } from '../../models';
+import { IProduct } from '../../models';
 
 export const enum WishlistAction {
-  createWishlist = '[Wishlist] Create wishlist',
-  wishlistCreated = '[Wishlist] Wishlist created',
-  errorWishlist = '[Wishlist] Error during wishlist',
+  toggleProductInWishlist = '[Wishlist] Toggle product to wishlist',
+  productToggledInWishlist = '[Wishlist] Product toggled to wishlist',
+  errorWishlist = '[Wishlist] Error wishlist',
 }
 
 export namespace WishlistActions {
-  export const createWishlist = createAction(WishlistAction.createWishlist, props<{ productId: number }>());
+  export const toggleProductOnWishlist = createAction(WishlistAction.toggleProductInWishlist, props<{ productId: string }>());
 
-  export const wishlistCreated = createAction(WishlistAction.wishlistCreated, props<{ wishlistProduct: IWishlistItem }>());
+  export const productToggledToWishlist = createAction(WishlistAction.productToggledInWishlist, props<{ product: IProduct }>());
 
   export const errorWishlist = createAction(WishlistAction.errorWishlist, props<{ error: Error }>());
 }
