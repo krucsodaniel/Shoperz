@@ -1,14 +1,18 @@
-<ng-container>
-    <div class="flex flex-col md:flex-row items-center justify-center w-full flex-wrap order-1 md:order-0 pb-48 md:pb-36 mt-16 mb-6">
-        <div class="hidden md:flex md:w-10/12 justify-evenly items-center h-16 bg-grey-200 sticky top-0 rounded-md">
-            <span *ngFor="let title of headerTranslationKeys" class="font-bold text-center flex-grow-0 w-1/5" [class.grow]="title === headerTranslationKeys[0]">
-                {{ buildTranslationKey(title) | translate }}
-             </span>
-        </div>
+<div
+  *ngIf="favourites.length; else emptyList"
+  class="flex flex-col md:flex-row items-center justify-center w-full flex-wrap order-1 md:order-0 pb-48 md:pb-36 mt-16 mb-6">
+  <div class="hidden md:flex md:w-10/12 justify-evenly items-center h-16 bg-grey-200 sticky top-0 rounded-md">
+    <span
+      *ngFor="let title of headerTranslationKeys"
+      [class.grow]="title === headerTranslationKeys[0]"
+      class="font-bold text-center flex-grow-0 w-1/5">
+      {{ buildTranslationKey(title) | translate }}
+    </span>
+  </div>
 
-      <app-wishlist-item *ngFor="let favourite of favourites" [favourite]="favourite"></app-wishlist-item>
-    </div>
-</ng-container>
+  <app-wishlist-item *ngFor="let favourite of favourites " [favourite]="favourite"></app-wishlist-item>
+</div>
 
-<!--TODO: loading animation-->
-
+<ng-template #emptyList>
+  <span class="text-size-22 ml-40 my-20 block font-bold">{{ buildTranslationKey('productNotFound') | translate }}</span>
+</ng-template>

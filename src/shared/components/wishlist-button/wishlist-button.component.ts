@@ -19,7 +19,7 @@ export class WishlistButtonComponent {
 
   async toggleProductInWishlist(productId: string, event: Event) {
     event.stopPropagation();
-    this.wishlistFacadeService.addToWishlist(productId);
+    this.wishlistFacadeService.addToWishlist(productId, !this.isProductOnWishlist);
   }
 
   buildTranslationKey(relativeKey: string): string {

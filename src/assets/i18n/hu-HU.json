@@ -167,13 +167,13 @@
   },
   "wishlist": {
     "productAddedToWishlist": "A terméket kívánságlistádhoz adtuk",
-    "productIsAlreadyOnWishlist": "A termék már szerepel kívánságlistádon",
     "productRemovedFromWishlist": "A terméket eltávolítottuk a kívánságlistádról"
   },
   "wishlistPage": {
     "picture": "Kép",
     "product": "Termék",
     "price": "Ár",
-    "operations": "Műveletek"
+    "operations": "Műveletek",
+    "productNotFound": "Sajons ürest a kívánságlistád"
   }
 }

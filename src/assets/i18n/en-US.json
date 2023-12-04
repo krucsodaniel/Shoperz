@@ -167,13 +167,13 @@
   },
   "wishlist": {
     "productAddedToWishlist": "The product was added to your wishlist",
-    "productIsAlreadyOnWishlist": "The product is already on your wishlist",
     "productRemovedFromWishlist": "The product was removed from your wishlist"
   },
   "wishlistPage": {
     "picture": "Picture",
     "product": "Product",
     "price": "Price",
-    "operations": "Operations"
+    "operations": "Operations",
+    "productNotFound": "Sorry, your wishlist is empty."
   }
 }
