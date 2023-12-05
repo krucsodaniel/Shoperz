@@ -1,5 +1,6 @@
 export enum Route {
   base = '',
+  home = 'home',
   products = 'products',
   productById = ':id',
   cart = 'cart',

@@ -17,7 +17,10 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 const routes: Routes = [
-  { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
+  { path: Route.base, redirectTo: Route.home, pathMatch: 'full' },
+  { path: Route.home,
+    loadChildren: () => import('./pages/home/home.module').then(({ HomeModule }) => HomeModule),
+  },
   {
     path: Route.products,
     loadChildren: () => import('./pages/products/products.module').then(({ ProductsModule }) => ProductsModule),
