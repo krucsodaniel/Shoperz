@@ -7,7 +7,7 @@
   @apply mt-6;
 }
 
-.heart:hover ::ng-deep {
+.heart:hover::ng-deep {
   svg {
     path {
       @apply fill-red-600;

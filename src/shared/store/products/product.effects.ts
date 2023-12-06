@@ -55,9 +55,7 @@ export class ProductEffects {
           return this.productService.updateProductWishlistProperty(productId, isOnWishlist)
             .pipe(
               map(() => ProductActions.productToggledToWishlist({ productId, isOnWishlist })),
-              tap(() => this.toastService.showSuccessToast(isOnWishlist
-                ? this.translate.instant('wishlist.productAddedToWishlist')
-                : this.translate.instant('wishlist.productRemovedFromWishlist'))),
+              tap(() => this.toastService.showSuccessToast(this.translate.instant(isOnWishlist ? 'wishlist.productAddedToWishlist' : 'wishlist.productRemovedFromWishlist'))),
               catchError((error: HttpErrorResponse) => {
                 this.actionTrackerService.sendAction(ProductActionKey.toggleOnWishlist, error);
                 return EMPTY;

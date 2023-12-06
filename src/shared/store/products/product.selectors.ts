@@ -67,17 +67,11 @@ export namespace ProductSelectors {
 
   export const productsOnWishlist = createSelector(
     getCalculatedProducts,
-    (products) => {
-      return products?.filter((product: IProduct) => product.isOnWishlist || undefined)
-    }
-  );
+    (products: IProduct[]) => products?.filter((product: IProduct) => product.isOnWishlist || undefined));
 
   export const selectTotalNumberOnWishlist = createSelector(
     productsOnWishlist,
-    (wishlist: IProduct[]) => {
-      return wishlist?.length || 0;
-    }
-  );
+    (wishlist: IProduct[]) => wishlist?.length || 0);
 
   export function calculateProduct(product: IProduct, categories: ICategory[], brands: IBrand[]): ICalculatedProduct {
     const category = categories.find((category) => category.id === product.categoryId);

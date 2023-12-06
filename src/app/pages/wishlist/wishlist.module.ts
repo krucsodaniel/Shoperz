@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { WishlistComponent } from './component';
+import { WishlistComponent } from './components';
 import { SharedModule } from '../../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { WishlistItemComponent } from './component/wishlist-item/wishlist-item.component';
+import { WishlistCardComponent } from './components';
 import { SvgIconsModule } from '@core-module';
 
 const routes: Routes = [
@@ -21,7 +21,7 @@ const routes: Routes = [
   ],
   declarations: [
     WishlistComponent,
-    WishlistItemComponent
+    WishlistCardComponent,
   ],
 })
-export class WishlistModule { }
+export class WishlistModule {}

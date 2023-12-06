@@ -20,5 +20,4 @@ export class NavIconComponent {
 
   @HostBinding('class')
   private readonly classes = 'relative block h-9 w-9';
-
 }

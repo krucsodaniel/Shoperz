@@ -8,8 +8,8 @@ export const enum ProductAction {
   loadProductById = '[Products] Load product by Id',
   productByIdLoaded = '[Products] Product by Id loaded',
 
-  toggleProductInWishlist = '[Wishlist] Toggle product to wishlist',
-  productToggledInWishlist = '[Wishlist] Product toggled to wishlist',
+  toggleProductInWishlist = '[Wishlist] Toggle product on wishlist',
+  productToggledInWishlist = '[Wishlist] Product toggled on wishlist',
 
   errorProduct = '[Products] Error during process',
 }

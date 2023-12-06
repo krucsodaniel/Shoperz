@@ -13,13 +13,13 @@ export class WishlistButtonComponent {
   @Input()
   isOnProductPage: boolean;
   @Input()
-  isProductOnWishlist: boolean;
+  isProductOnList: boolean;
 
   constructor(private wishlistFacadeService: WishlistFacadeService) {}
 
-  async toggleProductInWishlist(productId: string, event: Event) {
+  toggleProductOnWishlist(productId: string, event: Event): void {
     event.stopPropagation();
-    this.wishlistFacadeService.addToWishlist(productId, !this.isProductOnWishlist);
+    this.wishlistFacadeService.toggleOnWishlist(productId, !this.isProductOnList);
   }
 
   buildTranslationKey(relativeKey: string): string {

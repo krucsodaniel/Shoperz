@@ -6,7 +6,7 @@
   }
 }
 
-.button:hover ::ng-deep {
+.button:hover::ng-deep {
   svg {
     path {
       @apply fill-red-600;

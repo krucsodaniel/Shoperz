@@ -8,18 +8,24 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WishlistComponent implements OnInit {
-  favourites: ICalculatedProduct[];
+  productsOnWishlist: ICalculatedProduct[];
   readonly headerTranslationKeys = ['picture', 'product', 'price', 'operations'];
 
-  constructor(private wishlistFacadeService: WishlistFacadeService, private destroyRef: DestroyRef, private cdr: ChangeDetectorRef ) {}
+  constructor(private wishlistFacadeService: WishlistFacadeService,
+              private destroyRef: DestroyRef,
+              private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.wishlistFacadeService.getWishlist()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((productsOnWishlist: ICalculatedProduct[]) => {
-        this.favourites = productsOnWishlist;
+        this.productsOnWishlist = productsOnWishlist;
         this.cdr.detectChanges();
       })
+  }
+
+  trackById(_, favourite: ICalculatedProduct): string {
+    return favourite.id;
   }
 
   buildTranslationKey(relativeKey: string): string {
