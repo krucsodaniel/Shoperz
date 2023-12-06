@@ -175,6 +175,6 @@
     "product": "Produkt",
     "price": "Preis",
     "operations": "Operationen",
-    "productNotFound": "Leider ist deine Wunschliste leer."
+    "emptyList": "Leider ist deine Wunschliste leer."
   }
 }
