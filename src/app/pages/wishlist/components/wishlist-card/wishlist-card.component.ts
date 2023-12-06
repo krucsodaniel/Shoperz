@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
-import { ICalculatedProduct, IOrder } from '@shared-module';
+import { ICalculatedProduct } from '@shared-module';
 
 @Component({
   selector: 'app-wishlist-card',
