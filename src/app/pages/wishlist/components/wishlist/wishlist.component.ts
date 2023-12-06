@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnInit } from '@angular/core';
-import { ICalculatedProduct, WishlistFacadeService } from '@shared-module';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, HostBinding, OnInit } from '@angular/core';
+import { ICalculatedProduct, ProductFacadeService, WishlistFacadeService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-wishlist',
@@ -10,12 +11,24 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class WishlistComponent implements OnInit {
   productsOnWishlist: ICalculatedProduct[];
   readonly headerTranslationKeys = ['picture', 'product', 'price', 'operations'];
+  isLoading$: Observable<boolean>;
 
-  constructor(private wishlistFacadeService: WishlistFacadeService,
-              private destroyRef: DestroyRef,
-              private cdr: ChangeDetectorRef) {}
+  @HostBinding('class')
+  private readonly classes = 'block py-16';
+
+  constructor(
+    private wishlistFacadeService: WishlistFacadeService,
+    private productFacade: ProductFacadeService,
+    private destroyRef: DestroyRef,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnInit(): void {
+    this.isLoading$ = this.productFacade.getProducts()
+      .pipe(map((products) => !products));
+
+    this.productFacade.initProductsPage();
+
     this.wishlistFacadeService.getWishlist()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((productsOnWishlist: ICalculatedProduct[]) => {
