@@ -164,5 +164,19 @@
       "invalidEmailFormErrorMessage": "Bitte gib eine gültige Email-Adresse ein!",
       "thankYouMessage": "DANKE FÜR DEINE RÜCKMELDUNG!"
     }
+  },
+  "homepage": {
+    "shopFeatures": {
+      "guarantee": "Garantie",
+      "guaranteeDuration": "24 Monate",
+      "ratePaying": "Tarifzahlung",
+      "ratePayingDuration": "4 - 12 Monate",
+      "payments": "Zahlungen",
+      "secured": "Gesichert",
+      "delivery": "Gratisversand",
+      "deliveryCondition": "ab 100 €",
+      "brands": "Marken",
+      "brandsText": "Nur Top"
+    }
   }
 }

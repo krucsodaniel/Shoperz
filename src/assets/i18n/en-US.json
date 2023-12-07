@@ -163,5 +163,19 @@
       "invalidEmailFormErrorMessage": "Please enter a valid email!",
       "thankYouMessage": "THANK YOU FOR YOUR FEEDBACK!"
     }
+  },
+  "homepage": {
+    "shopFeatures": {
+      "guarantee": "Guarantee",
+      "guaranteeDuration": "24 Months",
+      "ratePaying": "Rate Paying",
+      "ratePayingDuration": "4 - 12 Months",
+      "payments": "Payments",
+      "secured": "Secured",
+      "delivery": "Free Delivery",
+      "deliveryCondition": "from $100",
+      "brands": "Brands",
+      "brandsText": "Only Top"
+    }
   }
 }
