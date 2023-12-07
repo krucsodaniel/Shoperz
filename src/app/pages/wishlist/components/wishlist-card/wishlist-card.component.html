@@ -8,11 +8,10 @@
   </div>
 </div>
 
-<span class="class=w-64 text-size-24 text-center font-bold before:content-['$']">{{ wishlistItem.price }}</span>
+<span class="class=w-64 text-size-24 text-center font-bold">$ {{ wishlistItem.price }}</span>
 
 <div class="flex items-center gap-x-4">
   <app-general-add-to-cart-icon
-    [isExpanded]="false"
     [productId]="wishlistItem.id">
   </app-general-add-to-cart-icon>
 

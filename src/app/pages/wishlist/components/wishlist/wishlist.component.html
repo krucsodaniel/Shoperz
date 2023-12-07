@@ -13,9 +13,9 @@
 
     <div class="flex flex-col gap-4 w-full">
       <app-wishlist-card
-              *ngFor="let productOnWishlist of productsOnWishlist; trackBy: trackById"
-              class="w-full"
-              [wishlistItem]="productOnWishlist">
+         *ngFor="let productOnWishlist of productsOnWishlist; trackBy: trackById"
+         class="w-full"
+         [wishlistItem]="productOnWishlist">
       </app-wishlist-card>
     </div>
   </div>
@@ -25,4 +25,4 @@
   <span class="text-size-22 ml-40 my-20 block font-bold">{{ buildTranslationKey('emptyList') | translate }}</span>
 </ng-template>
 
-<ng-template #loading>loading...</ng-template>
+<ng-template #loading><app-loader></app-loader></ng-template>
