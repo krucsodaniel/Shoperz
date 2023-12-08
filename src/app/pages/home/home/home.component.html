@@ -1,0 +1,28 @@
+<div class="flex flex-col gap-y-4">
+  <app-slider></app-slider>
+
+  <div class="flex flex-wrap w-10/12 m-auto border border-grey-200 p-6">
+    <div
+      *ngFor="let feature of shopFeatures; let last = last"
+      class="flex flex-auto justify-center gap-6 w-1/5 border-r py-4"
+      [ngClass]="{ 'border-none': last }">
+
+      <svg-icon class="self-center" [src]="feature.imageLink"></svg-icon>
+
+      <div>
+        <span class="font-bold block">{{ buildTranslationKey(feature.translationKeyLink, feature.titleRelativeKey) | translate }}</span>
+
+        <span class="block">{{ buildTranslationKey(feature.translationKeyLink, feature.detailsRelativeKey) | translate }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap justify-center items-center gap-10 w-10/12 m-auto p-10 border border-grey-200">
+    <div *ngFor="let brand of brandExpose" class="self-center">
+      <svg-icon [src]="brand"></svg-icon>
+    </div>
+  </div>
+</div>
+
+
+
