@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { from, map, Observable } from 'rxjs';
 import { IProduct } from '../../models';
-import { collection, doc, Firestore, getDoc, getDocs } from '@angular/fire/firestore';
+import { collection, doc, Firestore, getDoc, getDocs, updateDoc } from '@angular/fire/firestore';
 import { FirestoreCollection } from '../../enums';
 
 @Injectable()
@@ -37,5 +37,10 @@ export class ProductService {
           return productData;
         }),
       )
+  }
+
+  updateProductWishlistProperty(productId: string, isOnWishlist: boolean): Observable<void> {
+    const productsDoc = doc(this.firestore, `${ FirestoreCollection.products }/${ productId }`);
+    return from(updateDoc(productsDoc, { isOnWishlist }));
   }
 }

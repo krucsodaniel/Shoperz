@@ -69,6 +69,7 @@
     "product": "Termék",
     "price": "Ár",
     "quantity": "Mennyiség",
+    "wishlist": "Kívánság listába",
     "addAmount": "Adjon meg mennyiséget",
     "addToCart": "Kosárba",
     "updateAmount": "Mennyiség frissítése",
@@ -163,5 +164,16 @@
       "invalidEmailFormErrorMessage": "Kérlek, érvényes email címet adj meg!",
       "thankYouMessage": "KÖSZÖNJÜK A VISSZAJELZÉSED!"
     }
+  },
+  "wishlist": {
+    "productAddedToWishlist": "A terméket kívánságlistádhoz adtuk",
+    "productRemovedFromWishlist": "A terméket eltávolítottuk a kívánságlistádról"
+  },
+  "wishlistPage": {
+    "picture": "Kép",
+    "product": "Termék",
+    "price": "Ár",
+    "operations": "Műveletek",
+    "emptyList": "Sajons üres a kívánságlistád"
   }
 }

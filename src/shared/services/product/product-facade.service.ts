@@ -178,4 +178,8 @@ export class ProductFacadeService {
     return this.store.select(ProductSelectors.getCalculatedProduct(productId))
       .pipe(filter(Boolean));
   }
+
+  getTotalAmountOnWishlist(): Observable<number> {
+    return this.store.select(ProductSelectors.selectTotalNumberOnWishlist);
+  }
 }

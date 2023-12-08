@@ -1,0 +1,28 @@
+<ng-container *ngIf="(isLoading$ | async) === false; else loading">
+  <div
+    *ngIf="productsOnWishlist.length; else emptyList"
+    class="md:w-10/12 my-0 mx-auto flex flex-col gap-4">
+    <div class="hidden md:flex justify-evenly items-center h-16 bg-grey-200 sticky top-0 rounded-md w-full">
+      <span
+        *ngFor="let title of headerTranslationKeys"
+        class="font-bold text-center flex-grow-0 w-1/5"
+        [class.grow]="title === headerTranslationKeys[0]">
+        {{ buildTranslationKey(title) | translate }}
+      </span>
+    </div>
+
+    <div class="flex flex-col gap-4 w-full">
+      <app-wishlist-card
+         *ngFor="let productOnWishlist of productsOnWishlist; trackBy: trackById"
+         class="w-full"
+         [wishlistItem]="productOnWishlist">
+      </app-wishlist-card>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #emptyList>
+  <span class="text-size-22 ml-40 my-20 block font-bold">{{ buildTranslationKey('emptyList') | translate }}</span>
+</ng-template>
+
+<ng-template #loading><app-loader></app-loader></ng-template>

@@ -1,0 +1,23 @@
+<div class="flex flex-col md:flex-row md:justify-evenly items-center md:w-128 md:pl-4">
+  <img class="rounded-md h-64 ml-0" [src]="wishlistItem.images[0]" [alt]="wishlistItem.name">
+
+  <div class="flex w-64 flex-col items-center md:items-start justify-center gap-5 md:pl-4">
+    <span class="text-size-24 font-bold text-blue-600">{{ wishlistItem.name }}</span>
+
+    <span class="text-size-18 text-grey-700">{{ wishlistItem.brandName }}</span>
+  </div>
+</div>
+
+<span class="class=w-64 text-size-24 text-center font-bold">$ {{ wishlistItem.price }}</span>
+
+<div class="flex items-center gap-x-4">
+  <app-general-add-to-cart-icon
+    [productId]="wishlistItem.id">
+  </app-general-add-to-cart-icon>
+
+  <app-wishlist-button
+    [isProductOnList]="wishlistItem.isOnWishlist"
+    [productId]="wishlistItem.id"
+    [isOnProductPage]="true">
+  </app-wishlist-button>
+</div>

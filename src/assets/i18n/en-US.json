@@ -69,6 +69,7 @@
     "product": "Product",
     "price": "Price",
     "quantity": "Quantity",
+    "wishlist": "Wishlist",
     "addAmount": "Add amount",
     "addToCart": "Add to Cart",
     "updateAmount": "Update amount",
@@ -163,5 +164,16 @@
       "invalidEmailFormErrorMessage": "Please enter a valid email!",
       "thankYouMessage": "THANK YOU FOR YOUR FEEDBACK!"
     }
+  },
+  "wishlist": {
+    "productAddedToWishlist": "The product was added to your wishlist",
+    "productRemovedFromWishlist": "The product was removed from your wishlist"
+  },
+  "wishlistPage": {
+    "picture": "Picture",
+    "product": "Product",
+    "price": "Price",
+    "operations": "Operations",
+    "emptyList": "Sorry, your wishlist is empty."
   }
 }

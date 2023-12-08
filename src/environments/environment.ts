@@ -9,6 +9,7 @@ export const environment = {
       cart: '/cart',
       feedbacks: '/feedbacks',
       orders: '/orders',
+      wishList: '/wishlist',
     },
   },
   redirectUrls: {
