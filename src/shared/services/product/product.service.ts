@@ -39,7 +39,7 @@ export class ProductService {
       )
   }
 
-  updateProductWishlistProperty (productId: string, isOnWishlist: boolean): Observable<void> {
+  updateProductWishlistProperty(productId: string, isOnWishlist: boolean): Observable<void> {
     const productsDoc = doc(this.firestore, `${ FirestoreCollection.products }/${ productId }`);
     return from(updateDoc(productsDoc, { isOnWishlist }));
   }
