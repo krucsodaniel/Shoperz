@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run generate-sprite && ng serve & npm run watch-sprite & npm run server",
+    "start": "npm run generate-sprite && ng serve & npm run watch-sprite",
     "build": "npm run generate-sprite && ng build",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "server": "json-server --watch db.json",
@@ -34,6 +34,7 @@
     "firebase": "^10.4.0",
     "ngx-toastr": "^17.0.2",
     "rxjs": "~7.8.0",
+    "swiper": "^11.0.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

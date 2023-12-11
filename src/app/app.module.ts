@@ -15,6 +15,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import {register} from 'swiper/element/bundle';
+
+register();
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.home, pathMatch: 'full' },
