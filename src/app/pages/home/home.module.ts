@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SliderComponent } from './components/slider/slider.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,5 +24,6 @@ const routes: Routes = [
    exports: [
      SliderComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeModule {}
