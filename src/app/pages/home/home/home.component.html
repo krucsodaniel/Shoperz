@@ -1,10 +1,10 @@
 <div class="flex flex-col gap-y-4">
   <app-slider></app-slider>
 
-  <div class="flex flex-wrap w-10/12 m-auto border border-grey-200 p-6">
+  <div class="flex flex-col md:flex-row w-10/12 m-auto md:border border-grey-200 p-6">
     <div
       *ngFor="let feature of shopFeatures; let last = last"
-      class="flex flex-auto justify-center gap-6 w-1/5 border-r py-4"
+      class="flex flex-auto justify-center gap-6 md:m-auto w-2/3 md:w-1/5 border-none md:border-r py-4"
       [ngClass]="{ 'border-none': last }">
 
       <svg-icon class="self-center" [src]="feature.imageLink"></svg-icon>
