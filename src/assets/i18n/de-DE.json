@@ -177,12 +177,12 @@
       "deliveryCondition": "ab 100 €",
       "brands": "Marken",
       "brandsText": "Nur Top"
+    },
+    "slider": {
+      "buttonTitle": "Finde mehr heraus",
+      "sliderText1": "NEUES <b>NAMPHONE</b> ERÖFFNET DIESEN HERBST",
+      "sliderText2": "BEHALTEN SIE DEINE FORM MIT ALLE <b>NEW</b> GERÄTE",
+      "sliderText3": "<b>NEW</b> CONSOLE X245-HD"
     }
-  },
-  "slider": {
-    "buttonTitle": "Finde mehr heraus",
-    "sliderText1": "NEUES NAMPHONE ERÖFFNET DIESEN HERBST",
-    "sliderText2": "BEHALTEN SIE DEINE FORM MIT ALLE NEUEN GERÄTE",
-    "sliderText3": "PLAYBOX CONSOLE X245-HD"
   }
 }

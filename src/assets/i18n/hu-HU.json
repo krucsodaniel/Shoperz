@@ -179,9 +179,9 @@
     },
     "slider": {
       "buttonTitle": "Tudj meg többet",
-      "sliderText1": "ÚJ NAMPHONE IDÉN ŐSSZEL",
-      "sliderText2": "LÉGY MENŐ AZ ÖSSZES ÚJ KÜTYüNKKEL",
-      "sliderText3": "PLAYBOX CONSOLE X245-HD"
+      "sliderText1": "ÚJ <b>NAMPHONE</b> IDÉN ŐSSZEL",
+      "sliderText2": "LÉGY MENŐ AZ ÖSSZES <b>ÚJ</b> KÜTYüNKKEL",
+      "sliderText3": "<b>ÚJ</b> CONSOLE X245-HD"
     }
   }
 }
