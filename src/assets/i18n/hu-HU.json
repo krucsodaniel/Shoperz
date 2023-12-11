@@ -176,6 +176,12 @@
       "deliveryCondition": "10 000 Ft-tól",
       "brands": "Márkák",
       "brandsText": "Csak top márkák"
+    },
+    "slider": {
+      "buttonTitle": "Tudj meg többet",
+      "sliderText1": "ÚJ NAMPHONE IDÉN ŐSSZEL",
+      "sliderText2": "LÉGY MENŐ AZ ÖSSZES ÚJ KÜTYüNKKEL",
+      "sliderText3": "PLAYBOX CONSOLE X245-HD"
     }
   }
 }

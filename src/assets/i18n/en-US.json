@@ -176,6 +176,12 @@
       "deliveryCondition": "from $100",
       "brands": "Brands",
       "brandsText": "Only Top"
+    },
+    "slider": {
+      "buttonTitle": "Find out more",
+      "sliderText1": "NEW NAMPHONE RELEASE THIS FALL",
+      "sliderText2": "KEEP YOUR SHAPE WITH\nALL NEW GADGETS",
+      "sliderText3": "PLAYBOX CONSOLE X245-HD"
     }
   }
 }

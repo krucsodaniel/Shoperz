@@ -178,5 +178,11 @@
       "brands": "Marken",
       "brandsText": "Nur Top"
     }
+  },
+  "slider": {
+    "buttonTitle": "Finde mehr heraus",
+    "sliderText1": "NEUES NAMPHONE ERÖFFNET DIESEN HERBST",
+    "sliderText2": "BEHALTEN SIE DEINE FORM MIT ALLE NEUEN GERÄTE",
+    "sliderText3": "PLAYBOX CONSOLE X245-HD"
   }
 }
