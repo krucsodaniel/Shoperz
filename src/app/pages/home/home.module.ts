@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SvgIconsModule } from '@core-module';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '../../../shared/shared.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SvgIconsModule,
     TranslateModule,
+    SharedModule,
   ],
   declarations: [
     SliderComponent,

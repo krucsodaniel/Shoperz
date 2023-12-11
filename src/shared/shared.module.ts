@@ -57,7 +57,7 @@ import {
   ProductPageAddToCartIconComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
-import { FirestoreDatePipe } from './pipes';
+import { FirestoreDatePipe, SafePipe } from './pipes';
 
 @NgModule({
   imports: [
@@ -98,6 +98,7 @@ import { FirestoreDatePipe } from './pipes';
     GeneralAddToCartIconComponent,
     FirestoreDatePipe,
     ProductPageAddToCartIconComponent,
+    SafePipe,
   ],
   providers: [
     SearchFacadeService,
@@ -129,6 +130,7 @@ import { FirestoreDatePipe } from './pipes';
     GeneralAddToCartIconComponent,
     FirestoreDatePipe,
     ProductPageAddToCartIconComponent,
+    SafePipe,
   ],
 })
 export class SharedModule {}
