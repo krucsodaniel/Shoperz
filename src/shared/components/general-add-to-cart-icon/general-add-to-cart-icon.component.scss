@@ -2,7 +2,6 @@
   @apply flex justify-center flex-wrap gap-5;
   @apply border-b-4 rounded-full;
   @apply cursor-pointer outline-none text-center;
-  @apply active:scale-150;
 }
 
 .collapsed {

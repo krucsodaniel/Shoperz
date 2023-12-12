@@ -1,7 +1,11 @@
 <div class="product-text-wrapper">
-  <p class="product-category">{{ card.categoryName }}</p>
+  <div class="flex justify-between">
+    <div>
+      <p class="product-category">{{ card.categoryName }}</p>
 
-  <h3 class="product-name">{{ card.name }}</h3>
+      <h3 class="product-name">{{ card.name }}</h3>
+    </div>
+  </div>
 
   <div *ngIf="isExpanded" class="product-list">
     <span class="list-element">{{ card.description }}</span>
@@ -13,6 +17,12 @@
 </div>
 
 <div class="button-wrapper">
+  <app-wishlist-button
+    [isProductOnList]="card.isOnWishlist"
+    [productId]="card.id"
+    [isOnProductPage]="!isExpanded">
+  </app-wishlist-button>
+
   <h4 class="product-price">$ {{ card.price }}</h4>
 
   <app-general-add-to-cart-icon

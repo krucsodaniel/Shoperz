@@ -1,0 +1,7 @@
+.heart::ng-deep {
+  svg {
+    path {
+      @apply fill-gray-500;
+    }
+  }
+}

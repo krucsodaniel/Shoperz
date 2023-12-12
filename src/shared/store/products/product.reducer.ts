@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { IProduct } from '@shared-module';
 import { ProductActions } from './product.actions';
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState, Update } from '@ngrx/entity';
 
 export const productsFeatureKey = 'products';
 
@@ -51,7 +51,28 @@ export const productReducer = createReducer(
       isSpecificProductPageInitialized: true,
     };
   }),
-  on(ProductActions.errorProduct, (state, { error }) => {
+  on(ProductActions.toggleProductOnWishlist, (state) => {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }),
+  on(ProductActions.productToggledToWishlist, (state, { productId, isOnWishlist }) => {
+    const updatedProduct: Update<IProduct> = {
+      id: productId,
+      changes: {
+        isOnWishlist: isOnWishlist,
+      },
+    };
+    return {
+      ...state,
+      isLoading: false,
+      products: productAdapter.updateOne(updatedProduct, state.products),
+    };
+  }),
+  on(
+    ProductActions.errorProduct,
+    (state, { error }) => {
     return {
       ...state,
       isLoading: false,
