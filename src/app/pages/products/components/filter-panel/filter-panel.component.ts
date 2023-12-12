@@ -81,7 +81,7 @@ export class FilterPanelComponent implements OnInit {
     this.filterForm.valueChanges
       .pipe(
         map((filterOptions) => {
-          let filters: Record<string, string | string[]> = {};
+          const filters: Record<string, string | string[]> = {};
 
           Object.entries(filterOptions).forEach(([category, values]: [string, FilterOptions]) => {
             const selectedOptions = Object.entries(values)
