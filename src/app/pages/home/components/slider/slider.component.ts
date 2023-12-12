@@ -14,21 +14,21 @@ export class SliderComponent {
       sliderText: 'sliderText1',
       queryParams: { categories: ProductCategory.smartphones },
       imgUrl: './assets/pics/smartphone.png',
-      imgAlt: 'smartphone'
+      imgAlt: 'smartphone',
     },
     {
       class: 'w-ful h-192 m-auto bg-gradient-to-l from-purple-200 to-white relative',
       sliderText: 'sliderText2',
       queryParams: { categories: ProductCategory.laptopsPcs },
       imgUrl: './assets/pics/controller.png',
-      imgAlt: 'controller'
+      imgAlt: 'controller',
     },
     {
       class: 'h-192 w-ful m-auto bg-gradient-to-l from-red-200 to-white relative',
       sliderText: 'sliderText3',
       queryParams: { categories: ProductCategory.tvAudio },
       imgUrl: './assets/pics/smartwatch.png',
-      imgAlt: 'smartwatch'
+      imgAlt: 'smartwatch',
     },
   ];
 
