@@ -1,23 +1,27 @@
 <swiper-container
-  loop="true"
   navigation="true"
   pagination="true"
   pagination-clickable="true"
-  speed="500">
-  <swiper-slide *ngFor="let slider of sliders">
+  speed="500"
+  autoplay="true">
+  <swiper-slide *ngFor="let slider of sliders; let first = first">
     <div [class]="slider.class">
-      <div class="flex flex-col top-100 left-80 gap-y-4 w-1/5 relative">
+      <div class="flex flex-col top-1/2 left-15% gap-y-4 w-2/3 md:w-1/5 relative">
         <span class="text-2xl" [innerHTML]="buildTranslationKey('slider', slider.sliderText) | translate | safe : 'html'"></span>
 
         <a
           class="p-3 w-fit rounded-full bg-blue-600 text-white hover:bg-blue-500"
-          [routerLink]="['/', Route.products]"
+          [routerLink]="['/', route.products]"
           [queryParams]="slider.queryParams">
           {{ buildTranslationKey('slider', 'buttonTitle') | translate }}
         </a>
       </div>
 
-      <img class="absolute bottom-0 right-0 h-128 invisible md:visible" [src]="slider.imgUrl" [alt]="slider.imgAlt">
+      <img
+        class="absolute bottom-15% right-5% h-128 invisible md:visible"
+        [ngClass]="{ 'top-75': first }"
+        [src]="slider.imgUrl"
+        [alt]="slider.imgAlt">
     </div>
   </swiper-slide>
 </swiper-container>

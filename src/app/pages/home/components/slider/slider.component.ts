@@ -7,7 +7,7 @@ import { Route, ProductCategory } from '@shared-module';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SliderComponent {
-  protected readonly Route = Route;
+  protected readonly route = Route;
   protected readonly sliders = [
     {
       class: 'w-ful h-192 m-auto bg-gradient-to-l from-turquoise-200 to-white relative',
