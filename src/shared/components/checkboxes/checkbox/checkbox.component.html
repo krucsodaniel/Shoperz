@@ -1,0 +1,10 @@
+<label class="cursor-pointer hover:font-bold" [class.font-bold]="value">
+  <input
+    type="checkbox"
+    [value]="value"
+    [checked]="value"
+    [hidden]="!multiselect"
+    (change)="onToggleCheckbox()">
+
+  {{ label }}
+</label>

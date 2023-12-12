@@ -61,8 +61,9 @@ export class FilterService {
         label: this.translate.instant('filter.allPrice'),
         options: [
           {
-            id: 'all',
-            value: 'all',
+            id: 'allPrice',
+            value: 'All',
+            customFilterFn: () => true,
           },
           {
             id: '<100',
