@@ -30,7 +30,9 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input()
   multiselect: boolean;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
   onChange = (value: boolean) => {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouch = () => {};
 
   constructor(
