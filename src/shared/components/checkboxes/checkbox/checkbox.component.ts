@@ -30,8 +30,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input()
   multiselect: boolean;
 
-  onChange: (value: boolean) => void = () => {};
-  onTouch: () => void = () => {};
+  onChange = (value: boolean) => {};
+  onTouch = () => {};
 
   constructor(
     private cdr: ChangeDetectorRef,
