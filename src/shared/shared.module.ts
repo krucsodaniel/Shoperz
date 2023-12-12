@@ -55,6 +55,8 @@ import {
   MiddleHeaderComponent,
   GeneralAddToCartIconComponent,
   ProductPageAddToCartIconComponent,
+  CheckboxGroupComponent,
+  CheckboxComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
 import { FirestoreDatePipe } from './pipes';
@@ -98,6 +100,8 @@ import { FirestoreDatePipe } from './pipes';
     GeneralAddToCartIconComponent,
     FirestoreDatePipe,
     ProductPageAddToCartIconComponent,
+    CheckboxGroupComponent,
+    CheckboxComponent,
   ],
   providers: [
     SearchFacadeService,
@@ -129,6 +133,8 @@ import { FirestoreDatePipe } from './pipes';
     GeneralAddToCartIconComponent,
     FirestoreDatePipe,
     ProductPageAddToCartIconComponent,
+    CheckboxComponent,
+    CheckboxGroupComponent,
   ],
 })
 export class SharedModule {}
