@@ -96,9 +96,9 @@
   },
   "filter": {
     "all": "Alle",
-    "allBrands": "Marken",
-    "allCategories": "Kategorien",
-    "allPrice": "Preise"
+    "brands": "Marken",
+    "categories": "Kategorien",
+    "prices": "Preise"
   },
   "categories": {
     "all": "Alle",
@@ -115,6 +115,7 @@
     "brands": "Marken"
   },
   "prices": {
+    "all": "Alle",
     "price": "Preis",
     "prices": "Preise",
     "priceInterval": "Preisintervall",

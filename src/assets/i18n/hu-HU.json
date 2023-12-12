@@ -95,9 +95,9 @@
   },
   "filter": {
     "all": "Összes",
-    "allBrands": "Márkák",
-    "allCategories": "Kategóriák",
-    "allPrice": "Ár"
+    "brands": "Márkák",
+    "categories": "Kategóriák",
+    "prices": "Ár"
   },
   "categories": {
     "all": "Összes",
@@ -114,6 +114,7 @@
     "brands": "Márkák"
   },
   "prices": {
+    "all": "Összes",
     "price": "Ár",
     "prices": "Árak",
     "priceInterval": "Ár intervallum",
