@@ -1,14 +1,10 @@
-<input
-  type="checkbox"
-  [value]="value"
-  [id]="option.id"
-  [checked]="value"
-  [hidden]="!multiselect"
-  (change)="onToggleCheckbox()">
+<label class="cursor-pointer hover:font-bold" [class.font-bold]="value">
+  <input
+    type="checkbox"
+    [value]="value"
+    [checked]="value"
+    [hidden]="!multiselect"
+    (change)="onToggleCheckbox()">
 
-<label
-  class="cursor-pointer hover:font-bold"
-  [class.font-bold]="value"
-  [for]="option.id">
-  {{ buildTranslationKeyForLabels(option.value, option.id) | translate }}
+  {{ label }}
 </label>

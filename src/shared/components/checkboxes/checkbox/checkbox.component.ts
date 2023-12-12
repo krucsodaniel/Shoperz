@@ -30,15 +30,16 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input()
   multiselect: boolean;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-  onChange = (value: boolean) => {};
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onTouch = () => {};
+  @Input()
+  label: string;
+
+  onChange: (value: boolean) => void = (value: boolean) => undefined;
+  onTouch: () => void = () => undefined;
 
   constructor(
     private cdr: ChangeDetectorRef,
     @Host() public checkboxGroupComponent: CheckboxGroupComponent,
-    ) {}
+  ) {}
 
   writeValue(value: boolean): void {
     this.value = value;
@@ -61,15 +62,5 @@ export class CheckboxComponent implements ControlValueAccessor {
 
     this.checkboxGroupComponent.checkboxChanged(this.option);
     this.cdr.markForCheck();
-  }
-
-  buildTranslationKeyForLabels(optionValue: string, optionId: string): string {
-    if (optionId.includes('category')) {
-      return `categories.${ optionValue.toLowerCase() }`;
-    } else if(optionId === 'allPrice') {
-      return `prices.${ optionValue.toLowerCase() }`;
-    } else {
-      return optionValue;
-    }
   }
 }

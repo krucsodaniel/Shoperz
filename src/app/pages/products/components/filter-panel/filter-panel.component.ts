@@ -15,12 +15,10 @@ import {
 } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { distinctUntilChanged, filter, firstValueFrom, map } from 'rxjs';
+import { distinctUntilChanged, filter, firstValueFrom, map, Observable } from 'rxjs';
 
 type FilterFormType = Record<string, FormGroup>;
-type FilterOptions = {
-  [key: string]: boolean;
-};
+type FilterOptions = Record<string, boolean>;
 
 @Component({
   selector: 'app-filter-panel',
@@ -47,6 +45,34 @@ export class FilterPanelComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.filterDefinitions = await firstValueFrom(this.filterFacadeService.getFilterDefinitions());
 
+    this.buildFilterForm();
+
+    this.getFilterFormValues()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((filters: Record<string, string[]>) => this.setFilterFormValues(filters));
+
+    this.filterFormValueChanges()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((filters: Record<string, string[]>) => this.navigate(filters));
+
+    this.cdr.detectChanges();
+  }
+
+  buildTranslationKeyForLabels(definitionId: string): string {
+    return `filter.${ definitionId.toLowerCase() }`;
+  }
+
+  buildTranslationKeyForCheckboxes(optionValue: string, optionId: string): string {
+    if (optionId.includes('category')) {
+      return `categories.${ optionValue.toLowerCase() }`;
+    } else if(optionId === 'allPrice') {
+      return `prices.${ optionValue.toLowerCase() }`;
+    } else {
+      return optionValue;
+    }
+  }
+
+  private buildFilterForm(): void {
     this.filterDefinitions.forEach((definition: IFilterDefinition) => {
       const group = this.fb.group({});
 
@@ -56,29 +82,31 @@ export class FilterPanelComponent implements OnInit {
 
       this.filterForm.addControl(definition.id, group);
     });
+  }
 
-    this.filterFacadeService.getFilterValue()
-      .pipe(
-        filter((value: Record<string, string[]>) => JSON.stringify(value) !== JSON.stringify(this.filterForm.value)),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe((value: Record<string, string[]>) => {
-        Object.entries(value).forEach(([category, selectedOptions]: [string, string[]]) => {
-          const formGroup = this.filterForm.get(category);
+  private getFilterFormValues(): Observable<Record<string, string[]>> {
+    return this.filterFacadeService.getFilterValue()
+      .pipe(filter((value: Record<string, string[]>) => JSON.stringify(value) !== JSON.stringify(this.filterForm.value)))
+  }
 
-          if (formGroup) {
-            const formControls = formGroup['controls'];
+  private setFilterFormValues(filters: Record<string, string[]>): void {
+    Object.entries(filters).forEach(([category, selectedOptions]: [string, string[]]) => {
+      const formGroup = this.filterForm.get(category);
 
-            Object.keys(formControls).forEach((option) => {
-              const control = formControls[option];
+      if (formGroup) {
+        const formControls = formGroup['controls'];
 
-              control.setValue(selectedOptions.includes(option));
-            });
-          }
+        Object.keys(formControls).forEach((option) => {
+          const control = formControls[option];
+
+          control.setValue(selectedOptions.includes(option));
         });
-      });
+      }
+    });
+  }
 
-    this.filterForm.valueChanges
+  private filterFormValueChanges(): Observable<Record<string, string[]>> {
+    return this.filterForm.valueChanges
       .pipe(
         map((filterOptions) => {
           const filters: Record<string, string | string[]> = {};
@@ -88,7 +116,7 @@ export class FilterPanelComponent implements OnInit {
               .filter(([key, value]: [string, boolean]) => value === true)
               .map(([key]: [string, boolean]) => key);
 
-              filters[category] = selectedOptions;
+            filters[category] = selectedOptions;
           });
 
           return filters;
@@ -96,20 +124,14 @@ export class FilterPanelComponent implements OnInit {
         distinctUntilChanged((prev: Record<string, string[]>, curr: Record<string, string[]>) => {
           return JSON.stringify(prev) === JSON.stringify(curr);
         }),
-        takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((filters: Record<string, string[]>) => {
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: filters,
-          queryParamsHandling: 'merge',
-        });
-      });
-
-    this.cdr.detectChanges();
   }
 
-  buildTranslationKeyForLabels(definitionId: string): string {
-    return `filter.${ definitionId.toLowerCase() }`;
+  private navigate(filters: Record<string, string[]>): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: filters,
+      queryParamsHandling: 'merge',
+    });
   }
 }

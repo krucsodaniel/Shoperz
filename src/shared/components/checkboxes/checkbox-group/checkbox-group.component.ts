@@ -6,7 +6,7 @@ import {
   Input,
   QueryList,
 } from '@angular/core';
-import { IFilterDefinition, IFilterOption } from '../../../models';
+import { IFilterOption } from '../../../models';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 
 @Component({
@@ -15,14 +15,9 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxGroupComponent {
-  previouslySelected: CheckboxComponent;
-
   @HostBinding('class.bg-white')
   @Input()
   multiselect: boolean;
-
-  @Input()
-  definition: IFilterDefinition;
 
   @ContentChildren(CheckboxComponent)
   checkboxes: QueryList<CheckboxComponent>;
@@ -31,8 +26,6 @@ export class CheckboxGroupComponent {
   private readonly classes = 'flex flex-col gap-3 p-3 border rounded bg-grey-400';
 
   checkboxChanged(option: IFilterOption) {
-    this.previouslySelected = this.checkboxes.find((checkbox: CheckboxComponent) => checkbox.value);
-
     const currentlySelected = this.checkboxes.find((checkbox: CheckboxComponent) => checkbox.option.id === option.id);
 
     if (!this.multiselect) {
