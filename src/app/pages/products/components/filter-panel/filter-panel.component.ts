@@ -1,16 +1,23 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  DestroyRef,
+  HostBinding,
+} from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {
   FilterFacadeService,
   IFilterDefinition,
   IFilterOption,
-  ProductsManipulationService
+  ProductsManipulationService,
 } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { distinctUntilChanged, filter, firstValueFrom, map } from 'rxjs';
 
-type FilterFormType = Record<string, FormControl<string[]>>;
+type FilterFormType = Record<string, FormGroup>;
 type FilterOptions = {
   [key: string]: boolean;
 };
@@ -18,14 +25,14 @@ type FilterOptions = {
 @Component({
   selector: 'app-filter-panel',
   templateUrl: './filter-panel.component.html',
-  styleUrls: ['./filter-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterPanelComponent implements OnInit {
-  // readonly form = new FormGroup<FilterFormType>({});
-  // readonly filterForm = new FormGroup<FilterFormType>({});
-  readonly filterForm = this.fb.group({});
+  readonly filterForm = this.fb.group<FilterFormType>({});
   filterDefinitions: IFilterDefinition[];
+
+  @HostBinding('class')
+  private readonly classes = 'md:min-w-66';
 
   constructor(
     private filterFacadeService: FilterFacadeService,

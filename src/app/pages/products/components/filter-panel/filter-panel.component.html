@@ -1,0 +1,16 @@
+<form class="flex flex-col gap-3" [formGroup]="filterForm">
+  <app-checkbox-group
+    *ngFor="let definition of filterDefinitions"
+    [formGroupName]="definition.id"
+    [definition]="definition"
+    [multiselect]="definition.multiselect">
+    <span class="font-bold text-size-16">{{ buildTranslationKeyForLabels(definition.id) | translate }}</span>
+
+    <app-checkbox
+      *ngFor="let option of definition.options"
+      [formControlName]="option.id"
+      [option]="option"
+      [multiselect]="definition.multiselect">
+    </app-checkbox>
+  </app-checkbox-group>
+</form>
