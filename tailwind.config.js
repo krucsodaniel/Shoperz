@@ -79,6 +79,7 @@ module.exports = {
       },
       spacing: {
         '12.5': pxToRem(50),
+        '15': pxToRem(60),
         '50': pxToRem(200),
         '75': pxToRem(300),
         '100': pxToRem(400),

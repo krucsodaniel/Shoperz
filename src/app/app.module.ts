@@ -40,6 +40,10 @@ const routes: Routes = [
     path: Route.about,
     loadChildren: () => import('./pages/about-us/about-us.module').then(({ AboutUsModule }) => AboutUsModule),
   },
+  {
+    path: Route.wishlist,
+    loadChildren: () => import('./pages/wishlist/wishlist.module').then(({ WishlistModule }) => WishlistModule),
+  },
 ];
 
 @NgModule({

@@ -70,6 +70,7 @@
     "product": "Produkten",
     "price": "Preis",
     "quantity": "Menge",
+    "wishlist": "Wunschzettel",
     "addAmount": "Betrag hinzufügen",
     "addToCart": "Zum Warenkorb hinzufügen",
     "updateAmount": "Menge aktuelisieren",
@@ -164,6 +165,17 @@
       "invalidEmailFormErrorMessage": "Bitte gib eine gültige Email-Adresse ein!",
       "thankYouMessage": "DANKE FÜR DEINE RÜCKMELDUNG!"
     }
+  },
+  "wishlist": {
+    "productAddedToWishlist": "Das Produkt wurde zu Ihrer Wunschliste hinzugefügt",
+    "productRemovedFromWishlist": "Das Produkt wurde von Ihrer Wunschliste entfernt"
+  },
+  "wishlistPage": {
+    "picture": "Bild",
+    "product": "Produkt",
+    "price": "Preis",
+    "operations": "Operationen",
+    "emptyList": "Leider ist deine Wunschliste leer."
   },
   "homepage": {
     "shopFeatures": {
