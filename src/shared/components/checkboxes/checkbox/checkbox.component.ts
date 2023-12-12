@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -33,8 +34,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input()
   label: string;
 
-  onChange: (value: boolean) => void = (value: boolean) => undefined;
-  onTouch: () => void = () => undefined;
+  onChange: (value: boolean) => void = () => {};
+  onTouch: () => void = () => {};
 
   constructor(
     private cdr: ChangeDetectorRef,
