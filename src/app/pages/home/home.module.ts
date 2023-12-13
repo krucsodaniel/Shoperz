@@ -22,9 +22,9 @@ const routes: Routes = [
     SliderComponent,
     HomeComponent,
   ],
-   exports: [
-     SliderComponent,
-  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [
+    SliderComponent,
+  ],
 })
 export class HomeModule {}
