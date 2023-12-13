@@ -57,6 +57,8 @@ import {
   WishlistButtonComponent,
   GeneralAddToCartIconComponent,
   ProductPageAddToCartIconComponent,
+  CheckboxGroupComponent,
+  CheckboxComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
 import { FirestoreDatePipe, SafePipe } from './pipes';
@@ -101,6 +103,8 @@ import { FirestoreDatePipe, SafePipe } from './pipes';
     GeneralAddToCartIconComponent,
     FirestoreDatePipe,
     ProductPageAddToCartIconComponent,
+    CheckboxGroupComponent,
+    CheckboxComponent,
     SafePipe,
   ],
   providers: [
@@ -135,6 +139,8 @@ import { FirestoreDatePipe, SafePipe } from './pipes';
     GeneralAddToCartIconComponent,
     FirestoreDatePipe,
     ProductPageAddToCartIconComponent,
+    CheckboxComponent,
+    CheckboxGroupComponent,
     SafePipe,
   ],
 })

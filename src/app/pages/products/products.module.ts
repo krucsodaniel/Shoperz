@@ -8,7 +8,6 @@ import {
   ViewSwitchComponent,
   ProductsSortingComponent,
   FilterPanelComponent,
-  FilterCardComponent,
   ProductNotFoundComponent,
   ProductPageComponent,
 } from './components';
@@ -50,7 +49,6 @@ const routes: Routes = [
     ViewSwitchComponent,
     ProductsSortingComponent,
     FilterPanelComponent,
-    FilterCardComponent,
     ProductNotFoundComponent,
     ProductPageComponent,
   ],

@@ -36,8 +36,8 @@ export class FilterEffects {
 
         const filters = {
           brands: brands,
-          categories: categories,
-          prices: prices,
+          categories: categories.length ? categories : ['all'],
+          prices: prices.length ? prices : ['allPrice'],
         };
 
         return [
