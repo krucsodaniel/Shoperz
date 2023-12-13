@@ -4,12 +4,15 @@
   <div class="flex flex-col md:flex-row w-10/12 m-auto md:border border-grey-200 p-6">
     <div
       *ngFor="let feature of shopFeatures; let last = last"
-      class="flex flex-auto justify-center items-center gap-6 md:m-auto w-2/3 md:w-1/5 border-none md:border-r py-4"
+      class="flex flex-row md:flex-row flex-auto justify-center items-center gap-6 md:m-auto md:w-1/5 border-none md:border-r py-4"
       [ngClass]="{ 'border-none': last }">
 
-      <svg-icon class="self-center" [src]="feature.imageLink"></svg-icon>
+      <div class="w-full md:w-16 h-16">
+        <svg-icon [src]="feature.imageLink"></svg-icon>
+      </div>
 
-      <div>
+
+      <div class="w-full md:w-20 h-16 text-center md:text-start">
         <span class="font-bold block">{{ buildTranslationKey(feature.translationKeyLink, feature.titleRelativeKey) | translate }}</span>
 
         <span class="block">{{ buildTranslationKey(feature.translationKeyLink, feature.detailsRelativeKey) | translate }}</span>

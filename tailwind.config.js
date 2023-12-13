@@ -88,6 +88,7 @@ module.exports = {
         '5%': '5%',
         '10%': '10%',
         '15%': '15%',
+        '20%': '20%',
       },
       fontFamily: {
         primary: ['Arial', 'sans-serif'],
