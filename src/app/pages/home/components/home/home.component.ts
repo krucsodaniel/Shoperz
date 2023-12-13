@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { IShopFeature } from '@shared-module';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  readonly shopFeatures = [
+  readonly shopFeatures: IShopFeature[] = [
     {
       imageLink: 'guarantee',
       translationKeyLink: 'shopFeatures',
@@ -39,7 +40,7 @@ export class HomeComponent {
     }
   ];
 
-  brandExpose = ['gama', 'technova', 'indiezone', 'tracic', 'gomezbuzz', 'shopania', 'imade', 'upside', 'wofact', 'gamerzone'];
+  readonly brandExpose: string[] = ['gama', 'technova', 'indiezone', 'tracic', 'gomezbuzz', 'shopania', 'imade', 'upside', 'wofact', 'gamerzone'];
 
   buildTranslationKey(link: string, relativeKey: string): string {
     return `homepage.${ link }.${ relativeKey }`;

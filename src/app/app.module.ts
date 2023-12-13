@@ -21,7 +21,8 @@ register();
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.home, pathMatch: 'full' },
-  { path: Route.home,
+  {
+    path: Route.home,
     loadChildren: () => import('./pages/home/home.module').then(({ HomeModule }) => HomeModule),
   },
   {
