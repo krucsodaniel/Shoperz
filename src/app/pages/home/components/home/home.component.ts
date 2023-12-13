@@ -40,7 +40,7 @@ export class HomeComponent {
     }
   ];
 
-  readonly brandExpose: string[] = ['gama', 'technova', 'indiezone', 'tracic', 'gomezbuzz', 'shopania', 'imade', 'upside', 'wofact', 'gamerzone'];
+  readonly brandExpose = ['gama', 'technova', 'indiezone', 'tracic', 'gomezbuzz', 'shopania', 'imade', 'upside', 'wofact', 'gamerzone'];
 
   buildTranslationKey(link: string, relativeKey: string): string {
     return `homepage.${ link }.${ relativeKey }`;
