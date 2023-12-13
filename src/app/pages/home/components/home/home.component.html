@@ -6,7 +6,6 @@
       *ngFor="let feature of shopFeatures; let last = last"
       class="flex flex-row md:flex-row flex-auto justify-center items-center gap-6 md:m-auto md:w-1/5 border-none md:border-r py-4"
       [ngClass]="{ 'border-none': last }">
-
       <div class="w-full md:w-16 h-16">
         <svg-icon [src]="feature.imageLink"></svg-icon>
       </div>
@@ -25,6 +24,3 @@
     </div>
   </div>
 </div>
-
-
-
