@@ -176,5 +176,25 @@
     "price": "Ár",
     "operations": "Műveletek",
     "emptyList": "Sajons üres a kívánságlistád"
+  },
+  "homepage": {
+    "shopFeatures": {
+      "guarantee": "Garancia",
+      "guaranteeDuration": "24 hónap",
+      "ratePaying": "Visszajelzés",
+      "ratePayingDuration": "4 - 12 hónap",
+      "payments": "Fizetés",
+      "secured": "Biztosítva",
+      "delivery": "Ingyenes Szállítás",
+      "deliveryCondition": "10 000 Ft-tól",
+      "brands": "Márkák",
+      "brandsText": "Csak top márkák"
+    },
+    "slider": {
+      "buttonTitle": "Tudj meg többet",
+      "sliderText1": "ÚJ <b>NAMPHONE</b> IDÉN ŐSSZEL",
+      "sliderText2": "LÉGY MENŐ AZ ÖSSZES <b>ÚJ</b> KÜTYÜNKKEL",
+      "sliderText3": "<b>ÚJ</b> CONSOLE X245-HD"
+    }
   }
 }

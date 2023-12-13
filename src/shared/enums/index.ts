@@ -6,3 +6,4 @@ export * from './control';
 export * from './firestore-collection';
 export * from './page';
 export * from './action-enums';
+export * from './product-category';

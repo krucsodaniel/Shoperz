@@ -61,7 +61,7 @@ import {
   CheckboxComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
-import { FirestoreDatePipe } from './pipes';
+import { FirestoreDatePipe, SafePipe } from './pipes';
 
 @NgModule({
   imports: [
@@ -105,6 +105,7 @@ import { FirestoreDatePipe } from './pipes';
     ProductPageAddToCartIconComponent,
     CheckboxGroupComponent,
     CheckboxComponent,
+    SafePipe,
   ],
   providers: [
     SearchFacadeService,
@@ -140,6 +141,7 @@ import { FirestoreDatePipe } from './pipes';
     ProductPageAddToCartIconComponent,
     CheckboxComponent,
     CheckboxGroupComponent,
+    SafePipe,
   ],
 })
 export class SharedModule {}

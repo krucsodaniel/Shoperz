@@ -177,5 +177,25 @@
     "price": "Preis",
     "operations": "Operationen",
     "emptyList": "Leider ist deine Wunschliste leer."
+  },
+  "homepage": {
+    "shopFeatures": {
+      "guarantee": "Garantie",
+      "guaranteeDuration": "24 Monate",
+      "ratePaying": "Tarifzahlung",
+      "ratePayingDuration": "4 - 12 Monate",
+      "payments": "Zahlungen",
+      "secured": "Gesichert",
+      "delivery": "Gratisversand",
+      "deliveryCondition": "ab 100 €",
+      "brands": "Marken",
+      "brandsText": "Nur Top"
+    },
+    "slider": {
+      "buttonTitle": "Finde mehr heraus",
+      "sliderText1": "NEUES <b>NAMPHONE</b> ERÖFFNET DIESEN HERBST",
+      "sliderText2": "BEHALTEN SIE DEINE FORM MIT ALLE <b>NEW</b> GERÄTE",
+      "sliderText3": "<b>NEW</b> CONSOLE X245-HD"
+    }
   }
 }
