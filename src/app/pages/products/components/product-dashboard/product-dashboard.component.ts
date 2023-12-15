@@ -13,6 +13,7 @@ export class ProductDashboardComponent implements OnInit {
   isExpanded = false;
   products: ICalculatedProduct[];
   isLoading = true;
+  emptyProductList = false;
 
   constructor(
     private productFacadeService: ProductFacadeService,
