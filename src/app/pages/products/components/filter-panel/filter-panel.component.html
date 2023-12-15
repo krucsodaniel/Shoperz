@@ -10,7 +10,8 @@
       [formControlName]="option.id"
       [option]="option"
       [multiselect]="definition.multiselect"
-      [label]="buildTranslationKeyForCheckboxes(option.value, option.id) | translate">
+      [label]="buildTranslationKeyForCheckboxes(option.value, option.id) | translate"
+      [isCheckBoxHidden]="!definition.multiselect">
     </app-checkbox>
   </app-checkbox-group>
 </form>
