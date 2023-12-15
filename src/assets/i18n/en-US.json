@@ -176,5 +176,34 @@
     "price": "Price",
     "operations": "Operations",
     "emptyList": "Sorry, your wishlist is empty."
+  },
+  "registrationPage": {
+    "form": {
+      "register": "Register",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "E-mail",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "termsAndConditions": "I have read and agree with the Terms & Conditions",
+      "signUp": "Sign up",
+      "registrationSuccess": "Registration successful"
+    },
+    "placeholders": {
+      "firstName": "Enter first name",
+      "lastName": "Enter last name",
+      "email": "Enter e-mail",
+      "password": "Enter password",
+      "confirmPassword": "Confirm password"
+    },
+    "messages": {
+      "minLength": "Minimum required characters: ",
+      "maxLength": "Maximum allowed characters: ",
+      "required": "This field is required",
+      "wrongFormat": "Wrong format",
+      "alreadyTaken": "This e-mail is already taken",
+      "checkingEmail": "Checking e-mail...",
+      "passwordMatch": "Passwords must be the same"
+    }
   }
 }

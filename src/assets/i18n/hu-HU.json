@@ -176,5 +176,34 @@
     "price": "Ár",
     "operations": "Műveletek",
     "emptyList": "Sajons üres a kívánságlistád"
+  },
+  "registrationPage": {
+    "form": {
+      "register": "Regisztráció",
+      "firstName": "Vezetéknév",
+      "lastName": "Keresztnév",
+      "email": "E-mail",
+      "password": "Jelszó",
+      "confirmPassword": "Jelszó mégegyszer",
+      "termsAndConditions": "Elolvastam és elfogadom a Felhasználási feltételeket",
+      "signUp": "Regisztráció",
+      "registrationSuccess": "Sikeres regisztráció"
+    },
+    "placeholders": {
+      "firstName": "Adjon meg vezetéknevet",
+      "lastName": "Adjon meg keresztnevet",
+      "email": "Adjon meg e-mailt",
+      "password": "Adjon meg jelszót",
+      "confirmPassword": "Jelszó megerősítése"
+    },
+    "messages": {
+      "minLength": "Min. szükséges karakterszám: ",
+      "maxLength": "Max. karakterszám: ",
+      "required": "A mező kitöltése kötelező",
+      "wrongFormat": "Hibás formátum",
+      "alreadyTaken": "Ez az e-mail már foglalt",
+      "checkingEmail": "E-mail ellenőrzése...",
+      "passwordMatch": "A jelszavak nem egyeznek"
+    }
   }
 }
