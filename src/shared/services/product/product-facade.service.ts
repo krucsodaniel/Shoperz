@@ -5,13 +5,10 @@ import {
   CartFacadeService,
   CategoryFacadeService,
   OrdersFacadeService,
-  SearchFacadeService,
   FilterService,
-  FilterFacadeService,
-  SortFacadeService,
 } from '../../services';
 import { filter, firstValueFrom, Observable } from 'rxjs';
-import { ICalculatedProduct } from '../../models';
+import { ICalculatedProduct, IProduct } from '../../models';
 import { Store } from '@ngrx/store';
 import { ProductActions, ProductSelectors, CartActions } from '../../store';
 import { ProductActionKey } from '../../enums';
@@ -22,9 +19,6 @@ export class ProductFacadeService {
     private categoryFacadeService: CategoryFacadeService,
     private brandFacadeService: BrandFacadeService,
     private filterService: FilterService,
-    private filterFacadeService: FilterFacadeService,
-    private searchFacadeService: SearchFacadeService,
-    private sortFacadeService: SortFacadeService,
     private cartFacadeService: CartFacadeService,
     private ordersFacadeService: OrdersFacadeService,
     private store: Store,
@@ -181,5 +175,9 @@ export class ProductFacadeService {
 
   getTotalAmountOnWishlist(): Observable<number> {
     return this.store.select(ProductSelectors.selectTotalNumberOnWishlist);
+  }
+
+  getAllProducts(): Observable<IProduct[]> {
+    return this.store.select(ProductSelectors.selectProducts);
   }
 }
