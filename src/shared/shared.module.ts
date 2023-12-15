@@ -14,6 +14,7 @@ import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
 import { feedbackReducer, feedbackFeatureKey } from './store/feedback';
 import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
+import { userReducer, userFeatureKey } from './store/users/user.reducer';
 import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
@@ -21,6 +22,7 @@ import { CartEffects } from './store/cart/cart.effects';
 import { FeedbackEffects } from './store/feedback';
 import { OrdersEffects } from './store/orders/orders.effects';
 import { FilterEffects } from './store/filters/filter.effect';
+import { UserEffects } from './store/users/user.effects';
 import {
   BrandService,
   BrandFacadeService,
@@ -43,6 +45,9 @@ import {
   WishlistFacadeService,
   ActionDispatcherService,
   ActionTrackerService,
+  UserService,
+  UserFacadeService,
+  UniqueEmailValidatorService,
 } from './services';
 import {
   SearchbarComponent,
@@ -59,6 +64,9 @@ import {
   ProductPageAddToCartIconComponent,
   CheckboxGroupComponent,
   CheckboxComponent,
+  TextInputComponent,
+  ButtonComponent,
+  MessageComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
 import { FirestoreDatePipe } from './pipes';
@@ -77,6 +85,7 @@ import { FirestoreDatePipe } from './pipes';
     StoreModule.forFeature(feedbackFeatureKey, feedbackReducer),
     StoreModule.forFeature(ordersFeatureKey, ordersReducer),
     StoreModule.forFeature(filtersFeatureKey, filterReducer),
+    StoreModule.forFeature(userFeatureKey, userReducer),
     EffectsModule.forFeature([
       ProductEffects,
       BrandEffects,
@@ -85,6 +94,7 @@ import { FirestoreDatePipe } from './pipes';
       OrdersEffects,
       FilterEffects,
       FeedbackEffects,
+      UserEffects,
     ]),
     RouterLinkActive,
     SvgIconsModule,
@@ -105,6 +115,9 @@ import { FirestoreDatePipe } from './pipes';
     ProductPageAddToCartIconComponent,
     CheckboxGroupComponent,
     CheckboxComponent,
+    TextInputComponent,
+    ButtonComponent,
+    MessageComponent,
   ],
   providers: [
     SearchFacadeService,
@@ -128,6 +141,9 @@ import { FirestoreDatePipe } from './pipes';
     WishlistFacadeService,
     ActionDispatcherService,
     ActionTrackerService,
+    UserService,
+    UserFacadeService,
+    UniqueEmailValidatorService,
   ],
   exports: [
     SearchbarComponent,
@@ -140,6 +156,9 @@ import { FirestoreDatePipe } from './pipes';
     ProductPageAddToCartIconComponent,
     CheckboxComponent,
     CheckboxGroupComponent,
+    TextInputComponent,
+    ButtonComponent,
+    MessageComponent,
   ],
 })
 export class SharedModule {}
