@@ -17,4 +17,5 @@ export enum Route {
   returns = 'returns-and-exchanges',
   repairServices = 'repair-services',
   support = 'support',
+  register = 'register',
 }

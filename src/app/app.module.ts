@@ -38,6 +38,10 @@ const routes: Routes = [
     path: Route.wishlist,
     loadChildren: () => import('./pages/wishlist/wishlist.module').then(({ WishlistModule }) => WishlistModule),
   },
+  {
+    path: Route.register,
+    loadChildren: () => import('./pages/registration/registration.module').then(({ RegistrationModule }) => RegistrationModule),
+  },
 ];
 
 @NgModule({
