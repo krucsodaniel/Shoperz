@@ -13,3 +13,5 @@ export * from './sort-facade.service';
 export * from './wishlist';
 export * from './action-dispatcher.service';
 export * from './action-tracker.service';
+export * from '../validators';
+export * from './user';
