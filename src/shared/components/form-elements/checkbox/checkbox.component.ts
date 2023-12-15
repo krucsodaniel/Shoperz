@@ -5,6 +5,7 @@ import {
   Component,
   Host,
   Input,
+  Optional,
 } from '@angular/core';
 import { IFilterOption } from '../../../models';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -34,12 +35,15 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input()
   label: string;
 
+  @Input()
+  isCheckBoxHidden: boolean;
+
   onChange: (value: boolean) => void = () => {};
   onTouch: () => void = () => {};
 
   constructor(
     private cdr: ChangeDetectorRef,
-    @Host() public checkboxGroupComponent: CheckboxGroupComponent,
+    @Optional() @Host() public checkboxGroupComponent: CheckboxGroupComponent,
   ) {}
 
   writeValue(value: boolean): void {
@@ -61,7 +65,9 @@ export class CheckboxComponent implements ControlValueAccessor {
     this.onChange(this.value);
     this.onTouch();
 
-    this.checkboxGroupComponent.checkboxChanged(this.option);
-    this.cdr.markForCheck();
+    if (this.checkboxGroupComponent) {
+      this.checkboxGroupComponent.checkboxChanged(this.option);
+      this.cdr.markForCheck();
+    }
   }
 }
