@@ -1,0 +1,6 @@
+<button
+  class="w-full p-3 text-size-18 font-bold border-2 border-blue-600 rounded transition duration-300"
+  [ngClass]="{ disabled: disabled, primary: type === 'primary' }"
+  [disabled]="disabled">
+  {{ text }}
+</button>
