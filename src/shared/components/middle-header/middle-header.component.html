@@ -7,7 +7,7 @@
   <app-searchbar class="mx-auto md:mx-0 min-w-75 max-w-180 my-5"></app-searchbar>
 
   <div class="flex justify-center md:justify-evenly gap-x-4">
-    <app-nav-icon [url]="'profile'"></app-nav-icon>
+    <app-nav-icon [routerLink]="Route.register" [url]="'profile'"></app-nav-icon>
 
     <app-nav-icon [routerLink]="Route.cart" [url]="'cart'" [amount]="amountInCart$ | async"></app-nav-icon>
 
