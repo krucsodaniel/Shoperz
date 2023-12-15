@@ -4,7 +4,7 @@ import { FilterFacadeService, ICalculatedProduct } from '@shared-module';
 
 @Injectable()
 export class ProductsManipulationService {
-  constructor(private filterFacadeService: FilterFacadeService,) {}
+  constructor(private filterFacadeService: FilterFacadeService) {}
 
   getProducts(): Observable<ICalculatedProduct[]> {
     return this.filterFacadeService.getManipulatedProducts()
