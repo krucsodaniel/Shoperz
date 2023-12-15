@@ -1,0 +1,11 @@
+.valid {
+  @apply border-green-500;
+}
+
+.invalid {
+  @apply border-red-700;
+}
+
+.pending {
+  @apply border-orange-500;
+}
