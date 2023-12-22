@@ -6,14 +6,14 @@
       <div *ngIf="products?.length; else emptyList">
         <app-view-panel></app-view-panel>
 
-        <app-product-card
-          *ngFor="let card of products"
-          class="product-card"
-          [class.expanded]="isExpanded"
-          [isExpanded]="isExpanded"
-          [card]="card">
-        </app-product-card>
         <div class="flex flex-wrap gap-5 w-full mt-5">
+          <app-product-card
+            *ngFor="let card of products"
+            class="product-card"
+            [class.expanded]="isExpanded"
+            [isExpanded]="isExpanded"
+            [card]="card">
+          </app-product-card>
         </div>
       </div>
     </div>

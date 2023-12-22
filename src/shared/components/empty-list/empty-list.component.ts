@@ -12,7 +12,7 @@ export class EmptyListComponent {
   @HostBinding('class')
   private readonly classes = 'mx-auto';
 
-  buildTranslationKey(link: string, relativeKey: string): string {
-    return `emptyList.${ link }.${ relativeKey }`;
+  buildTranslationKey(relativeKey: string): string {
+    return `emptyList.${ this.emptyListName }.${ relativeKey }`;
   }
 }

@@ -28,7 +28,7 @@ export class ProductDashboardComponent implements OnInit {
     await this.productFacadeService.initProductsPage();
 
     this.isProductListEmpty$ = this.productFacadeService.getAllProducts()
-      .pipe(map((products) => !products));
+      .pipe(map((products) => !products.length));
 
     this.productsManipulationService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))
