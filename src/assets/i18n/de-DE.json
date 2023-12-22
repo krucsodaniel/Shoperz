@@ -132,8 +132,6 @@
     }
   },
   "general": {
-    "productNotFound": "Sorry, keine Produkte gefunden!",
-    "tryOtherFilters": "Probieren Sie andere Filteroptionen aus.",
     "confirmMessage": "Sind Sie sicher, dass Sie löschen wollen?"
   },
   "aboutUsPage": {
@@ -175,8 +173,7 @@
     "picture": "Bild",
     "product": "Produkt",
     "price": "Preis",
-    "operations": "Operationen",
-    "emptyList": "Leider ist deine Wunschliste leer."
+    "operations": "Operationen"
   },
   "homepage": {
     "shopFeatures": {
@@ -196,6 +193,24 @@
       "sliderText1": "NEUES <b>NAMPHONE</b> ERÖFFNET DIESEN HERBST",
       "sliderText2": "BEHALTEN SIE DEINE FORM MIT ALLE <b>NEW</b> GERÄTE",
       "sliderText3": "<b>NEW</b> CONSOLE X245-HD"
+    }
+  },
+  "emptyList": {
+    "products": {
+      "emptyListMessage": "Es gibt kein Produkt im Webshop!",
+      "additionalMessage": "Entschuldigung, wir sind ein schrecklicher Verkäufer"
+    },
+    "filter": {
+      "emptyListMessage": "Leider wurden keine Produkte gefunden!",
+      "additionalMessage": "Probieren Sie andere Filteroptionen aus"
+    },
+    "cart": {
+      "emptyListMessage": "Leider ist Ihr Warenkorb leer!",
+      "additionalMessage": "Füge das Produkt Ihrem Warenkorb hinzu"
+    },
+    "wishlist": {
+      "emptyListMessage": "Leider ist deine Wunschliste leer!",
+      "additionalMessage": "Füge das Produkt Ihrer Wunschliste hinzu"
     }
   }
 }

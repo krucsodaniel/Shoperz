@@ -131,8 +131,6 @@
     }
   },
   "general": {
-    "productNotFound": "Sajnáljuk, nem találtunk a keresésnek megfelelő terméket!",
-    "tryOtherFilters": "Próbáljon ki más szűrési lehetőségeket.",
     "confirmMessage": "Biztos benne, hogy törölni kívánja?"
   },
   "aboutUsPage": {
@@ -174,8 +172,7 @@
     "picture": "Kép",
     "product": "Termék",
     "price": "Ár",
-    "operations": "Műveletek",
-    "emptyList": "Sajons üres a kívánságlistád"
+    "operations": "Műveletek"
   },
   "homepage": {
     "shopFeatures": {
@@ -195,6 +192,24 @@
       "sliderText1": "ÚJ <b>NAMPHONE</b> IDÉN ŐSSZEL",
       "sliderText2": "LÉGY MENŐ AZ ÖSSZES <b>ÚJ</b> KÜTYÜNKKEL",
       "sliderText3": "<b>ÚJ</b> CONSOLE X245-HD"
+    }
+  },
+  "emptyList": {
+    "products": {
+      "emptyListMessage": "A webáruházban nincs termék!",
+      "additionalMessage": "Elnézést, szörnyű eladók vagyunk"
+    },
+    "filter": {
+      "emptyListMessage": "Sajnos nem található termék!",
+      "additionalMessage": "Próbálj ki más szűrőbeállításokat"
+    },
+    "cart": {
+      "emptyListMessage": "Sajons üres a kívánságlistád",
+      "additionalMessage": "Tegyél a terméket a kosárba"
+    },
+    "wishlist": {
+      "emptyListMessage": "Sajons üres a kívánságlistád!",
+      "additionalMessage": "Add a kedvenc termékeidet a kívánságlistádhoz"
     }
   }
 }

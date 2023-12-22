@@ -11,3 +11,4 @@ export * from './wishlist-button/wishlist-button.component';
 export * from './general-add-to-cart-icon/general-add-to-cart-icon.component';
 export * from './product-page-add-to-cart-icon/product-page-add-to-cart-icon.component';
 export * from './checkboxes';
+export * from './empty-list/empty-list.component';

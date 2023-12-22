@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnIn
 import { CardStateService } from '../../services';
 import { ICalculatedProduct, ProductFacadeService, ProductsManipulationService } from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-dashboard',
@@ -13,6 +14,7 @@ export class ProductDashboardComponent implements OnInit {
   isExpanded = false;
   products: ICalculatedProduct[];
   isLoading = true;
+  isProductListEmpty$: Observable<boolean>;
 
   constructor(
     private productFacadeService: ProductFacadeService,
@@ -24,6 +26,9 @@ export class ProductDashboardComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.productFacadeService.initProductsPage();
+
+    this.isProductListEmpty$ = this.productFacadeService.getAllProducts()
+      .pipe(map((products) => !products.length));
 
     this.productsManipulationService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))
