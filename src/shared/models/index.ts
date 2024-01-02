@@ -9,6 +9,8 @@ export * from './cart-product.model';
 export * from './feedback.model';
 export * from './order.model';
 export * from './action-tracker.model';
+export * from './shop-feature.model';
+export * from './slider.model';
 export * from './user.model';
 export * from './registration.model';
 export * from './login.model';

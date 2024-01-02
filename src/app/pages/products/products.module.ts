@@ -8,7 +8,6 @@ import {
   ViewSwitchComponent,
   ProductsSortingComponent,
   FilterPanelComponent,
-  ProductNotFoundComponent,
   ProductPageComponent,
 } from './components';
 import { CardStateService } from './services';
@@ -49,7 +48,6 @@ const routes: Routes = [
     ViewSwitchComponent,
     ProductsSortingComponent,
     FilterPanelComponent,
-    ProductNotFoundComponent,
     ProductPageComponent,
   ],
   providers: [

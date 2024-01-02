@@ -131,8 +131,6 @@
     }
   },
   "general": {
-    "productNotFound": "Sorry, no products found!",
-    "tryOtherFilters": "Try other filter options.",
     "confirmMessage": "Are you sure you want to delete?"
   },
   "aboutUsPage": {
@@ -174,6 +172,45 @@
     "picture": "Picture",
     "product": "Product",
     "price": "Price",
+    "operations": "Operations"
+  },
+  "homepage": {
+    "shopFeatures": {
+      "guarantee": "Guarantee",
+      "guaranteeDuration": "24 Months",
+      "ratePaying": "Rate Paying",
+      "ratePayingDuration": "4 - 12 Months",
+      "payments": "Payments",
+      "secured": "Secured",
+      "delivery": "Free Delivery",
+      "deliveryCondition": "from $100",
+      "brands": "Brands",
+      "brandsText": "Only Top"
+    },
+    "slider": {
+      "buttonTitle": "Find out more",
+      "sliderText1": "NEW <b>NAMPHONE</b> RELEASE THIS FALL",
+      "sliderText2": "KEEP YOUR SHAPE WITH ALL <b>NEUEN</b> GADGETS",
+      "sliderText3": "<b>NEUE</b> CONSOLE X245-HD"
+    }
+  },
+  "emptyList": {
+    "products": {
+      "emptyListMessage": "There is no product in the web shop!",
+      "additionalMessage": "Sorry, we are a terrible vendors"
+    },
+    "filter": {
+      "emptyListMessage": "Sorry, no products found!",
+      "additionalMessage": "Try other filter options"
+    },
+    "cart": {
+      "emptyListMessage": "Sorry, your cart is empty!",
+      "additionalMessage": "Add product to your cart"
+    },
+    "wishlist": {
+      "emptyListMessage": "Sorry, your wishlist is empty!",
+      "additionalMessage": "Add product to your wishlist"
+    },
     "operations": "Operations",
     "emptyList": "Sorry, your wishlist is empty."
   },

@@ -67,12 +67,13 @@ import {
   ProductPageAddToCartIconComponent,
   CheckboxGroupComponent,
   CheckboxComponent,
+  EmptyListComponent,
   TextInputComponent,
   ButtonComponent,
   MessageComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
-import { FirestoreDatePipe } from './pipes';
+import { FirestoreDatePipe, SafePipe } from './pipes';
 
 @NgModule({
   imports: [
@@ -119,6 +120,8 @@ import { FirestoreDatePipe } from './pipes';
     ProductPageAddToCartIconComponent,
     CheckboxGroupComponent,
     CheckboxComponent,
+    SafePipe,
+    EmptyListComponent,
     TextInputComponent,
     ButtonComponent,
     MessageComponent,
@@ -162,6 +165,8 @@ import { FirestoreDatePipe } from './pipes';
     ProductPageAddToCartIconComponent,
     CheckboxComponent,
     CheckboxGroupComponent,
+    SafePipe,
+    EmptyListComponent,
     TextInputComponent,
     ButtonComponent,
     MessageComponent,

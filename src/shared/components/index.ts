@@ -10,6 +10,7 @@ export * from './footer/footer.component';
 export * from './wishlist-button/wishlist-button.component';
 export * from './general-add-to-cart-icon/general-add-to-cart-icon.component';
 export * from './product-page-add-to-cart-icon/product-page-add-to-cart-icon.component';
+export * from './empty-list/empty-list.component';
 export * from './form-elements';
 export * from './button/button.component';
 export * from './message/message.component';

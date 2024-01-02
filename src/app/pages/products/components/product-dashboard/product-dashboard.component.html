@@ -1,21 +1,33 @@
 <app-filter-panel class="order-1 md:order-0"></app-filter-panel>
 
 <div class="relative gap-5 order-0 md:order-1 w-full">
-  <app-loader *ngIf="isLoading; else content" class="absolute top-15 left-2/4 -translate-x-2/4"></app-loader>
+  <ng-container *ngIf="!isLoading; else loading">
+    <div *ngIf="(isProductListEmpty$ | async) === false; else emptyListProduct">
+      <div *ngIf="products?.length; else emptyList">
+        <app-view-panel></app-view-panel>
 
-  <ng-template #content>
-    <app-view-panel></app-view-panel>
-
-    <div class="flex flex-wrap gap-5 w-full mt-5">
-      <app-product-card
-        *ngFor="let card of products"
-        class="product-card"
-        [class.expanded]="isExpanded"
-        [card]="card"
-        [isExpanded]="isExpanded">
-      </app-product-card>
-
-      <app-product-not-found *ngIf="!products?.length"></app-product-not-found>
+        <div class="flex flex-wrap gap-5 w-full mt-5">
+          <app-product-card
+            *ngFor="let card of products"
+            class="product-card"
+            [class.expanded]="isExpanded"
+            [isExpanded]="isExpanded"
+            [card]="card">
+          </app-product-card>
+        </div>
+      </div>
     </div>
-  </ng-template>
+  </ng-container>
 </div>
+
+<ng-template #emptyList>
+  <app-empty-list [emptyListName]="'filter'"></app-empty-list>
+</ng-template>
+
+<ng-template #emptyListProduct>
+  <app-empty-list [emptyListName]="'products'"></app-empty-list>
+</ng-template>
+
+<ng-template #loading>
+  <app-loader class="absolute top-15 left-2/4 -translate-x-2/4"></app-loader>
+</ng-template>

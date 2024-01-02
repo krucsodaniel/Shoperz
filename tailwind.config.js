@@ -85,6 +85,10 @@ module.exports = {
         '100': pxToRem(400),
         '128': pxToRem(512),
         '192': pxToRem(768),
+        '1/20': '5%',
+        '1/10': '10%',
+        '3/20': '15%',
+        '1/5': '20%',
       },
       fontFamily: {
         primary: ['Arial', 'sans-serif'],
