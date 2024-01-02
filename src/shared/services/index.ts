@@ -15,3 +15,4 @@ export * from './action-dispatcher.service';
 export * from './action-tracker.service';
 export * from '../validators';
 export * from './user';
+export * from './store-initialization.service';
