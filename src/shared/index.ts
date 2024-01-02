@@ -8,3 +8,4 @@ export * from './services/category';
 export * from './store';
 export * from './regex';
 export * from './types';
+export * from './guards';

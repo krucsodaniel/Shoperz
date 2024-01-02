@@ -15,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { authGuard } from '@shared-module';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.products, pathMatch: 'full' },
@@ -41,6 +42,12 @@ const routes: Routes = [
   {
     path: Route.register,
     loadChildren: () => import('./pages/registration/registration.module').then(({ RegistrationModule }) => RegistrationModule),
+    canActivate: [authGuard],
+  },
+  {
+    path: Route.login,
+    loadChildren: () => import('./pages/login/login.module').then(({ LoginModule }) => LoginModule),
+    canActivate: [authGuard],
   },
 ];
 
