@@ -188,7 +188,9 @@
       "confirmPassword": "Passwort bestätigen",
       "termsAndConditions": "Ich habe die All. Gesc. gelesen und bin damit einverstanden",
       "signUp": "Registrieren",
-      "registrationSuccess": "Registrierung erfolgreich"
+      "registrationSuccess": "Registrierung erfolgreich",
+      "alreadyRegistered": "Bereits registriert?",
+      "loginHere": "Hier anmelden"
     },
     "placeholders": {
       "firstName": "Vornamen eingeben",
@@ -206,5 +208,40 @@
       "checkingEmail": "Überprüfe e-mail...",
       "passwordMatch": "Pswr müssen übereinstimmen"
     }
+  },
+  "loginPage": {
+    "form": {
+      "login": "Einloggen",
+      "email": "E-mail",
+      "password": "Passwort",
+      "rememberMe": "Erinnere mich",
+      "loginSuccess": "Erfolgreiche Anmeldung",
+      "loginError": "Unerfolgreiche Anmeldung",
+      "logoutSuccess": "Abmeldung erfolgreich",
+      "logoutError": "Abmeldung erfolglos",
+      "alreadyRegistered": "Bereits registriert?",
+      "loginHere": "Hier anmelden",
+      "notRegistered": "Nicht registriert?",
+      "registerHere": "Registrieren Sie sich hier",
+      "userNotFound": "Benutzer nicht gefunden",
+      "incorrectPassword": "Falsches Passwort",
+      "anErrorOccured": "Es ist ein Fehler aufgetreten"
+    },
+    "placeholders": {
+      "email": "E-mail eingeben",
+      "password": "Passwort eingeben"
+    },
+    "messages": {
+      "minLength": "Mnd. erforderliche Zeichen: ",
+      "maxLength": "Maximal zulässige Zeichen: ",
+      "required": "Dieses Feld ist erforderlich",
+      "wrongFormat": "Falsches Format",
+      "doesNotExist": "Diese E-Mail existiert nicht",
+      "checkingEmail": "Überprüfe e-mail..."
+    }
+  },
+  "profilePage": {
+    "profile": "Profil",
+    "logOut": "Abmelden"
   }
 }

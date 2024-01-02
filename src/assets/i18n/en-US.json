@@ -187,7 +187,9 @@
       "confirmPassword": "Confirm password",
       "termsAndConditions": "I have read and agree with the Terms & Conditions",
       "signUp": "Sign up",
-      "registrationSuccess": "Registration successful"
+      "registrationSuccess": "Registration successful",
+      "alreadyRegistered": "Already registered?",
+      "loginHere": "Login here"
     },
     "placeholders": {
       "firstName": "Enter first name",
@@ -205,5 +207,38 @@
       "checkingEmail": "Checking e-mail...",
       "passwordMatch": "Passwords must be the same"
     }
+  },
+  "loginPage": {
+    "form": {
+      "login": "Login",
+      "email": "E-mail",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "loginSuccess": "Login successful",
+      "loginError": "Login unsuccessful",
+      "logoutSuccess": "Logout successful",
+      "logoutError": "Logout unsuccessful",
+      "notRegistered": "Not registered?",
+      "registerHere": "Register here",
+      "userNotFound": "User not found",
+      "incorrectPassword": "Incorrect password",
+      "anErrorOccured": "An error occured"
+    },
+    "placeholders": {
+      "email": "Enter e-mail",
+      "password": "Enter password"
+    },
+    "messages": {
+      "minLength": "Minimum required characters: ",
+      "maxLength": "Maximum allowed characters: ",
+      "required": "This field is required",
+      "wrongFormat": "Wrong format",
+      "doesNotExist": "This email does not exist",
+      "checkingEmail": "Checking e-mail..."
+    }
+  },
+  "profilePage": {
+    "profile": "Profile",
+    "logOut": "Log out"
   }
 }

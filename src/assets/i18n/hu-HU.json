@@ -187,7 +187,9 @@
       "confirmPassword": "Jelszó mégegyszer",
       "termsAndConditions": "Elolvastam és elfogadom a Felhasználási feltételeket",
       "signUp": "Regisztráció",
-      "registrationSuccess": "Sikeres regisztráció"
+      "registrationSuccess": "Sikeres regisztráció",
+      "alreadyRegistered": "Már regisztrált?",
+      "loginHere": "Jelentkezzen be"
     },
     "placeholders": {
       "firstName": "Adjon meg vezetéknevet",
@@ -205,5 +207,38 @@
       "checkingEmail": "E-mail ellenőrzése...",
       "passwordMatch": "A jelszavak nem egyeznek"
     }
+  },
+  "loginPage": {
+    "form": {
+      "login": "Bejelentkezés",
+      "email": "E-mail",
+      "password": "Jelszó",
+      "rememberMe": "Emlékezz rám",
+      "loginSuccess": "Sikeres bejelentkezés",
+      "loginError": "Sikertelen bejelentkezés",
+      "logoutSuccess": "Sikeres kijelentkezés",
+      "logoutError": "Sikertelen kijelentkezés",
+      "notRegistered": "Nem regisztrált?",
+      "registerHere": "Regisztráció",
+      "userNotFound": "Felhasználó nem található",
+      "incorrectPassword": "Hibás jelszó",
+      "anErrorOccured": "Hiba történt"
+    },
+    "placeholders": {
+      "email": "Adjon meg e-mailt",
+      "password": "Adjon meg jelszót"
+    },
+    "messages": {
+      "minLength": "Min. szükséges karakterszám: ",
+      "maxLength": "Max. karakterszám: ",
+      "required": "A mező kitöltése kötelező",
+      "wrongFormat": "Hibás formátum",
+      "doesNotExist": "Ez az e-mail nem létezik",
+      "checkingEmail": "E-mail ellenőrzése..."
+    }
+  },
+  "profilePage": {
+    "profile": "Profil",
+    "logOut": "Kijelentkezés"
   }
 }
