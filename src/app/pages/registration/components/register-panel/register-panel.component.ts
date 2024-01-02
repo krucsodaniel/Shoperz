@@ -95,7 +95,12 @@ export class RegisterPanelComponent implements OnInit {
   }
 
   submitForm(): void {
-    const { termsAndConditions, ...newUser } = this.registerForm.value;
+    const { termsAndConditions, passwords: { confirmPassword, ...passwords }, ...user } = this.registerForm.value;
+
+    const newUser = {
+      ...user,
+      password: passwords.password,
+    };
 
     this.userFacadeService.registerUser(newUser as IUser);
 
