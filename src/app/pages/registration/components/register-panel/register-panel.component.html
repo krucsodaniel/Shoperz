@@ -86,7 +86,7 @@
       </app-message>
 
       <app-message
-        *ngIf="emailControl.dirty && emailControl.hasError('uniqueName')"
+        *ngIf="emailControl.dirty && emailControl.hasError('uniqueEmail')"
         [type]="'error'"
         [message]="buildTranslationKeyForMessages('alreadyTaken') | translate">
       </app-message>
@@ -169,5 +169,14 @@
       [disabled]="registerForm.invalid || registerForm.pending"
       [type]="'primary'">
     </app-button>
+  </div>
+
+  <div>
+    <span>
+      {{ buildTranslationKeyForForm('alreadyRegistered') | translate }}
+      <strong class="text-blue-600 cursor-pointer" (click)="navigateToLogin()">
+        {{ buildTranslationKeyForForm('loginHere') | translate }}
+      </strong>
+    </span>
   </div>
 </form>

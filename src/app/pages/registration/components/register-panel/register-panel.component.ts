@@ -1,10 +1,16 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormControlStatus, FormGroup, Validators } from '@angular/forms';
-import { IUser, passwordShouldMatchValidator, UniqueEmailValidatorService, UserFacadeService } from '@shared-module';
+import {
+  IUser,
+  passwordShouldMatchValidator,
+  UniqueEmailValidatorService,
+  UserFacadeService,
+  EMAIL_REGEX,
+  Route,
+} from '@shared-module';
 import { bufferCount, filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
-const emailRegex = '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$';
+import { Router } from '@angular/router';
 
 interface IRegisterForm {
   firstName: FormControl<string>;
@@ -54,6 +60,7 @@ export class RegisterPanelComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private destroyRef: DestroyRef,
     private userFacadeService: UserFacadeService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +69,7 @@ export class RegisterPanelComponent implements OnInit {
       lastName: this.fb.control(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16)]),
       email: this.fb.control(null,
         {
-          validators: [Validators.required, Validators.pattern(emailRegex)],
+          validators: [Validators.required, Validators.pattern(EMAIL_REGEX)],
           asyncValidators: [this.uniqueEmailValidatorService.validate.bind(this.uniqueEmailValidatorService)],
           updateOn: 'blur',
         }),
@@ -87,6 +94,18 @@ export class RegisterPanelComponent implements OnInit {
       .subscribe(() => this.cdr.markForCheck());
   }
 
+  submitForm(): void {
+    const { termsAndConditions, ...newUser } = this.registerForm.value;
+
+    this.userFacadeService.registerUser(newUser as IUser);
+
+    this.registerForm.reset();
+  }
+
+  navigateToLogin(): void {
+    this.router.navigate([Route.login]);
+  }
+
   buildTranslationKeyForForm(label: string): string {
     return `registrationPage.form.${ label }`;
   }
@@ -97,13 +116,5 @@ export class RegisterPanelComponent implements OnInit {
 
   buildTranslationKeyForMessages(message: string): string {
     return `registrationPage.messages.${ message }`;
-  }
-
-  submitForm(): void {
-    const { termsAndConditions, ...newUser } = this.registerForm.value;
-
-    this.userFacadeService.registerUser(newUser as IUser);
-
-    this.registerForm.reset();
   }
 }
