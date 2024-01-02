@@ -1,0 +1,7 @@
+.logged-in::ng-deep {
+  svg {
+    path {
+      @apply fill-amber-500;
+    }
+  }
+}
