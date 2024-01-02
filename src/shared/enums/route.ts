@@ -18,4 +18,5 @@ export enum Route {
   repairServices = 'repair-services',
   support = 'support',
   register = 'register',
+  login = 'login',
 }

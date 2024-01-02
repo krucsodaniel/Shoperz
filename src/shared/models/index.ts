@@ -11,3 +11,4 @@ export * from './order.model';
 export * from './action-tracker.model';
 export * from './user.model';
 export * from './registration.model';
+export * from './login.model';
