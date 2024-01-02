@@ -50,7 +50,6 @@ import {
   UserFacadeService,
   UniqueEmailValidatorService,
   ExistingEmailValidatorService,
-  PasswordCheckValidatorService,
 } from './services';
 import {
   SearchbarComponent,
@@ -149,7 +148,6 @@ import { FirestoreDatePipe } from './pipes';
     UserFacadeService,
     UniqueEmailValidatorService,
     ExistingEmailValidatorService,
-    PasswordCheckValidatorService,
   ],
   exports: [
     SearchbarComponent,

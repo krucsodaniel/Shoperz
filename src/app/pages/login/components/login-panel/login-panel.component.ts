@@ -4,7 +4,6 @@ import {
   EMAIL_REGEX,
   ExistingEmailValidatorService,
   ILogin,
-  PasswordCheckValidatorService,
   Route,
   UserFacadeService,
 } from '@shared-module';
@@ -40,7 +39,6 @@ export class LoginPanelComponent implements OnInit {
     private fb: FormBuilder,
     private userFacadeService: UserFacadeService,
     private existingEmailValidatorService: ExistingEmailValidatorService,
-    private passwordCheckValidatorService: PasswordCheckValidatorService,
     private cdr: ChangeDetectorRef,
     private destroyRef: DestroyRef,
     private router: Router,
