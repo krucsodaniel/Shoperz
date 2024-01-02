@@ -4,7 +4,7 @@ import {
   HostBinding,
   OnInit,
 } from '@angular/core';
-import { IOrder, OrdersFacadeService, ProductFacadeService } from '@shared-module';
+import { IOrder, OrdersFacadeService, StoreInitializationService } from '@shared-module';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -22,11 +22,11 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     private ordersFacadeService: OrdersFacadeService,
-    private productsFacadeService: ProductFacadeService,
+    private storeInitializationService: StoreInitializationService,
   ) {}
 
-  ngOnInit(): void {
-    this.productsFacadeService.initOrdersPage();
+  async ngOnInit(): Promise<void> {
+    await this.storeInitializationService.initializeStore();
 
     this.orders$ = this.ordersFacadeService.getOrderProducts();
   }

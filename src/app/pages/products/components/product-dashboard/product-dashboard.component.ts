@@ -1,6 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnInit } from '@angular/core';
 import { CardStateService } from '../../services';
-import { ICalculatedProduct, ProductFacadeService, ProductsManipulationService } from '@shared-module';
+import {
+  ICalculatedProduct,
+  ProductFacadeService,
+  ProductsManipulationService,
+  StoreInitializationService
+} from '@shared-module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -16,6 +21,7 @@ export class ProductDashboardComponent implements OnInit {
 
   constructor(
     private productFacadeService: ProductFacadeService,
+    private storeInitializationService: StoreInitializationService,
     private cardStateService: CardStateService,
     private productsManipulationService: ProductsManipulationService,
     private cdr: ChangeDetectorRef,
@@ -23,7 +29,7 @@ export class ProductDashboardComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    await this.productFacadeService.initProductsPage();
+    await this.storeInitializationService.initializeStore();
 
     this.productsManipulationService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))

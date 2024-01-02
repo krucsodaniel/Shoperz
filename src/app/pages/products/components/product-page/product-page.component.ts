@@ -6,7 +6,12 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CartFacadeService, ICalculatedProduct, ProductFacadeService } from '@shared-module';
+import {
+  CartFacadeService,
+  ICalculatedProduct,
+  ProductFacadeService,
+  StoreInitializationService
+} from '@shared-module';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -26,6 +31,7 @@ export class ProductPageComponent implements OnInit {
 
   constructor(
     private productFacadeService: ProductFacadeService,
+    private storeInitializationService: StoreInitializationService,
     private cartFacadeService: CartFacadeService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
@@ -36,7 +42,7 @@ export class ProductPageComponent implements OnInit {
 
     this.productId = this.route.snapshot.paramMap.get('id');
 
-    await this.productFacadeService.initSpecificProductPage(this.productId);
+    await this.storeInitializationService.initializeStore();
 
     this.product$ = this.productFacadeService.getSingleProduct(this.productId);
 

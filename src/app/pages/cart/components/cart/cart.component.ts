@@ -6,7 +6,7 @@ import {
   OnInit,
   DestroyRef,
 } from '@angular/core';
-import { CartFacadeService, ICalculatedProduct, ProductFacadeService } from '@shared-module';
+import { CartFacadeService, ICalculatedProduct, StoreInitializationService } from '@shared-module';
 import { FormControl, Validators } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartFacadeService: CartFacadeService,
-    private productFacadeService: ProductFacadeService,
+    private storeInitializationService: StoreInitializationService,
     private cdr: ChangeDetectorRef,
     private destroyRef: DestroyRef,
   ) {}
@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.numberFormControl = new FormControl(1, [Validators.required]);
 
-    await this.productFacadeService.initCartPage();
+    await this.storeInitializationService.initializeStore();
 
     this.cartFacadeService.getCartProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))

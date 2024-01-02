@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
-import { ProductFacadeService } from '@shared-module';
+import { StoreInitializationService } from '@shared-module';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +10,9 @@ export class LoginComponent implements OnInit {
   @HostBinding('class')
   private readonly classes = 'flex justify-center m-auto py-16 gap-8';
 
-  constructor(private productFacadeService: ProductFacadeService) {}
+  constructor(private storeInitializationService: StoreInitializationService) {}
 
   async ngOnInit(): Promise<void> {
-    await this.productFacadeService.initLoginPage();
+    await this.storeInitializationService.initializeStore();
   }
 }
