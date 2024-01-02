@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ActionDispatcherService } from '../action-dispatcher.service';
 import { UserService } from './user.service';
-import { UserActions } from '../../store/users/user.actions';
+import { UserActions, UserSelectors } from '../../store/users';
 import { UserActionKey } from '../../enums/';
-import { IUser } from '../../models';
+import { ILogin, IUser } from '../../models';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserFacadeService {
@@ -19,5 +20,30 @@ export class UserFacadeService {
       UserActions.registerUser({ user }),
       UserActionKey.registerUser,
     );
+  }
+
+  async loginUser(credentials: ILogin): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      UserActions.loginUser({ credentials }),
+      UserActionKey.loginUser,
+    );
+  }
+
+  async logoutUser(): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      UserActions.logoutUser(),
+      UserActionKey.logoutUser,
+    );
+  }
+
+  async initUserState(): Promise<void> {
+    return await this.actionDispatcherService.dispatchAsync(
+      UserActions.initUser(),
+      UserActionKey.initializeUser,
+    );
+  }
+
+  isUserLoggedIn(): Observable<IUser> {
+    return this.store.select(UserSelectors.selectUser);
   }
 }

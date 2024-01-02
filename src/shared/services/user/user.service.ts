@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { collection, addDoc, Firestore, getDocs, query, where, getDoc } from '@angular/fire/firestore';
-import { FirestoreCollection, IUser } from '@shared-module';
+import { collection, addDoc, Firestore, getDocs, query, where, getDoc, doc } from '@angular/fire/firestore';
+import { FirestoreCollection, ILogin, IUser } from '@shared-module';
 import { from, map, Observable, switchMap } from 'rxjs';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class UserService {
   private readonly usersCollectionRef = collection(this.firestore, FirestoreCollection.users);
 
   getUserByEmail(email: string): Observable<IUser> {
-    const userQuery = query(this.usersCollectionRef, where('email', '==', `${email}`));
+    const userQuery = query(this.usersCollectionRef, where('email', '==', `${ email }`));
 
     return from(getDocs(userQuery))
       .pipe(
@@ -27,6 +27,22 @@ export class UserService {
       );
   }
 
+  getUserById(userId: string): Observable<Omit<IUser, "password">> {
+    const userDoc = doc(this.firestore, `${ FirestoreCollection.users }/${ userId }`);
+
+    return from(getDoc(userDoc))
+      .pipe(
+        map((doc) => {
+          const userData = doc.data() as IUser;
+          userData.id = doc.id;
+
+          const { password, ...user } = userData;
+
+          return user;
+        }),
+      )
+  }
+
   registerUser(user: IUser): Observable<IUser> {
     return from(addDoc(this.usersCollectionRef, user)).pipe(
       switchMap((docRef) => {
@@ -40,6 +56,25 @@ export class UserService {
           );
       })
     );
+  }
+
+  loginUser(loginCredentials: ILogin): Observable<Omit<IUser,"password">> {
+    return this.getUserByEmail(loginCredentials.email)
+      .pipe(
+        map((user: IUser) => {
+          if (!user) {
+            throw new Error('User not found');
+          }
+
+          if (loginCredentials.password !== user.password) {
+            throw new Error('Incorrect password');
+          }
+
+          const { password, ...loggedInUser } = user;
+
+          return loggedInUser;
+        })
+      )
   }
 
   constructor(private firestore: Firestore) {}
