@@ -29,6 +29,74 @@ export class UserEffects {
       );
   });
 
+  loginUser$ = createEffect((): Observable<Action> => {
+    return this.actions$
+      .pipe(
+        ofType(UserActions.loginUser),
+        switchMap(({ credentials }) => {
+          return this.userService.loginUser(credentials)
+            .pipe(
+              map((user: IUser) => {
+                this.setUserIdInLocalStorage(user.id);
+
+                return UserActions.userLoggedIn({ user });
+              }),
+              tap(() => this.actionTrackerService.sendAction(UserActionKey.loginUser)),
+              tap(() => this.toastService.showSuccessToast(this.translate.instant('loginPage.form.loginSuccess'))),
+              catchError((error: Error) => {
+                if (error.message === 'User not found') {
+                  this.toastService.showErrorToast(this.translate.instant('loginPage.form.loginSuccess'));
+                } else if (error.message === 'Incorrect password') {
+                  this.toastService.showErrorToast(this.translate.instant('loginPage.form.incorrectPassword'));
+                } else {
+                  this.toastService.showErrorToast(this.translate.instant('loginPage.form.anErrorOccured'));
+                }
+                this.actionTrackerService.sendAction(UserActionKey.loginUser, error);
+                return EMPTY;
+              }),
+            );
+        }),
+      );
+  });
+
+  logoutUser$ = createEffect((): Observable<Action> => {
+    return this.actions$
+      .pipe(
+        ofType(UserActions.logoutUser),
+        map(() => {
+          const userId = this.getUserIdFromLocalStorage();
+
+          return UserActions.userLoggedOut({ userId });
+        }),
+        tap(() => this.clearLocalStorage()),
+        tap(() => this.actionTrackerService.sendAction(UserActionKey.logoutUser)),
+        tap(() => this.toastService.showSuccessToast(this.translate.instant('loginPage.form.logoutSuccess'))),
+        catchError((error: HttpErrorResponse) => {
+          this.actionTrackerService.sendAction(UserActionKey.logoutUser, error);
+          return EMPTY;
+        }),
+      );
+  });
+
+  initUser$ = createEffect((): Observable<Action> =>
+    this.actions$.pipe(
+      ofType(UserActions.initUser),
+      switchMap(() => {
+        const userId = this.getUserIdFromLocalStorage();
+
+        return this.userService.getUserById(userId)
+          .pipe(
+            map((user: IUser) => UserActions.userInitialized({ user })),
+            tap(() => this.actionTrackerService.sendAction(UserActionKey.initializeUser)),
+            catchError((error: HttpErrorResponse) => {
+              this.actionTrackerService.sendAction(UserActionKey.initializeUser, error);
+              return EMPTY;
+            }),
+          );
+      }),
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private userService: UserService,
@@ -36,4 +104,16 @@ export class UserEffects {
     private toastService: ToastService,
     private translate: TranslateService,
   ) {}
+
+  private setUserIdInLocalStorage(userId: string): void {
+    localStorage.setItem('userId', userId);
+  }
+
+  private getUserIdFromLocalStorage(): string {
+    return localStorage.getItem('userId');
+  }
+
+  private clearLocalStorage(): void {
+    localStorage.clear();
+  }
 }

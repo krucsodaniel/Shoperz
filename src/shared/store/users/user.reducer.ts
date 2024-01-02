@@ -21,10 +21,22 @@ export const initialState: IUserState = {
 
 export const userReducer = createReducer(
   initialState,
-  on(UserActions.userRegistered, (state, { user }) => {
+  on(UserActions.userInitialized, (state, { user }) => {
     return {
       ...state,
       user: userAdapter.addOne(user, state.user),
+    };
+  }),
+  on(UserActions.userLoggedIn, (state, { user }) => {
+    return {
+      ...state,
+      user: userAdapter.addOne(user, state.user),
+    };
+  }),
+  on(UserActions.userLoggedOut, (state, { userId }) => {
+    return {
+      ...state,
+      user: userAdapter.removeOne(userId, state.user),
     };
   }),
   on(UserActions.errorUser, (state, { error }) => {
