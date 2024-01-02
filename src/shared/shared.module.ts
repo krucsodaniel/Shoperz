@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { productReducer, productsFeatureKey } from './store/products/product.reducer';
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
@@ -48,6 +49,8 @@ import {
   UserService,
   UserFacadeService,
   UniqueEmailValidatorService,
+  ExistingEmailValidatorService,
+  PasswordCheckValidatorService,
 } from './services';
 import {
   SearchbarComponent,
@@ -98,6 +101,7 @@ import { FirestoreDatePipe } from './pipes';
     ]),
     RouterLinkActive,
     SvgIconsModule,
+    OverlayModule,
   ],
   declarations: [
     SearchbarComponent,
@@ -144,6 +148,8 @@ import { FirestoreDatePipe } from './pipes';
     UserService,
     UserFacadeService,
     UniqueEmailValidatorService,
+    ExistingEmailValidatorService,
+    PasswordCheckValidatorService,
   ],
   exports: [
     SearchbarComponent,
