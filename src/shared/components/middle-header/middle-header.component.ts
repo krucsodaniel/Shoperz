@@ -32,7 +32,7 @@ export class MiddleHeaderComponent implements OnInit {
     this.amountInCart$ = this.cartFacadeService.getTotalAmountOfProductsInCart();
     this.amountOnWishlist$ = this.productFacadeService.getTotalAmountOnWishlist();
 
-    this.userFacadeService.isUserLoggedIn()
+    this.userFacadeService.selectUser()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((user: IUser) => {
         this.user = user;

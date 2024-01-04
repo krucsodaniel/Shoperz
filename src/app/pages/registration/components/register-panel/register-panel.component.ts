@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, HostBinding, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormControlStatus, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   IUser,
   passwordShouldMatchValidator,
@@ -8,8 +8,6 @@ import {
   EMAIL_REGEX,
   Route,
 } from '@shared-module';
-import { bufferCount, filter } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 
 interface IRegisterForm {
@@ -57,8 +55,6 @@ export class RegisterPanelComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private uniqueEmailValidatorService: UniqueEmailValidatorService,
-    private cdr: ChangeDetectorRef,
-    private destroyRef: DestroyRef,
     private userFacadeService: UserFacadeService,
     private router: Router,
   ) {}
@@ -75,8 +71,8 @@ export class RegisterPanelComponent implements OnInit {
         }),
       passwords: this.fb.group(
         {
-        password: this.fb.control(null, [Validators.required, Validators.minLength(8)]),
-        confirmPassword: this.fb.control(null),
+          password: this.fb.control(null, [Validators.required, Validators.minLength(8)]),
+          confirmPassword: this.fb.control(null),
         },
         {
           validators: [passwordShouldMatchValidator],
@@ -84,14 +80,6 @@ export class RegisterPanelComponent implements OnInit {
       ),
       termsAndConditions: this.fb.control(null, [Validators.requiredTrue]),
     });
-
-    this.registerForm.statusChanges
-      .pipe(
-        bufferCount(2, 1),
-        filter(([prevState]: FormControlStatus[]) => prevState === 'PENDING'),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe(() => this.cdr.markForCheck());
   }
 
   submitForm(): void {
@@ -105,21 +93,15 @@ export class RegisterPanelComponent implements OnInit {
     this.userFacadeService.registerUser(newUser as IUser);
 
     this.registerForm.reset();
+
+    this.router.navigate([Route.login]);
   }
 
   navigateToLogin(): void {
     this.router.navigate([Route.login]);
   }
 
-  buildTranslationKeyForForm(label: string): string {
-    return `registrationPage.form.${ label }`;
-  }
-
-  buildTranslationKeyForPlaceholders(placeholder: string): string {
-    return `registrationPage.placeholders.${ placeholder }`;
-  }
-
-  buildTranslationKeyForMessages(message: string): string {
-    return `registrationPage.messages.${ message }`;
+  buildTranslationKey(link: string, relativeKey: string): string {
+    return `registrationPage.${ link }.${ relativeKey }`;
   }
 }

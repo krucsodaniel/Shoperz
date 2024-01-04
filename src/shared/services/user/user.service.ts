@@ -7,6 +7,8 @@ import { from, map, Observable, switchMap } from 'rxjs';
 export class UserService {
   private readonly usersCollectionRef = collection(this.firestore, FirestoreCollection.users);
 
+  constructor(private firestore: Firestore) {}
+
   getUserByEmail(email: string): Observable<IUser> {
     const userQuery = query(this.usersCollectionRef, where('email', '==', `${ email }`));
 
@@ -76,6 +78,4 @@ export class UserService {
         })
       )
   }
-
-  constructor(private firestore: Firestore) {}
 }

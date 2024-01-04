@@ -4,7 +4,7 @@ import { SharedModule } from 'src/shared/shared.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 
-import { Route } from '@shared-module';
+import { Route, authGuard } from '@shared-module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -18,7 +18,6 @@ import { environment } from '../environments/environment';
 import { register } from 'swiper/element/bundle';
 
 register();
-import { authGuard } from '@shared-module';
 
 const routes: Routes = [
   { path: Route.base, redirectTo: Route.home, pathMatch: 'full' },

@@ -3,7 +3,11 @@
 
   <input
     class="p-3 rounded border-2 shadow focus:border-blue-600 placeholder:italic placeholder:text-slate-300"
-    [ngClass]="{invalid: !isValid && isDirty, valid: isValid && isDirty, pending: isPending }"
+    [ngClass]="{
+    invalid: control.invalid && control.dirty && control.touched,
+    valid: control.valid && control.dirty,
+    pending: control.pending,
+    }"
     [value]="value"
     [type]="type"
     [placeholder]="placeholder"

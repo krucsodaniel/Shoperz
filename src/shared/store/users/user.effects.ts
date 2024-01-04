@@ -41,8 +41,11 @@ export class UserEffects {
 
                 return UserActions.userLoggedIn({ user });
               }),
-              tap(() => this.actionTrackerService.sendAction(UserActionKey.loginUser)),
-              tap(() => this.toastService.showSuccessToast(this.translate.instant('loginPage.form.loginSuccess'))),
+              tap(() => {
+                this.actionTrackerService.sendAction(UserActionKey.loginUser);
+
+                this.toastService.showSuccessToast(this.translate.instant('loginPage.form.loginSuccess'));
+              }),
               catchError((error: Error) => {
                 if (error.message === 'User not found') {
                   this.toastService.showErrorToast(this.translate.instant('loginPage.form.loginSuccess'));
@@ -68,9 +71,13 @@ export class UserEffects {
 
           return UserActions.userLoggedOut({ userId });
         }),
-        tap(() => this.clearLocalStorage()),
-        tap(() => this.actionTrackerService.sendAction(UserActionKey.logoutUser)),
-        tap(() => this.toastService.showSuccessToast(this.translate.instant('loginPage.form.logoutSuccess'))),
+        tap(() => {
+          this.clearLocalStorage();
+
+          this.actionTrackerService.sendAction(UserActionKey.logoutUser);
+
+          this.toastService.showSuccessToast(this.translate.instant('loginPage.form.logoutSuccess'));
+        }),
         catchError((error: HttpErrorResponse) => {
           this.actionTrackerService.sendAction(UserActionKey.logoutUser, error);
           return EMPTY;

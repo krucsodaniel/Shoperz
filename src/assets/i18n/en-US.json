@@ -236,8 +236,8 @@
       "confirmPassword": "Confirm password"
     },
     "messages": {
-      "minLength": "Minimum required characters: ",
-      "maxLength": "Maximum allowed characters: ",
+      "minLength": "Minimum required characters: {{ numberOfCharacters }}",
+      "maxLength": "Maximum allowed characters: {{ numberOfCharacters }}",
       "required": "This field is required",
       "wrongFormat": "Wrong format",
       "alreadyTaken": "This e-mail is already taken",
@@ -266,8 +266,8 @@
       "password": "Enter password"
     },
     "messages": {
-      "minLength": "Minimum required characters: ",
-      "maxLength": "Maximum allowed characters: ",
+      "minLength": "Minimum required characters: {{ numberOfCharacters }}",
+      "maxLength": "Maximum allowed characters: {{ numberOfCharacters }}",
       "required": "This field is required",
       "wrongFormat": "Wrong format",
       "doesNotExist": "This email does not exist",

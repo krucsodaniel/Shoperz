@@ -198,8 +198,8 @@
       "confirmPassword": "Passwort bestätigen"
     },
     "messages": {
-      "minLength": "Mnd. erforderliche Zeichen: ",
-      "maxLength": "Maximal zulässige Zeichen: ",
+      "minLength": "Mnd. erforderliche Zeichen: {{ numberOfCharacters }}",
+      "maxLength": "Maximal zulässige Zeichen: {{ numberOfCharacters }}",
       "required": "Dieses Feld ist erforderlich",
       "wrongFormat": "Falsches Format",
       "alreadyTaken": "Diese E-Mail ist bereits vergeben",
@@ -230,8 +230,8 @@
       "password": "Passwort eingeben"
     },
     "messages": {
-      "minLength": "Mnd. erforderliche Zeichen: ",
-      "maxLength": "Maximal zulässige Zeichen: ",
+      "minLength": "Mnd. erforderliche Zeichen: {{ numberOfCharacters }}",
+      "maxLength": "Maximal zulässige Zeichen: {{ numberOfCharacters }}",
       "required": "Dieses Feld ist erforderlich",
       "wrongFormat": "Falsches Format",
       "doesNotExist": "Diese E-Mail existiert nicht",

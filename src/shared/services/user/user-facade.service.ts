@@ -37,13 +37,17 @@ export class UserFacadeService {
   }
 
   async initUserState(): Promise<void> {
+    if (!localStorage.getItem(('userId'))) {
+      return;
+    }
+
     return await this.actionDispatcherService.dispatchAsync(
       UserActions.initUser(),
       UserActionKey.initializeUser,
     );
   }
 
-  isUserLoggedIn(): Observable<IUser> {
+  selectUser(): Observable<IUser> {
     return this.store.select(UserSelectors.selectUser);
   }
 }

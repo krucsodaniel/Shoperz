@@ -12,9 +12,9 @@ export class UniqueEmailValidatorService implements AsyncValidator {
     return this.userService.getUserByEmail(control.value)
       .pipe(
         map((user: IUser) => {
-          return !user
-            ? null
-            : { uniqueEmail: { isTaken: true } };
+          return user
+            ? { uniqueEmail: { isTaken: true } }
+            : null;
         }),
         catchError(() => of({ uniqueEmail: { unknownError: true } })),
       )

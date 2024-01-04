@@ -7,8 +7,8 @@ export const authGuard: CanActivateFn = (): boolean => {
   const router = inject(Router);
   const isIdInLocalStorage = localStorage.getItem('userId');
 
-  if(isIdInLocalStorage) {
-    router.navigate([Route.products]);
+  if (isIdInLocalStorage) {
+    router.navigate([Route.home]);
     return false;
   }
 

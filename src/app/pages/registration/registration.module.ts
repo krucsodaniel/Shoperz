@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { RegistrationComponent, RegisterPanelComponent } from './components';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from 'src/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 

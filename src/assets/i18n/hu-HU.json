@@ -236,8 +236,8 @@
       "confirmPassword": "Jelszó megerősítése"
     },
     "messages": {
-      "minLength": "Min. szükséges karakterszám: ",
-      "maxLength": "Max. karakterszám: ",
+      "minLength": "Min. szükséges karakterszám: {{ numberOfCharacters }}",
+      "maxLength": "Max. karakterszám: {{ numberOfCharacters }}",
       "required": "A mező kitöltése kötelező",
       "wrongFormat": "Hibás formátum",
       "alreadyTaken": "Ez az e-mail már foglalt",
@@ -266,8 +266,8 @@
       "password": "Adjon meg jelszót"
     },
     "messages": {
-      "minLength": "Min. szükséges karakterszám: ",
-      "maxLength": "Max. karakterszám: ",
+      "minLength": "Min. szükséges karakterszám: {{ numberOfCharacters }}",
+      "maxLength": "Max. karakterszám: {{ numberOfCharacters }}",
       "required": "A mező kitöltése kötelező",
       "wrongFormat": "Hibás formátum",
       "doesNotExist": "Ez az e-mail nem létezik",

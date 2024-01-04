@@ -4,7 +4,7 @@ import { LoginComponent, LoginPanelComponent } from './components';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from 'src/shared/shared.module';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },

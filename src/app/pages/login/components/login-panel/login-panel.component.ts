@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, HostBinding, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormControlStatus, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   EMAIL_REGEX,
   ExistingEmailValidatorService,
@@ -7,8 +7,6 @@ import {
   Route,
   UserFacadeService,
 } from '@shared-module';
-import { bufferCount, filter } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 
 interface ILoginForm {
@@ -39,8 +37,6 @@ export class LoginPanelComponent implements OnInit {
     private fb: FormBuilder,
     private userFacadeService: UserFacadeService,
     private existingEmailValidatorService: ExistingEmailValidatorService,
-    private cdr: ChangeDetectorRef,
-    private destroyRef: DestroyRef,
     private router: Router,
   ) {}
 
@@ -54,14 +50,6 @@ export class LoginPanelComponent implements OnInit {
           }),
         password: this.fb.control(null, [Validators.required, Validators.minLength(8)]),
     });
-
-    this.loginForm.statusChanges
-      .pipe(
-        bufferCount(2, 1),
-        filter(([prevState]: FormControlStatus[]) => prevState === 'PENDING'),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe(() => this.cdr.markForCheck());
   }
 
   submitForm():void {
@@ -71,22 +59,14 @@ export class LoginPanelComponent implements OnInit {
 
     this.loginForm.reset();
 
-    this.router.navigate([Route.products]);
+    this.router.navigate([Route.home]);
   }
 
   navigateToRegister(): void {
     this.router.navigate([Route.register]);
   }
 
-  buildTranslationKeyForForm(label: string): string {
-    return `loginPage.form.${ label }`;
-  }
-
-  buildTranslationKeyForPlaceholders(placeholder: string): string {
-    return `loginPage.placeholders.${ placeholder }`;
-  }
-
-  buildTranslationKeyForMessages(message: string): string {
-    return `loginPage.messages.${ message }`;
+  buildTranslationKey(link: string, relativeKey: string): string {
+    return `loginPage.${ link }.${ relativeKey }`;
   }
 }
