@@ -4,7 +4,8 @@
     "baseUrl": "./",
     "paths": {
       "@shared-module": ["src/shared/index.ts"],
-      "@core-module": ["src/core/index.ts"]
+      "@core-module": ["src/core/index.ts"],
+      "types": ["node"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
