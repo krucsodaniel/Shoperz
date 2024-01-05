@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { ICategory } from '@shared-module';
+import { ICategory } from '../../models';
 import { CategoryActions } from './category.actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 

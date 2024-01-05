@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { collection, addDoc, Firestore, getDocs, query, where, getDoc, doc } from '@angular/fire/firestore';
-import { FirestoreCollection, ILogin, IUser } from '@shared-module';
+import { FirestoreCollection } from '../../enums';
+import { ILogin, IUser } from '../../models';
 import { from, map, Observable, switchMap } from 'rxjs';
 
 @Injectable()

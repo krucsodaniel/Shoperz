@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ILogin, IUser } from '@shared-module';
+import { ILogin, IUser } from '../../models';
 
 const enum UserAction {
   registerUser = '[User] Register user',

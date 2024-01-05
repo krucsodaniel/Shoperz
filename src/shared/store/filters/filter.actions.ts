@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { IFilterDefinition, SortingOption } from '@shared-module';
+import { IFilterDefinition } from '../../models';
+import { SortingOption } from '../../enums';
 
 export const enum FilterAction {
   initializeFilters = '[Filter] Initialize filters',

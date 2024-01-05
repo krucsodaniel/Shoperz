@@ -6,7 +6,7 @@ import { CartActions } from './cart.actions';
 import { catchError, EMPTY, map, Observable, switchMap, take, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { CartActionKey } from '@shared-module';
+import { CartActionKey } from '../../enums';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()

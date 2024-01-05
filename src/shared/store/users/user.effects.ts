@@ -4,7 +4,8 @@ import { ActionTrackerService, ToastService, UserService } from '../../services'
 import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { UserActions } from './user.actions';
-import { UserActionKey, IUser } from '@shared-module';
+import { IUser } from '../../models';
+import { UserActionKey } from '../../enums';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 

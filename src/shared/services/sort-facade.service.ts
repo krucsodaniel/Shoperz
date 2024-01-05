@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SortingOption } from '@shared-module';
+import { SortingOption } from '../enums';
 import { FilterSelectors } from '../store/filters';
 import { filter, Observable } from 'rxjs';
 

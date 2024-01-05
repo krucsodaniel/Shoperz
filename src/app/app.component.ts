@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { StoreInitializationService } from '@shared-module';
+import { StoreInitializationService } from 'src/shared/services';
 
 @Component({
   selector: 'app-root',

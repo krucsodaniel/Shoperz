@@ -4,7 +4,8 @@ import { ActionTrackerService, CategoryService } from '../../services';
 import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { CategoryActions } from './category.actions';
-import { CategoryActionKey, ICategory } from '@shared-module';
+import { CategoryActionKey} from '../../enums';
+import { ICategory } from '../../models';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()

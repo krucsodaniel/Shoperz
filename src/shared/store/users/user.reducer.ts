@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { IUser } from '@shared-module';
+import { IUser } from '../../models';
 import { UserActions } from './user.actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
