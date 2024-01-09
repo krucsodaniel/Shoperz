@@ -1,5 +1,5 @@
 <label class="flex flex-col">
-  <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">{{ label }}</span>
+  <span *ngIf="label" class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">{{ label }}</span>
 
   <input
     class="p-3 rounded border-2 shadow focus:border-blue-600 placeholder:italic placeholder:text-slate-300"

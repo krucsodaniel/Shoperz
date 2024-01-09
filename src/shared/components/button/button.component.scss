@@ -1,7 +1,5 @@
-.primary {
-  @apply bg-blue-600 text-white;
-}
-
-.disabled {
-  @apply bg-white text-gray-300 border-2 border-gray-300 border-dashed pointer-events-none;
+:host {
+  &.disabled {
+    @apply bg-white text-gray-300 border-2 border-gray-300 border-dashed pointer-events-none;
+  }
 }

@@ -33,6 +33,10 @@ export class LoginPanelComponent implements OnInit {
     return this.loginForm.controls.password;
   }
 
+  get isDisabled(): boolean {
+    return this.loginForm.invalid || this.loginForm.pending;
+  }
+
   constructor(
     private fb: FormBuilder,
     private userFacadeService: UserFacadeService,
@@ -53,6 +57,10 @@ export class LoginPanelComponent implements OnInit {
   }
 
   submitForm():void {
+    if (this.isDisabled) {
+      return;
+    }
+
     const credentials = this.loginForm.value;
 
     this.userFacadeService.loginUser(credentials as ILogin);

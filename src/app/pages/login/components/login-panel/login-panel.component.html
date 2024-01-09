@@ -1,5 +1,5 @@
-<form class="flex flex-col gap-7 w-72" [formGroup]="loginForm" (ngSubmit)="submitForm()">
-  <span class="text-size-24 font-bold text-blue-600">{{ buildTranslationKey('form','login') | translate }}</span>
+<form class="flex flex-col gap-7 w-72" [formGroup]="loginForm">
+  <span class="text-size-24 font-bold text-blue-600">{{ buildTranslationKey('form', 'login') | translate }}</span>
 
   <div class="flex flex-col gap-5">
     <div class="flex flex-col gap-2 h-24">
@@ -57,13 +57,11 @@
     </div>
   </div>
 
-  <div>
-    <app-button
-      [text]="buildTranslationKey('form','login') | translate"
-      [disabled]="loginForm.invalid || loginForm.pending"
-      [type]="'primary'">
-    </app-button>
-  </div>
+  <app-button
+    [text]="buildTranslationKey('form','login') | translate"
+    [disabled]="isDisabled"
+    (click)="submitForm()">
+  </app-button>
 
   <div>
     <span>

@@ -30,10 +30,8 @@ export class CartComponent implements OnInit {
     private destroyRef: DestroyRef,
   ) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.numberFormControl = new FormControl(1, [Validators.required]);
-
-    await this.storeInitializationService.initializeStore();
 
     this.cartFacadeService.getCartProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))

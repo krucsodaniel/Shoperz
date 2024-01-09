@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -7,12 +7,16 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
+  @HostBinding('class.disabled')
   @Input()
   disabled: boolean;
 
   @Input()
-  type: 'primary' | 'secondary' = 'primary';
-
-  @Input()
   text: string;
+
+  @HostBinding('class')
+  private readonly classes = 'w-full h-12 flex justify-center items-center bg-blue-600 text-white text-size-18 font-bold border-2 border-blue-600 rounded transition duration-300 cursor-pointer';
+
+  @HostBinding('attr.role')
+  private readonly role = 'button';
 }

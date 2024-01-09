@@ -52,6 +52,10 @@ export class RegisterPanelComponent implements OnInit {
     return this.registerForm.controls.passwords.controls.confirmPassword;
   }
 
+  get isDisabled(): boolean {
+    return this.registerForm.invalid || this.registerForm.pending;
+  }
+
   constructor(
     private fb: FormBuilder,
     private uniqueEmailValidatorService: UniqueEmailValidatorService,
@@ -63,12 +67,14 @@ export class RegisterPanelComponent implements OnInit {
     this.registerForm = this.fb.group<IRegisterForm>({
       firstName: this.fb.control(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16)]),
       lastName: this.fb.control(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16)]),
-      email: this.fb.control(null,
+      email: this.fb.control(
+        null,
         {
           validators: [Validators.required, Validators.pattern(EMAIL_REGEX)],
           asyncValidators: [this.uniqueEmailValidatorService.validate.bind(this.uniqueEmailValidatorService)],
           updateOn: 'blur',
-        }),
+        },
+      ),
       passwords: this.fb.group(
         {
           password: this.fb.control(null, [Validators.required, Validators.minLength(8)]),
@@ -83,6 +89,10 @@ export class RegisterPanelComponent implements OnInit {
   }
 
   submitForm(): void {
+    if (this.isDisabled) {
+      return;
+    }
+
     const { termsAndConditions, passwords: { confirmPassword, ...passwords }, ...user } = this.registerForm.value;
 
     const newUser = {
@@ -102,6 +112,6 @@ export class RegisterPanelComponent implements OnInit {
   }
 
   buildTranslationKey(link: string, relativeKey: string): string {
-    return `registrationPage.${ link }.${ relativeKey }`;
+    return `registrationPage.${link}.${relativeKey}`;
   }
 }

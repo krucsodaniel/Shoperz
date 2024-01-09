@@ -1,5 +1,5 @@
-<form class="flex flex-col gap-7" [formGroup]="registerForm" (ngSubmit)="submitForm()">
-  <span class="text-size-24 font-bold text-blue-600">{{ buildTranslationKey('form','register') | translate }}</span>
+<form class="flex flex-col gap-7" [formGroup]="registerForm">
+  <span class="text-size-24 font-bold text-blue-600">{{ buildTranslationKey('form', 'register') | translate }}</span>
 
   <div class="flex gap-5 h-20">
     <div class="flex flex-col gap-1">
@@ -152,14 +152,11 @@
       [isCheckBoxHidden]="false"></app-checkbox>
   </div>
 
-  <div>
-    <app-button
-      [text]="buildTranslationKey('form','signUp') | translate"
-      [disabled]="registerForm.invalid || registerForm.pending"
-      [type]="'primary'">
-    </app-button>
-  </div>
-
+  <app-button
+    [text]="buildTranslationKey('form','signUp') | translate"
+    [disabled]="isDisabled"
+    (click)="submitForm()">
+  </app-button>
   <div>
     <span>
       {{ buildTranslationKey('form','alreadyRegistered') | translate }}
