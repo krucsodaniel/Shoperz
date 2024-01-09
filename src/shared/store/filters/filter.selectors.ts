@@ -1,7 +1,8 @@
 import { IFilterState, filtersFeatureKey } from './filter.reducer';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { ProductSelectors } from '@shared-module';
-import { ICalculatedProduct, SortingOption } from '@shared-module';
+import { ProductSelectors } from '../products';
+import { ICalculatedProduct } from '../../models';
+import { SortingOption } from '../../enums';
 
 export namespace FilterSelectors {
   export const selectFilterFeature = createFeatureSelector<IFilterState>(filtersFeatureKey);

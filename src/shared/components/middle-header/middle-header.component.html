@@ -7,7 +7,26 @@
   <app-searchbar class="mx-auto md:mx-0 min-w-75 max-w-180 my-5"></app-searchbar>
 
   <div class="flex justify-center md:justify-evenly gap-x-4">
-    <app-nav-icon [url]="'profile'"></app-nav-icon>
+    <app-nav-icon
+      cdkOverlayOrigin
+      #trigger="cdkOverlayOrigin"
+      [user]="user"
+      [url]="'profile'"
+      (click)="user ? toggleDropdown() : navigateToLogin()">
+    </app-nav-icon>
+
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="isDropdownOpened"
+      [cdkConnectedOverlayHasBackdrop]="true"
+      [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+      (backdropClick)="toggleDropdown()">
+      <div class="flex flex-col gap-3 p-3 border rounded text-white bg-grey-600">
+        <span class="cursor-pointer">{{ buildTranslationKeyForPanel('profile') | translate }}</span>
+        <span class="cursor-pointer" (click)="logOut()">{{ buildTranslationKeyForPanel('logOut') | translate }}</span>
+      </div>
+    </ng-template>
 
     <app-nav-icon [routerLink]="Route.cart" [url]="'cart'" [amount]="amountInCart$ | async"></app-nav-icon>
 

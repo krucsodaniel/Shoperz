@@ -1,0 +1,168 @@
+<form class="flex flex-col gap-7" [formGroup]="registerForm">
+  <span class="text-size-24 font-bold text-blue-600">{{ buildTranslationKey('form', 'register') | translate }}</span>
+
+  <div class="flex gap-5 h-20">
+    <div class="flex flex-col gap-1">
+      <app-text-input
+        [formControlName]="'firstName'"
+        [label]="buildTranslationKey('form','firstName') | translate"
+        [type]="'text'"
+        [placeholder]="buildTranslationKey('placeholders','firstName') | translate">
+      </app-text-input>
+
+      <app-message
+        *ngIf="firstNameControl.touched && firstNameControl.hasError('minlength')"
+        [type]="'error'"
+        [message]="(buildTranslationKey('messages','minLength') | translate: { numberOfCharacters: firstNameControl.getError('minlength')['requiredLength'] })">
+      </app-message>
+
+      <app-message
+        *ngIf="firstNameControl.touched && firstNameControl.hasError('maxlength')"
+        [type]="'error'"
+        [message]="(buildTranslationKey('messages','maxLength') | translate: { numberOfCharacters: firstNameControl.getError('maxlength')['requiredLength'] })">
+      </app-message>
+
+      <app-message
+        *ngIf="firstNameControl.dirty && firstNameControl.hasError('required')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','required') | translate">
+      </app-message>
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <app-text-input
+        [formControlName]="'lastName'"
+        [label]="buildTranslationKey('form','lastName') | translate"
+        [type]="'text'"
+        [placeholder]="buildTranslationKey('placeholders','lastName') | translate">
+      </app-text-input>
+
+      <app-message
+        *ngIf="lastNameControl.touched && lastNameControl.hasError('minlength')"
+        [type]="'error'"
+        [message]="(buildTranslationKey('messages','minLength') | translate: { numberOfCharacters: lastNameControl.getError('minlength')['requiredLength'] })">
+      </app-message>
+
+      <app-message
+        *ngIf="lastNameControl.touched && lastNameControl.hasError('maxlength')"
+        [type]="'error'"
+        [message]="(buildTranslationKey('messages','maxLength') | translate: { numberOfCharacters: lastNameControl.getError('maxlength')['requiredLength'] })">
+      </app-message>
+
+      <app-message
+        *ngIf="lastNameControl.dirty && lastNameControl.hasError('required')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','required') | translate">
+      </app-message>
+    </div>
+  </div>
+
+  <div class="flex gap-5 h-20">
+    <div class="flex flex-col gap-1 w-full">
+      <app-text-input
+        [formControlName]="'email'"
+        [label]="buildTranslationKey('form','email') | translate"
+        [type]="'text'"
+        [placeholder]="buildTranslationKey('placeholders','email') | translate">
+      </app-text-input>
+
+      <app-message
+        *ngIf="emailControl.touched && emailControl.hasError('pattern')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','wrongFormat') | translate">
+      </app-message>
+
+      <app-message
+        *ngIf="emailControl.touched && emailControl.hasError('required')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','required') | translate">
+      </app-message>
+
+      <app-message
+        *ngIf="emailControl.dirty && emailControl.hasError('uniqueEmail')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','alreadyTaken') | translate">
+      </app-message>
+
+      <app-message
+        *ngIf="emailControl.pending"
+        [type]="'info'"
+        [message]="buildTranslationKey('messages','checkingEmail') | translate">
+      </app-message>
+    </div>
+  </div>
+
+  <div class="flex gap-5 h-20" formGroupName="passwords">
+    <div class="flex flex-col gap-1">
+      <app-text-input
+        [formControlName]="'password'"
+        [label]="buildTranslationKey('form','password') | translate"
+        [type]="'password'"
+        [placeholder]="buildTranslationKey('placeholders','password') | translate">
+      </app-text-input>
+
+      <app-message
+        *ngIf="passwordControl.touched && passwordControl.hasError('minlength')"
+        [type]="'error'"
+        [message]="(buildTranslationKey('messages','minLength') | translate : { numberOfCharacters: passwordControl.getError('minlength')['requiredLength'] })">
+      </app-message>
+
+      <app-message
+        *ngIf="passwordControl.dirty && passwordControl.hasError('required')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','required') | translate">
+      </app-message>
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <app-text-input
+        [formControlName]="'confirmPassword'"
+        [label]="buildTranslationKey('form','confirmPassword') | translate"
+        [type]="'password'"
+        [placeholder]="buildTranslationKey('placeholders','confirmPassword') | translate">
+      </app-text-input>
+
+      <app-message
+        *ngIf="confirmPasswordControl.touched && confirmPasswordControl.hasError('minlength')"
+        [type]="'error'"
+        [message]="(buildTranslationKey('messages','minLength') | translate: { numberOfCharacters: confirmPasswordControl.getError('minlength')['requiredLength'] })">
+      </app-message>
+
+      <app-message
+        *ngIf="confirmPasswordControl.dirty && confirmPasswordControl.hasError('required')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','required') | translate">
+      </app-message>
+
+      <app-message
+        *ngIf="confirmPasswordControl.dirty && confirmPasswordControl.hasError('passwordShouldMatch')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','passwordMatch') | translate">
+      </app-message>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-end p-2 gap-3">
+    <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+      {{ buildTranslationKey('form','termsAndConditions') | translate }}
+    </span>
+
+    <app-checkbox
+      [formControlName]="'termsAndConditions'"
+      [isCheckBoxHidden]="false"></app-checkbox>
+  </div>
+
+  <app-button
+    [text]="buildTranslationKey('form','signUp') | translate"
+    [disabled]="isDisabled"
+    (click)="submitForm()">
+  </app-button>
+  <div>
+    <span>
+      {{ buildTranslationKey('form','alreadyRegistered') | translate }}
+      <strong class="text-blue-600 cursor-pointer" (click)="navigateToLogin()">
+        {{ buildTranslationKey('form','loginHere') | translate }}
+      </strong>
+    </span>
+  </div>
+</form>

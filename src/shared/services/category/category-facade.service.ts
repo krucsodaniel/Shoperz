@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { filter, Observable } from 'rxjs';
-import { ActionDispatcherService, ICategory } from '@shared-module';
+import { ActionDispatcherService } from '../action-dispatcher.service';
+import { ICategory } from '../../models';
 import { CategoryService } from './category.service';
 import { Store } from '@ngrx/store';
 import { CategoryActions, CategorySelectors } from '../../store';

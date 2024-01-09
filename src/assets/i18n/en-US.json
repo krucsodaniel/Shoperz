@@ -210,6 +210,72 @@
     "wishlist": {
       "emptyListMessage": "Sorry, your wishlist is empty!",
       "additionalMessage": "Add product to your wishlist"
+    },
+    "operations": "Operations",
+    "emptyList": "Sorry, your wishlist is empty."
+  },
+  "registrationPage": {
+    "form": {
+      "register": "Register",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "E-mail",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "termsAndConditions": "I have read and agree with the Terms & Conditions",
+      "signUp": "Sign up",
+      "registrationSuccess": "Registration successful",
+      "alreadyRegistered": "Already registered?",
+      "loginHere": "Login here"
+    },
+    "placeholders": {
+      "firstName": "Enter first name",
+      "lastName": "Enter last name",
+      "email": "Enter e-mail",
+      "password": "Enter password",
+      "confirmPassword": "Confirm password"
+    },
+    "messages": {
+      "minLength": "Minimum required characters: {{ numberOfCharacters }}",
+      "maxLength": "Maximum allowed characters: {{ numberOfCharacters }}",
+      "required": "This field is required",
+      "wrongFormat": "Wrong format",
+      "alreadyTaken": "This e-mail is already taken",
+      "checkingEmail": "Checking e-mail...",
+      "passwordMatch": "Passwords must be the same"
     }
+  },
+  "loginPage": {
+    "form": {
+      "login": "Login",
+      "email": "E-mail",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "loginSuccess": "Login successful",
+      "loginError": "Login unsuccessful",
+      "logoutSuccess": "Logout successful",
+      "logoutError": "Logout unsuccessful",
+      "notRegistered": "Not registered?",
+      "registerHere": "Register here",
+      "userNotFound": "User not found",
+      "incorrectPassword": "Incorrect password",
+      "anErrorOccured": "An error occured"
+    },
+    "placeholders": {
+      "email": "Enter e-mail",
+      "password": "Enter password"
+    },
+    "messages": {
+      "minLength": "Minimum required characters: {{ numberOfCharacters }}",
+      "maxLength": "Maximum allowed characters: {{ numberOfCharacters }}",
+      "required": "This field is required",
+      "wrongFormat": "Wrong format",
+      "doesNotExist": "This email does not exist",
+      "checkingEmail": "Checking e-mail..."
+    }
+  },
+  "profilePage": {
+    "profile": "Profile",
+    "logOut": "Log out"
   }
 }

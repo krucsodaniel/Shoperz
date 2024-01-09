@@ -1,0 +1,16 @@
+<label class="flex flex-col">
+  <span *ngIf="label" class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">{{ label }}</span>
+
+  <input
+    class="p-3 rounded border-2 shadow focus:border-blue-600 placeholder:italic placeholder:text-slate-300"
+    [ngClass]="{
+    invalid: control.invalid && control.dirty && control.touched,
+    valid: control.valid && control.dirty,
+    pending: control.pending,
+    }"
+    [value]="value"
+    [type]="type"
+    [placeholder]="placeholder"
+    (input)="onInputChange($event)"
+    (blur)="onBlur()">
+</label>

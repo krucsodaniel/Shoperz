@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IBrand } from '@shared-module';
+import { IBrand } from '../../models';
 
 const enum BrandAction {
   loadBrands = '[Brands] Load brands',

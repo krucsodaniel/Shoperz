@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, filter} from 'rxjs';
-import { FilterFacadeService, ICalculatedProduct } from '@shared-module';
+import { FilterFacadeService } from '../filter-facade.service';
+import { ICalculatedProduct } from '../../models';
 
 @Injectable()
 export class ProductsManipulationService {

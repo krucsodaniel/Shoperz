@@ -210,6 +210,72 @@
     "wishlist": {
       "emptyListMessage": "Sajons üres a kívánságlistád!",
       "additionalMessage": "Add a kedvenc termékeidet a kívánságlistádhoz"
+    },
+    "operations": "Műveletek",
+    "emptyList": "Sajons üres a kívánságlistád"
+  },
+  "registrationPage": {
+    "form": {
+      "register": "Regisztráció",
+      "firstName": "Vezetéknév",
+      "lastName": "Keresztnév",
+      "email": "E-mail",
+      "password": "Jelszó",
+      "confirmPassword": "Jelszó mégegyszer",
+      "termsAndConditions": "Elolvastam és elfogadom a Felhasználási feltételeket",
+      "signUp": "Regisztráció",
+      "registrationSuccess": "Sikeres regisztráció",
+      "alreadyRegistered": "Már regisztrált?",
+      "loginHere": "Jelentkezzen be"
+    },
+    "placeholders": {
+      "firstName": "Adjon meg vezetéknevet",
+      "lastName": "Adjon meg keresztnevet",
+      "email": "Adjon meg e-mailt",
+      "password": "Adjon meg jelszót",
+      "confirmPassword": "Jelszó megerősítése"
+    },
+    "messages": {
+      "minLength": "Min. szükséges karakterszám: {{ numberOfCharacters }}",
+      "maxLength": "Max. karakterszám: {{ numberOfCharacters }}",
+      "required": "A mező kitöltése kötelező",
+      "wrongFormat": "Hibás formátum",
+      "alreadyTaken": "Ez az e-mail már foglalt",
+      "checkingEmail": "E-mail ellenőrzése...",
+      "passwordMatch": "A jelszavak nem egyeznek"
     }
+  },
+  "loginPage": {
+    "form": {
+      "login": "Bejelentkezés",
+      "email": "E-mail",
+      "password": "Jelszó",
+      "rememberMe": "Emlékezz rám",
+      "loginSuccess": "Sikeres bejelentkezés",
+      "loginError": "Sikertelen bejelentkezés",
+      "logoutSuccess": "Sikeres kijelentkezés",
+      "logoutError": "Sikertelen kijelentkezés",
+      "notRegistered": "Nem regisztrált?",
+      "registerHere": "Regisztráció",
+      "userNotFound": "Felhasználó nem található",
+      "incorrectPassword": "Hibás jelszó",
+      "anErrorOccured": "Hiba történt"
+    },
+    "placeholders": {
+      "email": "Adjon meg e-mailt",
+      "password": "Adjon meg jelszót"
+    },
+    "messages": {
+      "minLength": "Min. szükséges karakterszám: {{ numberOfCharacters }}",
+      "maxLength": "Max. karakterszám: {{ numberOfCharacters }}",
+      "required": "A mező kitöltése kötelező",
+      "wrongFormat": "Hibás formátum",
+      "doesNotExist": "Ez az e-mail nem létezik",
+      "checkingEmail": "E-mail ellenőrzése..."
+    }
+  },
+  "profilePage": {
+    "profile": "Profil",
+    "logOut": "Kijelentkezés"
   }
 }

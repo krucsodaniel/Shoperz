@@ -4,7 +4,8 @@ import { ActionTrackerService, BrandService } from '../../services';
 import { catchError, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { BrandActions } from './brand.actions';
-import { BrandActionKey, IBrand } from '@shared-module';
+import { BrandActionKey } from '../../enums';
+import { IBrand } from '../../models';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()

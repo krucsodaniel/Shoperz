@@ -1,0 +1,5 @@
+:host {
+  &.disabled {
+    @apply bg-white text-gray-300 border-2 border-gray-300 border-dashed pointer-events-none;
+  }
+}

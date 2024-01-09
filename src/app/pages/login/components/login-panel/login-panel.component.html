@@ -1,0 +1,75 @@
+<form class="flex flex-col gap-7 w-72" [formGroup]="loginForm">
+  <span class="text-size-24 font-bold text-blue-600">{{ buildTranslationKey('form', 'login') | translate }}</span>
+
+  <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-2 h-24">
+      <app-text-input
+        [formControlName]="'email'"
+        [label]="buildTranslationKey('form','email') | translate"
+        [type]="'text'"
+        [placeholder]="buildTranslationKey('placeholders','email') | translate">
+      </app-text-input>
+
+      <app-message
+        *ngIf="emailControl.touched && emailControl.hasError('pattern')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','wrongFormat') | translate">
+      </app-message>
+
+      <app-message
+        *ngIf="emailControl.touched && emailControl.hasError('required')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','required') | translate">
+      </app-message>
+
+      <app-message
+        *ngIf="emailControl.dirty && emailControl.hasError('existingEmail')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','doesNotExist') | translate">
+      </app-message>
+
+      <app-message
+        *ngIf="emailControl.pending"
+        [type]="'info'"
+        [message]="buildTranslationKey('messages','checkingEmail') | translate">
+      </app-message>
+    </div>
+
+    <div class="flex flex-col gap-2 h-20 password">
+      <app-text-input
+        [formControlName]="'password'"
+        [label]="buildTranslationKey('form','password') | translate"
+        [type]="'password'"
+        [placeholder]="buildTranslationKey('placeholders','password') | translate">
+      </app-text-input>
+
+      <app-message
+        *ngIf="passwordControl.touched && passwordControl.hasError('minlength')"
+        [type]="'error'"
+        [message]="(buildTranslationKey('messages','minLength') | translate: { numberOfCharacters: passwordControl.getError('minlength')['requiredLength'] })">
+      </app-message>
+
+      <app-message
+        *ngIf="passwordControl.dirty && passwordControl.hasError('required')"
+        [type]="'error'"
+        [message]="buildTranslationKey('messages','required') | translate">
+      </app-message>
+    </div>
+  </div>
+
+  <app-button
+    [text]="buildTranslationKey('form','login') | translate"
+    [disabled]="isDisabled"
+    (click)="submitForm()">
+  </app-button>
+
+  <div>
+    <span>
+      {{ buildTranslationKey('form','notRegistered') | translate }}
+
+      <strong class="text-blue-600 cursor-pointer" (click)="navigateToRegister()">
+        {{ buildTranslationKey('form','registerHere') | translate }}
+      </strong>
+    </span>
+  </div>
+</form>

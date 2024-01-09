@@ -4,10 +4,12 @@ import {
   HostBinding,
   Input,
 } from '@angular/core';
+import { IUser } from '../../models';
 
 @Component({
   selector: 'app-nav-icon',
   templateUrl: './nav-icon.component.html',
+  styleUrls: ['./nav-icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavIconComponent {
@@ -15,6 +17,8 @@ export class NavIconComponent {
   url: string;
   @Input()
   amount: number;
+  @Input()
+  user: IUser;
 
   readonly routerLink: string;
 

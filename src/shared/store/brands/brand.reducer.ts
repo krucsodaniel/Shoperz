@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { IBrand } from '@shared-module';
+import { IBrand } from '../../models';
 import { BrandActions } from './brand.actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 

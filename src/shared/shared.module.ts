@@ -6,14 +6,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { productReducer, productsFeatureKey } from './store/products/product.reducer';
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
 import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
 import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
-import { feedbackReducer, feedbackFeatureKey } from './store/feedback';
+import { feedbackReducer, feedbackFeatureKey } from './store';
 import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
+import { userReducer, userFeatureKey } from './store/users/user.reducer';
 import { ProductEffects } from './store/products/product.effects';
 import { BrandEffects } from './store/brands/brand.effects';
 import { CategoryEffects } from './store/categories/category.effects';
@@ -21,6 +23,7 @@ import { CartEffects } from './store/cart/cart.effects';
 import { FeedbackEffects } from './store/feedback';
 import { OrdersEffects } from './store/orders/orders.effects';
 import { FilterEffects } from './store/filters/filter.effect';
+import { UserEffects } from './store/users/user.effects';
 import {
   BrandService,
   BrandFacadeService,
@@ -43,6 +46,11 @@ import {
   WishlistFacadeService,
   ActionDispatcherService,
   ActionTrackerService,
+  UserService,
+  UserFacadeService,
+  UniqueEmailValidatorService,
+  ExistingEmailValidatorService,
+  StoreInitializationService,
 } from './services';
 import {
   SearchbarComponent,
@@ -60,9 +68,14 @@ import {
   CheckboxGroupComponent,
   CheckboxComponent,
   EmptyListComponent,
+  TextInputComponent,
+  ButtonComponent,
+  MessageComponent,
 } from './components';
 import { SvgIconsModule } from '@core-module';
 import { FirestoreDatePipe, SafePipe } from './pipes';
+import { environment } from 'src/environments/environment';
+import { APP_CONFIG } from './constants';
 
 @NgModule({
   imports: [
@@ -78,6 +91,7 @@ import { FirestoreDatePipe, SafePipe } from './pipes';
     StoreModule.forFeature(feedbackFeatureKey, feedbackReducer),
     StoreModule.forFeature(ordersFeatureKey, ordersReducer),
     StoreModule.forFeature(filtersFeatureKey, filterReducer),
+    StoreModule.forFeature(userFeatureKey, userReducer),
     EffectsModule.forFeature([
       ProductEffects,
       BrandEffects,
@@ -86,9 +100,11 @@ import { FirestoreDatePipe, SafePipe } from './pipes';
       OrdersEffects,
       FilterEffects,
       FeedbackEffects,
+      UserEffects,
     ]),
     RouterLinkActive,
     SvgIconsModule,
+    OverlayModule,
   ],
   declarations: [
     SearchbarComponent,
@@ -108,6 +124,9 @@ import { FirestoreDatePipe, SafePipe } from './pipes';
     CheckboxComponent,
     SafePipe,
     EmptyListComponent,
+    TextInputComponent,
+    ButtonComponent,
+    MessageComponent,
   ],
   providers: [
     SearchFacadeService,
@@ -131,6 +150,15 @@ import { FirestoreDatePipe, SafePipe } from './pipes';
     WishlistFacadeService,
     ActionDispatcherService,
     ActionTrackerService,
+    UserService,
+    UserFacadeService,
+    UniqueEmailValidatorService,
+    ExistingEmailValidatorService,
+    StoreInitializationService,
+    {
+      provide: APP_CONFIG,
+      useValue: environment,
+    },
   ],
   exports: [
     SearchbarComponent,
@@ -145,6 +173,9 @@ import { FirestoreDatePipe, SafePipe } from './pipes';
     CheckboxGroupComponent,
     SafePipe,
     EmptyListComponent,
+    TextInputComponent,
+    ButtonComponent,
+    MessageComponent,
   ],
 })
 export class SharedModule {}

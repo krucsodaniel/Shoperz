@@ -1,5 +1,5 @@
 <button class="relative w-full h-full" [routerLink]="routerLink">
-  <svg-icon class="w-full h-full" [src]="url"></svg-icon>
+  <svg-icon [class.logged-in]="user" class="w-full h-full" [src]="url"></svg-icon>
 
   <app-badge *ngIf="amount > 0" class="absolute -top-1 -right-3 cursor-pointer" [amount]="amount"></app-badge>
 </button>

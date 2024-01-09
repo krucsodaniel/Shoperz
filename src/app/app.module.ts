@@ -4,7 +4,7 @@ import { SharedModule } from 'src/shared/shared.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 
-import { Route } from '@shared-module';
+import { Route, authGuard } from '@shared-module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -44,6 +44,16 @@ const routes: Routes = [
   {
     path: Route.wishlist,
     loadChildren: () => import('./pages/wishlist/wishlist.module').then(({ WishlistModule }) => WishlistModule),
+  },
+  {
+    path: Route.register,
+    loadChildren: () => import('./pages/registration/registration.module').then(({ RegistrationModule }) => RegistrationModule),
+    canActivate: [authGuard],
+  },
+  {
+    path: Route.login,
+    loadChildren: () => import('./pages/login/login.module').then(({ LoginModule }) => LoginModule),
+    canActivate: [authGuard],
   },
 ];
 

@@ -24,9 +24,7 @@ export class ProductDashboardComponent implements OnInit {
     private destroyRef: DestroyRef,
   ) {}
 
-  async ngOnInit(): Promise<void> {
-    await this.productFacadeService.initProductsPage();
-
+  ngOnInit(): void {
     this.isProductListEmpty$ = this.productFacadeService.getAllProducts()
       .pipe(map((products) => !products.length));
 

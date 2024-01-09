@@ -27,8 +27,6 @@ export class WishlistComponent implements OnInit {
     this.isLoading$ = this.productFacade.getProducts()
       .pipe(map((products) => !products));
 
-    this.productFacade.initProductsPage();
-
     this.wishlistFacadeService.getWishlist()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((productsOnWishlist: ICalculatedProduct[]) => {

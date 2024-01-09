@@ -4,7 +4,7 @@ import {
   HostBinding,
   OnInit,
 } from '@angular/core';
-import { IOrder, OrdersFacadeService, ProductFacadeService } from '@shared-module';
+import { IOrder, OrdersFacadeService } from '@shared-module';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -20,14 +20,9 @@ export class OrdersComponent implements OnInit {
   @HostBinding('class')
   private readonly classes = 'mx-auto flex items-start flex-wrap py-16 gap-8';
 
-  constructor(
-    private ordersFacadeService: OrdersFacadeService,
-    private productsFacadeService: ProductFacadeService,
-  ) {}
+  constructor(private ordersFacadeService: OrdersFacadeService) {}
 
   ngOnInit(): void {
-    this.productsFacadeService.initOrdersPage();
-
     this.orders$ = this.ordersFacadeService.getOrderProducts();
   }
 

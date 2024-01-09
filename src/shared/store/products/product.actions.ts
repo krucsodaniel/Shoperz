@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IProduct } from '@shared-module';
+import { IProduct } from '../../models';
 
 export const enum ProductAction {
   loadProducts = '[Products] Load products',

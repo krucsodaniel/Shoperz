@@ -3,7 +3,7 @@
     type="checkbox"
     [value]="value"
     [checked]="value"
-    [hidden]="!multiselect"
+    [hidden]="isCheckBoxHidden"
     (change)="onToggleCheckbox()">
 
   {{ label }}

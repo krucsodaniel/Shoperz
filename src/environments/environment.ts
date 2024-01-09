@@ -1,17 +1,5 @@
 export const environment = {
   production: false,
-  api: {
-    baseUrl: 'http://localhost:3000',
-    endpoints: {
-      products: '/products',
-      categories: '/categories',
-      brands: '/brands',
-      cart: '/cart',
-      feedbacks: '/feedbacks',
-      orders: '/orders',
-      wishList: '/wishlist',
-    },
-  },
   redirectUrls: {
     facebookUrl: 'https://www.facebook.com/',
     instagramUrl: 'https://www.instagram.com/',

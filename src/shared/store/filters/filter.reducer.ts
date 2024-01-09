@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { IFilterDefinition, SortingOption } from '@shared-module';
+import { IFilterDefinition } from '../../models';
+import { SortingOption } from '../../enums';
 import { FilterActions } from './filter.actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 

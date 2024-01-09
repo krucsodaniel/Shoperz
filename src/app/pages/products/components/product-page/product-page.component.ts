@@ -31,12 +31,10 @@ export class ProductPageComponent implements OnInit {
     private cdr: ChangeDetectorRef,
   ) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.numberFormControl = new FormControl(1, [Validators.required]);
 
     this.productId = this.route.snapshot.paramMap.get('id');
-
-    await this.productFacadeService.initSpecificProductPage(this.productId);
 
     this.product$ = this.productFacadeService.getSingleProduct(this.productId);
 
