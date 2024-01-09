@@ -12,7 +12,7 @@ import { productReducer, productsFeatureKey } from './store/products/product.red
 import { brandReducer, brandsFeatureKey } from './store/brands/brand.reducer';
 import { categoryReducer, categoriesFeatureKey } from './store/categories/category.reducer';
 import { cartReducer, cartFeatureKey } from './store/cart/cart.reducer';
-import { feedbackReducer, feedbackFeatureKey } from './store/feedback';
+import { feedbackReducer, feedbackFeatureKey } from './store';
 import { ordersReducer, ordersFeatureKey } from './store/orders/orders.reducer';
 import { filterReducer, filtersFeatureKey } from './store/filters/filter.reducer';
 import { userReducer, userFeatureKey } from './store/users/user.reducer';
@@ -74,6 +74,8 @@ import {
 } from './components';
 import { SvgIconsModule } from '@core-module';
 import { FirestoreDatePipe, SafePipe } from './pipes';
+import { environment } from 'src/environments/environment';
+import { APP_CONFIG } from './constants';
 
 @NgModule({
   imports: [
@@ -153,6 +155,10 @@ import { FirestoreDatePipe, SafePipe } from './pipes';
     UniqueEmailValidatorService,
     ExistingEmailValidatorService,
     StoreInitializationService,
+    {
+      provide: APP_CONFIG,
+      useValue: environment,
+    },
   ],
   exports: [
     SearchbarComponent,

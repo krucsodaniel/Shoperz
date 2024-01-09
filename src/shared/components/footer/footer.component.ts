@@ -1,14 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { Route } from '../../enums';
-import { environment } from 'src/environments/environment';
+import { APP_CONFIG } from '../../constants';
+import { IAppConfig } from '../../models';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent {
-  readonly redirectUrls = environment.redirectUrls;
+export class FooterComponent implements OnInit {
+  redirectUrls: IAppConfig['redirectUrls'];
+
   readonly categoriesLinks = [
     {
       title: 'tvAndAudio',
@@ -111,6 +113,12 @@ export class FooterComponent {
       routerLink: `/${ Route.support }`,
     },
   ];
+
+  constructor(@Inject(APP_CONFIG) private appConfig: IAppConfig) {}
+
+  ngOnInit(): void {
+    this.redirectUrls = this.appConfig.redirectUrls;
+  }
 
   buildTranslationKey(link: string, relativeKey: string): string {
     return `sharedComponents.footer.${ link }.${ relativeKey }`;

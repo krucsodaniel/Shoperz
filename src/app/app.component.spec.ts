@@ -2,7 +2,7 @@ import { AppComponent } from './app.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { StoreInitializationService } from '@shared-module';
+import { StoreInitializationService } from 'src/shared/services';
 
 describe('AppComponent', () => {
   let componentUnderTest: AppComponent;
